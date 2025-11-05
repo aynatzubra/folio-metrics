@@ -7,6 +7,9 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 
 import SectionHeader from '@/components/common/SectionHeader'
 
+const STATIC_DEMO_EMAIL = 'demo@example.com'
+const STATIC_DEMO_PASSWORD = 'demo123'
+
 export default function Additional() {
   const t = useTranslations('Additional')
 
@@ -59,7 +62,7 @@ export default function Additional() {
 
             <div className="flex flex-col md:flex-row gap-3 mb-4">
               <a
-                href={`/admin/login?email=${process.env.DEMO_USER}&password=${process.env.DEMO_USER_PASSWORD}`}
+                href={`/admin/login?email=${STATIC_DEMO_EMAIL}&password=${STATIC_DEMO_PASSWORD}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="

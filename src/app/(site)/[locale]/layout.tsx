@@ -22,7 +22,7 @@ export default async function RootLayout({
   const messages = await getMessages({ locale })
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning={true}>
       <body className={`${robotoSlab.variable} ${robotoMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

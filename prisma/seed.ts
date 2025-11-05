@@ -173,7 +173,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
 async function main() {
   console.log('Seeding start...')
   await prisma.visit.deleteMany({})
-  await prisma.user.deleteMany({ where: { email: process.env.DEMO_USER } })
+  await prisma.user.deleteMany({ where: { email: process.env.SECRET_DEMO_USER } })
 
   await prisma.visit.createMany({
     data: mockVisits,
@@ -182,12 +182,12 @@ async function main() {
   console.log('Successfully created visits!')
 
   console.log('Create demo user...')
-  const hashedPassword = await bcrypt.hash(process.env.DEMO_USER_PASSWORD!, 10)
+  const hashedPassword = await bcrypt.hash(process.env.SECRET_DEMO_PASSWORD!, 10)
   await prisma.user.upsert({
-    where: { email: process.env.DEMO_USER! },
+    where: { email: process.env.SECRET_DEMO_USER! },
     update: { password: hashedPassword },
     create: {
-      email: process.env.DEMO_USER!,
+      email: process.env.SECRET_DEMO_USER!,
       password: hashedPassword,
     },
   })
