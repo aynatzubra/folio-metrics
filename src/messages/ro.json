@@ -5,7 +5,7 @@
     "language": "RO"
   },
   "Hero": {
-    "smallTitle": "Full-stack Software Engineer",
+    "smallTitle": "Frontend Engineer (Middle+)",
     "title": "Tanya Arbuz",
     "description": "Construiesc sisteme scalabile și modulare, cu un accent deosebit pe arhitectură, cod curat și livrare iterativă. Îmi asum responsabilitatea deplină pentru provocări pentru a livra rezultate, căutând continuu modalități de a optimiza procesele de produs și inginerie și transformând problemele complexe în soluții robuste și eficiente.",
     "descriptionMobile": "Construiesc sisteme scalabile și modulare, cu un accent deosebit pe arhitectură, cod curat și livrare iterativă."
@@ -57,7 +57,7 @@
     "leftTitle": "Educație",
     "leftSubtitle": "Calea nu este definită de diplome. Orice te face mai puternic face parte din călătorie.",
     "educ": "Universitatea Rusă de Cooperație | Contabilitate și Finanțe | 2003–2007",
-    "pathTitle": "de la finanțe la Full-stack Software Engineer:",
+    "pathTitle": "de la finanțe la Frontend Engineer:",
     "dailyTitle": "Învățare Zilnică:",
     "path": {
       "first": "2011: Primul pas în IT (Curs Dezvoltare Web)",
@@ -85,7 +85,7 @@
     "copyright": "© 2025 Tanya Arbuz. Toate drepturile rezervate."
   },
   "Common": {
-    "smallTitle": "Full-stack Software Engineer",
+    "smallTitle": "Frontend Engineer",
     "title": "Tanya Arbuz",
     "location": "Locație",
     "or": "Chișinău",

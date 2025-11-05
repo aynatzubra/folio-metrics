@@ -5,7 +5,7 @@
     "language": "RU"
   },
   "Hero": {
-    "smallTitle": "Full-stack Software Engineer",
+    "smallTitle": "Frontend Engineer",
     "title": "Tanya Arbuz",
     "description": "I build scalable and modular systems with a keen focus on architecture, clean code, and iterative delivery. I take full ownership of challenges to deliver results, continuously seeking ways to enhance product and engineering processes, and transforming complex problems into robust, effective solutions.",
     "descriptionMobile": "I build scalable and modular systems with a keen focus on architecture, clean code, and iterative delivery."
@@ -13,12 +13,12 @@
   "AboutMe": {
     "leftTitle": "About Me",
     "leftSubtitle": "A warrior doesn't boast — he simply knows what he's capable of.",
-    "description1": "<highlight>Full-stack Software Engineer</highlight> with <highlight>over 4 years of experience in web development</highlight>. I specialize in <secondary>web applications and Telegram bots</secondary>. I work with both frontend and backend, building <highlight>clean architecture and scalable solutions.</highlight>",
+    "description1": "<highlight>Frontend Engineer</highlight> with <highlight>5 years of commercial experience</highlight> in web development. I design scalable client-side applications using <highlight>React</highlight>  and <highlight>Next.js (App Router, TypeScript)</highlight>, focusing on <highlight>architecture (Feature-Sliced Design)</highlight>, UX, and performance <highlight>(SSR/ISR)</highlight>. My background in <secondary>backend (NestJS, Laravel)</secondary> and <secondary>DevOps (Docker)</secondary> provides a holistic view of the product, enabling me to build efficient end-to-end integrations and scalable solutions.",
     "description2_title": "My core priorities are:",
     "description2_item1": "Architectural reliability",
     "description2_item2": "User-friendly experiences",
     "description2_item3": "Process automation",
-    "description2": "I am committed to <secondary>continuous learning</secondary>, value <secondary>team collaboration</secondary>, and am driven to find solutions that deliver <highlight>value to both the business and the team</highlight>."
+    "description2": "I prioritize core architectural reliability, exceptional user experience (UX), and the automation of manual processes. I am driven by continuous learning, value colleague input, and focus on delivering solutions that create <secondary>tangible value for both the business and the team</secondary>."
   },
   "TechnicalSkills": {
     "leftTitle": "Technical skills",
