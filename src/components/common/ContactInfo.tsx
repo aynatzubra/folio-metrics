@@ -18,7 +18,13 @@ export default function ContactInfo() {
       </div>
       <div>
         <h4 className="font-semibold text-[#F67769]">{t('mail')}</h4>
-        <p className="text-gray-800 font-normal">work.arbuz@gmail.com</p>
+        <a
+          href="mailto:work.arbuz@gmail.com"
+          target="_blank"
+          className="text-gray-800 font-normal hover:text-[#D45E56] transition-colors duration-200"
+        >
+          work.arbuz@gmail.com
+        </a>
       </div>
     </div>
   )
