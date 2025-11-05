@@ -33,22 +33,7 @@ export default function Education() {
                 <h3 className="text-base font-bold uppercase text-[#F67769] mb-2">{t('educ')}</h3>
                 <hr className="w-full h-[3px] bg-[#F67769] border-none rounded-full my-2"></hr>
                 <div>
-                  <h3 className="text-base font-bold uppercase text-[#F67769] mb-3">{t('pathTitle')}</h3>
-                  <ul className="space-y-3 text-sm text-gray-700">
-                    <li className="flex items-start">
-                      <span className="font-bold text-[#F67769] mr-3 w-12">2011</span>
-                      <span>{t('path.first')}</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="font-bold text-[#F67769] mr-3 w-12">2012+</span>
-                      <span>{t('path.second')}</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span>
-                        <span className="font-bold text-gray-800 mr-3">{t('dailyTitle')}</span>
-                      <span>{t('path.third')}</span></span>
-                    </li>
-                  </ul>
+                  <h3 className="text-base mb-3">{t('pathTitle')}</h3>
                 </div>
               </div>
             </div>

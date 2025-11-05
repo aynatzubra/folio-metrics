@@ -34,36 +34,30 @@
     "Stack": "Stack",
     "contract": {
       "about": "Construction company, residential complex SAMPO",
-      "description": "Developed and implemented a headless CMS based on Payload to manage the content of the residential complex's website. Configured data models, access levels, and API, and integrated the system with a Next.js application. Implemented a user-friendly interface for creating and managing pages and news.",
-      "resultDescription": "The client received a flexible and reliable tool for independently managing the website and publishing content without technical support, which increased the speed and quality of information updates."
+      "description": "Architected and implemented a headless setup using Next.js App Router and Payload CMS v3, eliminating request cascades. Configured ISR and tag-based cache invalidation (revalidateTag) via Tag Planner to automate content refresh. Built a modular page-loading system with declarative content management.",
+      "resultDescription": "Automated the management of ad campaigns, reducing human error and saving users time through streamlined control and faster workflows."
     },
     "cpabox": {
       "about": "SaaS platform for traffic arbitrage automation",
-      "description": "I was responsible for the development and support of full-stack modules for a SaaS platform that links campaigns from TDS Keitaro with Facebook ad accounts and anti-detect profiles. I created a Telegram checker bot to monitor domains with renewal notifications. I configured API integration with Keitaro and webhooks for data synchronization with ad networks. I also developed a Telegram Web App that used the Keitaro API to fetch a list of domains, allowing users to select them for tracking and add new ones manually.",
-      "resultDescription": "Automated the management of ad funnels, reducing human error and factor, which allowed users to effectively control campaigns and save time."
+      "description": "Designed the frontend architecture ensuring API and UX consistency across components. Integrated Zustand for state management and simplified data flow between modules. Developed and optimized an analytics dashboard (ApexCharts) with Keitaro API integration. Built a Telegram Web App and backend (NestJS) for WHOIS tracking and data sync. Refactored MUI components and theme system to improve maintainability and consistency.",
+      "resultDescription": "Delivered ready-to-use solutions that simplified user data management and made client services more stable and user-friendly."
     },
     "remotza": {
       "about": "Custom software development",
-      "description": "I participated in the design and development of custom web services. I implemented REST APIs and business logic, configured Redis caching to improve performance and stability with PostgreSQL, and maintained and refined interfaces using Vue.js.",
-      "resultDescription": "Clients received ready-made solutions that simplified user data management and made their services more stable and convenient for end-users."
+      "description": "Developed REST APIs and integrations in Laravel. Collaborated with the UI team on Vue.js components. Optimized data structures and caching (PostgreSQL, Redis) to improve reliability and speed.",
+      "resultDescription": "Delivered production-ready integrations that simplified data management and enhanced product stability for client services."
     },
     "aopsrm": {
       "about": "An NGO assisting ostomy patients in Moldova",
-      "description": "I developed a multi-page website for the organization and built a custom CMS for content management, allowing for publishing articles, uploading photos, and adding comments. I configured forms and implemented the core functionality for administration and full project operation. I also set up a CI/CD pipeline via GitLab and deployed the project on a server with a linked domain.",
-      "resultDescription": "The organization received a complete, turn-key website with a CMS — from design and logic to deployment. This empowered them to independently publish materials and communicate with their audience without needing external specialists."
+      "description": "Designed and built a custom CMS (Laravel + React) for multilingual content management.  Configured CI/CD pipelines with GitLab and Docker for predictable releases.",
+      "resultDescription": "Delivered a fully functional website with a turnkey CMS — from design to deployment — enabling the organization to manage content independently and communicate with their audience effectively."
     }
   },
   "Education": {
     "leftTitle": "Education",
     "leftSubtitle": "The path isn’t defined by diplomas. Anything that makes you stronger is part of the journey.",
-    "educ": "Russian University of Cooperation | Accounting and Finance | 2003–2007",
-    "pathTitle": "from finance to Full-stack Software Engineer:",
-    "dailyTitle": "Daily Learning:",
-    "path": {
-      "first": "2011: First step in IT (Web Development Course)",
-      "second": "2012-Present: From Hobby Projects to Professional Systems",
-      "third": "For professional growth, I regularly analyze technical articles and conference talks, applying new knowledge to improve code quality and find more effective solutions in my work."
-    }
+    "educ": "Russian University of Cooperation | Accounting and Finance",
+    "pathTitle": "My background in finance helps me design more precise business logic, metrics, and reporting structures in complex web systems."
   },
   "Additional": {
     "leftTitle": "Additional",

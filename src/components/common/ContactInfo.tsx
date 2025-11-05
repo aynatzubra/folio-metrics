@@ -13,14 +13,6 @@ export default function ContactInfo() {
     "
     >
       <div>
-        <h4 className="font-semibold text-[#F67769]">{t('location')}</h4>
-        <p className="text-gray-800 font-normal">{t('or')}</p>
-      </div>
-      <div>
-        <h4 className="font-semibold text-[#F67769]">{t('phone')}</h4>
-        <p className="text-gray-800 font-normal">+373 68 940 997</p>
-      </div>
-      <div>
         <h4 className="font-semibold text-[#F67769]">{t('telegram')}</h4>
         <p className="text-gray-800 font-normal">@tanya_arbuz</p>
       </div>

@@ -10,11 +10,13 @@ export const skillsData: SkillCategory[] = [
         skills: [
           'React',
           'TypeScript',
-          'Next.js',
+          'Next.js (App Router, SSR/ISR)',
+          'FSD',
           'Zustand',
+          'Redux Toolkit',
           'Tailwind CSS',
-          'Styled Components',
           'MUI',
+          'Styled Components',
           'Webpack/Vite',
         ],
       },
@@ -44,7 +46,7 @@ export const skillsData: SkillCategory[] = [
     groups: [
       {
         groupName: 'Tools',
-        skills: ['Postman', 'TypeORM', 'Webhook Architecture'],
+        skills: ['Postman', 'TypeORM'],
       },
     ],
   },
