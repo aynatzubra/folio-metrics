@@ -7,7 +7,7 @@ import '../../../lib/fontawesome'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Arbuz Tanya | Full-Stack Developer',
+  title: 'Arbuz Tanya | Frontend Engineer',
   description: 'Hi! This is my live resume and a demonstration of my development skills. The project is built on Next.js and includes custom analytics.',
 }
 

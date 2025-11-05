@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="156eae76-157f-473e-bd06-5a2fb2289c98" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ContactInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ContactInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/Education.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/Education.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/skillsData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/skillsData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/messages/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/messages/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/messages/ru.json" afterDir="false" />
-    </list>
+    <list default="true" id="156eae76-157f-473e-bd06-5a2fb2289c98" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +139,7 @@
       <workItem from="1761572342256" duration="1152000" />
       <workItem from="1761648918766" duration="6047000" />
       <workItem from="1761733293304" duration="9249000" />
-      <workItem from="1762332687122" duration="12504000" />
+      <workItem from="1762332687122" duration="13070000" />
     </task>
     <servers />
   </component>
