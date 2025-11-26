@@ -1,45 +1,28 @@
-import { prisma } from '@/lib/db'
+import { Visit } from '@prisma/client'
 
-interface VisitData {
-  sectionId: string
-  duration: number
-  ipAddress: string
-  userAgent: string
-  country: string
-  city: string
+import { AnalyticsService, SummaryStats, VisitData } from '@/lib/analytics/service'
+
+type AnalyticsSummaryResult = {
+  summary: SummaryStats
+  visits: Visit[]
 }
 
 export async function trackVisit(data: VisitData) {
   try {
-    await prisma.visit.create({
-      data: {
-        sectionId: data.sectionId,
-        country: data.country,
-        city: data.city,
-        ipAddress: data.ipAddress,
-        userAgent: data.userAgent,
-        duration: data.duration,
-      },
-    })
+    await AnalyticsService.trackVisit(data)
   } catch (error) {
     console.error('Visit tracking failed:', error)
   }
 }
 
-export async function getAnalyticsSummary() {
-  const [totalVisits, uniqueVisitorsByIp, avgDurationResult, visits] = await Promise.all([
-    prisma.visit.count(),
-    prisma.visit.groupBy({ by: ['ipAddress'] }),
-    prisma.visit.aggregate({ _avg: { duration: true } }),
-    prisma.visit.findMany({ orderBy: { createdAt: 'desc' }, take: 50 }),
+export async function getAnalyticsSummary(): Promise<AnalyticsSummaryResult> {
+  const [summary, visits] = await Promise.all([
+    AnalyticsService.getSummary(),
+    AnalyticsService.getLastVisits(50),
   ])
 
   return {
-    summary: {
-      totalVisits,
-      uniqueVisitors: uniqueVisitorsByIp.length,
-      avgDuration: Math.round(avgDurationResult._avg.duration || 0),
-    },
+    summary,
     visits,
   }
 }
