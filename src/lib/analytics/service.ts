@@ -15,6 +15,16 @@ export interface SummaryStats {
   avgDuration: number
 }
 
+export interface DailyPoint {
+  day: string
+  count: number
+}
+
+export interface SectionPoint {
+  sectionId: string
+  count: number
+}
+
 type CacheEntry<T> = {
   value: T
   expiresAt: number
@@ -74,6 +84,43 @@ async function getLastVisitsInternal(limit = 50) {
   })
 }
 
+async function getDailyVisitsInternal(days = 7): Promise<DailyPoint[]> {
+  const since = new Date(Date.now() - days * DAY_MS)
+
+  const visits = await prisma.visit.findMany({
+    where: { createdAt: { gte: since } },
+    select: { createdAt: true },
+  })
+
+  const buckets = new Map<string, number>
+
+  for (const visit of visits) {
+    const day = visit.createdAt.toISOString().slice(0, 10)
+    buckets.set(day, (buckets.get(day) ?? 0) + 1)
+  }
+
+  return Array.from(buckets.entries())
+    .map(([day, count]) => ({ day, count }))
+    .sort((a, b) => a.day.localeCompare(b.day))
+}
+
+async function getTopSectionsInternal(days = 7): Promise<SectionPoint[]> {
+  const since = new Date(Date.now() - days * DAY_MS)
+
+  const grouped = await prisma.visit.groupBy({
+    by: ['sectionId'],
+    where: { createdAt: { gte: since } },
+    _count: { sectionId: true },
+    orderBy: { _count: { sectionId: 'desc' } },
+    take: 10,
+  })
+
+  return grouped.map((g) => ({
+    sectionId: g.sectionId,
+    count: g._count.sectionId,
+  }))
+}
+
 export const AnalyticsService = {
 
   async trackVisit(data: VisitData) {
@@ -88,6 +135,11 @@ export const AnalyticsService = {
     return getLastVisitsInternal(limit)
   },
 
+  async getDailyVisits(days = 7, ttlMs = 60000): Promise<DailyPoint[]> {
+    return withCache(`daily:${days}`, ttlMs, () => getDailyVisitsInternal())
+  },
 
+  async getTopSections(days = 7, ttlM = 60_000): Promise<SectionPoint[]> {
+    return withCache(`sections:${days}`, ttlM, () => getTopSectionsInternal())
+  },
 }
-
