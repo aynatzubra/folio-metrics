@@ -27,6 +27,8 @@
     "@prisma/client": "^6.15.0",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.5",
     "next": "15.5.2",
     "next-auth": "5.0.0-beta.29",
     "next-intl": "^4.3.7",
