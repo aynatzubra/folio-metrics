@@ -92,7 +92,7 @@ async function getDailyVisitsInternal(days = 7): Promise<DailyPoint[]> {
     select: { createdAt: true },
   })
 
-  const buckets = new Map<string, number>
+  const buckets = new Map<string, number>()
 
   for (const visit of visits) {
     const day = visit.createdAt.toISOString().slice(0, 10)
@@ -127,7 +127,7 @@ export const AnalyticsService = {
     return trackVisitInternal(data)
   },
 
-  async getSummary(ttlMs = 60000): Promise<SummaryStats> {
+  async getSummary(ttlMs = 60_000): Promise<SummaryStats> {
     return withCache('summary', ttlMs, getSummaryInternal)
   },
 
@@ -135,11 +135,11 @@ export const AnalyticsService = {
     return getLastVisitsInternal(limit)
   },
 
-  async getDailyVisits(days = 7, ttlMs = 60000): Promise<DailyPoint[]> {
-    return withCache(`daily:${days}`, ttlMs, () => getDailyVisitsInternal())
+  async getDailyVisits(days = 7, ttlMs = 60_000): Promise<DailyPoint[]> {
+    return withCache(`daily:${days}`, ttlMs, () => getDailyVisitsInternal(days))
   },
 
-  async getTopSections(days = 7, ttlM = 60_000): Promise<SectionPoint[]> {
-    return withCache(`sections:${days}`, ttlM, () => getTopSectionsInternal())
+  async getTopSections(days = 7, ttlMs = 60_000): Promise<SectionPoint[]> {
+    return withCache(`sections:${days}`, ttlMs, () => getTopSectionsInternal(days))
   },
 }

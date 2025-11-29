@@ -13,9 +13,9 @@ export async function GET(req: NextRequest) {
     const days = parseDaysParam(url, 30, 365)
 
     const data = await AnalyticsService.getTopSections(days)
-    return NextResponse.json(data, { status: 200 })
+    return NextResponse.json(data)
   } catch (error) {
-    console.log('Admin section stats error:', error)
+    console.error('Admin section stats error:', error)
     return NextResponse.json(
       { message: 'Failed to load section stats' },
       { status: 500 },
