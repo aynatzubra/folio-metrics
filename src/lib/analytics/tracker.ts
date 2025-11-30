@@ -1,6 +1,7 @@
 import { Visit } from '@prisma/client'
 
-import { AnalyticsService, SummaryStats, VisitData } from '@/lib/analytics/service'
+import { AnalyticsService } from '@/lib/analytics/service'
+import { SummaryStats, VisitData } from '@/lib/analytics/types'
 
 type AnalyticsSummaryResult = {
   summary: SummaryStats
