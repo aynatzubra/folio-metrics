@@ -11,10 +11,13 @@ import Link from 'next/link'
 
 import MobileMenu from '@/components/ui/MobileMenu'
 
-import myAdminAva from '../../../public/assets/images/jap.png'
+import myAdminAva from '../../../public/assets/images/avatar.png'
 
+type AdminHeaderProps = {
+  isDemo?: boolean
+}
 
-export default function AdminHeader() {
+export default function AdminHeader({ isDemo }: AdminHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <>
@@ -37,32 +40,32 @@ export default function AdminHeader() {
 
             {/*Right Block*/}
             <div className="flex items-center gap-3 sm:gap-4">
+              {/*Demo Block*/}
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-semibold text-[#F67769]">Folio-Metrics Admin</span>
+                {isDemo && (
+                  <span
+                    className="rounded-full bg-gray-500 px-2 py-0.5 text-xs font-medium text-bg-amber-100 hover:text-[#F67769]">
+            Demo mode
+          </span>
+                )}
+              </div>
               {/*Socials Buttons*/}
               <div className="flex items-center gap-3 sm:gap-4">
                 <a
-                  href="https://mail.yandex.ru/compose?to=arbuztatiana@yandex.ru"
+                  href="https://t.me/tanya_arbuz"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-[#F67769] transition-colors"
-                >
-                  <FontAwesomeIcon icon={faYandex} size="lg" />
+                  className="text-gray-500 hover:text-[#F67769] transition-colors">
+                  <FontAwesomeIcon icon={faTelegramPlane} size="xl" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/tanya-arbuz-187199221"
                   target="_blank"
                   className="text-gray-500 hover:text-[#F67769] transition-colors"
                 >
-                  <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
-                </a>
-                <a
-                  href="https://t.me/tanya_arbuz"
-                  target="_blank"
-                  className="text-gray-500 hover:text-[#F67769] transition-colors">
-                  <FontAwesomeIcon icon={faTelegramPlane} size="lg" />
+                  <FontAwesomeIcon icon={faLinkedinIn} size="xl" />
                 </a>
               </div>
-
-              {/*Lang Block*/}
 
               {/* Avatar Dropdown */}
               <Menu as="div" className="relative">
@@ -74,13 +77,13 @@ export default function AdminHeader() {
                 >
                   <Image
                     src={myAdminAva} alt="User Avatar"
-                    width={41} height={41}
+                    width={30} height={30}
                     className="rounded-full" />
                 </MenuButton>
 
                 {/* Tooltip */}
                 <Tooltip id="avatar-tooltip" place="bottom">
-                  Demo Samurai
+                  Settings
                 </Tooltip>
 
                 {/* Dropdown items */}
