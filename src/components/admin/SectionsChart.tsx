@@ -10,9 +10,10 @@ type SectionsChartProps = {
   data: SectionPoint[]
   isLoading: boolean
   error: string | null
+  range: 7 | 14 | 30
 }
 
-export default function SectionsChart({ data, isLoading, error }: SectionsChartProps) {
+export default function SectionsChart({ data, isLoading, error, range }: SectionsChartProps) {
   const hasData = data && data.length > 0
 
   const categories = hasData ? data.map((item) => item.sectionId || 'unknown') : []
@@ -50,7 +51,7 @@ export default function SectionsChart({ data, isLoading, error }: SectionsChartP
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
-      <h3 className="mb-2 text-base font-semibold">Top sections (last 30 days)</h3>
+      <h3 className="mb-2 text-base font-semibold">Top sections (last {range} days)</h3>
 
       {isLoading && (
         <div className="flex h-72 items-center justify-center text-sm text-gray-500">

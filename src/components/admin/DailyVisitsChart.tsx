@@ -9,9 +9,10 @@ type DailyVisitsChartProps = {
   data: DailyPoint[]
   isLoading: boolean
   error: string | null
+  range: 7 | 14 | 30
 }
 
-export default function DailyVisitsChart({ data, isLoading, error }: DailyVisitsChartProps) {
+export default function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
   const hasData = data && data.length > 0
 
   const categories = hasData ? data.map((point) => point.day) : []
@@ -54,7 +55,7 @@ export default function DailyVisitsChart({ data, isLoading, error }: DailyVisits
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
-      <h3 className="mb-2 text-base font-semibold">Daily visits (last 30 days)</h3>
+      <h3 className="mb-2 text-base font-semibold">Daily visits (last {range} days)</h3>
 
       {isLoading && (
         <div className="flex h-72 items-center justify-center text-sm text-gray-500">
