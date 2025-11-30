@@ -21,7 +21,6 @@ export default async function AdminDashboardPage() {
   return (
     <div className="p-4 md:p-8">
       <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-      <AnalyticsCharts />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <StatCard
           title="Total Visits" value={summary.totalVisits}
@@ -35,6 +34,7 @@ export default async function AdminDashboardPage() {
           isLoading={false}
         />
       </div>
+      <AnalyticsCharts />
       <VisitsTable visits={visits} isLoading={false} />
     </div>
   )

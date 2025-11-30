@@ -4,11 +4,7 @@ import React from 'react'
 import ReactECharts from 'echarts-for-react'
 
 import type { EChartsOption } from 'echarts'
-
-type SectionPoint = {
-  sectionId: string
-  count: number
-}
+import type { SectionPoint } from '@/lib/analytics/types'
 
 type SectionsChartProps = {
   data: SectionPoint[]

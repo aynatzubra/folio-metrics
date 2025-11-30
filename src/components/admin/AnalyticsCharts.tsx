@@ -4,30 +4,10 @@ import { useEffect, useState } from 'react'
 
 import DailyVisitsChart from '@/components/admin/DailyVisitsChart'
 import SectionsChart from '@/components/admin/SectionsChart'
+import { FetchState } from '@/lib/shared/async'
+import { fetchJson } from '@/lib/http/fetchJson'
 
-type DailyPoint = {
-  day: string
-  count: number
-}
-
-type SectionPoint = {
-  sectionId: string
-  count: number
-}
-
-type FetchState<T> = {
-  data: T | null
-  isLoading: boolean
-  error: string | null
-}
-
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url)
-  if (!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`)
-  }
-  return response.json()
-}
+import type { DailyPoint, SectionPoint } from '@/lib/analytics/types'
 
 export default function AnalyticsCharts() {
 
@@ -114,5 +94,4 @@ export default function AnalyticsCharts() {
       </div>
     </section>
   )
-
 }

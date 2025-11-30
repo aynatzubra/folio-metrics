@@ -3,11 +3,7 @@
 import ReactECharts from 'echarts-for-react'
 
 import type { EChartsOption } from 'echarts'
-
-type DailyPoint = {
-  day: string
-  count: number
-}
+import type { DailyPoint } from '@/lib/analytics/types'
 
 type DailyVisitsChartProps = {
   data: DailyPoint[]

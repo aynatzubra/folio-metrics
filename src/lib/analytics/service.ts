@@ -1,29 +1,6 @@
 import { prisma } from '@/lib/db'
 
-export interface VisitData {
-  sectionId: string
-  duration: number
-  ipAddress: string
-  userAgent: string
-  country: string
-  city: string
-}
-
-export interface SummaryStats {
-  totalVisits: number
-  uniqueVisitors: number
-  avgDuration: number
-}
-
-export interface DailyPoint {
-  day: string
-  count: number
-}
-
-export interface SectionPoint {
-  sectionId: string
-  count: number
-}
+import type { SummaryStats, DailyPoint, SectionPoint, VisitData } from './types'
 
 type CacheEntry<T> = {
   value: T
