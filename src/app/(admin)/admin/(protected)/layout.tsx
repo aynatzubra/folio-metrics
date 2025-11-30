@@ -19,7 +19,7 @@ export default async function ProtectedLayout({ children }: ProtectedLayoutProps
     )
 
   return (
-    <div>
+    <div className="bg-[#f3f6f9]">
       <AdminHeader isDemo={isDemo} />
       {children}
     </div>

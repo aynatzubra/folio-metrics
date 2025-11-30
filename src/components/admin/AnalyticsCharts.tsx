@@ -80,51 +80,53 @@ export default function AnalyticsCharts() {
 
   return (
     <section className="mt-8">
-      <h2 className="text-xl font-semibold mb-4">Traffic Overview</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold text-gray-900">Traffic Overview</h2>
 
-      <div className="flex items-center gap-2 text-sm text-gray-600">
-        <span>Range:</span>
-        <div className="inline-flex overflow-hidden rounded-md border border-gray-200 bg-white">
-          {RANGE_OPTIONS.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => setRange(option.value)}
-              className={clsx(
-                'px-3 py-1.5 text-xs font-medium transition',
-                option.value === range
-                  ? 'bg-gray-900 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-50',
-              )}
-            >
-              {option.label}
-            </button>
-          ))}
+        <div className="flex items-center justify-right gap-2 text-sm text-gray-600">
+          <div
+            className="inline-flex gap-2 items-center overflow-hidden">
+            {RANGE_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setRange(option.value)}
+                className={clsx(
+                  'px-3 py-2 text-xs font-medium transition cursor-pointer rounded-[0.2rem]',
+                  option.value === range
+                    ? 'bg-[#5070DD] cursor-pointer transition-opacity hover:opacity-90 text-white'
+                    : 'bg-[#C7D3FF] text-[#5070DD] hover:bg-[#5070DD] hover:text-white',
+                )}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-  {
-    hasAnyError && (
-      <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
-        Failed to load analytics data. Try reloading the page.
-      </div>
-    )
-  }
+      {
+        hasAnyError && (
+          <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+            Failed to load analytics data. Try reloading the page.
+          </div>
+        )
+      }
 
-  <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-    <DailyVisitsChart
-      data={daily.data ?? []}
-      isLoading={daily.isLoading}
-      error={daily.error}
-      range={range}
-    />
-    <SectionsChart
-      data={sections.data ?? []}
-      isLoading={sections.isLoading}
-      error={sections.error}
-      range={range}
-    />
-  </div>
-</section>
-)
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <DailyVisitsChart
+          data={daily.data ?? []}
+          isLoading={daily.isLoading}
+          error={daily.error}
+          range={range}
+        />
+        <SectionsChart
+          data={sections.data ?? []}
+          isLoading={sections.isLoading}
+          error={sections.error}
+          range={range}
+        />
+      </div>
+    </section>
+  )
 }

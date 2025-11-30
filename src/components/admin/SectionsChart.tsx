@@ -51,7 +51,7 @@ export default function SectionsChart({ data, isLoading, error, range }: Section
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
-      <h3 className="mb-2 text-base font-semibold">Top sections (last {range} days)</h3>
+      <h3 className="mb-2 text-base font-semibold text-gray-400">Top sections (last {range} days)</h3>
 
       {isLoading && (
         <div className="flex h-72 items-center justify-center text-sm text-gray-500">
