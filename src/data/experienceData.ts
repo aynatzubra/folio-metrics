@@ -1,4 +1,4 @@
-import { ExperienceItemType } from '@/types/types'
+import { ExperienceItemType } from '@/lib/resume/types'
 
 export const experienceData: ExperienceItemType[] = [
   {
