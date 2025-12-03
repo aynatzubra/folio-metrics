@@ -1,8 +1,15 @@
 {
   "Header": {
     "headerText": "Чистый код. Чёткое решение. Твёрдая рука.",
-    "title": "Arbuz Tanya",
-    "language": "EN"
+    "title": "Arbuz.Tanya",
+    "language": "EN",
+    "nav" : {
+      "about": "Обо мне",
+      "skills": "Навыки",
+      "experience": "Опыт",
+      "projects": "Проекты",
+      "contact": "Контакты"
+    }
   },
   "Hero": {
     "smallTitle": "Frontend Engineer",

@@ -1,59 +1,54 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
-
-{
-  /*todo:  {theme === 'light' ? '☀️' : '🌙'}*/
-}
 
 export default function Header() {
   const t = useTranslations('Header')
 
+  const navItems = [
+    { href: '#intro', label: t('nav.about') },
+    { href: '#skills', label: t('nav.skills') },
+    { href: '#experience', label: t('nav.experience') },
+    { href: '#adds', label: t('nav.projects') },
+    { href: '#contact', label: t('nav.contact') },
+  ]
+
   return (
-    <header className="top-0 z-50 w-full bg-transparent h-[70px] relative flex flex-col lg:flex-row align-center h-[70px]">
-      <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#FBE1D0] md:bg-gray-50" />
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFFFFF] z-0" />
-      {/*Content Block*/}
-      <div className="w-full z-50 max-w-[1276px] mx-auto flex flex-col lg:flex-row h-full">
-        {/* Left / Logo*/}
-        <div
-          className="
-                  lg:bg-[#FBE1D0]
-                  w-full lg:flex-[0_0_30%] flex items-start justify-end
-                  pt-[1.75rem] px-[1.75rem]
-                  md:px-[3.5rem]
-                "
-        >
-          <div className="flex flex-col items-end justify-between text-right w-full">
-            {/*Text Logo*/}
+    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur shadow-[0_2px_4px_rgba(15,34,58,.12)]">
+      <div className="mx-auto flex h-[70px] max-w-[1276px] items-center px-6 md:px-14">
+        {/* Logo */}
+        <div className="flex flex-1 items-center">
+          <Link href="/">
             <h2
-              className="
-                  w-full h-[38px]
-                  text-md font-bold tracking-wider uppercase text-[#FFFFFF] text-center
-                  py-2
-                  bg-[#F67769]
-                  "
+              className="w-[230px] h-[38px]
+                  text-2xl font-bold uppercase text-[#F67769] text-center
+                  cursor-pointer transition-opacity hover:opacity-60"
             >
               {t('title')}
             </h2>
-          </div>
+          </Link>
         </div>
 
-        {/* Right /Text + Buttons */}
-        <div
-          className="
-                  lg:bg-[#FFFFFF] bg-transparent
-                  pt-[1.75rem] px-[1.75rem] md:px-[3.5rem]
-                  flex-1 flex flex-row sm:flex-col justify-between
-                  sm:flex-row md:items-center
-                "
-        >
-          <h1 className="text-sm sm:text-base font-medium tracking-tight sm:mb-0 text-[#F67769]">{t('headerText')}</h1>
+        {/* Nav + locale */}
+        <nav className="flex flex-[2] items-center justify-end gap-10">
+          <ul className="hidden items-center gap-6 text-xs font-medium tracking-wide text-[#4B5563] md:flex">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="transition-colors hover:text-[#F67769]"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           <LocaleSwitcher />
-        </div>
+        </nav>
       </div>
     </header>
   )

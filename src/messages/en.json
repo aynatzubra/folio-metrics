@@ -1,8 +1,15 @@
 {
   "Header": {
     "headerText": "Clean code. Sharp decisions. Steady hand.",
-    "title": "Arbuz Tanya",
-    "language": "RU"
+    "title": "Arbuz.Tanya",
+    "language": "RU",
+    "nav" : {
+      "about": "About",
+      "skills": "Skills",
+      "experience": "Experience",
+      "projects": "Projects",
+      "contact": "Contact"
+    }
   },
   "Hero": {
     "smallTitle": "Frontend Engineer",

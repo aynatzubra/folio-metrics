@@ -11,33 +11,29 @@ export default function LocaleSwitcher() {
   const pathname = usePathname()
   const currentLocale = useLocale()
 
+  const nextLocale =
+    locales.find((locale) => locale !== currentLocale) || currentLocale
+
   const handleSwitch = (newLocale: string) => {
     if (newLocale === currentLocale) return
 
-    // Clean currentLocale from pathname
     const segments = pathname.split('/')
-    segments[1] = newLocale // заменяем локаль
+    segments[1] = newLocale
     const newPath = segments.join('/')
 
     router.push(newPath)
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-end gap-2">
-      {locales.map((locale, index) => (
-        <span key={locale} className="flex items-center gap-2">
-          <button
-            onClick={() => handleSwitch(locale)}
-            className={clsx(
-              'transition-colors duration-200',
-              currentLocale === locale ? 'text-[#F67769] bold' : 'hover:text-[#F67769]',
-            )}
-          >
-            {locale.toLocaleUpperCase()}
-          </button>
-          {index < locales.length - 1 && <span className="text-gray-400 md:block hidden">|</span>}
-        </span>
-      ))}
-    </div>
+    <button
+      type="button"
+      onClick={() => handleSwitch(nextLocale)}
+      className={clsx(
+        'inline-flex h-9 items-center justify-center rounded-sm px-4 text-xs font-semibold uppercase tracking-[0.12em]',
+        'bg-[#F67769] text-white shadow-sm transition-colors hover:bg-[#e1594f]',
+      )}
+    >
+      {nextLocale.toUpperCase()}
+    </button>
   )
 }
