@@ -126,15 +126,25 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
           </div>
 
           {/*MOBILE VERSION*/}
-          <div className="flex md:hidden w-full items-center justify-between">
-            <h2
-              className="
-            w-[230px] h-[38px]
-            text-md font-bold uppercase text-[#FFFFFF] text-center
-            py-2 bg-[#F67769]"
-            >
-              Arbuz Tanya
-            </h2>
+          <div className="flex w-full items-center justify-between md:hidden">
+            <Link href="/" className="flex items-end gap-2">
+              <div className="flex flex-col">
+                <span className="text-lg font-bold uppercase tracking-wide text-[#F67769]">
+                  Arbuz.Tanya
+                </span>
+                <span className="text-[11px] font-medium text-gray-600">
+                  Folio-Metrics Admin
+                </span>
+              </div>
+              {isDemo && (
+                <span
+                  className="ml-1 rounded-full bg-[#F67769] px-2 py-0.5 text-[10px] font-semibold uppercase text-white">
+                  Demo
+                </span>
+              )}
+            </Link>
+
+            {/*Burger*/}
             <button
               onClick={() => setIsMenuOpen(true)}
               className="p-2 text-gray-800 transition hover:text-black focus:outline-none"

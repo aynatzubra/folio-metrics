@@ -80,21 +80,20 @@ export default function AnalyticsCharts() {
 
   return (
     <section className="mt-8">
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-xl font-semibold text-gray-900">Traffic Overview</h2>
 
-        <div className="flex items-center justify-right gap-2 text-sm text-gray-600">
-          <div
-            className="inline-flex gap-2 items-center overflow-hidden">
+        <div className="mt-3 sm:mt-0 flex items-center gap-2 text-sm text-gray-600">
+          <div className="inline-flex items-center gap-2 overflow-hidden">
             {RANGE_OPTIONS.map((option) => (
               <button
                 key={option.value}
                 type="button"
                 onClick={() => setRange(option.value)}
                 className={clsx(
-                  'px-3 py-2 text-xs font-medium transition cursor-pointer rounded-[0.2rem]',
+                  'cursor-pointer rounded-[0.2rem] px-3 py-2 text-xs font-medium transition',
                   option.value === range
-                    ? 'bg-[#5070DD] cursor-pointer transition-opacity hover:opacity-90 text-white'
+                    ? 'bg-[#5070DD] text-white hover:opacity-90'
                     : 'bg-[#C7D3FF] text-[#5070DD] hover:bg-[#5070DD] hover:text-white',
                 )}
               >

@@ -29,13 +29,8 @@ export default function TablePagination({ page, pageSize, total, onPageChangeAct
   const to = Math.min(page * pageSize, total)
 
   return (
-    <div className="mt-4 flex items-center justify-between text-xs text-gray-600">
-      <div>
-        Showing <span className="font-medium">{from}</span>–<span className="font-medium">{to}</span>{' '}
-        of <span className="font-medium">{total}</span> visits
-      </div>
-
-      <div className="inline-flex items-center gap-1">
+    <div className="mt-4 flex flex-col gap-2 text-xs text-gray-600 sm:flex-row sm:items-center sm:justify-between">
+      <div className="inline-flex items-center justify-center gap-1 sm:order-2">
         <button
           type="button"
           onClick={handlePrev}
@@ -45,8 +40,8 @@ export default function TablePagination({ page, pageSize, total, onPageChangeAct
           Prev
         </button>
         <span className="px-1 text-xs text-gray-500">
-          Page {page} of {totalPages}
-        </span>
+      Page {page} of {totalPages}
+    </span>
         <button
           type="button"
           onClick={handleNext}
@@ -55,6 +50,12 @@ export default function TablePagination({ page, pageSize, total, onPageChangeAct
         >
           Next
         </button>
+      </div>
+
+      <div className="text-center sm:order-1 sm:text-left">
+        Showing <span className="font-medium">{from}</span>–
+        <span className="font-medium">{to}</span> of{' '}
+        <span className="font-medium">{total}</span> visits
       </div>
     </div>
   )
