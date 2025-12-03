@@ -2,7 +2,7 @@ import { auth } from '@/auth'
 import { getAnalyticsSummary } from '@/lib/analytics/tracker'
 import StatCard from '@/components/admin/StatCard'
 import VisitsTable from '@/components/admin/VisitsTable'
-import AnalyticsCharts from '@/components/admin/AnalyticsCharts'
+import AnalyticsChartsLoader from '@/components/admin/AnalyticsChartsLoader'
 
 export default async function AdminDashboardPage() {
   const session = await auth()
@@ -34,7 +34,7 @@ export default async function AdminDashboardPage() {
           isLoading={false}
         />
       </div>
-      <AnalyticsCharts />
+      <AnalyticsChartsLoader />
       <VisitsTable visits={visits} isLoading={false} />
     </div>
   )

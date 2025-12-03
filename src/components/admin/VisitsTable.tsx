@@ -22,11 +22,6 @@ export default function VisitsTable({ visits, isLoading }: VisitsTableProps) {
   const [page, setPage] = useState(1)
 
   const total = visits.length
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE))
-
-  if (page > totalPages && totalPages > 0) {
-    setPage(totalPages)
-  }
 
   const startIndex = (page - 1) * PAGE_SIZE
   const pageItems = visits.slice(startIndex, startIndex + PAGE_SIZE)
