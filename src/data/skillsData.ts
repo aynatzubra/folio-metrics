@@ -8,25 +8,20 @@ export const skillsData: SkillCategory[] = [
       {
         groupName: 'Frontend',
         skills: [
-          'React',
-          'TypeScript',
+          'React 18',
           'Next.js (App Router, SSR/ISR)',
-          'FSD',
-          'Zustand',
-          'Redux Toolkit',
-          'Tailwind CSS',
-          'MUI',
-          'Styled Components',
-          'Webpack/Vite',
+          'TypeScript',
+          'Zustand, Redux Toolkit, SWR',
+          'Forms, validation, error handling, server-driven UI',
         ],
       },
       {
-        groupName: 'Backend',
-        skills: ['NestJS', 'REST API', 'PostgreSQL', 'MariaDB', 'Redis'],
-      },
-      {
-        groupName: 'Infrastructure & DevOps',
-        skills: ['Docker', 'GitLab CI/CD', 'Cloudflare'],
+        groupName: 'Architecture',
+        skills: [
+          'Feature-Sliced Design (FSD)',
+          'Modular architecture, separation of concerns',
+          'Server-first data flows, caching & loading strategies',
+        ],
       },
     ],
   },
@@ -35,8 +30,15 @@ export const skillsData: SkillCategory[] = [
     side: 'left',
     groups: [
       {
-        groupName: 'Telegram Ecosystem',
-        skills: ['Telegram API', 'Grammy', 'Telegram Bots & Web Apps'],
+        groupName: 'UI & Styling',
+        skills: [
+          'Tailwind CSS',
+          'MUI',
+          'Styled Components',
+          'Responsive layouts',
+          'Lightweight design systems',
+          'Data visualisation (ApexCharts)',
+        ],
       },
     ],
   },
@@ -45,8 +47,21 @@ export const skillsData: SkillCategory[] = [
     side: 'right',
     groups: [
       {
-        groupName: 'Tools',
-        skills: ['Postman', 'TypeORM'],
+        groupName: 'Backend',
+        skills: [
+          'NestJS',
+          'Laravel',
+          'REST APIs',
+          'Webhooks',
+          'Background jobs',
+        ],
+      },
+      {
+        groupName: 'Integrations',
+        skills: [
+          'Keitaro API',
+          'Telegram Web Apps',
+        ],
       },
     ],
   },
@@ -54,8 +69,30 @@ export const skillsData: SkillCategory[] = [
     category: 'otherTitle',
     side: 'right',
     groups: [
-      { groupName: 'Frontend', skills: ['Vue.js'] },
-      { groupName: 'Backend', skills: ['Laravel (PHP)'] },
+      {
+        groupName: 'Testing & Quality',
+        skills: [
+          'Jest',
+          'React Testing Library',
+          'Storybook',
+          'ESLint',
+          'Prettier',
+          'Strict TypeScript',
+          'Lighthouse (perf & a11y basics)',
+        ],
+      },
+      {
+        groupName: 'DevOps & Process',
+        skills: [
+          'Docker',
+          'Git',
+          'GitLab CI/CD',
+          'GitHub/GitLab Flow',
+          'Code review',
+          'Agile/Scrum',
+          'Product mindset',
+        ],
+      },
     ],
   },
 ]

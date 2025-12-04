@@ -52,7 +52,7 @@ export default function Intro() {
             </ul>
           </div>
 
-          <p className="leading-relaxed">
+          <p className="leading-relaxed mb-12">
             {t.rich('description2', {
               highlight: (chunks) => <span className="font-semibold text-[#F67769]">{chunks}</span>,
               secondary: (chunks) => <span className="font-semibold text-gray-800">{chunks}</span>,

@@ -15,28 +15,28 @@
     "avatarAlt": "Portrait of Tanya Arbuz",
     "role": "Frontend-focused Full-Stack Engineer",
     "name": "Tatiana Arbuz",
-    "shortText": "I build web applications with React and Next.js, focusing on architecture, performance and clean, maintainable code that solves real product problems.",
+    "shortText": "I build web applications with React and Next.js, focusing on architecture, performance and scalable end-to-end integrations.",
     "buttons": {
       "cv": "Download CV"
     }
   },
   "AboutMe": {
-    "leftTitle": "About Me",
-    "leftSubtitle": "A warrior doesn't boast — he simply knows what he's capable of.",
-    "description1": "<highlight>Frontend Engineer</highlight> with <highlight>5 years of commercial experience</highlight> in web development. I design scalable client-side applications using <highlight>React</highlight>  and <highlight>Next.js (App Router, TypeScript)</highlight>, focusing on <highlight>architecture (Feature-Sliced Design)</highlight>, UX, and performance <highlight>(SSR/ISR)</highlight>. My background in <secondary>backend (NestJS, Laravel)</secondary> and <secondary>DevOps (Docker)</secondary> provides a holistic view of the product, enabling me to build efficient end-to-end integrations and scalable solutions.",
-    "description2_title": "My core priorities are:",
-    "description2_item1": "Architectural reliability",
-    "description2_item2": "User-friendly experiences",
+    "leftTitle": "About me",
+    "leftSubtitle": "Less talk — more shipped features.",
+    "description1": "I’m a <highlight>frontend-focused full-stack engineer</highlight>. I build web applications with <highlight>React</highlight> and <highlight>Next.js (App Router, TypeScript)</highlight> with a strong focus on <highlight>architecture (Feature-Sliced Design)</highlight>, UX and performance <highlight>(SSR/ISR)</highlight>. Experience <secondary>with backend (NestJS, Laravel)</secondary> and <secondary>DevOps (Docker, GitLab CI/CD)</secondary> gives me a <highlight>holistic view of the product</highlight> and helps me design reliable end-to-end integrations and scalable solutions.",
+    "description2_title": "My core priorities:",
+    "description2_item1": "Robust architecture",
+    "description2_item2": "User-friendly experience",
     "description2_item3": "Process automation",
-    "description2": "I prioritize core architectural reliability, exceptional user experience (UX), and the automation of manual processes. I am driven by continuous learning, value colleague input, and focus on delivering solutions that create <secondary>tangible value for both the business and the team</secondary>."
+    "description2": "In my work I focus on <highlight>system reliability</highlight>, clear interfaces and <highlight>automation of routine tasks</highlight>. I keep learning, value direct, concrete communication and aim for results that create <highlight>tangible value for both the business and the team</highlight>."
   },
   "TechnicalSkills": {
     "leftTitle": "Technical skills",
-    "leftSubtitle": "Tools in the hands of a master become an extension of his will.",
-    "coreTitle": "Core stack",
-    "tgTitle": "Telegram Expertise",
-    "toolTitle": "Tools",
-    "otherTitle": "Additional Experience"
+    "leftSubtitle": "Tools change. Principles don’t.",
+    "coreTitle": "Frontend & architecture",
+    "tgTitle": "UI & visualisation",
+    "toolTitle": "Backend & integrations",
+    "otherTitle": "Testing, DevOps & process"
   },
   "Experience": {
     "leftTitle": "Work Experience",

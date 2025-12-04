@@ -12,7 +12,7 @@ export default function Hero() {
 
   return (
     <section
-      className="w-full lg:h-[calc(100vh-70px)] lg:h-[calc(100vh-70px)] min-h-full relative flex flex-col lg:flex-row">
+      className="w-full lg:h-[calc(100vh-70px)] min-h-full relative flex flex-col lg:flex-row">
       <div className="pointer-events-none absolute inset-0 flex">
         <div className="h-full w-1/2 bg-[#FBE1D0]" />
         <div className="h-full w-1/2 bg-white" />

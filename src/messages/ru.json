@@ -15,28 +15,28 @@
     "avatarAlt": "Портрет Тани Арбуз",
     "role": "Frontend-ориентированный Full-Stack Engineer",
     "name": "Татьяна Арбуз",
-    "shortText": "Разрабатываю веб-приложения на React и Next.js, с фокусом на архитектуре, производительности и поддерживаемом коде, который решает реальные продуктовые задачи.",
+    "shortText": "Разрабатываю веб-приложения на React и Next.js с акцентом на архитектуру, производительность и масштабируемые end-to-end интеграции.",
     "buttons": {
       "cv": "Скачать CV"
     }
   },
   "AboutMe": {
     "leftTitle": "Обо мне",
-    "leftSubtitle": "Воин не хвастается — он просто знает, на что способен.",
-    "description1": "<highlight>Frontend Engineer</highlight> с <highlight>5-летним коммерческим опытом</highlight> в веб-разработке.Проектирую масштабируемые клиентские приложения на <highlight>React</highlight> и <highlight>Next.js (App Router, TypeScript)</highlight>, уделяя внимание <highlight>архитектуре (Feature-Sliced Design)</highlight>, UX и производительности <highlight>(SSR/ISR)</highlight>. Опыт <secondary>в бэкенде (NestJS, Laravel)</secondary> и <secondary>DevOps (Docker)</secondary> дает <highlight>целостное видение продукта</highlight>, что позволяет эффективно выстраивать сквозные интеграции и предлагать масштабируемые решения.",
+    "leftSubtitle": "Меньше слов — больше shipped-фич.",
+    "description1": "<highlight>Frontend-ориентированный Full-Stack Engineer</highlight>. Разрабатываю веб-приложения на <highlight>React</highlight> и <highlight>Next.js (App Router, TypeScript)</highlight> с акцентом на <highlight>архитектуру (Feature-Sliced Design)</highlight>, UX и производительность <highlight>(SSR/ISR)</highlight>. Опыт <secondary>в бэкенде (NestJS, Laravel)</secondary> и <secondary>DevOps (Docker, GitLab CI/CD)</secondary> даёт <highlight>целостное видение продукта</highlight> и помогает выстраивать надёжные end-to-end интеграции и масштабируемые решения.",
     "description2_title": "Мои ключевые приоритеты:",
-    "description2_item1": "Надёжность архитектуры",
+    "description2_item1": "Надёжная архитектура",
     "description2_item2": "Удобство для пользователя",
     "description2_item3": "Автоматизация процессов",
-    "description2": "Считаю своими приоритетами архитектурную надежность, удобство для конечного пользователя и автоматизацию рутинных процессов. Я нахожусь в непрерывном процессе обучения, ценю мнение коллег и <secondary>нацелена на поиск решений, которые создают ценность как для бизнеса, так и для команды</secondary>."
+    "description2": "В работе фокусируюсь на <highlight>устойчивой работе системы</highlight>, понятном интерфейсе и <highlight>автоматизации рутины</highlight>. Постоянно развиваюсь, ценю прямую предметную коммуникацию и нацелена на результат, который даёт <highlight>ощутимую ценность бизнесу и команде</highlight>."
   },
   "TechnicalSkills": {
     "leftTitle": "Технические навыки",
-    "leftSubtitle": "Инструменты в руках мастера — продолжение его воли.",
-    "coreTitle": "Основной стек",
-    "tgTitle": "Экспертиза в Telegram",
-    "toolTitle": "Инструменты",
-    "otherTitle": "Дополнительный опыт"
+    "leftSubtitle": "Инструменты меняются. Принципы — нет.",
+    "coreTitle": "Frontend и архитектура",
+    "tgTitle": "UI и визуализация",
+    "toolTitle": "Backend и интеграции",
+    "otherTitle": "Тестирование, DevOps и процессы"
   },
   "Experience": {
     "leftTitle": "Опыт работы",
