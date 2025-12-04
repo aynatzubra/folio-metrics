@@ -12,10 +12,13 @@
     }
   },
   "Hero": {
-    "smallTitle": "Frontend Engineer",
-    "title": "Tanya Arbuz",
-    "description": "I build scalable and modular systems with a keen focus on architecture, clean code, and iterative delivery. I take full ownership of challenges to deliver results, continuously seeking ways to enhance product and engineering processes, and transforming complex problems into robust, effective solutions.",
-    "descriptionMobile": "I build scalable and modular systems with a keen focus on architecture, clean code, and iterative delivery."
+    "avatarAlt": "Portrait of Tanya Arbuz",
+    "role": "Frontend-focused Full-Stack Engineer",
+    "name": "Tatiana Arbuz",
+    "shortText": "I build web applications with React and Next.js, focusing on architecture, performance and clean, maintainable code that solves real product problems.",
+    "buttons": {
+      "cv": "Download CV"
+    }
   },
   "AboutMe": {
     "leftTitle": "About Me",
