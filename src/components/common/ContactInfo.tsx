@@ -39,7 +39,7 @@ export default function ContactInfo() {
     ' border border-[#F67769] text-[#F67769] hover:bg-[#FFF3EF]'
 
   return (
-    <div className="mt-6 mb-4 flex flex-wrap gap-3">
+    <div className="mt-6 mb-4 flex flex-wrap justify-center lg:justify-start gap-3">
       {/* Download CV */}
       <Link
         href={cvPath}

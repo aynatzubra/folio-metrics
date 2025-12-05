@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import ContactInfo from '@/components/common/ContactInfo'
 
-import myAva from '../../../public/assets/images/my_ava.jpg'
+import myAva from '../../../public/assets/images/0my_ava.png'
 
 export default function Hero() {
   const t = useTranslations('Hero')
@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <div
       className="w-full lg:h-[calc(100vh-70px)] min-h-full relative flex flex-col lg:flex-row">
-      <div className="pointer-events-none absolute inset-0 flex">
+      <div className="pointer-events-none absolute inset-0 hidden lg:flex">
         <div className="h-full w-1/2 bg-[#FBE1D0]" />
         <div className="h-full w-1/2 bg-white" />
       </div>
@@ -38,9 +38,11 @@ export default function Hero() {
             className="
                 rounded-full
                 object-cover
+                lg:w-60 lg:h-60
                 w-40 sm:w-48 lg:w-56 mt-[2rem]
                 lg:mt-[-5.8rem]
                 sm:w-[14rem]
+                bg-gradient-to-b from-[#F67769] to-[#FBE1D0]
             "
           />
         </div>
@@ -51,7 +53,8 @@ export default function Hero() {
               flex flex-col flex-1 lg:justify-between
               lg:pt-[4.375rem] lg:pb-[1.6625rem]
               md:pt-[1.75rem] md:pb-[1.4rem] md:px-[3.5rem]">
-          <div className="flex flex-col lg:items-start lg:justify-center lg:flex-1 mb-[1rem] md:mb-[1.75rem]">
+          <div
+            className="flex flex-col items-center text-center lg:items-start lg:text-left lg:justify-center lg:flex-1 mb-[1rem] md:mb-[1.75rem]">
             {/* Role */}
             <p className="text-sm tracking-wide text-[#4B5563] mb-3">
               [{t('role')}]
