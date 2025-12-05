@@ -12,7 +12,7 @@ export default function TechnicalSkills() {
   const rightCategories = skillsData.filter((c) => c.side === 'right')
 
   return (
-    <section className="flex w-full text-gray-700 relative">
+    <div className="flex w-full text-gray-700 relative">
       <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#FBE1D0] z-0 md:bg-gray-50" />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFFFFF] z-0" />
 
@@ -80,6 +80,6 @@ export default function TechnicalSkills() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

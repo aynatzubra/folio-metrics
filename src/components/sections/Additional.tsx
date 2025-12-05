@@ -16,12 +16,12 @@ export default function Additional() {
   const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5']
 
   return (
-    <section className="flex w-full text-gray-700 relative">
+    <div className="flex w-full text-gray-700 relative">
       <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#F6D8C2] z-0 md:bg-gray-50" />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FCF8F6] z-0" />
 
       <div className="w-full z-10 max-w-[1276px] mx-auto flex flex-col lg:flex-row h-full">
-        {/* Левая часть */}
+        {/* Left Part*/}
         <SectionHeader
           title={t('leftTitle')} subtitle={t('leftSubtitle')}
           theme="peach" />
@@ -41,7 +41,7 @@ export default function Additional() {
         >
           <div className="flex flex-col">
             {/* Intro */}
-            <p className="text-base mb-4 text-gray-700">{t('intro')}</p>
+            <p className="text-[0.875rem] mb-4 text-gray-700">{t('intro')}</p>
 
             {/* Project Name */}
             <h3 className="text-lg font-bold uppercase text-[#F67769] mb-4">{t('projectTitle')}</h3>
@@ -92,6 +92,6 @@ export default function Additional() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

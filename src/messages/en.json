@@ -3,7 +3,7 @@
     "headerText": "Clean code. Sharp decisions. Steady hand.",
     "title": "Arbuz.Tanya",
     "language": "RU",
-    "nav" : {
+    "nav": {
       "about": "About",
       "skills": "Skills",
       "experience": "Experience",
@@ -39,54 +39,54 @@
     "otherTitle": "Testing, DevOps & process"
   },
   "Experience": {
-    "leftTitle": "Work Experience",
-    "leftSubtitle": "Every line of code bears the mark of battle. Every project — a new victory.",
+    "leftTitle": "Experience",
+    "leftSubtitle": "Experience is tough problems I’ve already solved.",
     "Stack": "Stack",
     "contract": {
-      "about": "Construction company, residential complex SAMPO",
-      "description": "Architected and implemented a headless setup using Next.js App Router and Payload CMS v3, eliminating request cascades. Configured ISR and tag-based cache invalidation (revalidateTag) via Tag Planner to automate content refresh. Built a modular page-loading system with declarative content management.",
-      "resultDescription": "Automated the management of ad campaigns, reducing human error and saving users time through streamlined control and faster workflows."
+      "about": "Construction company, SAMPO residential complex",
+      "description": "Designed and implemented a headless architecture based on Next.js App Router and Payload CMS v3 for content-heavy pages of the residential complex website. Set up Payload CMS from scratch: data structures, collections and access control. Replaced multiple client-side request chains with a unified server-side resolver layer and caching. Configured ISR and tag-based cache invalidation (revalidateTag) and built a modular page-loading system with declarative content management.",
+      "resultDescription": "Improved page load speed and stability for the residential complex website and simplified content operations thanks to predictable architecture and automated data refresh."
     },
     "cpabox": {
-      "about": "SaaS platform for traffic arbitrage automation",
-      "description": "Designed the frontend architecture ensuring API and UX consistency across components. Integrated Zustand for state management and simplified data flow between modules. Developed and optimized an analytics dashboard (ApexCharts) with Keitaro API integration. Built a Telegram Web App and backend (NestJS) for WHOIS tracking and data sync. Refactored MUI components and theme system to improve maintainability and consistency.",
-      "resultDescription": "Delivered ready-to-use solutions that simplified user data management and made client services more stable and user-friendly."
+      "about": "SaaS platform for affiliate traffic automation",
+      "description": "Designed the frontend architecture ensuring consistent API contracts and predictable UI behaviour. Introduced Zustand for shared state management across modules and screens. Built and optimised an analytics dashboard (ApexCharts) integrated with Keitaro API. Developed a Telegram Web App and a NestJS service for WHOIS checks and domain synchronisation. Increased UI consistency and maintainability by refactoring MUI components and theming.",
+      "resultDescription": "Delivered a stable and fast analytics dashboard and automated routine domain checks through a new communication channel — Telegram."
     },
     "remotza": {
       "about": "Custom software development",
-      "description": "Developed REST APIs and integrations in Laravel. Collaborated with the UI team on Vue.js components. Optimized data structures and caching (PostgreSQL, Redis) to improve reliability and speed.",
-      "resultDescription": "Delivered production-ready integrations that simplified data management and enhanced product stability for client services."
+      "description": "Developed REST APIs and integrations in Laravel for multiple client projects. Worked closely with UI teams on Vue.js components and their integration with the backend. Optimised data structures and caching strategies in PostgreSQL and Redis to reduce database load.",
+      "resultDescription": "Improved API efficiency and reduced data-loading time in client interfaces through optimised queries and caching."
     },
     "aopsrm": {
-      "about": "An NGO assisting ostomy patients in Moldova",
-      "description": "Designed and built a custom CMS (Laravel + React) for multilingual content management.  Configured CI/CD pipelines with GitLab and Docker for predictable releases.",
-      "resultDescription": "Delivered a fully functional website with a turnkey CMS — from design to deployment — enabling the organization to manage content independently and communicate with their audience effectively."
+      "about": "NGO supporting ostomy patients in Moldova",
+      "description": "Built a multilingual website in React and designed a custom CMS in Laravel for content management. Set up CI/CD in GitLab using Docker, enabling predictable deployments and fast content updates.",
+      "resultDescription": "Delivered a turnkey website with CMS — from business logic to deployment — allowing the organisation to publish content and communicate with the audience independently, without external developers."
     }
   },
   "Education": {
     "leftTitle": "Education",
-    "leftSubtitle": "The path isn’t defined by diplomas. Anything that makes you stronger is part of the journey.",
+    "leftSubtitle": "Experience in finance doesn’t compete with code — it makes decisions more precise.",
     "educ": "Russian University of Cooperation | Accounting and Finance",
-    "pathTitle": "My background in finance helps me design more precise business logic, metrics, and reporting structures in complex web systems."
+    "pathTitle": "Background in finance helps me design business logic, metrics and reporting flows more accurately in complex web systems."
   },
   "Additional": {
-    "leftTitle": "Additional",
-    "leftSubtitle": "Every project — like a battle. I enter it to win, not just to participate.",
-    "intro": "This site is more than a resume; it's a full-stack open-source project showcasing my approach to software development.",
+    "leftTitle": "Projects",
+    "leftSubtitle": "Projects are measured not in lines of code, but in value.",
+    "intro": "This website is not just a résumé — it’s an open-source product called Folio Metrics that reflects my approach to architecture, analytics and product thinking.",
     "projectTitle": "Folio Metrics Project",
     "projectFeatures": {
-      "item1": "<highlight>Interactive resume</highlight> with a custom visit analytics system.",
-      "item2": "<highlight>Modern architecture:</highlight> Next.js (App Router), Prisma + PostgreSQL.",
-      "item3": "Professional practices: <highlight>TypeScript (type-safety) and Middleware</highlight>.",
-      "item4": "<highlight>Secure admin panel</highlight> (NextAuth.js) with metrics visualization.",
-      "item5": "Performance optimization (Lighthouse): <highlight>95+ across all Core Web Vitals</highlight>."
+      "item1": "<highlight>Interactive resume</highlight> with a custom analytics system for visits and events.",
+      "item2": "<highlight>Modern architecture:</highlight> Next.js (App Router), TypeScript, Prisma + PostgreSQL, server-first data flow.",
+      "item3": "Professional practices: <highlight>strict TypeScript, feature-based structure and middleware layer.",
+      "item4": "<highlight>Secure admin panel</highlight> (NextAuth.js) with a metrics dashboard and audience segmentation.",
+      "item5": "Performance optimization: Lighthouse score ≥ 95 on all Core Web Vitals."
     },
-    "buttonText": "Explore the Code",
-    "buttonDemoText": "Watch Demo"
+    "buttonText": "Explore code",
+    "buttonDemoText": "View demo"
   },
   "Footer": {
-    "finalWords": "I walk my own path. If it crosses yours — reach out.",
-    "copyright": "© 2025 Tanya Arbuz. All Rights Reserved."
+    "finalWords": "If you need results — let’s talk.",
+    "copyright": "© 2025 Tatiana.Arbuz. All Rights Reserved."
   },
   "Common": {
     "smallTitle": "Full-stack Software Engineer",

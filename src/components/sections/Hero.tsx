@@ -11,7 +11,7 @@ export default function Hero() {
   const t = useTranslations('Hero')
 
   return (
-    <section
+    <div
       className="w-full lg:h-[calc(100vh-70px)] min-h-full relative flex flex-col lg:flex-row">
       <div className="pointer-events-none absolute inset-0 flex">
         <div className="h-full w-1/2 bg-[#FBE1D0]" />
@@ -62,7 +62,7 @@ export default function Hero() {
               {t('name')}
             </h1>
             {/* Description */}
-            <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[#4B5563]">
+            <p className="mt-6 max-w-2xl text-[0.875rem] leading-relaxed text-[#4B5563]">
               {t('shortText')}
             </p>
           </div>
@@ -75,6 +75,6 @@ export default function Hero() {
         </div>
 
       </div>
-    </section>
+    </div>
   )
 }

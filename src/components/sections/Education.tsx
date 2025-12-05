@@ -8,7 +8,7 @@ export default function Education() {
   const t = useTranslations('Education')
 
   return (
-    <section className="flex w-full text-gray-700 relative">
+    <div className="flex w-full text-gray-700 relative">
       <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#FBE1D0] z-0 md:bg-gray-50" />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFFFFF] z-0" />
 
@@ -30,16 +30,16 @@ export default function Education() {
           <div className="flex mb-12 relative pl-8">
             <div className="flex w-full gap-4 items-start">
               <div className="flex flex-col">
-                <h3 className="text-base font-bold uppercase text-[#F67769] mb-2">{t('educ')}</h3>
+                <h3 className="text-base font-bold text-[#F67769] mb-2">{t('educ')}</h3>
                 <hr className="w-full h-[3px] bg-[#F67769] border-none rounded-full my-2"></hr>
                 <div>
-                  <h3 className="text-base mb-3">{t('pathTitle')}</h3>
+                  <h3 className="text-[0.875rem] mb-3">{t('pathTitle')}</h3>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

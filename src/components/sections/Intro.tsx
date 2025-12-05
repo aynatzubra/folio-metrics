@@ -10,7 +10,7 @@ export default function Intro() {
   const t = useTranslations('AboutMe')
 
   return (
-    <section className="flex w-full text-gray-700 relative">
+    <div className="flex w-full text-gray-700 relative">
       <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#F6D8C2] z-0 md:bg-gray-50" />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FCF8F6] z-0" />
 
@@ -60,6 +60,6 @@ export default function Intro() {
           </p>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
