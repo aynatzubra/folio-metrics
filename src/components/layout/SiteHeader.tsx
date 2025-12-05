@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
 
-export default function Header() {
+export default function SiteHeader() {
   const t = useTranslations('Header')
 
   const navItems = [
@@ -21,7 +21,7 @@ export default function Header() {
       <div className="mx-auto flex h-[70px] max-w-[1276px] items-center px-6 md:px-14">
         {/* Logo */}
         <div className="flex flex-1 items-center">
-          <Link href="/">
+          <Link href="/public">
             <h2
               className="w-[230px] h-[38px]
                   text-2xl font-bold uppercase text-[#F67769] text-center

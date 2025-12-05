@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import ContactInfo from '@/components/common/ContactInfo'
 
-export default function Footer() {
+export default function SiteFooter() {
   const t = useTranslations('Footer')
 
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="text-sm text-gray-400">© {new Date().getFullYear()} Tantiana.Arbuz. All Rights Reserved.</p>
+        <p className="text-sm text-gray-400">© {new Date().getFullYear()} Tatiana.Arbuz. All Rights Reserved.</p>
       </div>
     </footer>
   )

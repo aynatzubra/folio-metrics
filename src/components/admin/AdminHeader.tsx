@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
-import MobileMenu from '@/components/ui/MobileMenu'
+import AdminMobileMenu from '@/components/admin/AdminMobileMenu'
 
 import myAdminAva from '../../../public/assets/images/avatar.png'
 
@@ -166,7 +166,7 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
           </div>
         </div>
       </header>
-      <MobileMenu
+      <AdminMobileMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         socials={{ faYandex, faLinkedinIn, faTelegramPlane }}

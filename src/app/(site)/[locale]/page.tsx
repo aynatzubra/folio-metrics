@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-import Header from '@/components/common/Header'
+import SiteHeader from '@/components/layout/SiteHeader'
 import Hero from '@/components/sections/Hero'
 import Intro from '@/components/sections/Intro'
 import PageObserver from '@/components/common/PageObserver'
@@ -9,13 +9,13 @@ const TechnicalSkills = dynamic(() => import('@/components/sections/TechnicalSki
 const Experience = dynamic(() => import('@/components/sections/Experience'))
 const Education = dynamic(() => import('@/components/sections/Education'))
 const Additional = dynamic(() => import('@/components/sections/Additional'))
-const Footer = dynamic(() => import('@/components/common/Footer'))
+const Footer = dynamic(() => import('@/components/layout/SiteFooter'))
 
 export default function LandingPage() {
   return (
     <div className="bg-white w-full relative text-gray-800">
       <PageObserver />
-      <Header />
+      <SiteHeader />
       <section id="hero">
         <Hero />
       </section>

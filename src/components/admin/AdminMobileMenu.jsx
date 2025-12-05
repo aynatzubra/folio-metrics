@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition, Dialog } from '@headlessui/react' // Используем Headless UI для доступности (accessibility)
 
-export default function MobileMenu({ isOpen, onClose, socials, user, onLogout }) {
+export default function AdminMobileMenu({ isOpen, onClose, socials, user, onLogout }) {
   const socialLinks = [
     { icon: socials.faTelegramPlane, href: 'https://t.me/tanya_arbuz', text: 'Telegram' },
     { icon: socials.faLinkedinIn, href: 'https://www.linkedin.com/in/tanya-arbuz', text: 'LinkedIn' },
