@@ -12,7 +12,7 @@ export default async function SiteRootLayout({ children, params }: {
   children: React.ReactNode
   params: { locale: string }
 }) {
-  const { locale } = params
+  const { locale } = await params
   const messages = await getMessages({ locale })
 
   return (

@@ -1,7 +1,7 @@
 {
   "Header": {
     "headerText": "Чистый код. Чёткое решение. Твёрдая рука.",
-    "title": "Arbuz.Tanya",
+    "title": "Arbuz·Tanya",
     "language": "EN",
     "nav": {
       "about": "Обо мне",
@@ -86,17 +86,19 @@
   },
   "Footer": {
     "finalWords": "Если нужен результат — пишите.",
-    "copyright": "© 2025 Tatiana.Arbuz. Все права защищены."
+    "copyright": "© 2025 Arbuz·Tanya. Все права защищены."
   },
   "Common": {
-    "smallTitle": "Full-stack Software Engineer",
-    "title": "Таня Арбуз",
-    "location": "Локация",
-    "or": "Кишинёв",
-    "phone": "Телефон",
-    "telegram": "Telegram",
-    "mail": "E-mail",
-    "result": "Результат:",
-    "stack": "Стек:"
+    "menuTitle": "Навигация",
+    "contacts": "Контакты",
+    "result": "Result:",
+    "stack": "Stack:",
+    "finalWords": "Если нужен результат — пишите.",
+    "social": {
+      "github": "GitHub",
+      "telegram": "Telegram",
+      "linkedin": "Linkedin",
+      "sendMail": "Отправить письмо"
+    }
   }
 }

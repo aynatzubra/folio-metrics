@@ -17,12 +17,13 @@ export default function Experience() {
       <div className="w-full z-10 max-w-[1276px] mx-auto flex flex-col lg:flex-row h-full">
         {/* Left Part */}
         <SectionHeader
-          title={t('leftTitle')} subtitle={t('leftSubtitle')}
+          title={t('leftTitle')}
+          subtitle={t('leftSubtitle')}
           theme="peach" />
 
         {/* Right Part */}
         <div
-          className=" bg-[#FCF8F6] flex-1 flex flex-col
+          className="bg-[#FCF8F6] flex-1 flex flex-col
               pt-[1.75rem] px-[1.75rem]
               lg:pt-[4.375rem] lg:pb-[1.6625rem]
               md:pt-[1.75rem] md:pb-[1.4rem] md:px-[3.5rem]"

@@ -60,35 +60,40 @@ export default function Additional() {
               ))}
             </ul>
 
-            <div className="flex flex-col md:flex-row gap-3 mb-4">
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:justify-start">
               <a
                 href={`/admin/login?email=${STATIC_DEMO_EMAIL}&password=${STATIC_DEMO_PASSWORD}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-        inline-flex items-center justify-center px-6 py-3
-        max-w-xs bg-[#F67769] text-white font-semibold rounded-lg
-        hover:bg-gray-700 transition-colors duration-300
-      "
+      inline-flex items-center justify-center
+      w-full sm:w-auto
+      rounded-md bg-[#F67769] px-4 py-2
+      text-sm font-semibold text-white
+      transition-colors duration-200 hover:bg-[#E1594F]
+    "
               >
-                <FontAwesomeIcon icon={faEye} className="mr-3" />
+                <FontAwesomeIcon icon={faEye} className="mr-2 h-4 w-4" />
                 {t('buttonDemoText')}
               </a>
 
               <a
-                href="https://github.com/devforthewin/folio-metrics"
+                href="https://github.com/aynatzubra/folio-metrics"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-        inline-flex items-center justify-center px-6 py-3
-        max-w-xs bg-gray-800 text-white font-semibold rounded-lg
-        hover:bg-gray-700 transition-colors duration-300
-      "
+      inline-flex items-center justify-center
+      w-full sm:w-auto
+      rounded-md bg-gray-800 px-4 py-2
+      text-sm font-semibold text-white
+      transition-colors duration-200 hover:bg-gray-700
+    "
               >
-                <FontAwesomeIcon icon={faGithub} className="mr-3" />
+                <FontAwesomeIcon icon={faGithub} className="mr-2 h-4 w-4" />
                 {t('buttonText')}
               </a>
             </div>
+
           </div>
         </div>
       </div>

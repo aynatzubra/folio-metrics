@@ -24,9 +24,9 @@ const SectionHeader = ({ title, subtitle, theme }: SectionHeaderProps) => {
       {/* Titles Block */}
       <div
         className="
-          flex flex-col
+          flex w-full flex-col
+          text-center
           lg:items-end lg:justify-end lg:text-right
-          sm:w-full text-center
         "
       >
         <h2

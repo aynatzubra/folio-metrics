@@ -1,34 +1,14 @@
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 
+import { CONTACT_LINKS } from '@/data/navigation'
+
 export default function ContactInfo() {
   const t = useTranslations('Hero')
+  const tCommon = useTranslations('Common')
   const locale = useLocale()
 
   const cvPath = `/assets/cv/${locale}.pdf`
-
-  const links = [
-    {
-      label: 'GitHub',
-      href: 'https://github.com/aynatzubra',
-      external: true,
-    },
-    {
-      label: 'Telegram',
-      href: 'https://t.me/tanya_arbuz',
-      external: true,
-    },
-    {
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/tanya-arbuz',
-      external: true,
-    },
-    {
-      label: 'Send mail',
-      href: 'mailto:work.arbuz@gmail.com',
-      external: true,
-    },
-  ]
 
   const baseButton =
     'inline-flex items-center justify-center rounded-sm px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors'
@@ -50,15 +30,15 @@ export default function ContactInfo() {
       </Link>
 
       {/* Social / contact links */}
-      {links.map((link) => (
+      {CONTACT_LINKS.map((link) => (
         <a
-          key={link.label}
+          key={link.href}
           href={link.href}
-          target={link.external ? '_blank' : undefined}
-          rel={link.external ? 'noreferrer noopener' : undefined}
+          target={link.href.startsWith('http') ? '_blank' : undefined}
+          rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
           className={outlineButton}
         >
-          {link.label}
+          {tCommon(link.labelKey)}
         </a>
       ))}
     </div>

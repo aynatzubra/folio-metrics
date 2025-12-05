@@ -130,7 +130,7 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
             <Link href="/" className="flex items-end gap-2">
               <div className="flex flex-col">
                 <span className="text-lg font-bold uppercase tracking-wide text-[#F67769]">
-                  Arbuz.Tanya
+                  Arbuz·Tanya
                 </span>
                 <span className="text-[11px] font-medium text-gray-600">
                   Folio-Metrics Admin
