@@ -1,14 +1,4 @@
-import { Geist, Geist_Mono, Roboto_Slab, Roboto_Mono } from 'next/font/google'
-
-export const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-export const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+import { Roboto_Slab, Roboto_Mono, Inter } from 'next/font/google'
 
 export const robotoSlab = Roboto_Slab({
   variable: '--font-roboto-slab',
@@ -18,4 +8,9 @@ export const robotoSlab = Roboto_Slab({
 export const robotoMono = Roboto_Mono({
   variable: '--font-roboto-mono',
   subsets: ['latin'],
+})
+
+export const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin', 'cyrillic'],
 })

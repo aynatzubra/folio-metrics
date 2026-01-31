@@ -13,7 +13,7 @@ const Footer = dynamic(() => import('@/components/layout/SiteFooter'))
 
 export default function LandingPage() {
   return (
-    <div className="bg-white w-full relative text-gray-800">
+    <div className="w-full relative text-gray-800">
       <PageObserver />
       <SiteHeader />
       <section id="hero">

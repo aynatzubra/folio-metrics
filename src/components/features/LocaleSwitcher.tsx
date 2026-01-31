@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
-import clsx from 'clsx'
 
 import { locales } from '@/i18n/config'
 
@@ -28,10 +27,7 @@ export default function LocaleSwitcher() {
     <button
       type="button"
       onClick={() => handleSwitch(nextLocale)}
-      className={clsx(
-        'inline-flex h-9 items-center justify-center rounded-sm px-4 text-xs font-semibold uppercase tracking-[0.12em]',
-        'bg-[#F67769] text-white shadow-sm transition-colors hover:bg-[#e1594f]',
-      )}
+      className="rounded-[4px] bg-accent text-white px-4 py-2 font-semibold  tracking-[0.10em] transition-colors cursor-pointer duration-150 ease-out hover:bg-accent/90 active:bg-accent/80 focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {nextLocale.toUpperCase()}
     </button>

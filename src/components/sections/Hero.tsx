@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 
 import ContactInfo from '@/components/common/ContactInfo'
 
@@ -11,72 +12,46 @@ export default function Hero() {
   const t = useTranslations('Hero')
 
   return (
-    <div
-      className="w-full lg:h-[calc(100vh-70px)] min-h-full relative flex flex-col lg:flex-row">
-      <div className="pointer-events-none absolute inset-0 hidden lg:flex">
-        <div className="h-full w-1/2 bg-[#FBE1D0]" />
-        <div className="h-full w-1/2 bg-white" />
-      </div>
+    <div className="relative w-full min-h-[calc(100vh-70px)] flex items-center">
+      <div className="max-w-[1276px] mx-auto w-full px-6 md:px-14">
 
-      <div className="w-full z-10 max-w-[1276px] mx-auto flex flex-col lg:flex-row">
-        {/* Left */}
-        <div
-          className="
-             w-full
-             flex items-center justify-center
-             pt-[1.75rem] px-[1.75rem]
-             lg:bg-[#FBE1D0] lg:flex-[0_0_30%] lg:pt-[4.375rem] lg:pb-[1.6625rem]
-             md:pt-[3.15rem] md:pb-[0] md:px-[3.5rem]
-         "
-        >
-          {/*/!*Avatar Image*!/*/}
-          <Image
-            src={myAva}
-            alt="My photo"
-            width={224}
-            height={224}
-            className="
-                rounded-full
-                object-cover
-                lg:w-60 lg:h-60
-                w-40 sm:w-48 lg:w-56 mt-[2rem]
-                lg:mt-[-5.8rem]
-                sm:w-[14rem]
-                bg-gradient-to-b from-[#F67769] to-[#FBE1D0]
-            "
-          />
-        </div>
-
-        {/* Right */}
-        <div
-          className="bg-[#FFFFFF] pt-[1.75rem] px-[1.75rem]
-              flex flex-col flex-1 lg:justify-between
-              lg:pt-[4.375rem] lg:pb-[1.6625rem]
-              md:pt-[1.75rem] md:pb-[1.4rem] md:px-[3.5rem]">
-          <div
-            className="flex flex-col items-center text-center lg:items-start lg:text-left lg:justify-center lg:flex-1 mb-[1rem] md:mb-[1.75rem]">
-            {/* Role */}
-            <p className="text-sm tracking-wide text-[#4B5563] mb-3">
-              [{t('role')}]
-            </p>
-            {/* Name */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
+          <div className="flex-1">
             <h1
-              className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] sm:text-4xl md:text-5xl font-bold tracking-[0.18em] text-[#F67769] uppercase">
-              {t('name')}
+              className="text-[3rem] sm:text-[4rem] lg:text-[7rem] font-bold tracking-[0.05em] text-[#0b363d] uppercase leading-tight">
+              Systems-minded<br />Engineer
             </h1>
-            {/* Description */}
-            <p className="mt-6 max-w-2xl text-[0.875rem] leading-relaxed text-[#4B5563]">
-              {t('shortText')}
-            </p>
+
+            <div className="mt-12 flex items-center gap-4">
+              <div className="w-16 h-16 overflow-hidden rounded-full border-3 border-accent">
+                <Image
+                  src={myAva}
+                  alt="Avatar"
+                  className="w-full h-full object-cover"
+                  placeholder="blur"
+                />
+              </div>
+              <Link
+                href="#intro"
+                className="text-lg font-medium group relative inline-block text-accent border-b border-accent/60 pb-2 transition-colors duration-150 ease-out hover:text-accent/85 focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {/* {t('about_link')} */}
+                More about me →
+                <span
+                  className="pointer-events-none absolute left-0 -bottom-0 h-[2px] w-full origin-left scale-x-0 bg-current transition-transform duration-200 ease-out group-hover:scale-x-100">
+                </span>
+              </Link>
+
+            </div>
           </div>
 
-          {/* Information Block */}
-          <div className="w-full">
-            <hr className="w-full border-t border-2 border-[#FF7814] mb-8" />
-            <ContactInfo />
+          <div className="w-full lg:w-auto pt-[25px]">
+            <div className="flex flex-col gap-3 items-stretch lg:items-end">
+              <ContactInfo />
+            </div>
           </div>
+
         </div>
-
       </div>
     </div>
   )
