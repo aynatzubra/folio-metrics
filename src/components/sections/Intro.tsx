@@ -31,8 +31,8 @@ export default function Intro() {
       className="text-gray-700"
       maxW={1276}
       leftPercent={30}
-      leftBg="#E0E3E3"
-      rightBg="#F1F3F1"
+      leftBg="#F0F2F0"
+      rightBg="#F8F8F8"
       mobileBgClass="bg-gray-50"
       left={
         <div className="w-full lg:flex-[0_0_30%]">
@@ -46,9 +46,8 @@ export default function Intro() {
         <div
           className="
             flex flex-1 flex-col
-            px-7 pt-7 pb-12
+            px-7
             md:px-14
-            lg:pt-16 lg:pb-6
           "
         >
           <p className="mb-6 leading-relaxed">
@@ -70,7 +69,7 @@ export default function Intro() {
             </ul>
           </div>
 
-          <p className="mb-12 leading-relaxed">
+          <p className="leading-relaxed">
             {t.rich('description2', { highlight, secondary })}
           </p>
         </div>

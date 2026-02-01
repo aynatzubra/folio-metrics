@@ -9,13 +9,18 @@ export interface ExperienceItemType {
 }
 
 //Technical Skills
-export interface SkillGroup {
-  groupName: string;
-  skills: string[];
+export type TechnicalSkillsCategoryKey =
+  | 'coreTitle'
+  | 'tgTitle'
+  | 'toolTitle'
+  | 'otherTitle'
+
+export type SkillGroup = {
+  groupName: string
+  skills: string[]
 }
 
-export interface SkillCategory {
-  category: string;
-  side: 'left' | 'right';
-  groups: SkillGroup[];
+export type SkillCategory = {
+  category: TechnicalSkillsCategoryKey
+  groups: SkillGroup[]
 }

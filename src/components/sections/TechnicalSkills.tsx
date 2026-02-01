@@ -4,82 +4,77 @@ import { useTranslations } from 'next-intl'
 
 import SectionHeader from '@/components/common/SectionHeader'
 import { skillsData } from '@/data/skillsData'
+import SplitSection from '@/components/layout/SplitSection'
+import { SkillCategory } from '@/lib/resume/types'
+
+function splitInHalf<T>(arr: T[]) {
+  const mid = Math.ceil(arr.length / 2)
+  return [arr.slice(0, mid), arr.slice(mid)] as const
+}
+
+function SkillsColumn({
+                        categories,
+                        t,
+                      }: {
+  categories: SkillCategory[]
+  t: ReturnType<typeof useTranslations>
+}) {
+  return (
+    <div className="space-y-10">
+      {categories.map((category) => (
+        <section key={category.category}>
+          <h3 className="mb-4 text-md font-[Inter] font-semibold uppercase tracking-widest text-accent">
+            {t(category.category)}
+          </h3>
+
+          <div className="divide-y divide-black/5">
+            {category.groups.map((group) => (
+              <div key={group.groupName} className="py-4 first:pt-0 last:pb-0">
+                <div className="text-sm font-semibold text-brand">{group.groupName}</div>
+                <div className="mt-1 text-sm leading-relaxed text-gray-600">
+                  {group.skills.join(', ')}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )
+}
 
 export default function TechnicalSkills() {
   const t = useTranslations('TechnicalSkills')
 
-  const leftCategories = skillsData.filter((c) => c.side === 'left')
-  const rightCategories = skillsData.filter((c) => c.side === 'right')
+  const [leftCategories, rightCategories] = splitInHalf(skillsData)
 
   return (
-    <div className="flex w-full text-gray-700 relative">
-      <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#FBE1D0] z-0 md:bg-gray-50" />
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFFFFF] z-0" />
-
-      <div className="w-full z-10 max-w-[1276px] mx-auto flex flex-col lg:flex-row h-full">
-        {/* Left Part */}
-        <SectionHeader
-          title={t('leftTitle')}
-          subtitle={t('leftSubtitle')}
-          theme="cream"
-        />
-
-        {/* Right */}
+    <SplitSection
+      className="text-gray-700"
+      maxW={1276}
+      leftPercent={30}
+      leftBg="#F5F6F4"
+      rightBg="#fff9f5"
+      mobileBgClass="bg-gray-50"
+      left={
+        <div className="w-full lg:flex-[0_0_30%]">
+          <SectionHeader title={t('leftTitle')} subtitle={t('leftSubtitle')} />
+        </div>
+      }
+      right={
         <div
-          className="bg-[#FFFFFF] flex-1 flex flex-col pt-[1.75rem] px-[1.75rem] lg:pt-[4.375rem] lg:pb-[1.6625rem] md:pt-[1.75rem] md:pb-[1.4rem] md:px-[3.5rem]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mb-12">
-            {/* Left Column */}
-            <div className="space-y-10 order-1">
-              {leftCategories.map((category) => (
-                <section key={category.category}>
-                  <h3 className="text-md font-bold mb-4 uppercase text-[#F67769]">
-                    {t(category.category)}
-                  </h3>
-                  <ul className="space-y-3">
-                    {category.groups.map((group) => (
-                      <li
-                        key={group.groupName}
-                        className="flex items-start text-sm text-gray-800 leading-relaxed"
-                      >
-                        <span className="h-2 w-2 bg-[#F67769] rounded-full mr-3 shrink-0 mt-2"></span>
-                        <span className="text-gray-600">
-                        <span className="font-semibold text-gray-800">{group.groupName}:</span>{' '}
-                          {group.skills.join(', ')}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </div>
-
-            {/* Right Col */}
-            <div className="space-y-10 order-2">
-              {rightCategories.map((category) => (
-                <section key={category.category}>
-                  <h3 className="text-md font-bold mb-4 uppercase text-[#F67769]">
-                    {t(category.category)}
-                  </h3>
-                  <ul className="space-y-3">
-                    {category.groups.map((group) => (
-                      <li
-                        key={group.groupName}
-                        className="flex items-start text-sm text-gray-800 leading-relaxed"
-                      >
-                        <span className="h-2 w-2 bg-[#F67769] rounded-full mr-3 shrink-0 mt-2"></span>
-                        <span className="text-gray-600">
-                        <span className="font-semibold text-gray-800">{group.groupName}:</span>{' '}
-                          {group.skills.join(', ')}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </div>
+          className="
+            flex flex-1 flex-col
+            px-7
+            md:px-14
+          "
+        >
+          <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-12">
+            <SkillsColumn categories={leftCategories} t={t} />
+            <SkillsColumn categories={rightCategories} t={t} />
           </div>
         </div>
-      </div>
-    </div>
+      }
+    />
   )
 }

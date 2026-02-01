@@ -12,9 +12,9 @@ const SectionHeader = ({ title, subtitle, className }: SectionHeaderProps) => {
       className={clsx(
         `
           flex w-full items-start justify-end
-          px-7 pt-7
-          md:px-14 md:pt-12
-          lg:flex-[0_0_30%] lg:pt-16 lg:pb-6
+          px-7
+          md:px-14
+          lg:flex-[0_0_30%]
         `,
         className,
       )}

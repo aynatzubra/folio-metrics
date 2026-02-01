@@ -3,12 +3,11 @@ import { SkillCategory } from '@/lib/resume/types'
 export const skillsData: SkillCategory[] = [
   {
     category: 'coreTitle',
-    side: 'left',
     groups: [
       {
         groupName: 'Frontend',
         skills: [
-          'React 18',
+          'React',
           'Next.js (App Router, SSR/ISR)',
           'TypeScript',
           'Zustand, Redux Toolkit, SWR',
@@ -27,7 +26,6 @@ export const skillsData: SkillCategory[] = [
   },
   {
     category: 'tgTitle',
-    side: 'left',
     groups: [
       {
         groupName: 'UI & Styling',
@@ -44,7 +42,6 @@ export const skillsData: SkillCategory[] = [
   },
   {
     category: 'toolTitle',
-    side: 'right',
     groups: [
       {
         groupName: 'Backend',
@@ -67,7 +64,6 @@ export const skillsData: SkillCategory[] = [
   },
   {
     category: 'otherTitle',
-    side: 'right',
     groups: [
       {
         groupName: 'Testing & Quality',

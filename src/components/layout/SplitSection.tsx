@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 
+import { CONTAINER_MAX_W, LEFT_COL_PERCENT, SECTION_Y_PADDING } from '@/lib/ui/tokens'
+
 import type { ReactNode } from 'react'
 
 type SplitSectionProps = {
@@ -22,8 +24,8 @@ function roundPx(n: number) {
 }
 
 export default function SplitSection({
-                                       maxW = 1276,
-                                       leftPercent = 30,
+                                       maxW = CONTAINER_MAX_W,
+                                       leftPercent = LEFT_COL_PERCENT,
                                        leftBg,
                                        rightBg,
                                        mobileBgClass = 'bg-gray-50',
@@ -39,7 +41,7 @@ export default function SplitSection({
   const rightW = `calc((100% - ${maxW}px) / 2 + ${rightPx}px)`
 
   return (
-    <section className={clsx('relative isolate w-full', className)}>
+    <section className={clsx('relative isolate w-full', SECTION_Y_PADDING, className)}>
       {/* Mobile/tablet background (single tone) */}
       <div
         aria-hidden="true"
