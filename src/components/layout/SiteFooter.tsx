@@ -8,19 +8,17 @@ export default function SiteFooter() {
   const t = useTranslations('Footer')
 
   return (
-    <footer id="contact" className="w-full bg-[#FBE1D0] text-center py-10 px-6">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-lg text-[#F67769] font-bold uppercase inline-block px-6 pt-3">
+    <footer id="contact" className="w-full bg-gradient-to-br from-[#0b363d] via-[#0a2e33] to-[#071f23] py-12 px-6">
+      <div className="mx-auto max-w-[1276px] text-center">
+        <h2 className="text-lg font-semibold uppercase tracking-widest text-white/80">
           {t('finalWords')}
         </h2>
 
-        {/*Social Buttons*/}
-        <div className="flex justify-center items-start space-x-4 mb-8">
-          <ContactInfo />
-        </div>
+        <ContactInfo variant="footer" className="mt-8" />
 
-        {/* Copyright */}
-        <p className="text-sm text-gray-400">© {new Date().getFullYear()} Tatiana.Arbuz. All Rights Reserved.</p>
+        <p className="mt-10 text-xs text-white/70 opacity-50">
+          © {new Date().getFullYear()} Tatiana Arbuz. All Rights Reserved.
+        </p>
       </div>
     </footer>
   )

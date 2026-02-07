@@ -19,6 +19,6 @@ export type ContactLink = {
 export const CONTACT_LINKS: ContactLink[] = [
   { href: 'https://github.com/aynatzubra', labelKey: 'social.github' },
   { href: 'https://t.me/tanya_arbuz', labelKey: 'social.telegram' },
-  { href: 'https://www.linkedin.com/in/tanya-arbuz', labelKey: 'social.linkedin' },
+  { href: 'https://www.linkedin.com/in/tatiana-arbuz-7756743a6', labelKey: 'social.linkedin' },
   { href: 'mailto:work.arbuz@gmail.com', labelKey: 'social.sendMail' },
 ]

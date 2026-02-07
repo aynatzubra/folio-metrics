@@ -58,7 +58,7 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
                   <FontAwesomeIcon icon={faTelegramPlane} size="2xl" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/tanya-arbuz-187199221"
+                  href="https://www.linkedin.com/in/tatiana-arbuz-7756743a6"
                   target="_blank"
                   className="text-gray-500 hover:text-[#F67769] transition-colors"
                 >

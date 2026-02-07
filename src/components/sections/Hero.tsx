@@ -47,7 +47,7 @@ export default function Hero() {
 
           <div className="w-full lg:w-auto pt-[25px]">
             <div className="flex flex-col gap-3 items-stretch lg:items-end">
-              <ContactInfo />
+              <ContactInfo variant="hero" />
             </div>
           </div>
 

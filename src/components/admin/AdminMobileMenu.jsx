@@ -8,7 +8,7 @@ import { Transition, Dialog } from '@headlessui/react' // Используем H
 export default function AdminMobileMenu({ isOpen, onClose, socials, user, onLogout }) {
   const socialLinks = [
     { icon: socials.faTelegramPlane, href: 'https://t.me/tanya_arbuz', text: 'Telegram' },
-    { icon: socials.faLinkedinIn, href: 'https://www.linkedin.com/in/tanya-arbuz', text: 'LinkedIn' },
+    { icon: socials.faLinkedinIn, href: 'https://www.linkedin.com/in/tatiana-arbuz-7756743a6', text: 'LinkedIn' },
     { icon: socials.faYandex, href: 'https://mail.yandex.ru/compose?to=arbuztatiana@yandex.ru', text: 'Yandex' },
   ]
 
