@@ -46,8 +46,9 @@ export default function Intro() {
         <div
           className="
             flex flex-1 flex-col
-            px-7
+            px-7 pt-7
             md:px-14
+            lg:pt-3
           "
         >
           <p className="mb-6 leading-relaxed">

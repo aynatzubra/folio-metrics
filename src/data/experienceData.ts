@@ -4,7 +4,7 @@ export const experienceData: ExperienceItemType[] = [
   {
     company: 'DMZ Home Construct',
     period: '2025 · contract',
-    role: 'Frontend-focused Full-Stack Engineer',
+    role: 'Frontend / Full-Stack Engineer',
     about: 'contract.about',
     stack: [
       'Next.js (App Router, ISR)',
@@ -18,7 +18,7 @@ export const experienceData: ExperienceItemType[] = [
   {
     company: 'CPABOX',
     period: '2022–2025',
-    role: 'Frontend-focused Full-Stack Engineer',
+    role: 'Frontend / Full-Stack Engineer',
     about: 'cpabox.about',
     stack: [
       'React',

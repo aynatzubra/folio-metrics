@@ -91,8 +91,8 @@
   "Common": {
     "menuTitle": "Навигация",
     "contacts": "Контакты",
-    "result": "Result:",
-    "stack": "Stack:",
+    "result": "Result",
+    "stack": "Stack",
     "finalWords": "Если нужен результат — пишите.",
     "social": {
       "github": "GitHub",

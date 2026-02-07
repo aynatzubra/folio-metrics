@@ -1,46 +1,69 @@
 import { useTranslations } from 'next-intl'
+import clsx from 'clsx'
 
 import { ExperienceItemType } from '@/lib/resume/types'
 
 type ExperienceItemProps = {
   job: ExperienceItemType
+  className?: string
 }
-export const ExperienceItem = ({ job }: ExperienceItemProps) => {
+
+export const ExperienceItem = ({ job, className }: ExperienceItemProps) => {
   const t = useTranslations('Experience')
   const tCommon = useTranslations('Common')
 
   return (
-    <div className="flex mb-12 relative">
-      <div className="flex w-full flex-col md:flex-row gap-6">
-        <div className="w-full md:w-4/12 flex flex-col">
-          <h4 className="text-base text-[#F67769] font-bold uppercase mb-1">
-            {job.company} | {job.period}
-          </h4>
-          <p className="text-xs font-medium mb-1">{job.role}</p>
-          <p className="text-xs text-gray-500 mb-1">({t(job.about)})</p>
-        </div>
-
-        <div className="w-full md:w-8/12 flex flex-col gap-4">
-          <div className="text-xs text-gray-500 space-y-2">
-            <div className="flex flex-wrap justify-left gap-2 items-center">
-              <span className="font-semibold">{tCommon('stack')} </span>
-              {job.stack.map((skill) => (
-                <span key={skill} className="bg-gray-200 text-gray-800 font-medium px-3 py-1 rounded-full">
-                  {skill}
-                </span>
-              ))}
-            </div>
+    <article
+      className={clsx(
+        `
+          border-b border-black/5
+          pb-10 mb-10
+          last:border-b-0 last:pb-0 last:mb-0
+        `,
+        className,
+      )}
+    >
+      <div className="flex w-full flex-col gap-6 md:flex-row">
+        {/* Left meta */}
+        <header className="w-full md:w-4/12">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <h4 className="text-lg font-[Inter] font-semibold tracking-wide text-accent">
+              {job.role}
+            </h4>
           </div>
 
-          <div className="text-[0.875rem] text-gray-500 space-y-2">
+          <p className="mt-2 text-sm font-bold text-gray-800">{job.company}</p>
+          <p className="mt-1 text-sm text-gray-500">
+            ({t(job.about)})
+          </p>
+          <span className="text-sm text-gray-500">{job.period}</span>
+        </header>
+
+        {/* Right content */}
+        <div className="w-full md:w-8/12 space-y-5">
+
+          {/* Stack chips */}
+          <div className="text-sm text-gray-500">
+            <span className="font-medium text-gray-600">
+              {tCommon('stack')}:
+            </span>{' '}
+            {job.stack.join(', ')}
+          </div>
+
+
+          {/* Description + result */}
+          <div className="space-y-3 text-sm leading-relaxed text-gray-600">
             <p>{t(job.description)}</p>
+
             <p>
-              <span className="font-semibold">🏆 {tCommon('result')} </span>
+              <span className="font-semibold text-gray-800">
+                {tCommon('result')}:
+              </span>{' '}
               {t(job.result)}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

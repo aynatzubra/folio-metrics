@@ -19,7 +19,7 @@ const SectionHeader = ({ title, subtitle, className }: SectionHeaderProps) => {
         className,
       )}
     >
-      <div className="flex w-full flex-col text-center lg:items-end lg:text-right">
+      <div className="flex w-full flex-col text-center lg:items-start lg:text-left">
         <h2 className="font-[Inter] text-5xl font-semibold">{title}</h2>
 
         {subtitle ? (
