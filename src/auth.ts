@@ -5,6 +5,10 @@ import { PrismaAdapter } from '@auth/prisma-adapter'
 
 import { prisma } from '@/lib/db'
 
+const DEMO_EMAIL = process.env.SECRET_DEMO_USER ?? 'demo@example.com'
+const DEMO_PASSWORD = process.env.SECRET_DEMO_PASSWORD ?? 'demo123'
+const DEMO_USER_ID = process.env.DEMO_USER_ID ?? 'demo'
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
@@ -23,29 +27,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           password?: string
         }
 
-        if (!email || !password) {
-          throw new Error('Incorrect email or password')
+        if (!email || !password) return null
+
+        if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+          return { id: DEMO_USER_ID, email: DEMO_EMAIL, name: 'Demo' }
         }
 
         const user = await prisma.user.findUnique({
-          where: { email: email },
+          where: { email },
+          select: { id: true, email: true, password: true, name: true },
         })
 
-        if (!user || !user.password) {
-          throw new Error('User not found')
-        }
+        if (!user?.password) return null
 
         const isPasswordValid = await bcrypt.compare(password, user.password)
+        if (!isPasswordValid) return null
 
-        if (!isPasswordValid) {
-          throw new Error('Incorrect password')
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          password: user.password,
-        }
+        return { id: user.id, email: user.email, name: user.name ?? undefined }
       },
     }),
   ],

@@ -4,12 +4,12 @@ import { useTranslations } from 'next-intl'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 import SplitSection from '@/components/layout/SplitSection'
 import SectionHeader from '@/components/common/SectionHeader'
-
-const STATIC_DEMO_EMAIL = 'demo@example.com'
-const STATIC_DEMO_PASSWORD = 'demo123'
 
 const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5'] as const
 
@@ -19,6 +19,11 @@ export default function Additional() {
   const highlight = (chunks: React.ReactNode) => (
     <span className="font-semibold text-gray-900">{chunks}</span>
   )
+
+  const router = useRouter()
+  useEffect(() => {
+    router.prefetch('/admin/login?demo=1')
+  }, [router])
 
   return (
     <SplitSection
@@ -67,10 +72,8 @@ export default function Additional() {
 
             {/* Actions */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={`/admin/login?email=${encodeURIComponent(
-                  STATIC_DEMO_EMAIL,
-                )}&password=${encodeURIComponent(STATIC_DEMO_PASSWORD)}`}
+              <Link
+                href="/admin/login?demo=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
@@ -86,9 +89,9 @@ export default function Additional() {
               >
                 <FontAwesomeIcon icon={faEye} className="mr-2 h-4 w-4" />
                 {t('buttonDemoText')}
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="https://github.com/aynatzubra/folio-metrics"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -105,7 +108,7 @@ export default function Additional() {
               >
                 <FontAwesomeIcon icon={faGithub} className="mr-2 h-4 w-4" />
                 {t('buttonText')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
