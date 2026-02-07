@@ -60,19 +60,19 @@
     "aopsrm": {
       "about": "NGO supporting ostomy patients in Moldova",
       "description": "Built a multilingual website in React and designed a custom CMS in Laravel for content management. Set up CI/CD in GitLab using Docker, enabling predictable deployments and fast content updates.",
-      "resultDescription": "Delivered a turnkey website with CMS — from business logic to deployment — allowing the organisation to publish content and communicate with the audience independently, without external developers."
+      "resultDescription": "Delivered a turnkey website with CMS - from business logic to deployment - allowing the organisation to publish content and communicate with the audience independently, without external developers."
     }
   },
   "Education": {
     "leftTitle": "Education",
-    "leftSubtitle": "Experience in finance doesn’t compete with code — it makes decisions more precise.",
+    "leftSubtitle": "Experience in finance doesn’t compete with code - it makes decisions more precise.",
     "educ": "Russian University of Cooperation | Accounting and Finance",
     "pathTitle": "Background in finance helps me design business logic, metrics and reporting flows more accurately in complex web systems."
   },
   "Additional": {
     "leftTitle": "Projects",
     "leftSubtitle": "Projects are measured not in lines of code, but in value.",
-    "intro": "This website is not just a résumé — it’s an open-source product called Folio Metrics that reflects my approach to architecture, analytics and product thinking.",
+    "intro": "This website is not just a resume - it’s an open-source product called Folio Metrics that reflects my approach to architecture, analytics and product thinking.",
     "projectTitle": "Folio Metrics Project",
     "projectFeatures": {
       "item1": "<highlight>Interactive resume</highlight> with a custom analytics system for visits and events.",

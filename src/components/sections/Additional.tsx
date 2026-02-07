@@ -1,77 +1,88 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 
+import SplitSection from '@/components/layout/SplitSection'
 import SectionHeader from '@/components/common/SectionHeader'
 
 const STATIC_DEMO_EMAIL = 'demo@example.com'
 const STATIC_DEMO_PASSWORD = 'demo123'
 
+const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5'] as const
+
 export default function Additional() {
   const t = useTranslations('Additional')
 
-  const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5']
+  const highlight = (chunks: React.ReactNode) => (
+    <span className="font-semibold text-gray-900">{chunks}</span>
+  )
 
   return (
-    <div className="flex w-full text-gray-700 relative">
-      <div className="absolute top-0 left-0 w-1/2 h-full lg:bg-[#F6D8C2] z-0 md:bg-gray-50" />
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FCF8F6] z-0" />
-
-      <div className="w-full z-10 max-w-[1276px] mx-auto flex flex-col lg:flex-row h-full">
-        {/* Left Part*/}
-        <SectionHeader
-          title={t('leftTitle')} subtitle={t('leftSubtitle')}
-          theme="peach" />
-
-        {/* Right Part */}
+    <SplitSection
+      className="text-gray-700"
+      maxW={1276}
+      leftPercent={30}
+      leftBg="#F0F2F0"
+      rightBg="#F8F8F8"
+      mobileBgClass="bg-gray-50"
+      left={
+        <div className="w-full lg:flex-[0_0_30%]">
+          <SectionHeader title={t('leftTitle')} subtitle={t('leftSubtitle')} />
+        </div>
+      }
+      right={
         <div
-          className="bg-[#FCF8F6] flex-1 flex flex-col
-        pt-[1.75rem]
-                  px-[1.75rem]
-
-                  lg:pt-[4.375rem]
-                  lg:pb-[1.6625rem]
-
-                  md:pt-[1.75rem]
-                  md:pb-[1.4rem]
-                  md:px-[3.5rem]"
+          className="
+            flex flex-1 flex-col
+            px-7 pt-7
+            md:px-14
+            lg:pt-5
+          "
         >
-          <div className="flex flex-col">
+          <div className="max-w-3xl">
             {/* Intro */}
-            <p className="text-[0.875rem] mb-4 text-gray-700">{t('intro')}</p>
+            <p className="mb-6 text-sm leading-relaxed text-gray-700">
+              {t('intro')}
+            </p>
 
-            {/* Project Name */}
-            <h3 className="text-lg font-bold uppercase text-[#F67769] mb-4">{t('projectTitle')}</h3>
+            {/* Project title */}
+            <h3 className="mb-5 text-lg font-semibold uppercase tracking-widest text-accent">
+              {t('projectTitle')}
+            </h3>
 
-            {/* Fetches */}
-            <ul className="space-y-2 text-sm text-gray-800 mb-6">
+            {/* Features */}
+            <ul className="mb-8 space-y-3 text-sm leading-relaxed text-gray-700">
               {featureKeys.map((key) => (
-                <li key={key} className="flex items-center pt-1">
-                  <span className="text-[#F67769] mr-2">◆</span>
+                <li key={key} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                   <span>
-                    {t.rich(`projectFeatures.${key}`, {
-                      highlight: (chunks) => <span className="font-semibold">{chunks}</span>,
-                    })}
+                    {t.rich(`projectFeatures.${key}`, { highlight })}
                   </span>
                 </li>
               ))}
             </ul>
 
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:justify-start">
+            {/* Actions */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
-                href={`/admin/login?email=${STATIC_DEMO_EMAIL}&password=${STATIC_DEMO_PASSWORD}`}
+                href={`/admin/login?email=${encodeURIComponent(
+                  STATIC_DEMO_EMAIL,
+                )}&password=${encodeURIComponent(STATIC_DEMO_PASSWORD)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-      inline-flex items-center justify-center
-      w-full sm:w-auto
-      rounded-md bg-[#F67769] px-4 py-2
-      text-sm font-semibold text-white
-      transition-colors duration-200 hover:bg-[#E1594F]
-    "
+                  inline-flex items-center justify-center
+                  rounded-md px-5 py-2.5
+                  text-sm font-semibold
+                  bg-accent text-white
+                  transition-colors duration-200
+                  hover:bg-accent/90
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40
+                  focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8F8]
+                "
               >
                 <FontAwesomeIcon icon={faEye} className="mr-2 h-4 w-4" />
                 {t('buttonDemoText')}
@@ -82,21 +93,23 @@ export default function Additional() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-      inline-flex items-center justify-center
-      w-full sm:w-auto
-      rounded-md bg-gray-800 px-4 py-2
-      text-sm font-semibold text-white
-      transition-colors duration-200 hover:bg-gray-700
-    "
+                  inline-flex items-center justify-center
+                  rounded-md px-5 py-2.5
+                  text-sm font-semibold
+                  bg-gray-900 text-white
+                  transition-colors duration-200
+                  hover:bg-gray-800
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30
+                  focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8F8]
+                "
               >
                 <FontAwesomeIcon icon={faGithub} className="mr-2 h-4 w-4" />
                 {t('buttonText')}
               </a>
             </div>
-
           </div>
         </div>
-      </div>
-    </div>
+      }
+    />
   )
 }
