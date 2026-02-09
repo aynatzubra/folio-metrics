@@ -2,10 +2,11 @@
 
 import { Dialog, Transition } from '@headlessui/react'
 import Link from 'next/link'
-import { Fragment } from 'react'
+import { Fragment, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 
-import { CONTACT_LINKS, NAV_LINKS } from '@/data/navigation'
+import { NAV_LINKS } from '@/data/navigation'
+import ContactInfo from '@/components/common/ContactInfo'
 
 type SiteMobileMenuProps = {
   isOpen: boolean
@@ -16,9 +17,29 @@ export default function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps)
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
 
+  const panelClass =
+    'fixed inset-y-0 right-0 flex h-full w-full max-w-xs flex-col ' +
+    'bg-mob-menu px-6 py-5 text-white shadow-xl'
+
+  const navLinkClass =
+    'block rounded-md px-2 py-2 text-xl font-medium tracking-widest' +
+    'text-white hover:bg-brand/5 hover:text-accent'
+
+  const closeButton =
+    'rounded-sm p-2 text-white/70 transition hover:text-white/30' +
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30' +
+    'focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b3a41]'
+
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null)
+
   return (
     <Transition show={isOpen} as={Fragment}>
-      <Dialog onClose={onClose} className="relative z-50 lg:hidden">
+      <Dialog
+        onClose={onClose}
+        className="relative z-50 lg:hidden"
+        initialFocus={closeBtnRef}
+      >
+        {/* overlay */}
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-200"
@@ -42,21 +63,19 @@ export default function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps)
           leaveTo="translate-x-full"
         >
           <Dialog.Panel
-            className="
-              fixed inset-y-0 right-0 flex h-full w-full max-w-xs flex-col
-              bg-[#FCF8F6] px-6 py-5 text-gray-900 shadow-xl
-            "
+            id="site-mobile-menu"
+            className={panelClass}
           >
             {/* logo and close btn */}
             <div className="mb-6 flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#F67769]">
+              <Dialog.Title className="text-2xl font-bold uppercase tracking-[0.18em] text-accent">
                 {t('title')}
-              </span>
+              </Dialog.Title>
 
               <button
                 onClick={onClose}
-                className="rounded-sm p-2 text-gray-400 transition hover:text-gray-700 focus:outline-none"
-                aria-label="Закрыть меню"
+                className={closeButton}
+                aria-label={tCommon('closeMenu')}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +83,7 @@ export default function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps)
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="h-7 w-7"
+                  className="h-8 w-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -78,19 +97,16 @@ export default function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps)
             {/* nav */}
             <nav className="flex flex-1 flex-col gap-4">
               <div>
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/30">
                   {tCommon('menuTitle')}
                 </p>
-                <div className="space-y-1">
+                <div className="space-y-1 mt-5">
                   {NAV_LINKS.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={onClose}
-                      className="
-                        block rounded-md px-2 py-2 text-base font-medium
-                        text-gray-800 hover:bg-[#FBE1D0]/60 hover:text-[#111827]
-                      "
+                      className={navLinkClass}
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -99,32 +115,16 @@ export default function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps)
               </div>
 
               {/* contact */}
-              <div className="mt-6 border-t border-[#FBE1D0] pt-4">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              <div className="mt-6 border-t border-white/30 pt-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/30">
                   {tCommon('contacts')}
                 </p>
-                <div className="space-y-1">
-                  {CONTACT_LINKS.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
-                      className="
-                        block rounded-md px-2 py-2 text-sm font-medium
-                        text-[#F67769] hover:bg-[#FBE1D0]/60
-                      "
-                      onClick={onClose}
-                    >
-                      {tCommon(link.labelKey)}
-                    </a>
-                  ))}
-                </div>
+                <ContactInfo variant="footer" className="mt-8 flex items-start justify-start" />
               </div>
             </nav>
 
             {/* slog */}
-            <div className="mt-4 border-t border-[#FBE1D0] pt-3 text-xs text-gray-400">
+            <div className="mt-4 pt-3 pb-10 pb-[env(safe-area-inset-bottom)] text-xl text-center text-white/80">
               <p>{tCommon('finalWords')}</p>
             </div>
           </Dialog.Panel>

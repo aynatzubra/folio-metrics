@@ -3,23 +3,40 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
 import SiteMobileMenu from '@/components/layout/SiteMobileMenu'
 import { HEADER_CONTACTS, NAV_LINKS } from '@/data/navigation'
 import { CONTACT_ICONS } from '@/components/common/contactIcons'
 import { useNavActiveByClick } from '@/lib/hooks/useClearOnUserScrollIntent'
+import SiteHeaderMobile from '@/components/layout/SiteHeaderMobile'
 
 export default function SiteHeader() {
   const t = useTranslations('Header')
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
   const { activeHref, setActiveHref, isScrolled } = useNavActiveByClick({
-    scrolledY: 10,
+    scrolledY: 70,
     topResetY: 2,
   })
 
   useEffect(() => {
     if (window.location.hash) setActiveHref(window.location.hash)
+  }, [setActiveHref])
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname, searchParams])
+
+  useEffect(() => {
+    const onHashChange = () => setIsMenuOpen(false)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
   const container = 'mx-auto max-w-[1470px] px-6 lg:px-10'
@@ -38,29 +55,30 @@ export default function SiteHeader() {
       <header
         className={[
           'sticky top-0 z-50 w-full site-header-main transition-colors',
-          isScrolled ? 'bg-black/70 backdrop-blur' : 'bg-transparent',
+          isScrolled ? 'is-scrolled' : '',
         ].join(' ')}
       >
         {/* DESKTOP VERSION */}
         <div className={`${container} hidden md:flex h-[70px] items-center justify-between gap-6`}>
           <div className="shrink-0">
             <Link href="/" className="transition-opacity hover:opacity-60">
-              <h2 className="text-accent text-2xl font-bold uppercase tracking-[0.10em]">arbuz</h2>
+              <h2 className="text-accent text-2xl font-bold uppercase tracking-[0.10em]">{t('title')}</h2>
             </Link>
           </div>
 
           <nav className="flex min-w-0">
-            <ul className="flex items-center justify-center gap-8 lg:gap-12 text-sm font-medium tracking-wide nav-link-fix">
+            <ul
+              className="flex items-center justify-center gap-8 lg:gap-12 text-sm font-medium tracking-wide nav-link-fix">
               {NAV_LINKS.map((item) => {
                   const isActive = activeHref === item.href
 
-                const inactiveClass = isScrolled
-                  ? 'text-white/80 hover:text-white'
-                  : 'text-brand hover:opacity-80'
+                  const inactiveClass = isScrolled
+                    ? 'text-white/80 hover:text-white'
+                    : 'text-brand hover:opacity-80'
 
-                const activeClass = isScrolled
-                  ? 'text-[#F5F6F4] underline underline-offset-8'
-                  : 'text-accent underline underline-offset-8'
+                  const activeClass = isScrolled
+                    ? 'text-[#F5F6F4] underline underline-offset-8'
+                    : 'text-accent underline underline-offset-8'
 
                   return (
                     <li key={item.href} className="shrink-0">
@@ -105,22 +123,13 @@ export default function SiteHeader() {
         </div>
 
         {/* MOBILE VERSION */}
-        <div className={`${container} flex h-[70px] items-center justify-between md:hidden`}>
-          <Link href="/" className="transition-opacity hover:opacity-70">
-            <span className="text-md font-bold uppercase text-accent tracking-[0.10em]">{t('title')}</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <LocaleSwitcher />
-            <button onClick={() => setIsMenuOpen(true)} className="p-2 text-accent">
-              <svg
-                viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="1.5"
-                className="w-8 h-8">
-                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
+        <SiteHeaderMobile
+          containerClass={container}
+          title={t('title')}
+          isMenuOpen={isMenuOpen}
+          openMenuLabel={t('openMenu')}
+          onOpenMenu={() => setIsMenuOpen(true)}
+        />
       </header>
 
       <SiteMobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

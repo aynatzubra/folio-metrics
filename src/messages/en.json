@@ -1,7 +1,7 @@
 {
   "Header": {
     "headerText": "Clean code. Sharp decisions. Steady hand.",
-    "title": "Arbuz·Tanya",
+    "title": "Arbuz",
     "language": "RU",
     "nav": {
       "about": "About",
@@ -93,6 +93,8 @@
     "contacts": "Contacts",
     "result": "Result",
     "stack": "Stack",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
     "finalWords": "If you need results — let’s talk.",
     "social": {
       "github": "GitHub",

@@ -1,7 +1,7 @@
 {
   "Header": {
     "headerText": "Чистый код. Чёткое решение. Твёрдая рука.",
-    "title": "Arbuz·Tanya",
+    "title": "Arbuz",
     "language": "EN",
     "nav": {
       "about": "Обо мне",
@@ -93,6 +93,8 @@
     "contacts": "Контакты",
     "result": "Result",
     "stack": "Stack",
+    "closeMenu": "Закрыть меню",
+    "openMenu": "Открыть меню",
     "finalWords": "Если нужен результат — пишите.",
     "social": {
       "github": "GitHub",
