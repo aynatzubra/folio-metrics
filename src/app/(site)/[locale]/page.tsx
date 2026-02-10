@@ -4,6 +4,7 @@ import SiteHeader from '@/components/layout/SiteHeader'
 import Hero from '@/components/sections/Hero'
 import Intro from '@/components/sections/Intro'
 import PageObserver from '@/components/common/PageObserver'
+import FloatingActions from '@/components/common/FloatingActions'
 
 const TechnicalSkills = dynamic(() => import('@/components/sections/TechnicalSkills'))
 const Experience = dynamic(() => import('@/components/sections/Experience'))
@@ -35,6 +36,7 @@ export default function LandingPage() {
         <Additional />
       </section>
       <Footer />
+      <FloatingActions />
     </div>
   )
 }
