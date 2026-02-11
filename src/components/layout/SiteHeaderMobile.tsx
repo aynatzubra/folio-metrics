@@ -14,7 +14,7 @@ export default function SiteHeaderMobile({ containerClass, title, openMenuLabel,
   return (
     <div className={`${containerClass} flex h-[70px] items-center justify-between md:hidden`}>
       <Link href="/" className="transition-opacity hover:opacity-70">
-        <span className="text-2xl font-bold uppercase text-accent tracking-[0.10em]">
+        <span className="header-title">
           {title}
         </span>
       </Link>

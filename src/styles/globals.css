@@ -37,6 +37,14 @@ body {
     font-size: 14px;
 }
 
+.header-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
 .mb-4 {
     margin-bottom: 25px;
 }
@@ -82,37 +90,32 @@ body {
 }
 
 @keyframes nav-links-color {
-    from { color: var(--color-brand) }
-    to   { color: rgba(255, 255, 255, 0.85); }
+    from {
+        color: var(--color-brand)
+    }
+    to {
+        color: rgba(255, 255, 255, 0.85);
+    }
 }
 
-.site-header-main.is-scrolled {
-    background-color: rgba(11, 54, 61, 0.9);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    color: #fff;
-    padding-top: 0;
-}
-
-.contacts-container-logic {
-    opacity: 0;
-    transform: translateY(-4px);
-    pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.site-header-main.is-scrolled .contacts-container-logic {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+.site-header-main .nav-link-fix {
+    animation: nav-links-color linear both;
+    animation-timeline: scroll();
+    animation-range: 40px 140px;
+    transition: opacity 0.2s ease;
 }
 
 .site-header-main {
     background-color: transparent;
-    color: inherit;
-    padding-top: 1rem;
-    transition: background-color 180ms ease, color 180ms ease, padding-top 180ms ease,
-    box-shadow 180ms ease, backdrop-filter 180ms ease;
+    animation: header-scroll-logic linear both;
+    animation-timeline: scroll();
+    animation-range: 60px 180px;
+}
+
+.contacts-container-logic {
+    animation: contacts-appearance linear both;
+    animation-timeline: scroll();
+    animation-range: 90px 210px;
 }
 
 .nav-link-fix {

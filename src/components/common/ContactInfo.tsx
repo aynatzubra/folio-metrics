@@ -23,8 +23,8 @@ export default function ContactInfo({
   const cvPath = `/assets/cv/${locale}.pdf`
 
   const baseButton =
-    'inline-flex items-center justify-center rounded-[4px]' +
-    'font-bold tracking-widest outline-none' +
+    'inline-flex items-center justify-center rounded-[4px] ' +
+    'font-bold tracking-widest outline-none ' +
     'transition-colors duration-200 ease-out ' +
     'focus-visible:ring-2 focus-visible:ring-offset-2'
 
@@ -52,29 +52,62 @@ export default function ContactInfo({
   const size =
     variant === 'footer'
       ? 'px-3 py-2 text-xs border-1 w-auto'
-      : 'px-8 py-4 text-sm border-2 w-full lg:w-64'
+      : 'px-8 py-4 text-sm border-2 w-full xl:w-64'
+
+  const isHero = variant !== 'footer'
 
   return (
     <div className={`${layout} ${className}`}>
-      <Link
-        href={cvPath}
-        download={`CV_${locale}.pdf`}
-        className={`${baseButton} ${colorScheme.primary} ${size}`}
-      >
-        {t('buttons.cv')}
-      </Link>
+      {isHero ? (
+        <div
+          className="flex flex-col items-center justify-center flex-wrap sm:flex-row sm:justify-center xl:flex-col gap-3 xl:gap-4">
+          <Link
+            href={cvPath}
+            download={`CV_${locale}.pdf`}
+            className={`${baseButton} ${colorScheme.primary} ${size} w-full sm:max-w-[250px] text-center`}
+          >
+            {t('buttons.cv')}
 
-      {CONTACT_LINKS.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          target={link.href.startsWith('http') ? '_blank' : undefined}
-          rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
-          className={`${baseButton} ${colorScheme.outline} ${size}`}
-        >
-          {tCommon(link.labelKey)}
-        </a>
-      ))}
+          </Link>
+          {CONTACT_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={
+                link.href.startsWith('http') ? 'noreferrer noopener' : undefined
+              }
+              className={`${baseButton} ${colorScheme.outline} ${size} w-full sm:max-w-[250px] text-center`}
+            >
+              {tCommon(link.labelKey)}
+            </a>
+          ))}
+        </div>
+      ) : (
+        // footer
+        <>
+          <Link
+            href={cvPath}
+            download={`CV_${locale}.pdf`}
+            className={`${baseButton} ${colorScheme.primary} ${size}`}
+          >
+            {t('buttons.cv')}
+          </Link>
+          {
+            CONTACT_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+                className={`${baseButton} ${colorScheme.outline} ${size}`}
+              >
+                {tCommon(link.labelKey)}
+              </a>
+            ))
+          }
+        </>
+      )}
     </div>
   )
 }

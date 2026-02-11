@@ -62,19 +62,19 @@ export default function SiteHeader() {
         <div className={`${container} hidden md:flex h-[70px] items-center justify-between gap-6`}>
           <div className="shrink-0">
             <Link href="/" className="transition-opacity hover:opacity-60">
-              <h2 className="text-accent text-2xl font-bold uppercase tracking-[0.10em]">{t('title')}</h2>
+              <h2 className="header-title">{t('title')}</h2>
             </Link>
           </div>
 
           <nav className="flex min-w-0">
             <ul
-              className="flex items-center justify-center gap-8 lg:gap-12 text-sm font-medium tracking-wide nav-link-fix">
+              className="flex items-center justify-center gap-8 lg:gap-12 text-base font-[Inter] font-medium leading-[100%] nav-link-fix">
               {NAV_LINKS.map((item) => {
                   const isActive = activeHref === item.href
 
                   const inactiveClass = isScrolled
                     ? 'text-white/80 hover:text-white'
-                    : 'text-brand hover:opacity-80'
+                    : 'text-gray-800 hover:opacity-80'
 
                   const activeClass = isScrolled
                     ? 'text-[#F5F6F4] underline underline-offset-8'
@@ -103,7 +103,7 @@ export default function SiteHeader() {
           <div className="shrink-0 flex items-center gap-3">
             <div className="flex items-center gap-3 contacts-container-logic">
               <span className="hidden lg:inline text-xs text-accent font-medium tracking-widest uppercase">
-                contacts:
+                {t('contacts')}:
               </span>
               <div className="flex items-center gap-1.5">
                 {HEADER_CONTACTS.map((link) => (
@@ -117,7 +117,7 @@ export default function SiteHeader() {
               </div>
             </div>
             <div className="ml-2">
-              <LocaleSwitcher />
+              <LocaleSwitcher isScrolled={isScrolled} />
             </div>
           </div>
         </div>

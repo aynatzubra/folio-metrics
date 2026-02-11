@@ -3,6 +3,8 @@
     "headerText": "Clean code. Sharp decisions. Steady hand.",
     "title": "Arbuz",
     "language": "RU",
+    "contacts": "contacts",
+    "openMenu": "Open menu",
     "nav": {
       "about": "About",
       "skills": "Skills",
@@ -15,7 +17,8 @@
     "avatarAlt": "Portrait of Tanya Arbuz",
     "role": "Frontend-focused Full-Stack Engineer",
     "name": "Tatiana Arbuz",
-    "shortText": "I build web applications with React and Next.js, focusing on architecture, performance and scalable end-to-end integrations.",
+    "aboutLink": "More about me",
+    "shortText": "Frontend Engineer focused on architecture, data flow and scalable interfaces.",
     "buttons": {
       "cv": "Download CV"
     }
