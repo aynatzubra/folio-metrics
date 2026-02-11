@@ -1,6 +1,7 @@
 export const metadata = {
-  title: 'Admin Panel | Folio-Metrics',
-  description: 'Visitor analytics dashboard for Folio-Metrics.',
+  title: 'Admin Login | Folio-Metrics',
+  description: 'Admin login for Folio-Metrics.',
+  robots: { index: false, follow: false },
 }
 
 export default function AuthRootLayout({ children }: { children: React.ReactNode }) {

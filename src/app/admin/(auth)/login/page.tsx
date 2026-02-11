@@ -1,0 +1,32 @@
+import LoginForm from './LoginForm'
+
+type PageProps = {
+  searchParams?: Record<string, string | string[] | undefined>
+}
+
+function getQueryString(
+  value: string | string[] | undefined,
+): string | undefined {
+  return typeof value === 'string' ? value : undefined
+}
+
+export default function LoginPage({ searchParams }: PageProps) {
+  const reason = getQueryString(searchParams?.reason)
+  const message =
+    reason === 'auth' ? 'Please sign in to access the admin panel.' : undefined
+
+  const demo = getQueryString(searchParams?.demo) === '1'
+
+  const demoEmail = process.env.SECRET_DEMO_USER
+  const demoPassword = process.env.SECRET_DEMO_PASSWORD
+  const demoEnabled = Boolean(demoEmail && demoPassword)
+
+  return (
+    <LoginForm
+      initialEmail={demo && demoEnabled ? demoEmail : ''}
+      initialPassword={demo && demoEnabled ? demoPassword : ''}
+      message={message}
+      demoEnabled={demoEnabled}
+    />
+  )
+}

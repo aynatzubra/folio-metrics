@@ -1,8 +1,9 @@
+import { redirect } from 'next/navigation'
+
 import AdminHeader from '@/components/admin/AdminHeader'
 import { auth } from '@/auth'
 
 import type { ReactNode } from 'react'
-
 
 type ProtectedLayoutProps = {
   children?: ReactNode
@@ -10,13 +11,11 @@ type ProtectedLayoutProps = {
 
 export default async function ProtectedLayout({ children }: ProtectedLayoutProps) {
   const session = await auth()
+  if (!session?.user) redirect('/admin/login?reason=auth')
 
   const isDemo =
-    !!session?.user &&
-    (
-      session.user.email === 'demo@example.com' ||
-      session.user.name?.toLowerCase().includes('demo')
-    )
+    session.user.email === 'demo@example.com' ||
+    session.user.name?.toLowerCase().includes('demo')
 
   return (
     <div className="bg-[#f3f6f9]">

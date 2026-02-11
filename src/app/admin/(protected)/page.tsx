@@ -1,21 +1,9 @@
-import { auth } from '@/auth'
 import { getAnalyticsSummary } from '@/lib/analytics/tracker'
 import StatCard from '@/components/admin/StatCard'
 import VisitsTable from '@/components/admin/VisitsTable'
 import AnalyticsChartsLoader from '@/components/admin/AnalyticsChartsLoader'
 
 export default async function AdminDashboardPage() {
-  const session = await auth()
-  //todo: Access Denied Page
-  if (!session?.user) {
-    return (
-      <div className="h-screen w-screen bg-[#FBE1D0] flex items-center justify-center color-[#F67769] text-lg">
-        {' '}
-        Access Denied!!!{' '}
-      </div>
-    )
-  }
-
   const { summary, visits } = await getAnalyticsSummary()
 
   return (

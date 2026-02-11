@@ -9,6 +9,8 @@ const DEMO_EMAIL = process.env.SECRET_DEMO_USER ?? 'demo@example.com'
 const DEMO_PASSWORD = process.env.SECRET_DEMO_PASSWORD ?? 'demo123'
 const DEMO_USER_ID = process.env.DEMO_USER_ID ?? 'demo'
 
+const demoEnabled = Boolean(DEMO_EMAIL && DEMO_PASSWORD)
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
@@ -42,6 +44,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const isPasswordValid = await bcrypt.compare(password, user.password)
         if (!isPasswordValid) return null
+
+        if (demoEnabled && email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+          return { id: DEMO_USER_ID, email: DEMO_EMAIL, name: 'Demo' }
+        }
 
         return { id: user.id, email: user.email, name: user.name ?? undefined }
       },
