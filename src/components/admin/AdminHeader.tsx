@@ -19,20 +19,25 @@ type AdminHeaderProps = {
 
 export default function AdminHeader({ isDemo }: AdminHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const menuButton =
+    'flex items-center justify-center p-1 rounded-full ' +
+    'bg-brand ring-2 ring-accent ' +
+    'transition hover:ring-[#F67769] ' +
+    'focus:outline-none'
+
   return (
     <>
-      <header className="sticky top-0 z-50 w-full h-[70px] bg-[#F6D8C2] px-4 shadow-[0_2px_4px_rgba(15,34,58,.12)]">
+      <header className="sticky top-0 z-50 w-full h-[70px] bg-brand px-4 shadow-[0_2px_4px_rgba(15,34,58,.12)]">
         <div className="w-full h-full max-w-[1276px] mx-auto flex items-center">
           {/*DESKTOP VERSION*/}
           <div className="hidden md:flex w-full items-center justify-between">
             {/*Left block*/}
             <Link href="/">
               <h2
-                className="w-[230px] h-[38px]
-                  text-2xl font-bold uppercase text-[#F67769] text-center
-                  cursor-pointer transition-opacity hover:opacity-60"
+                className="header-title"
               >
-                Arbuz.Tanya
+                arbuz
               </h2>
             </Link>
 
@@ -40,10 +45,10 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
             <div className="flex items-center gap-3 sm:gap-4">
               {/*Demo Block*/}
               <div className="flex items-center gap-3 mx-[40px]">
-                <span className="text-lg font-semibold text-gray-500">Folio-Metrics Admin</span>
+                <span className="text-lg font-semibold text-white">Folio-Metrics Admin</span>
                 {isDemo && (
                   <span
-                    className="rounded-full bg-[#F67769] px-2 py-1 text-xs font-medium text-bg-amber-100">
+                    className="rounded-full border-2 border-accent px-3 py-2 text-xs font-medium text-accent">
             Demo
           </span>
                 )}
@@ -54,15 +59,15 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
                 <a
                   href="https://t.me/tanya_arbuz"
                   target="_blank"
-                  className="text-gray-500 hover:text-[#F67769] transition-colors">
-                  <FontAwesomeIcon icon={faTelegramPlane} size="2xl" />
+                  className="text-accent hover:text-[#F67769] transition-colors">
+                  <FontAwesomeIcon icon={faTelegramPlane} size="2x" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/tatiana-arbuz-7756743a6"
                   target="_blank"
-                  className="text-gray-500 hover:text-[#F67769] transition-colors"
+                  className="text-accent hover:text-[#F67769] transition-colors"
                 >
-                  <FontAwesomeIcon icon={faLinkedinIn} size="2xl" />
+                  <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
                 </a>
               </div>
 
@@ -70,13 +75,11 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
               <Menu as="div" className="relative">
                 <MenuButton
                   data-tooltip-id="avatar-tooltip"
-                  className="flex items-center justify-center ring-2 ring-gray-500 rounded-full bg-[#F6D8C2] focus:outline-none
-                         hover:ring-2 hover:ring-[#F67769] transition
-                         p-1"
+                  className={menuButton}
                 >
                   <Image
                     src={myAdminAva} alt="User Avatar"
-                    width={30} height={30}
+                    width={35} height={35}
                     className="rounded-full" />
                 </MenuButton>
 

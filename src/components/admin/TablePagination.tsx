@@ -4,38 +4,38 @@ type TablePaginationProps = {
   page: number
   pageSize: number
   total: number
-  onPageChangeAction: (nextPage: number) => void
+  onPageChange: (page: number) => void
 }
 
-export default function TablePagination({ page, pageSize, total, onPageChangeAction }: TablePaginationProps) {
+export default function TablePagination({ page, pageSize, total, onPageChange }: TablePaginationProps) {
+  if (total === 0) return null
+
   const totalPages = Math.max(1, Math.ceil(total / pageSize))
+  const from = (page - 1) * pageSize + 1
+  const to = Math.min(page * pageSize, total)
+
   const canPrev = page > 1
   const canNext = page < totalPages
 
-  const handlePrev = () => {
-    if (canPrev) {
-      onPageChangeAction(page - 1)
-    }
-  }
-  const handleNext = () => {
-    if (canNext) {
-      onPageChangeAction(page + 1)
-    }
+  const goTo = (next: number) => {
+    const clamped = Math.min(Math.max(1, next), totalPages)
+    if (clamped !== page) onPageChange(clamped)
   }
 
   if (total === 0) return null
 
-  const from = (page - 1) * pageSize + 1
-  const to = Math.min(page * pageSize, total)
+  const goToClass =
+    'rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 ' +
+    'hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50'
 
   return (
     <div className="mt-4 flex flex-col gap-2 text-xs text-gray-600 sm:flex-row sm:items-center sm:justify-between">
       <div className="inline-flex items-center justify-center gap-1 sm:order-2">
         <button
           type="button"
-          onClick={handlePrev}
+          onClick={() => goTo(page - 1)}
           disabled={!canPrev}
-          className="rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className={goToClass}
         >
           Prev
         </button>
@@ -44,9 +44,9 @@ export default function TablePagination({ page, pageSize, total, onPageChangeAct
     </span>
         <button
           type="button"
-          onClick={handleNext}
+          onClick={() => goTo(page + 1)}
           disabled={!canNext}
-          className="rounded border border-gray-300 px-2 py-1 text-xs font-medium text-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className={goToClass}
         >
           Next
         </button>
