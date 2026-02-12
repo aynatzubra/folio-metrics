@@ -1,4 +1,14 @@
 /**
+ * Do not log AbortError
+ */
+function isAbortError(error: unknown) {
+  return (
+    (error instanceof DOMException && error.name === 'AbortError') ||
+    (error instanceof Error && error.name === 'AbortError')
+  )
+}
+
+/**
  * Every unknown error to string
  */
 export function toErrorMessage(error: unknown): string {
@@ -19,6 +29,9 @@ export function toErrorMessage(error: unknown): string {
  */
 export function logError(error: unknown, context?: string): void {
   const isDev = process.env.NODE_ENV === 'development'
+  if(!isDev) return
+
+  if (isAbortError(error)) return
 
   if (isDev) {
     console.group(`Error [${context || 'General'}]`)

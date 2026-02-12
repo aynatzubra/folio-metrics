@@ -8,10 +8,10 @@ import SectionsChart from '@/components/admin/SectionsChart'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
 import { RangeOptionValue } from '@/lib/analytics/types'
 import { ANALYTICS_RANGE_OPTIONS } from '@/lib/constants/analytics'
+import DataPlaceholder from '@/components/admin/DataPlaceholder'
 
 export default function AnalyticsCharts() {
   const [range, setRange] = useState<RangeOptionValue>(30)
-
   const { daily, sections, hasAnyError } = useAnalytics(range)
 
   return (
@@ -42,9 +42,11 @@ export default function AnalyticsCharts() {
 
       {
         hasAnyError && (
-          <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
-            Failed to load analytics data. Try reloading the page.
-          </div>
+          <DataPlaceholder
+            type="error"
+            message="Failed to load analytics data."
+            className="mb-4 rounded-md border border-red-200 bg-red-50"
+          />
         )
       }
 

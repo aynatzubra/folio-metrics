@@ -5,6 +5,13 @@ import { logError, toErrorMessage } from '@/lib/utils/error-handler'
 import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
 import { AsyncState } from '@/lib/http/fetchState'
 
+function isAbortError(error: unknown) {
+  return (
+    (error instanceof DOMException && error.name === 'AbortError') ||
+    (error instanceof Error && error.name === 'AbortError')
+  )
+}
+
 export function useAnalytics(range: RangeOptionValue) {
   const [daily, setDaily] = useState<AsyncState<DailyPoint[]>>({
     data: null, isLoading: true, error: null,
@@ -16,12 +23,8 @@ export function useAnalytics(range: RangeOptionValue) {
   useEffect(() => {
     const controller = new AbortController()
 
-    const setPending = () => {
-      setDaily(p => ({ ...p, isLoading: true, error: null }))
-      setSections(p => ({ ...p, isLoading: true, error: null }))
-    }
-
-    setPending()
+    setDaily(p => ({ ...p, isLoading: true, error: null }))
+    setSections(p => ({ ...p, isLoading: true, error: null }))
 
     const loadData = async () => {
       try {
@@ -30,9 +33,12 @@ export function useAnalytics(range: RangeOptionValue) {
           fetchJson<SectionPoint[]>(`/api/admin/stats/sections?days=${range}`, { signal: controller.signal }),
         ])
 
+        if (controller.signal.aborted) return
+
         if (dailyRes.status === 'fulfilled') {
           setDaily({ data: dailyRes.value, isLoading: false, error: null })
         } else {
+          if (isAbortError(dailyRes.reason)) return
           logError(dailyRes.reason, 'Daily Chart')
           setDaily({ data: null, isLoading: false, error: toErrorMessage(dailyRes.reason) })
         }
@@ -40,13 +46,19 @@ export function useAnalytics(range: RangeOptionValue) {
         if (sectionsRes.status === 'fulfilled') {
           setSections({ data: sectionsRes.value, isLoading: false, error: null })
         } else {
+          if (isAbortError(sectionsRes.reason)) return
           logError(sectionsRes.reason, 'Sections Chart')
           setSections({ data: null, isLoading: false, error: toErrorMessage(sectionsRes.reason) })
         }
 
       } catch (e) {
-        if (controller.signal.aborted) return
+        if (controller.signal.aborted || isAbortError(e)) return
+
         logError(e, 'General Analytics Hook')
+
+        const errorMessage = toErrorMessage(e)
+        setDaily((p) => ({ ...p, isLoading: false, error: p.error ?? errorMessage }))
+        setSections((p) => ({ ...p, isLoading: false, error: p.error ?? errorMessage }))
       }
     }
 
@@ -54,5 +66,7 @@ export function useAnalytics(range: RangeOptionValue) {
     return () => controller.abort()
   }, [range])
 
-  return { daily, sections, hasAnyError: !!(daily.error || sections.error) }
+  const hasAnyError = !!(daily.error || sections.error)
+
+  return { daily, sections, hasAnyError }
 }

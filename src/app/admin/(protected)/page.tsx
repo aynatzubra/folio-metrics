@@ -1,8 +1,9 @@
 import { Suspense } from 'react'
 
-import AnalyticsChartsLoader from '@/components/admin/AnalyticsChartsLoader'
 import SummaryCards from '@/components/admin/SummaryCards'
 import VisitsTableWrapper from '@/components/admin/VisitsTableWrapper'
+import { TableSkeleton } from '@/components/admin/Skeletons'
+import AnalyticsChartsLoader from '@/components/admin/AnalyticsChartsLoader'
 
 export default async function AdminDashboardPage() {
   return (
@@ -14,12 +15,12 @@ export default async function AdminDashboardPage() {
       </header>
 
       <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
-        <SummaryCards/>
+        <SummaryCards />
       </Suspense>
 
       <AnalyticsChartsLoader />
 
-      <Suspense fallback={<p>Loading table...</p>}>
+      <Suspense fallback={<TableSkeleton />}>
         <VisitsTableWrapper />
       </Suspense>
     </>

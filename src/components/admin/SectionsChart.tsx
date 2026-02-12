@@ -3,6 +3,8 @@
 import React from 'react'
 import ReactECharts from 'echarts-for-react'
 
+import DataPlaceholder from '@/components/admin/DataPlaceholder'
+
 import type { EChartsOption } from 'echarts'
 import type { SectionPoint } from '@/lib/analytics/types'
 
@@ -60,9 +62,11 @@ export default function SectionsChart({ data, isLoading, error, range }: Section
       )}
 
       {!isLoading && error && (
-        <div className="flex h-72 items-center justify-center text-sm text-red-600">
-          Failed to load section stats.
-        </div>
+        <DataPlaceholder
+          type="error"
+          message="Failed to load daily stats."
+          className="h-72"
+        />
       )}
 
       {!isLoading && !error && !hasData && (
