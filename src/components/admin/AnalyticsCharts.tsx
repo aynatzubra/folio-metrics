@@ -1,82 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 
 import DailyVisitsChart from '@/components/admin/DailyVisitsChart'
 import SectionsChart from '@/components/admin/SectionsChart'
-import { FetchState } from '@/lib/shared/async'
-import { fetchJson } from '@/lib/http/fetchJson'
-
-import type { DailyPoint, SectionPoint } from '@/lib/analytics/types'
-
-type RangeOption = 7 | 14 | 30
-
-const RANGE_OPTIONS: { label: string; value: RangeOption }[] = [
-  { label: '7 days', value: 7 },
-  { label: '14 days', value: 14 },
-  { label: '30 days', value: 30 },
-]
+import { useAnalytics } from '@/lib/hooks/useAnalytics'
+import { RangeOptionValue } from '@/lib/analytics/types'
+import { ANALYTICS_RANGE_OPTIONS } from '@/lib/constants/analytics'
 
 export default function AnalyticsCharts() {
-  const [daily, setDaily] = useState<FetchState<DailyPoint[]>>({
-    data: null,
-    isLoading: true,
-    error: null,
-  })
-  const [sections, setSections] = useState<FetchState<SectionPoint[]>>({
-    data: null,
-    isLoading: true,
-    error: null,
-  })
-  const [range, setRange] = useState<RangeOption>(30)
+  const [range, setRange] = useState<RangeOptionValue>(30)
 
-  useEffect(() => {
-    let cancelled = false
-
-    async function loadDaily() {
-      try {
-        setDaily((prev) => ({ ...prev, isLoading: true, error: null }))
-        const data = await fetchJson<DailyPoint[]>(`/api/admin/stats/daily?days=${range}`)
-        if (!cancelled) {
-          setDaily({ data, isLoading: false, error: null })
-        }
-      } catch (error) {
-        if (!cancelled) {
-          setDaily({ data: null, isLoading: false, error: error instanceof Error ? error.message : 'Unknown error' })
-        }
-      }
-    }
-
-    async function loadSections() {
-      try {
-        setSections((prev) => ({ ...prev, isLoading: true, error: null }))
-
-        const data = await fetchJson<SectionPoint[]>('/api/admin/stats/sections?days=${range}')
-        if (!cancelled) {
-          setSections({ data, isLoading: false, error: null })
-        }
-
-      } catch (error) {
-        if (!cancelled) {
-          setSections({
-            data: null,
-            isLoading: false,
-            error: error instanceof Error ? error.message : 'Unknown error',
-          })
-        }
-      }
-    }
-
-    loadDaily()
-    loadSections()
-
-    return () => {
-      cancelled = true
-    }
-  }, [range])
-
-  const hasAnyError = daily.error || sections.error
+  const { daily, sections, hasAnyError } = useAnalytics(range)
 
   return (
     <section className="mt-8">
@@ -85,7 +21,7 @@ export default function AnalyticsCharts() {
 
         <div className="mt-3 sm:mt-0 flex items-center gap-2 text-sm text-gray-600">
           <div className="inline-flex items-center gap-2 overflow-hidden">
-            {RANGE_OPTIONS.map((option) => (
+            {ANALYTICS_RANGE_OPTIONS.map((option) => (
               <button
                 key={option.value}
                 type="button"

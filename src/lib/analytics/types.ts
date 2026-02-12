@@ -1,3 +1,10 @@
+export type RangeOptionValue = 7 | 14 | 30;
+
+export interface RangeOption {
+  label: string;
+  value: RangeOptionValue;
+}
+
 export interface VisitData {
   sectionId: string
   duration: number
