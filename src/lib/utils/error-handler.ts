@@ -1,3 +1,14 @@
+export class AnalyticsError extends Error {
+  constructor(
+    message: string,
+    public status?: number,
+    public detail?: string,
+  ) {
+    super(message)
+    this.name = 'AnalyticsError'
+  }
+}
+
 /**
  * Do not log AbortError
  */
@@ -12,16 +23,9 @@ function isAbortError(error: unknown) {
  * Every unknown error to string
  */
 export function toErrorMessage(error: unknown): string {
+  if (error instanceof AnalyticsError) return error.message
   if (error instanceof Error) return error.message
-  if (typeof error === 'string') return error
-
-  if (error && typeof error === 'object') {
-    const obj = error as Record<string, unknown>
-    if (typeof obj.message === 'string') return obj.message
-    if (typeof obj.detail === 'string') return obj.detail
-  }
-
-  return 'An unexpected error occurred'
+  return typeof error === 'string' ? error : 'An unexpected error occurred'
 }
 
 /**
@@ -33,8 +37,10 @@ export function logError(error: unknown, context?: string): void {
 
   if (isAbortError(error)) return
 
+  const message = toErrorMessage(error)
   if (isDev) {
     console.group(`Error [${context || 'General'}]`)
+    console.error('Message:', message)
     console.error('Original Error:', error)
     console.trace('Stack Trace')
     console.groupEnd()

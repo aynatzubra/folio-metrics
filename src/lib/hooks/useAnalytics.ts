@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 
 import { fetchJson } from '@/lib/http/fetchJson'
-import { logError, toErrorMessage } from '@/lib/utils/error-handler'
+import { AnalyticsError, logError, toErrorMessage } from '@/lib/utils/error-handler'
 import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
-import { AsyncState } from '@/lib/http/fetchState'
 
 function isAbortError(error: unknown) {
   return (
@@ -12,61 +11,74 @@ function isAbortError(error: unknown) {
   )
 }
 
-export function useAnalytics(range: RangeOptionValue) {
-  const [daily, setDaily] = useState<AsyncState<DailyPoint[]>>({
-    data: null, isLoading: true, error: null,
-  })
-  const [sections, setSections] = useState<AsyncState<SectionPoint[]>>({
-    data: null, isLoading: true, error: null,
-  })
+type InitialAnalytics = {
+  initialRange: RangeOptionValue
+  initialDaily: DailyPoint[] | null
+  initialSections: SectionPoint[] | null
+}
+
+export function useAnalytics(range: RangeOptionValue, initial?: InitialAnalytics) {
+  const isInitialDataValid =
+    initial &&
+    range === initial.initialRange &&
+    initial.initialDaily !== null
+
+  //server and client see the same thing
+  const [data, setData] = useState<{
+    daily: DailyPoint[] | null
+    sections: SectionPoint[] | null
+  }> (() => ({
+    daily: isInitialDataValid ? initial.initialDaily : null,
+    sections: isInitialDataValid ? initial.initialSections : null,
+  }))
+
+  const [isLoading, setIsLoading] = useState(!isInitialDataValid)
+  const [uiError, setUiError] = useState<string | null>(null)
+  const [fatalError, setFatalError] = useState<Error | null>(null)
+
+  const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
+    if (range === initial?.initialRange && data.daily !== null) return
+
+    //bridge
+    if (fatalError) throw fatalError
+
     const controller = new AbortController()
 
-    setDaily(p => ({ ...p, isLoading: true, error: null }))
-    setSections(p => ({ ...p, isLoading: true, error: null }))
+    startTransition(async () => {
+      setIsLoading(true)
+      setUiError(null)
 
-    const loadData = async () => {
       try {
-        const [dailyRes, sectionsRes] = await Promise.allSettled([
+        const [dailyRes, sectionsRes] = await Promise.all([
           fetchJson<DailyPoint[]>(`/api/admin/stats/daily?days=${range}`, { signal: controller.signal }),
           fetchJson<SectionPoint[]>(`/api/admin/stats/sections?days=${range}`, { signal: controller.signal }),
         ])
 
-        if (controller.signal.aborted) return
-
-        if (dailyRes.status === 'fulfilled') {
-          setDaily({ data: dailyRes.value, isLoading: false, error: null })
-        } else {
-          if (isAbortError(dailyRes.reason)) return
-          logError(dailyRes.reason, 'Daily Chart')
-          setDaily({ data: null, isLoading: false, error: toErrorMessage(dailyRes.reason) })
-        }
-
-        if (sectionsRes.status === 'fulfilled') {
-          setSections({ data: sectionsRes.value, isLoading: false, error: null })
-        } else {
-          if (isAbortError(sectionsRes.reason)) return
-          logError(sectionsRes.reason, 'Sections Chart')
-          setSections({ data: null, isLoading: false, error: toErrorMessage(sectionsRes.reason) })
-        }
-
+        setData({ daily: dailyRes, sections: sectionsRes })
       } catch (e) {
-        if (controller.signal.aborted || isAbortError(e)) return
+        if (isAbortError(e)) return
+        logError(e, 'AnalyticsHook')
 
-        logError(e, 'General Analytics Hook')
-
-        const errorMessage = toErrorMessage(e)
-        setDaily((p) => ({ ...p, isLoading: false, error: p.error ?? errorMessage }))
-        setSections((p) => ({ ...p, isLoading: false, error: p.error ?? errorMessage }))
+        if (e instanceof AnalyticsError && e.status === 401) {
+          setFatalError(e)
+        } else {
+          setUiError(toErrorMessage(e))
+          setData({ daily: null, sections: null })
+        }
+      } finally {
+        setIsLoading(false)
       }
-    }
+    })
 
-    loadData()
     return () => controller.abort()
   }, [range])
 
-  const hasAnyError = !!(daily.error || sections.error)
-
-  return { daily, sections, hasAnyError }
+  return {
+    daily: data.daily,
+    sections: data.sections,
+    isLoading: isLoading || isPending,
+    error: uiError,
+  }
 }

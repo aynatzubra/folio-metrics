@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react'
-import ReactECharts from 'echarts-for-react'
+import React, { useMemo } from 'react'
+import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import DataPlaceholder from '@/components/admin/DataPlaceholder'
+import echarts from '@/lib/echarts-setup'
 
 import type { EChartsOption } from 'echarts'
 import type { SectionPoint } from '@/lib/analytics/types'
@@ -15,41 +16,45 @@ type SectionsChartProps = {
   range: 7 | 14 | 30
 }
 
+const getOption = (categories: string[], values: number[]): EChartsOption => ({
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: {c} visits',
+  },
+  grid: {
+    left: '8%',
+    right: '4%',
+    bottom: '5%',
+    top: '12%',
+    containLabel: true,
+  },
+  xAxis: {
+    type: 'value',
+    name: 'Visits',
+    minInterval: 1,
+  },
+  yAxis: {
+    type: 'category',
+    data: categories,
+  },
+  series: [
+    {
+      type: 'bar',
+      data: values,
+      barMaxWidth: 24,
+    },
+  ],
+})
+
 export default function SectionsChart({ data, isLoading, error, range }: SectionsChartProps) {
   const hasData = data && data.length > 0
 
-  const categories = hasData ? data.map((item) => item.sectionId || 'unknown') : []
-  const values = hasData ? data.map((item) => item.count) : []
+  const option = useMemo(() => {
+    const categories = hasData ? data.map((item) => item.sectionId || 'unknown') : []
+    const values = hasData ? data.map((item) => item.count) : []
 
-  const option: EChartsOption = {
-    tooltip: {
-      trigger: 'item',
-      formatter: '{b}: {c} visits',
-    },
-    grid: {
-      left: '8%',
-      right: '4%',
-      bottom: '5%',
-      top: '12%',
-      containLabel: true,
-    },
-    xAxis: {
-      type: 'value',
-      name: 'Visits',
-      minInterval: 1,
-    },
-    yAxis: {
-      type: 'category',
-      data: categories,
-    },
-    series: [
-      {
-        type: 'bar',
-        data: values,
-        barMaxWidth: 24,
-      },
-    ],
-  }
+    return getOption(categories, values)
+  }, [data])
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
@@ -76,7 +81,9 @@ export default function SectionsChart({ data, isLoading, error, range }: Section
       )}
 
       {!isLoading && !error && hasData && (
-        <ReactECharts option={option} style={{ height: 280 }} />
+        <ReactEChartsCore
+          echarts={echarts} option={option}
+          style={{ height: 280 }} />
       )}
     </div>
   )

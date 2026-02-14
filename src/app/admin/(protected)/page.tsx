@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 
 import SummaryCards from '@/components/admin/SummaryCards'
 import VisitsTableWrapper from '@/components/admin/VisitsTableWrapper'
-import { TableSkeleton } from '@/components/admin/Skeletons'
-import AnalyticsChartsLoader from '@/components/admin/AnalyticsChartsLoader'
+import { ChartSkeleton, TableSkeleton } from '@/components/admin/DashboardSkeletons'
+import AnalyticsChartsWrapper from '@/components/admin/AnalyticsChartsWrapper'
 
 export default async function AdminDashboardPage() {
   return (
@@ -18,7 +18,9 @@ export default async function AdminDashboardPage() {
         <SummaryCards />
       </Suspense>
 
-      <AnalyticsChartsLoader />
+      <Suspense fallback={<ChartSkeleton />}>
+        <AnalyticsChartsWrapper />
+      </Suspense>
 
       <Suspense fallback={<TableSkeleton />}>
         <VisitsTableWrapper />

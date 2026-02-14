@@ -1,6 +1,6 @@
 export function ChartSkeleton() {
   return (
-    <section className="mt-8 rounded-lg bg-white p-4 shadow">
+    <section className="mt-8">
       {/*Section title*/}
       <div className="mb-4 h-5 w-40 rounded bg-slate-200 animate-pulse" />
 

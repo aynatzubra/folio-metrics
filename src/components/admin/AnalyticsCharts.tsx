@@ -6,13 +6,22 @@ import clsx from 'clsx'
 import DailyVisitsChart from '@/components/admin/DailyVisitsChart'
 import SectionsChart from '@/components/admin/SectionsChart'
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
-import { RangeOptionValue } from '@/lib/analytics/types'
+import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
 import { ANALYTICS_RANGE_OPTIONS } from '@/lib/constants/analytics'
-import DataPlaceholder from '@/components/admin/DataPlaceholder'
 
-export default function AnalyticsCharts() {
+type Props = {
+  initialRange: RangeOptionValue
+  initialDaily: DailyPoint[] | null
+  initialSections: SectionPoint[] | null
+}
+
+export default function AnalyticsCharts({ initialRange, initialDaily, initialSections }: Props) {
   const [range, setRange] = useState<RangeOptionValue>(30)
-  const { daily, sections, hasAnyError } = useAnalytics(range)
+  const { daily, sections, isLoading, error } = useAnalytics(range, {
+    initialRange,
+    initialDaily,
+    initialSections,
+  })
 
   return (
     <section className="mt-8">
@@ -40,27 +49,17 @@ export default function AnalyticsCharts() {
         </div>
       </div>
 
-      {
-        hasAnyError && (
-          <DataPlaceholder
-            type="error"
-            message="Failed to load analytics data."
-            className="mb-4 rounded-md border border-red-200 bg-red-50"
-          />
-        )
-      }
-
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <DailyVisitsChart
-          data={daily.data ?? []}
-          isLoading={daily.isLoading}
-          error={daily.error}
+          data={daily || []}
+          isLoading={isLoading}
+          error={error}
           range={range}
         />
         <SectionsChart
-          data={sections.data ?? []}
-          isLoading={sections.isLoading}
-          error={sections.error}
+          data={sections || []}
+          isLoading={isLoading}
+          error={error}
           range={range}
         />
       </div>
