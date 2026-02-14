@@ -7,10 +7,13 @@ type CacheEntry<T> = {
   expiresAt: number
 }
 
-const cache = new Map<string, CacheEntry<unknown>>()
+type AnalyticsCacheValue = SummaryStats | DailyPoint[] | SectionPoint[]
+
+const cache = new Map<string, CacheEntry<AnalyticsCacheValue>>()
+
 const DAY_MS = 24 * 60 * 60 * 1000
 
-async function withCache<T>(
+async function withCache<T extends AnalyticsCacheValue>(
   key: string,
   ttlMs: number,
   loader: () => Promise<T>,
@@ -64,21 +67,20 @@ async function getLastVisitsInternal(limit = 50) {
 async function getDailyVisitsInternal(days = 7): Promise<DailyPoint[]> {
   const since = new Date(Date.now() - days * DAY_MS)
 
-  const visits = await prisma.visit.findMany({
-    where: { createdAt: { gte: since } },
-    select: { createdAt: true },
-  })
+  const stats = await prisma.$queryRaw<Array<{ day: Date; count: bigint }>>`
+    SELECT
+      DATE_TRUNC('day', "createdAt") AS day,
+      CAST(COUNT(*) AS INTEGER) AS count
+    FROM "Visit"
+    WHERE "createdAt" >= ${since}
+    GROUP BY day
+    ORDER BY day ASC;
+  `
 
-  const buckets = new Map<string, number>()
-
-  for (const visit of visits) {
-    const day = visit.createdAt.toISOString().slice(0, 10)
-    buckets.set(day, (buckets.get(day) ?? 0) + 1)
-  }
-
-  return Array.from(buckets.entries())
-    .map(([day, count]) => ({ day, count }))
-    .sort((a, b) => a.day.localeCompare(b.day))
+  return stats.map(row => ({
+    day: row.day.toISOString().slice(0, 10),
+    count: Number(row.count),
+  }))
 }
 
 async function getTopSectionsInternal(days = 7): Promise<SectionPoint[]> {
