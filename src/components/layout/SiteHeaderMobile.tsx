@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
+import { BurgerButton } from '@/shared/ui/BurgerButton'
 
 type Props = {
   containerClass: string
@@ -21,26 +22,13 @@ export default function SiteHeaderMobile({ containerClass, title, openMenuLabel,
 
       <div className="flex items-center gap-2">
         <LocaleSwitcher />
-        <button
+        <BurgerButton
+          isOpen={isMenuOpen}
           onClick={onOpenMenu}
-          className="p-2 text-accent"
-          aria-label={openMenuLabel}
-          aria-controls="site-mobile-menu"
-          aria-expanded={isMenuOpen}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="h-9 w-9"
-          >
-            <path
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+          ariaLabel={openMenuLabel}
+          ariaControls="site-mobile-menu"
+        />
+
       </div>
     </div>
   )

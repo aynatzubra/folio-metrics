@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
 import SiteMobileMenu from '@/components/layout/SiteMobileMenu'
@@ -11,33 +9,17 @@ import { HEADER_CONTACTS, NAV_LINKS } from '@/data/navigation'
 import { CONTACT_ICONS } from '@/components/common/contactIcons'
 import { useNavActiveByClick } from '@/lib/hooks/useClearOnUserScrollIntent'
 import SiteHeaderMobile from '@/components/layout/SiteHeaderMobile'
+import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
 
 export default function SiteHeader() {
   const t = useTranslations('Header')
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const { isOpen, close, open } = useMobileMenu()
 
   const { activeHref, setActiveHref, isScrolled } = useNavActiveByClick({
     scrolledY: 70,
     topResetY: 2,
   })
-
-  useEffect(() => {
-    if (window.location.hash) setActiveHref(window.location.hash)
-  }, [setActiveHref])
-
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [pathname, searchParams])
-
-  useEffect(() => {
-    const onHashChange = () => setIsMenuOpen(false)
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
-  }, [])
 
   const container = 'mx-auto max-w-[1470px] px-6 lg:px-10'
 
@@ -126,13 +108,13 @@ export default function SiteHeader() {
         <SiteHeaderMobile
           containerClass={container}
           title={t('title')}
-          isMenuOpen={isMenuOpen}
+          isMenuOpen={isOpen}
           openMenuLabel={t('openMenu')}
-          onOpenMenu={() => setIsMenuOpen(true)}
+          onOpenMenu={open}
         />
       </header>
 
-      <SiteMobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <SiteMobileMenu isOpen={isOpen} onClose={close} />
     </>
   )
 }

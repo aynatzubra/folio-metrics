@@ -1,15 +1,14 @@
 'use client'
 
-import { Fragment, useState } from 'react'
-import { faLinkedinIn, faTelegramPlane, faYandex } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Menu, MenuItem, Transition, MenuItems, MenuButton } from '@headlessui/react'
-import { Tooltip } from 'react-tooltip'
-import Image from 'next/image'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
+import { SocialLinks } from '@/components/admin/SocialLinks'
+import { UserMenu } from '@/components/admin/UserMenu'
+import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
 import AdminMobileMenu from '@/components/admin/AdminMobileMenu'
+import AdminHeaderMobile from '@/components/admin/AdminHeaderMobile'
+import { Badge } from '@/shared/ui/Badge'
 
 import myAdminAva from '../../../public/assets/images/avatar.png'
 
@@ -18,13 +17,7 @@ type AdminHeaderProps = {
 }
 
 export default function AdminHeader({ isDemo }: AdminHeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const menuButton =
-    'flex items-center justify-center p-1 rounded-full ' +
-    'bg-brand ring-2 ring-accent ' +
-    'transition hover:ring-[#F67769] ' +
-    'focus:outline-none'
+  const { isOpen, close, open } = useMobileMenu()
 
   return (
     <>
@@ -33,12 +26,10 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
           {/*DESKTOP VERSION*/}
           <div className="hidden md:flex w-full items-center justify-between">
             {/*Left block*/}
-            <Link href="/">
-              <h2
-                className="header-title"
-              >
-                arbuz
-              </h2>
+            <Link href="/" className="transition-opacity hover:opacity-70">
+        <span className="header-title">
+          arbuz
+        </span>
             </Link>
 
             {/*Right Block*/}
@@ -47,135 +38,36 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
               <div className="flex items-center gap-3 mx-[40px]">
                 <span className="text-lg font-semibold text-white">Folio-Metrics Admin</span>
                 {isDemo && (
-                  <span
-                    className="rounded-full border-2 border-accent px-3 py-2 text-xs font-medium text-accent">
-            Demo
-          </span>
+                  <Badge>
+                    Demo
+                  </Badge>
                 )}
               </div>
 
               {/*Socials Buttons*/}
-              <div className="flex items-center gap-3 sm:gap-4">
-                <a
-                  href="https://t.me/tanya_arbuz"
-                  target="_blank"
-                  className="text-accent hover:text-[#F67769] transition-colors">
-                  <FontAwesomeIcon icon={faTelegramPlane} size="2x" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/tatiana-arbuz-7756743a6"
-                  target="_blank"
-                  className="text-accent hover:text-[#F67769] transition-colors"
-                >
-                  <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
-                </a>
-              </div>
+              <SocialLinks className="flex items-center gap-3 sm:gap-4" />
 
               {/* Avatar Dropdown */}
-              <Menu as="div" className="relative">
-                <MenuButton
-                  data-tooltip-id="avatar-tooltip"
-                  className={menuButton}
-                >
-                  <Image
-                    src={myAdminAva} alt="User Avatar"
-                    width={35} height={35}
-                    className="rounded-full" />
-                </MenuButton>
-
-                {/* Tooltip */}
-                <Tooltip id="avatar-tooltip" place="bottom">
-                  Settings
-                </Tooltip>
-
-                {/* Dropdown items */}
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <MenuItems
-                    className="absolute right-0 mt-2 w-44 origin-top-right rounded-md
-                           bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-                  >
-                    <div className="py-1">
-                      <MenuItem>
-                        {() => (
-                          <span className="block px-4 py-2 text-sm text-gray-400 cursor-not-allowed">Profile</span>
-                        )}
-                      </MenuItem>
-                      <div className="border-t border-gray-200 my-1" />
-                      <MenuItem>
-                        {({ active }) => (
-                          <button
-                            className={`${
-                              active ? 'bg-red-100 text-red-600' : 'text-red-500'
-                            } block w-full px-4 py-2 text-sm text-left`}
-                            onClick={() => signOut({ callbackUrl: '/' })} // Logout and redirect to main
-                          >
-                            Logout
-                          </button>
-                        )}
-                      </MenuItem>
-                    </div>
-                  </MenuItems>
-                </Transition>
-              </Menu>
-            </div>
+              <UserMenu avatar={myAdminAva} onLogout={() => signOut({ callbackUrl: '/' })} />            </div>
           </div>
 
           {/*MOBILE VERSION*/}
-          <div className="flex w-full items-center justify-between md:hidden">
-            <Link href="/" className="flex items-end gap-2">
-              <div className="flex flex-col">
-                <span className="text-lg font-bold uppercase tracking-wide text-[#F67769]">
-                  Arbuz·Tanya
-                </span>
-                <span className="text-[11px] font-medium text-gray-600">
-                  Folio-Metrics Admin
-                </span>
-              </div>
-              {isDemo && (
-                <span
-                  className="ml-1 rounded-full bg-[#F67769] px-2 py-0.5 text-[10px] font-semibold uppercase text-white">
-                  Demo
-                </span>
-              )}
-            </Link>
-
-            {/*Burger*/}
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="p-2 text-gray-800 transition hover:text-black focus:outline-none"
-              aria-label="Open menu"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-8 h-8"
-              >
-                <path
-                  strokeLinecap="round" strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
-          </div>
+          <AdminHeaderMobile
+            isDemo={isDemo}
+            isMenuOpen={isOpen}
+            onOpenMenu={open}
+            openMenuLabel={'Open menu'}
+          />
         </div>
       </header>
+
       <AdminMobileMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        socials={{ faYandex, faLinkedinIn, faTelegramPlane }}
-        user={{ name: 'Demo Samurai', avatar: myAdminAva }}
+        isOpen={isOpen}
+        onClose={close}
         onLogout={() => signOut({ callbackUrl: '/' })}
+        user={{ name: 'Admin', avatar: myAdminAva }}
       />
     </>
   )
 }
+
