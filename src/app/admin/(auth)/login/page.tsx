@@ -10,12 +10,14 @@ function getQueryString(
   return typeof value === 'string' ? value : undefined
 }
 
-export default function LoginPage({ searchParams }: PageProps) {
+export default async function LoginPage({ searchParams }: PageProps) {
+  const searchPar = await searchParams
   const reason = getQueryString(searchParams?.reason)
+
   const message =
     reason === 'auth' ? 'Please sign in to access the admin panel.' : undefined
 
-  const demo = getQueryString(searchParams?.demo) === '1'
+  const demo = getQueryString(searchPar?.demo) === '1'
 
   const demoEmail = process.env.SECRET_DEMO_USER
   const demoPassword = process.env.SECRET_DEMO_PASSWORD

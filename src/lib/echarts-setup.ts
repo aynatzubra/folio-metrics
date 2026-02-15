@@ -7,8 +7,10 @@ import {
   TransformComponent,
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
+import { LegacyGridContainLabel } from 'echarts/features'
 
 echarts.use([
+  LegacyGridContainLabel,
   TooltipComponent,
   GridComponent,
   DatasetComponent,
