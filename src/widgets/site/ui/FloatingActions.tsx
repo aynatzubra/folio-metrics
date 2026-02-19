@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react'
 
 import { HEADER_CONTACTS } from '@/data/navigation'
-import { CONTACT_ICONS } from '@/components/common/contactIcons'
+import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 
 type Props = {
   showAfterY?: number
 }
 
-export default function FloatingActions({ showAfterY = 400 }: Props) {
+export function FloatingActions({ showAfterY = 400 }: Props) {
 
   const [isVisible, setIsVisible] = useState(false)
 

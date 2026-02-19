@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { NAV_LINKS } from '@/data/navigation'
-import ContactInfo from '@/components/common/ContactInfo'
+import { ContactInfo } from '@/widgets/site/contact'
 
 type SiteMobileMenuProps = {
   onClose: () => void

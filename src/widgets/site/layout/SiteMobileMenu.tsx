@@ -1,7 +1,8 @@
 'use client'
 
-import MobileMenuShell from '@/components/common/MobileMenuShell'
-import { SaitMenuContent } from '@/widgets/site/layout/SaitMenuContent'
+import { MobileMenuShell } from '@/shared/ui'
+
+import { SaitMenuContent } from './SaitMenuContent'
 
 type SiteMobileMenuProps = {
   isOpen: boolean

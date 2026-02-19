@@ -3,13 +3,15 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-import LocaleSwitcher from '@/components/features/LocaleSwitcher'
 import { HEADER_CONTACTS, NAV_LINKS } from '@/data/navigation'
-import { CONTACT_ICONS } from '@/components/common/contactIcons'
-import { useNavActiveByClick } from '@/lib/hooks/useClearOnUserScrollIntent'
-import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
-import { SiteHeaderMobile } from '@/widgets/site/layout/SiteHeaderMobile'
-import { SiteMobileMenu } from '@/widgets/site/layout/SiteMobileMenu'
+import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
+import { useNavActiveByClick } from '@/widgets/site/model/useNavActiveByClick'
+import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
+import { LocaleSwitcher } from '@/features/locale-switcher'
+
+import { SiteHeaderMobile } from './SiteHeaderMobile'
+import { SiteMobileMenu } from './SiteMobileMenu'
+
 
 export function SiteHeader() {
   const t = useTranslations('Header')

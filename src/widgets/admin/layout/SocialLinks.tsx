@@ -1,5 +1,5 @@
 import { HEADER_CONTACTS } from '@/data/navigation'
-import { CONTACT_ICONS } from '@/components/common/contactIcons'
+import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 
 interface SocialLinksProps {
   variant?: 'icons' | 'buttons'

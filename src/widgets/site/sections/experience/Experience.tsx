@@ -2,10 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 
-import SectionHeader from '@/components/common/SectionHeader'
-import { ExperienceItem } from '@/components/ui/ExperienceItem'
+import SectionHeader from '@/widgets/site/sections/SectionHeader'
 import { experienceData } from '@/data/experienceData'
-import { SplitSection } from '@/widgets/site/layout'
+import { SplitSection } from '@/widgets/site/ui'
+
+import { ExperienceItem } from './ExperienceItem'
 
 export function Experience() {
   const t = useTranslations('Experience')

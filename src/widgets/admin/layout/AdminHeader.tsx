@@ -4,7 +4,7 @@ import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
 import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
-import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
+import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { Badge } from '@/shared/ui/Badge'
 import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout/index'
 

@@ -1,6 +1,7 @@
 export { TechnicalSkills } from './TechnicalSkills'
-export { Experience } from './Experience'
+export { Experience } from './experience/Experience'
 export { Education } from './Education'
 export { Additional } from './Additional'
 export { Hero } from './Hero'
 export { Intro } from './Intro'
+export { SectionHeader } from './SectionHeader'

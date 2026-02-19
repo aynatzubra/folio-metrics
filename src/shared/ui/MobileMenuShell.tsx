@@ -10,7 +10,7 @@ interface ShellProps {
   panelClass?: string
 }
 
-export default function MobileMenuShell({ isOpen, onClose, children, panelClass = '' }: ShellProps) {
+export function MobileMenuShell({ isOpen, onClose, children, panelClass = '' }: ShellProps) {
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog onClose={onClose} className="relative z-[100]">

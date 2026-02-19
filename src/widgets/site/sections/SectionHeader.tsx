@@ -6,7 +6,7 @@ type SectionHeaderProps = {
   className?: string
 }
 
-const SectionHeader = ({ title, subtitle, className }: SectionHeaderProps) => {
+export const SectionHeader = ({ title, subtitle, className }: SectionHeaderProps) => {
   return (
     <div
       className={clsx(

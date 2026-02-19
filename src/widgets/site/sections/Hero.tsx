@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-import ContactInfo from '@/components/common/ContactInfo'
 
+import { ContactInfo } from '../contact'
 import myAva from '../../../../public/assets/images/0my_ava.png'
 
 export function Hero() {

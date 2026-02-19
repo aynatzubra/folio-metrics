@@ -9,7 +9,7 @@ interface LocaleSwitcherProps {
   isScrolled?: boolean
 }
 
-export default function LocaleSwitcher({ isScrolled }: LocaleSwitcherProps) {
+export function LocaleSwitcher({ isScrolled }: LocaleSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
   const currentLocale = useLocale()

@@ -1,9 +1,8 @@
 import dynamic from 'next/dynamic'
 
-import PageObserver from '@/components/common/PageObserver'
-import FloatingActions from '@/components/common/FloatingActions'
 import { SiteHeader } from '@/widgets/site/layout'
 import { Hero, Intro } from '@/widgets/site/sections'
+import { FloatingActions, PageObserver } from '@/widgets/site/ui'
 
 const TechnicalSkills = dynamic(
   () => import('@/widgets/site/sections').then((m) => m.TechnicalSkills),

@@ -12,7 +12,7 @@ type ContactActionsProps = {
   className?: string
 }
 
-export default function ContactInfo({
+export function ContactInfo({
                                       variant = 'hero',
                                       className = '',
                                     }: ContactActionsProps) {
