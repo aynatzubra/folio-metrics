@@ -11,7 +11,7 @@ type SiteMobileMenuProps = {
   onClose: () => void
 }
 
-export default function SiteMenuContent({ onClose }: SiteMobileMenuProps) {
+export function SaitMenuContent({ onClose }: SiteMobileMenuProps) {
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
 

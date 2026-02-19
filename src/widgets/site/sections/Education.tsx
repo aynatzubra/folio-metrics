@@ -3,20 +3,18 @@
 import { useTranslations } from 'next-intl'
 
 import SectionHeader from '@/components/common/SectionHeader'
-import { ExperienceItem } from '@/components/ui/ExperienceItem'
-import { experienceData } from '@/data/experienceData'
-import SplitSection from '@/components/layout/SplitSection'
+import { SplitSection } from '@/widgets/site/layout'
 
-export default function Experience() {
-  const t = useTranslations('Experience')
+export function Education() {
+  const t = useTranslations('Education')
 
   return (
     <SplitSection
       className="text-gray-700"
       maxW={1276}
       leftPercent={30}
-      leftBg="#F0F2F0"
-      rightBg="#F8F8F8"
+      leftBg="#F5F6F4"
+      rightBg="#fff9f5"
       mobileBgClass="bg-gray-50"
       left={
         <div className="w-full lg:flex-[0_0_30%]">
@@ -32,11 +30,18 @@ export default function Experience() {
             lg:pt-5
           "
         >
-          <div className="flex flex-col">
-            {experienceData.map((job) => (
-              <ExperienceItem key={`${job.company}-${job.period}`} job={job} />
-            ))}
-          </div>
+          <article className="max-w-3xl">
+            {/* Accent label */}
+            <h3 className="text-base font-semibold uppercase tracking-widest text-accent">
+              {t('educ')}
+            </h3>
+
+            {/* Title */}
+            <h4 className="mt-3 text-sm leading-relaxed text-gray-800">
+              {t('pathTitle')}
+            </h4>
+
+          </article>
         </div>
       }
     />

@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 import ContactInfo from '@/components/common/ContactInfo'
 
-import myAva from '../../../public/assets/images/0my_ava.png'
+import myAva from '../../../../public/assets/images/0my_ava.png'
 
-export default function Hero() {
+export function Hero() {
   const t = useTranslations('Hero')
 
   const heroBlockClass =

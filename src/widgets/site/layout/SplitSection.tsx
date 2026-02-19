@@ -23,7 +23,7 @@ function roundPx(n: number) {
   return Math.round(n)
 }
 
-export default function SplitSection({
+export function SplitSection({
                                        maxW = CONTAINER_MAX_W,
                                        leftPercent = LEFT_COL_PERCENT,
                                        leftBg,

@@ -8,12 +8,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-import SplitSection from '@/components/layout/SplitSection'
 import SectionHeader from '@/components/common/SectionHeader'
+import { SplitSection } from '@/widgets/site/layout'
 
 const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5'] as const
 
-export default function Additional() {
+export function Additional() {
   const t = useTranslations('Additional')
 
   const highlight = (chunks: React.ReactNode) => (

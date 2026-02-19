@@ -4,14 +4,14 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 import LocaleSwitcher from '@/components/features/LocaleSwitcher'
-import SiteMobileMenu from '@/components/layout/SiteMobileMenu'
 import { HEADER_CONTACTS, NAV_LINKS } from '@/data/navigation'
 import { CONTACT_ICONS } from '@/components/common/contactIcons'
 import { useNavActiveByClick } from '@/lib/hooks/useClearOnUserScrollIntent'
-import SiteHeaderMobile from '@/components/layout/SiteHeaderMobile'
 import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
+import { SiteHeaderMobile } from '@/widgets/site/layout/SiteHeaderMobile'
+import { SiteMobileMenu } from '@/widgets/site/layout/SiteMobileMenu'
 
-export default function SiteHeader() {
+export function SiteHeader() {
   const t = useTranslations('Header')
 
   const { isOpen, close, open } = useMobileMenu()
@@ -43,7 +43,7 @@ export default function SiteHeader() {
         {/* DESKTOP VERSION */}
         <div className={`${container} hidden md:flex h-[70px] items-center justify-between gap-6`}>
           <div className="shrink-0">
-            <Link href="/" className="transition-opacity hover:opacity-60">
+            <Link href="/public" className="transition-opacity hover:opacity-60">
               <h2 className="header-title">{t('title')}</h2>
             </Link>
           </div>

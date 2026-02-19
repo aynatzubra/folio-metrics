@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import SectionHeader from '@/components/common/SectionHeader'
-import SplitSection from '@/components/layout/SplitSection'
+import { SplitSection } from '@/widgets/site/layout'
 
 import type { ReactNode } from 'react'
 
-export default function Intro() {
+export function Intro() {
   const t = useTranslations('AboutMe')
 
   const priorities = [

@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import ContactInfo from '@/components/common/ContactInfo'
 
-export default function SiteFooter() {
+export function SiteFooter() {
   const t = useTranslations('Footer')
 
   return (

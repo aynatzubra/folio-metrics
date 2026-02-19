@@ -11,10 +11,10 @@ type Props = {
   openMenuLabel: string
 }
 
-export default function SiteHeaderMobile({ containerClass, title, openMenuLabel, isMenuOpen, onOpenMenu }: Props) {
+export function SiteHeaderMobile({ containerClass, title, openMenuLabel, isMenuOpen, onOpenMenu }: Props) {
   return (
     <div className={`${containerClass} flex h-[70px] items-center justify-between md:hidden`}>
-      <Link href="/" className="transition-opacity hover:opacity-70">
+      <Link href="/public" className="transition-opacity hover:opacity-70">
         <span className="header-title">
           {title}
         </span>

@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import SectionHeader from '@/components/common/SectionHeader'
 import { skillsData } from '@/data/skillsData'
-import SplitSection from '@/components/layout/SplitSection'
 import { SkillCategory } from '@/lib/resume/types'
+import { SplitSection } from '@/widgets/site/layout'
 
 function splitInHalf<T>(arr: T[]) {
   const mid = Math.ceil(arr.length / 2)
@@ -43,7 +43,7 @@ function SkillsColumn({
   )
 }
 
-export default function TechnicalSkills() {
+export function TechnicalSkills() {
   const t = useTranslations('TechnicalSkills')
 
   const [leftCategories, rightCategories] = splitInHalf(skillsData)

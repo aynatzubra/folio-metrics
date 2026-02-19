@@ -1,16 +1,29 @@
 import dynamic from 'next/dynamic'
 
-import SiteHeader from '@/components/layout/SiteHeader'
-import Hero from '@/components/sections/Hero'
-import Intro from '@/components/sections/Intro'
 import PageObserver from '@/components/common/PageObserver'
 import FloatingActions from '@/components/common/FloatingActions'
+import { SiteHeader } from '@/widgets/site/layout'
+import { Hero, Intro } from '@/widgets/site/sections'
 
-const TechnicalSkills = dynamic(() => import('@/components/sections/TechnicalSkills'))
-const Experience = dynamic(() => import('@/components/sections/Experience'))
-const Education = dynamic(() => import('@/components/sections/Education'))
-const Additional = dynamic(() => import('@/components/sections/Additional'))
-const Footer = dynamic(() => import('@/components/layout/SiteFooter'))
+const TechnicalSkills = dynamic(
+  () => import('@/widgets/site/sections').then((m) => m.TechnicalSkills),
+)
+
+const Experience = dynamic(
+  () => import('@/widgets/site/sections').then((m) => m.Experience),
+)
+
+const Education = dynamic(
+  () => import('@/widgets/site/sections').then((m) => m.Education),
+)
+
+const Additional = dynamic(
+  () => import('@/widgets/site/sections').then((m) => m.Additional),
+)
+
+const Footer = dynamic(
+  () => import('@/widgets/site/layout').then((m) => m.SiteFooter),
+)
 
 export default function LandingPage() {
   return (

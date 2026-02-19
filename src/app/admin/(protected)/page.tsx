@@ -1,9 +1,9 @@
 import { Suspense } from 'react'
 
-import SummaryCards from '@/widgets/admin/dashboard/SummaryCards'
-import VisitsTableWrapper from '@/widgets/admin/visits-table/VisitsTableWrapper'
 import { ChartSkeleton, TableSkeleton } from '@/widgets/admin/dashboard/DashboardSkeletons'
-import AnalyticsChartsWrapper from '@/widgets/admin/analytics/AnalyticsChartsWrapper'
+import { AnalyticsChartsWrapper } from '@/widgets/admin/analytics'
+import { SummaryCards } from '@/widgets/admin/dashboard'
+import { VisitsTableWrapper } from '@/widgets/admin/visits-table'
 
 export default async function AdminDashboardPage() {
   return (
