@@ -8,7 +8,7 @@ type Props = {
   onRetry?: () => void
 }
 
-export default function DataPlaceholder({ type, message, className, onRetry }: Props) {
+export function DataPlaceholder({ type, message, className, onRetry }: Props) {
   const isError = type === 'error'
 
   return (

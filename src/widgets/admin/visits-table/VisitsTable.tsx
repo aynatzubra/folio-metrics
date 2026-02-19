@@ -3,15 +3,15 @@
 import { Visit } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 
-import TablePagination from '@/components/admin/TablePagination'
 import { formatDateTime, formatDuration } from '@/lib/utils/format'
+import { TablePagination } from '@/widgets/admin/visits-table/TablePagination'
 
 type VisitsTableProps = {
   visits: Visit[]
   pageSize?: number
 }
 
-export default function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
+export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
   const [page, setPage] = useState(1)
 
   const total = visits.length

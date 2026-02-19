@@ -3,20 +3,18 @@
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 
-import { SocialLinks } from '@/components/admin/SocialLinks'
-import { UserMenu } from '@/components/admin/UserMenu'
+import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
 import { useMobileMenu } from '@/lib/hooks/useMobileMenu'
-import AdminMobileMenu from '@/components/admin/AdminMobileMenu'
-import AdminHeaderMobile from '@/components/admin/AdminHeaderMobile'
 import { Badge } from '@/shared/ui/Badge'
+import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout/index'
 
-import myAdminAva from '../../../public/assets/images/avatar.png'
+import myAdminAva from '../../../../public/assets/images/avatar.png'
 
 type AdminHeaderProps = {
   isDemo?: boolean
 }
 
-export default function AdminHeader({ isDemo }: AdminHeaderProps) {
+export function AdminHeader({ isDemo }: AdminHeaderProps) {
   const { isOpen, close, open } = useMobileMenu()
 
   return (
@@ -26,7 +24,7 @@ export default function AdminHeader({ isDemo }: AdminHeaderProps) {
           {/*DESKTOP VERSION*/}
           <div className="hidden md:flex w-full items-center justify-between">
             {/*Left block*/}
-            <Link href="/" className="transition-opacity hover:opacity-70">
+            <Link href="/public" className="transition-opacity hover:opacity-70">
         <span className="header-title">
           arbuz
         </span>

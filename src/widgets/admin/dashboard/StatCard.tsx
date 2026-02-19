@@ -8,7 +8,7 @@ const cardClass =
   'transition-all duration-300 ease-in-out ' +
   'hover:-translate-y-[0.3rem] hover:shadow-[0_5px_10px_rgba(30,32,37,.12)]'
 
-export default function StatCard({ title, value }: StatCardProps) {
+export function StatCard({ title, value }: StatCardProps) {
   return (
     <div className={cardClass}>
       <h3 className="text-sm font-medium text-gray-500">{title}</h3>

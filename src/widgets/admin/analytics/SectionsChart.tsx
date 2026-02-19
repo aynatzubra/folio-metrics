@@ -3,8 +3,8 @@
 import React, { useMemo } from 'react'
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 
-import DataPlaceholder from '@/components/admin/DataPlaceholder'
 import echarts from '@/lib/echarts-setup'
+import { DataPlaceholder } from '@/widgets/admin/dashboard'
 
 import type { EChartsOption } from 'echarts'
 import type { SectionPoint } from '@/lib/analytics/types'
@@ -46,7 +46,7 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
   ],
 })
 
-export default function SectionsChart({ data, isLoading, error, range }: SectionsChartProps) {
+export function SectionsChart({ data, isLoading, error, range }: SectionsChartProps) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {

@@ -1,7 +1,7 @@
 import { getAnalyticsSummary } from '@/lib/analytics/tracker'
-import StatCard from '@/components/admin/StatCard'
+import { StatCard } from '@/widgets/admin/dashboard/StatCard'
 
-export default async function SummaryCards() {
+export async function SummaryCards() {
   const { summary } = await getAnalyticsSummary()
 
   return (

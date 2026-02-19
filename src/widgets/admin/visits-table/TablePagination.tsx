@@ -7,7 +7,7 @@ type TablePaginationProps = {
   onPageChange: (page: number) => void
 }
 
-export default function TablePagination({ page, pageSize, total, onPageChange }: TablePaginationProps) {
+export function TablePagination({ page, pageSize, total, onPageChange }: TablePaginationProps) {
   if (total === 0) return null
 
   const totalPages = Math.max(1, Math.ceil(total / pageSize))

@@ -49,7 +49,7 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
     },
   ],
 })
-export default function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
+export function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {

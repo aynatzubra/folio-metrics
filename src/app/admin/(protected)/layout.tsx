@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
 
-import AdminHeader from '@/components/admin/AdminHeader'
+import AdminHeader from '@/widgets/admin/layout/AdminHeader'
 import { auth } from '@/auth'
 
 import type { ReactNode } from 'react'

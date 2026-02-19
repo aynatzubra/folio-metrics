@@ -12,10 +12,10 @@ type Props = {
   openMenuLabel: string
 }
 
-export default function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenu, openMenuLabel }: Props) {
+export function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenu, openMenuLabel }: Props) {
   return (
     <div className="flex w-full items-center justify-between md:hidden">
-      <Link href="/" className="transition-opacity hover:opacity-70">
+      <Link href="/public" className="transition-opacity hover:opacity-70">
         <span className="header-title text-white">arbuz</span>
       </Link>
 

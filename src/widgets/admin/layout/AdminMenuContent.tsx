@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from 'next/image'
 
-import { SocialLinks } from '@/components/admin/SocialLinks'
+import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
 
 type AdminMenuContentProps = {
   onClose: () => void
@@ -16,7 +16,7 @@ const logoutBtnClass =
   'border border-red-500/20 rounded-xl hover:bg-red-500/10 ' +
   'transition-all active:scale-95'
 
-export default function AdminMenuContent({ onClose, onLogout, user }: AdminMenuContentProps) {
+export function AdminMenuContent({ onClose, onLogout, user }: AdminMenuContentProps) {
   return (
     <div className="flex flex-col h-full min-h-[100dvh]">
       <div className="flex justify-end">
