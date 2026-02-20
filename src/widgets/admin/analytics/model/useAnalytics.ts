@@ -1,9 +1,10 @@
 import { useState, useEffect, useTransition } from 'react'
 
-import { fetchJson } from '@/lib/http/fetchJson'
-import { AnalyticsError, logError, toErrorMessage } from '@/lib/utils/error-handler'
+import { fetchJson } from '@/shared/api/fetchJson'
 import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
+import { logError, toErrorMessage } from '@/shared/lib/error'
+import { AnalyticsError } from '@/shared/api/HttpError'
 
 function isAbortError(error: unknown) {
   return (
@@ -28,7 +29,7 @@ export function useAnalytics(range: RangeOptionValue, initial?: InitialAnalytics
   const [data, setData] = useState<{
     daily: DailyPoint[] | null
     sections: SectionPoint[] | null
-  }> (() => ({
+  }>(() => ({
     daily: isInitialDataValid ? initial.initialDaily : null,
     sections: isInitialDataValid ? initial.initialSections : null,
   }))

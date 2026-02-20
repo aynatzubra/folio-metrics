@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react'
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 
-import echarts from '@/lib/echarts-setup'
+import echarts from '@/shared/lib/echarts/echarts-setup'
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { SectionPoint } from '@/entities/analytics'
 

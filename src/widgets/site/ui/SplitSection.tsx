@@ -1,6 +1,8 @@
 import clsx from 'clsx'
 
-import { CONTAINER_MAX_W, LEFT_COL_PERCENT, SECTION_Y_PADDING } from '@/lib/ui/tokens'
+export const SECTION_Y_PADDING = 'py-12 md:py-16 lg:py-20'
+export const CONTAINER_MAX_W = 1276
+export const LEFT_COL_PERCENT = 30
 
 import type { ReactNode } from 'react'
 

@@ -1,7 +1,8 @@
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
-import { ExperienceItemType } from '@/lib/resume/types'
+import type { ExperienceItemType } from './../model/types'
+
 
 type ExperienceItemProps = {
   job: ExperienceItemType

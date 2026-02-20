@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import clsx from 'clsx'
 
-import { useAnalytics } from '@/lib/hooks/useAnalytics'
+import { useAnalytics } from '@/widgets/admin/analytics/model/useAnalytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
 import { ANALYTICS_RANGE_OPTIONS, DailyVisitsChart, RangeOptionValue, SectionsChart } from '@/widgets/admin/analytics'
 

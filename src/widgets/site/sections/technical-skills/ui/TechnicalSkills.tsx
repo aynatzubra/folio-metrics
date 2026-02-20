@@ -3,10 +3,11 @@
 import { useTranslations } from 'next-intl'
 
 import { skillsData } from '@/widgets/site/sections/technical-skills/model/skills-data'
-import { SkillCategory } from '@/lib/resume/types'
 import { SplitSection } from '@/widgets/site/ui'
 
 import SectionHeader from '../../SectionHeader'
+
+import type { SkillCategory } from './../model/types'
 
 function splitInHalf<T>(arr: T[]) {
   const mid = Math.ceil(arr.length / 2)

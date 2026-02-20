@@ -1,4 +1,4 @@
-import { AnalyticsError } from '@/lib/utils/error-handler'
+import { AnalyticsError } from '@/shared/api/HttpError'
 
 export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init)

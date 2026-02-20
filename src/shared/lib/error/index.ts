@@ -1,13 +1,4 @@
-export class AnalyticsError extends Error {
-  constructor(
-    message: string,
-    public status?: number,
-    public detail?: string,
-  ) {
-    super(message)
-    this.name = 'AnalyticsError'
-  }
-}
+import { AnalyticsError } from '@/shared/api/HttpError'
 
 /**
  * Do not log AbortError
@@ -33,7 +24,7 @@ export function toErrorMessage(error: unknown): string {
  */
 export function logError(error: unknown, context?: string): void {
   const isDev = process.env.NODE_ENV === 'development'
-  if(!isDev) return
+  if (!isDev) return
 
   if (isAbortError(error)) return
 

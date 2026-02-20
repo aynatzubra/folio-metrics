@@ -1,4 +1,4 @@
-import { SkillCategory } from '@/lib/resume/types'
+import type { SkillCategory } from './../model/types'
 
 export const skillsData: SkillCategory[] = [
   {
