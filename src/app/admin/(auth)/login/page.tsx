@@ -1,4 +1,4 @@
-import LoginForm from './LoginForm'
+import { LoginForm } from '@/features/login-form'
 
 type PageProps = {
   searchParams?: Record<string, string | string[] | undefined>

@@ -11,7 +11,7 @@ type LoginFormProps = {
   demoEnabled?: boolean
 }
 
-export default function LoginForm({
+export function LoginForm({
                                     initialEmail = '',
                                     initialPassword = '',
                                     message,
