@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 
-import { CONTACT_LINKS } from '@/data/navigation'
+import { CONTACT_LINKS } from '@/entities/contact'
 
 type Variant = 'hero' | 'footer'
 

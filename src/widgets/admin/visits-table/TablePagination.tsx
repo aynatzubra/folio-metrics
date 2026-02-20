@@ -4,10 +4,10 @@ type TablePaginationProps = {
   page: number
   pageSize: number
   total: number
-  onPageChange: (page: number) => void
+  onPageChangeAction: (page: number) => void
 }
 
-export function TablePagination({ page, pageSize, total, onPageChange }: TablePaginationProps) {
+export function TablePagination({ page, pageSize, total, onPageChangeAction }: TablePaginationProps) {
   if (total === 0) return null
 
   const totalPages = Math.max(1, Math.ceil(total / pageSize))
@@ -19,7 +19,7 @@ export function TablePagination({ page, pageSize, total, onPageChange }: TablePa
 
   const goTo = (next: number) => {
     const clamped = Math.min(Math.max(1, next), totalPages)
-    if (clamped !== page) onPageChange(clamped)
+    if (clamped !== page) onPageChangeAction(clamped)
   }
 
   if (total === 0) return null

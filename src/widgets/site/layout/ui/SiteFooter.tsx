@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { ContactInfo } from '../contact'
+import { ContactInfo } from '../../contact'
 
 export function SiteFooter() {
   const t = useTranslations('Footer')

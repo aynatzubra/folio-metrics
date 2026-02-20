@@ -5,8 +5,8 @@ import Image, { StaticImageData } from 'next/image'
 import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
 
 type AdminMenuContentProps = {
-  onClose: () => void
-  onLogout: () => void
+  onCloseAction: () => void
+  onLogoutAction: () => void
   user: { name: string, avatar: StaticImageData | string }
 }
 
@@ -16,12 +16,12 @@ const logoutBtnClass =
   'border border-red-500/20 rounded-xl hover:bg-red-500/10 ' +
   'transition-all active:scale-95'
 
-export function AdminMenuContent({ onClose, onLogout, user }: AdminMenuContentProps) {
+export function AdminMenuContent({ onCloseAction, onLogoutAction, user }: AdminMenuContentProps) {
   return (
     <div className="flex flex-col h-full min-h-[100dvh]">
       <div className="flex justify-end">
         <button
-          onClick={onClose}
+          onClick={onCloseAction}
           className="p-2 text-gray-500 hover:text-white transition-colors focus:outline-none"
           aria-label="Close menu"
         >
@@ -72,7 +72,7 @@ export function AdminMenuContent({ onClose, onLogout, user }: AdminMenuContentPr
           </p>
         </div>
         <button
-          onClick={onLogout}
+          onClick={onLogoutAction}
           className={logoutBtnClass}
         >
           LOGOUT

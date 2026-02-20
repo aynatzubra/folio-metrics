@@ -1,5 +1,5 @@
-export { TechnicalSkills } from './TechnicalSkills'
-export { Experience } from './experience/Experience'
+export { TechnicalSkills } from './technical-skills/ui/TechnicalSkills'
+export { Experience } from './experience/ui/Experience'
 export { Education } from './Education'
 export { Additional } from './Additional'
 export { Hero } from './Hero'

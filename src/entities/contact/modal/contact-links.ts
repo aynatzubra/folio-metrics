@@ -1,16 +1,3 @@
-
-export type NavLink = {
-  href: string
-  labelKey: string
-}
-
-export const NAV_LINKS: NavLink[] = [
-  { href: '#intro', labelKey: 'nav.about' },
-  { href: '#skills', labelKey: 'nav.skills' },
-  { href: '#experience', labelKey: 'nav.experience' },
-  { href: '#adds', labelKey: 'nav.projects' },
-]
-
 export type ContactIcon = 'github' | 'telegram' | 'linkedin' | 'email'
 
 export type ContactLink = {
@@ -45,4 +32,3 @@ export const CONTACT_LINKS: readonly ContactLink[] = [
     icon: 'email',
   },
 ] as const
-

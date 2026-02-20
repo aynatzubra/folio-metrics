@@ -53,7 +53,7 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
           <AdminHeaderMobile
             isDemo={isDemo}
             isMenuOpen={isOpen}
-            onOpenMenu={open}
+            onOpenMenuAction={open}
             openMenuLabel={'Open menu'}
           />
         </div>

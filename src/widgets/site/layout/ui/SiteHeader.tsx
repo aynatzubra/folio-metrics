@@ -3,14 +3,15 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-import { HEADER_CONTACTS, NAV_LINKS } from '@/data/navigation'
-import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 import { useNavActiveByClick } from '@/widgets/site/model/useNavActiveByClick'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { LocaleSwitcher } from '@/features/locale-switcher'
+import { NAV_LINKS } from '@/widgets/site/layout'
+import { HEADER_CONTACTS } from '@/entities/contact/modal/contact-links'
+import { CONTACT_ICONS } from '@/shared/ui'
 
-import { SiteHeaderMobile } from './SiteHeaderMobile'
 import { SiteMobileMenu } from './SiteMobileMenu'
+import { SiteHeaderMobile } from './SiteHeaderMobile'
 
 
 export function SiteHeader() {
@@ -116,7 +117,7 @@ export function SiteHeader() {
         />
       </header>
 
-      <SiteMobileMenu isOpen={isOpen} onClose={close} />
+      <SiteMobileMenu isOpen={isOpen} onCloseAction={close} />
     </>
   )
 }

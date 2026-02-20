@@ -84,7 +84,7 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
           page={page}
           total={total}
           pageSize={pageSize}
-          onPageChange={setPage}
+          onPageChangeAction={setPage}
         />
 
       </div>

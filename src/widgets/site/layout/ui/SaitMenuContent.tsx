@@ -4,14 +4,14 @@ import { Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { NAV_LINKS } from '@/data/navigation'
+import { NAV_LINKS } from '@/widgets/site/layout/model/navigation'
 import { ContactInfo } from '@/widgets/site/contact'
 
 type SiteMobileMenuProps = {
-  onClose: () => void
+  onCloseAction: () => void
 }
 
-export function SaitMenuContent({ onClose }: SiteMobileMenuProps) {
+export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
 
@@ -40,7 +40,7 @@ export function SaitMenuContent({ onClose }: SiteMobileMenuProps) {
         </Dialog.Title>
 
         <button
-          onClick={onClose}
+          onClick={onCloseAction}
           className={closeButton}
           aria-label={tCommon('closeMenu')}
         >
@@ -72,7 +72,7 @@ export function SaitMenuContent({ onClose }: SiteMobileMenuProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={onClose}
+                onClick={onCloseAction}
                 className={navLinkClass}
               >
                 {t(link.labelKey)}

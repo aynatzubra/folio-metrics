@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import { HEADER_CONTACTS } from '@/data/navigation'
-import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
+import { HEADER_CONTACTS } from '@/entities/contact/modal/contact-links'
+import { CONTACT_ICONS } from '@/shared/ui'
 
 type Props = {
   showAfterY?: number

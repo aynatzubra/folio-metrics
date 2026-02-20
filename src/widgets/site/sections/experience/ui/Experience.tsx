@@ -2,10 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 
-import { experienceData } from '@/data/experienceData'
+import { experienceData } from '@/widgets/site/sections/experience/model/experience-data'
 import { SplitSection } from '@/widgets/site/ui'
 
-import SectionHeader from './../SectionHeader'
+import SectionHeader from '../../SectionHeader'
+
 import { ExperienceItem } from './ExperienceItem'
 
 export function Experience() {

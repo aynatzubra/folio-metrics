@@ -17,8 +17,8 @@ export function AdminMobileMenu({ isOpen, onClose, onLogout, user }: AdminMobile
       panelClass="bg-[#0B1120] p-4"
     >
       <AdminMenuContent
-        onClose={onClose}
-        onLogout={onLogout}
+        onCloseAction={onClose}
+        onLogoutAction={onLogout}
         user={user}
       />
     </MobileMenuShell>
