@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/db'
+import { prisma } from '@/shared/db/prisma'
 
 import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 

@@ -3,7 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 
-import { prisma } from '@/lib/db'
+import { prisma } from '@/shared/db/prisma'
 
 const DEMO_EMAIL = process.env.SECRET_DEMO_USER ?? 'demo@example.com'
 const DEMO_PASSWORD = process.env.SECRET_DEMO_PASSWORD ?? 'demo123'
