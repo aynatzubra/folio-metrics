@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db'
 
-import type { SummaryStats, DailyPoint, SectionPoint, VisitData } from './types'
+import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 
 type CacheEntry<T> = {
   value: T

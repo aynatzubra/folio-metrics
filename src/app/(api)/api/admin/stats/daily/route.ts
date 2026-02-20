@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { AnalyticsService } from '@/lib/analytics/service'
+import { AnalyticsService } from '@/entities/analytics/api/service'
 import { parseDaysParam } from '@/shared/lib/url'
 
 export const runtime = 'nodejs'

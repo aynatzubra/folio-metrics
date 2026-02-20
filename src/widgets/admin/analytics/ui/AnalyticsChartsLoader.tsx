@@ -3,8 +3,9 @@
 import dynamic from 'next/dynamic'
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
 import { ChartSkeleton, DataPlaceholder } from '@/widgets/admin/dashboard'
+import { RangeOptionValue } from '@/widgets/admin/analytics'
+import { DailyPoint, SectionPoint } from '@/entities/analytics'
 
 
 type Props = {

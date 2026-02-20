@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { trackVisit } from '@/lib/analytics/tracker'
+import { trackVisit } from '@/features/analytics/track-visit'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'

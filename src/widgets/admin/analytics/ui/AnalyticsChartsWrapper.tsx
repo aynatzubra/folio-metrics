@@ -1,6 +1,5 @@
-import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
-import { AnalyticsService } from '@/lib/analytics/service'
-import { AnalyticsChartsLoader } from '@/widgets/admin/analytics/AnalyticsChartsLoader'
+import { AnalyticsChartsLoader, RangeOptionValue } from '@/widgets/admin/analytics'
+import { AnalyticsService, DailyPoint, SectionPoint } from '@/entities/analytics'
 
 export async function AnalyticsChartsWrapper() {
   const initialRange: RangeOptionValue = 30

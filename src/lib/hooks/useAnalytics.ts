@@ -2,7 +2,8 @@ import { useState, useEffect, useTransition } from 'react'
 
 import { fetchJson } from '@/lib/http/fetchJson'
 import { AnalyticsError, logError, toErrorMessage } from '@/lib/utils/error-handler'
-import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
+import { RangeOptionValue } from '@/widgets/admin/analytics'
+import { DailyPoint, SectionPoint } from '@/entities/analytics'
 
 function isAbortError(error: unknown) {
   return (

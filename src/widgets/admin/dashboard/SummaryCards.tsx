@@ -1,5 +1,5 @@
-import { getAnalyticsSummary } from '@/lib/analytics/tracker'
 import { StatCard } from '@/widgets/admin/dashboard/StatCard'
+import { getAnalyticsSummary } from '@/features/admin/analytics-summary'
 
 export async function SummaryCards() {
   const { summary } = await getAnalyticsSummary()

@@ -4,9 +4,8 @@ import { useState } from 'react'
 import clsx from 'clsx'
 
 import { useAnalytics } from '@/lib/hooks/useAnalytics'
-import { DailyPoint, RangeOptionValue, SectionPoint } from '@/lib/analytics/types'
-import { ANALYTICS_RANGE_OPTIONS } from '@/lib/constants/analytics'
-import { DailyVisitsChart, SectionsChart } from '@/widgets/admin/analytics/index'
+import { DailyPoint, SectionPoint } from '@/entities/analytics'
+import { ANALYTICS_RANGE_OPTIONS, DailyVisitsChart, RangeOptionValue, SectionsChart } from '@/widgets/admin/analytics'
 
 type Props = {
   initialRange: RangeOptionValue

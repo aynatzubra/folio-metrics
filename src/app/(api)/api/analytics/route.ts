@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
-import { getAnalyticsSummary } from '@/lib/analytics/tracker'
+import { getAnalyticsSummary } from '@/features/admin/analytics-summary'
 
 export async function GET() {
   const session = await auth()

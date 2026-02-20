@@ -1,16 +1,15 @@
 'use client'
 
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import echarts from '@/lib/echarts-setup'
-import { DataPlaceholder } from '@/widgets/admin/dashboard'
+import { DailyPoint } from '@/entities/analytics'
 
 import type { EChartsOption } from 'echarts'
-import type { SectionPoint } from '@/lib/analytics/types'
 
-type SectionsChartProps = {
-  data: SectionPoint[]
+type DailyVisitsChartProps = {
+  data: DailyPoint[]
   isLoading: boolean
   error: string | null
   range: 7 | 14 | 30
@@ -18,47 +17,50 @@ type SectionsChartProps = {
 
 const getOption = (categories: string[], values: number[]): EChartsOption => ({
   tooltip: {
-    trigger: 'item',
-    formatter: '{b}: {c} visits',
+    trigger: 'axis',
   },
   grid: {
     left: '8%',
     right: '4%',
-    bottom: '5%',
+    bottom: '8%',
     top: '12%',
     containLabel: true,
   },
   xAxis: {
+    type: 'category',
+    data: categories,
+    axisLabel: {
+      formatter: (value: string) => value.slice(5),
+    },
+  },
+  yAxis: {
     type: 'value',
     name: 'Visits',
     minInterval: 1,
   },
-  yAxis: {
-    type: 'category',
-    data: categories,
-  },
   series: [
     {
-      type: 'bar',
+      name: 'Daily visits',
+      type: 'line',
+      smooth: true,
       data: values,
-      barMaxWidth: 24,
+      areaStyle: {},
+      symbolSize: 6,
     },
   ],
 })
-
-export function SectionsChart({ data, isLoading, error, range }: SectionsChartProps) {
+export function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {
-    const categories = hasData ? data.map((item) => item.sectionId || 'unknown') : []
-    const values = hasData ? data.map((item) => item.count) : []
-
+    const categories = hasData ? data.map((point) => point.day) : []
+    const values = hasData ? data.map((point) => point.count) : []
     return getOption(categories, values)
   }, [data])
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
-      <h3 className="mb-2 text-base font-semibold text-gray-400">Top sections (last {range} days)</h3>
+      <h3 className="mb-2 text-base font-semibold text-gray-400">Daily visits (last {range} days)</h3>
 
       {isLoading && (
         <div className="flex h-72 items-center justify-center text-sm text-gray-500">
@@ -67,11 +69,9 @@ export function SectionsChart({ data, isLoading, error, range }: SectionsChartPr
       )}
 
       {!isLoading && error && (
-        <DataPlaceholder
-          type="error"
-          message="Failed to load daily stats."
-          className="h-72"
-        />
+        <div className="flex h-72 items-center justify-center text-sm text-red-600">
+          Failed to load daily stats.
+        </div>
       )}
 
       {!isLoading && !error && !hasData && (
