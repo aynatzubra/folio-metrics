@@ -1,2 +1,2 @@
-export { CONTACT_ICONS } from '../../../shared/ui/ContactIcons'
+export { CONTACT_ICONS } from '../../../shared/ui/ContactIcons/ui'
 export { ContactInfo } from './ContactInfo'

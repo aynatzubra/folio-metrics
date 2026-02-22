@@ -1,13 +1,14 @@
 import { StaticImageData } from 'next/image'
 
 import { AdminMenuContent } from '@/widgets/admin/layout/index'
-import { MobileMenuShell } from '@/shared/ui'
+import { MobileMenuShell } from '@/shared/ui/MobileMenuShell'
 
 type AdminMobileMenuProps = {
   isOpen: boolean
   onClose: () => void
   onLogout: () => void
-  user: { name: string, avatar: StaticImageData | string }}
+  user: { name: string, avatar: StaticImageData | string }
+}
 
 export function AdminMobileMenu({ isOpen, onClose, onLogout, user }: AdminMobileMenuProps) {
   return (

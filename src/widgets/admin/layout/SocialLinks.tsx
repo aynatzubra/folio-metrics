@@ -1,5 +1,5 @@
-import { HEADER_CONTACTS } from '@/entities/contact/modal/contact-links'
-import { CONTACT_ICONS } from '@/shared/ui'
+import { HEADER_CONTACTS } from '@/entities/contact/model/contact-links'
+import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 
 
 interface SocialLinksProps {

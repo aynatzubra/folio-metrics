@@ -25,7 +25,7 @@ export function useSectionObserver() {
       observer.observe(section)
     })
 
-    // will send data when the page is closed
+    // will send data when the composition is closed
     const sendAnalyticsData = () => {
       const duration = Date.now() - startTimeRef.current
       const data = {
@@ -37,7 +37,7 @@ export function useSectionObserver() {
       navigator.sendBeacon('/api/track-visit', JSON.stringify(data))
     }
 
-    // add page unload event listener
+    // add composition unload event listener
     window.addEventListener('beforeunload', sendAnalyticsData)
 
     // cleaning up when unmounting a component

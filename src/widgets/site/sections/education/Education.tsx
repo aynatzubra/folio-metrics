@@ -2,9 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import { SplitSection } from '@/widgets/site/ui'
-
-import SectionHeader from './SectionHeader'
+import SectionHeader from '../../ui/SectionHeader'
+import { SplitSection } from '../../ui/SplitSection'
 
 export function Education() {
   const t = useTranslations('Education')

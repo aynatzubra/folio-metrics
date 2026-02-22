@@ -2,10 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
-import { skillsData } from '@/widgets/site/sections/technical-skills/model/skills-data'
-import { SplitSection } from '@/widgets/site/ui'
-
-import SectionHeader from '../../SectionHeader'
+import { SplitSection } from '../../../ui/SplitSection'
+import SectionHeader from '../../../ui/SectionHeader'
+import { skillsData } from '../model/skills-data'
 
 import type { SkillCategory } from './../model/types'
 

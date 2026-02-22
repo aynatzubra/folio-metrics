@@ -1,1 +1,1 @@
-export { CONTACT_LINKS } from './modal/contact-links'
+export { CONTACT_LINKS } from '@/entities/contact/model/contact-links'

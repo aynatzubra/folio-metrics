@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 import { SiteHeader } from '@/widgets/site/layout'
 import { Hero, Intro } from '@/widgets/site/sections'
-import { FloatingActions, PageObserver } from '@/widgets/site/ui'
+import { FloatingActions, PageObserver } from '@/widgets/site/composition'
 
 const TechnicalSkills = dynamic(
   () => import('@/widgets/site/sections').then((m) => m.TechnicalSkills),
