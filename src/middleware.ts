@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 
 import { auth } from '@/auth'
-import { defaultLocale, locales } from '@/i18n/config'
+import { defaultLocale, locales } from '@/shared/lib/i18n/config'
 
 export const runtime = 'nodejs'
 

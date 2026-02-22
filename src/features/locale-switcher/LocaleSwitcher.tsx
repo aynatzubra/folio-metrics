@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 
-import { locales } from '@/i18n/config'
+import { locales } from '@/shared/lib/i18n/config'
 
 interface LocaleSwitcherProps {
   isScrolled?: boolean
