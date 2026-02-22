@@ -1,1 +1,1 @@
-export { trackVisit } from './server/trackVisit'
+export { trackVisit } from './trackVisit'

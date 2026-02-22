@@ -14,8 +14,12 @@ datasource db {
 }
 
 model Visit {
-  id        String   @id @default(cuid())
+  id        String @id @default(cuid())
   sectionId String
+
+  visitorId String?
+  visitor   AnalyticsVisitor? @relation(fields: [visitorId], references: [id])
+
   country   String?  @db.VarChar(100)
   city      String?  @db.VarChar(100)
   ipAddress String?  @db.VarChar(45)
@@ -25,6 +29,16 @@ model Visit {
 
   @@index([sectionId])
   @@index([createdAt])
+  @@index([visitorId])
+}
+
+model AnalyticsVisitor {
+  id          String @id @default(cuid())
+  fingerprint String @unique
+
+  firstSeenAt DateTime @default(now())
+  lastSeenAt  DateTime @updatedAt
+  Visit       Visit[]
 }
 
 model User {

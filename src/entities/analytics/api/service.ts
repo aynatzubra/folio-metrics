@@ -1,4 +1,5 @@
 import { prisma } from '@/shared/db/prisma'
+import { createFingerprint } from '@/entities/analytics/lib/fingerprint'
 
 import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 
@@ -31,9 +32,21 @@ async function withCache<T extends AnalyticsCacheValue>(
 }
 
 async function trackVisitInternal(data: VisitData) {
+  const fingerprint = createFingerprint(
+    data.ipAddress ?? 'unknown',
+    data.userAgent ?? 'unknown',
+  )
+
+  const visitor = await prisma.analyticsVisitor.upsert({
+    where: { fingerprint },
+    update: { lastSeenAt: new Date() },
+    create: { fingerprint },
+  })
+
   await prisma.visit.create({
     data: {
       sectionId: data.sectionId,
+      visitorId: visitor.id,
       country: data.country,
       city: data.city,
       ipAddress: data.ipAddress,
