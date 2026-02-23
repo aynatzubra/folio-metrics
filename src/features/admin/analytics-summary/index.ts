@@ -1,1 +1,1 @@
-export { getAnalyticsSummary } from './server/getAnalyticsSummary'
+export { getAnalyticsSummary } from './services/analytics-summary.service'

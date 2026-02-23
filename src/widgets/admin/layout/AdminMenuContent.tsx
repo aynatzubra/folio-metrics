@@ -40,8 +40,11 @@ export function AdminMenuContent({ onCloseAction, onLogoutAction, user }: AdminM
         <div className="flex items-center gap-4">
           <div className="relative">
             <Image
-              src={user.avatar} alt="Avatar"
-              width={56} height={56}
+              src={user.avatar}
+              alt="Avatar"
+              width={56}
+              height={56}
+              priority
               className="rounded-full ring-2 ring-accent p-0.5"
             />
             <span

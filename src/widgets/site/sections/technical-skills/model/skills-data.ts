@@ -11,7 +11,7 @@ export const skillsData: SkillCategory[] = [
           'Next.js (App Router, SSR/ISR)',
           'TypeScript',
           'Zustand, Redux Toolkit, SWR',
-          'Forms, validation, error handling, server-driven UI',
+          'Forms, validation, error handling, services-driven UI',
         ],
       },
       {

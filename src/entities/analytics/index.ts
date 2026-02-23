@@ -1,4 +1,4 @@
-export { AnalyticsService } from './api/service'
+export { AnalyticsRepository } from './repository'
 export type {
   VisitData,
   SummaryStats,

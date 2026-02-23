@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { AnalyticsService } from '@/entities/analytics/api/service'
+import { AnalyticsRepository } from '@/entities/analytics/repository'
 import { parseDaysParam } from '@/shared/lib/url'
 
 export const runtime = 'nodejs'
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
 
     const days = parseDaysParam(url, 30, 365)
 
-    const data = await AnalyticsService.getDailyVisits(days)
+    const data = await AnalyticsRepository.getDailyVisits(days)
 
     return NextResponse.json(data)
   } catch (error) {

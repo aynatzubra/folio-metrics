@@ -1,12 +1,6 @@
-export type ContactIcon = 'github' | 'telegram' | 'linkedin' | 'email'
+import { ContactLink } from '@/entities/contact'
 
-export type ContactLink = {
-  href: string
-  labelKey: string
-  icon: ContactIcon
-}
-
-export const HEADER_CONTACTS: readonly ContactLink[] = [
+export const SOCIAL_LINKS: readonly ContactLink[] = [
   {
     href: 'https://www.linkedin.com/in/tatiana-arbuz-7756743a6',
     labelKey: 'social.linkedin',
@@ -19,8 +13,8 @@ export const HEADER_CONTACTS: readonly ContactLink[] = [
   },
 ] as const
 
-export const CONTACT_LINKS: readonly ContactLink[] = [
-  ...HEADER_CONTACTS,
+export const PRIMARY_CONTACTS: readonly ContactLink[] = [
+  ...SOCIAL_LINKS,
   {
     href: 'https://github.com/aynatzubra',
     labelKey: 'social.github',

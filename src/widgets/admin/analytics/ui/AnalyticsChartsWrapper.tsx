@@ -1,13 +1,15 @@
 import { AnalyticsChartsLoader, RangeOptionValue } from '@/widgets/admin/analytics'
-import { AnalyticsService, DailyPoint, SectionPoint } from '@/entities/analytics'
+import { AnalyticsRepository } from '@/entities/analytics'
+
+import type { DailyPoint, SectionPoint } from '@/entities/analytics'
 
 export async function AnalyticsChartsWrapper() {
   const initialRange: RangeOptionValue = 30
 
   try {
     const [initialDaily, initialSections] = await Promise.all([
-      AnalyticsService.getDailyVisits(initialRange) as Promise<DailyPoint[]>,
-      AnalyticsService.getTopSections(initialRange) as Promise<SectionPoint[]>,
+      AnalyticsRepository.getDailyVisits(initialRange) as Promise<DailyPoint[]>,
+      AnalyticsRepository.getTopSections(initialRange) as Promise<SectionPoint[]>,
     ])
 
     return (

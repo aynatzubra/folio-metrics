@@ -1,7 +1,7 @@
 import { prisma } from '@/shared/db/prisma'
 import { createFingerprint } from '@/entities/analytics/lib/fingerprint'
 
-import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
+import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics/index'
 
 type CacheEntry<T> = {
   value: T
@@ -113,7 +113,7 @@ async function getTopSectionsInternal(days = 7): Promise<SectionPoint[]> {
   }))
 }
 
-export const AnalyticsService = {
+export const AnalyticsRepository = {
 
   async trackVisit(data: VisitData) {
     return trackVisitInternal(data)

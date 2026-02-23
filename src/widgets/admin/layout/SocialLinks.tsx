@@ -1,4 +1,4 @@
-import { HEADER_CONTACTS } from '@/entities/contact/model/contact-links'
+import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 
 
@@ -17,7 +17,7 @@ export const SocialLinks = ({ variant = 'icons', className }: SocialLinksProps) 
   if (variant === 'buttons') {
     return (
       <div className={`flex flex-wrap gap-2 ${className}`}>
-        {HEADER_CONTACTS.map((link) => (
+        {SOCIAL_LINKS.map((link) => (
           <a
             key={link.href}
             href={link.href}
@@ -37,7 +37,7 @@ export const SocialLinks = ({ variant = 'icons', className }: SocialLinksProps) 
 
   return (
     <div className={`flex items-center gap-4 ${className}`}>
-      {HEADER_CONTACTS.map((link) => (
+      {SOCIAL_LINKS.map((link) => (
         <a
           key={link.href} href={link.href}
           target="_blank" rel="noreferrer"

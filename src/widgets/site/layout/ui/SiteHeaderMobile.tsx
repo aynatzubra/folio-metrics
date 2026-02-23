@@ -1,7 +1,8 @@
 import Link from 'next/link'
 
 import { BurgerButton } from '@/shared/ui/BurgerButton'
-import { LocaleSwitcher } from '@/features/locale-switcher'
+
+import { LocaleSwitcher } from '../../../../features/site/locale-switcher'
 
 type Props = {
   containerClass: string

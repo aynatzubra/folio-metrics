@@ -25,7 +25,7 @@ export function useAnalytics(range: RangeOptionValue, initial?: InitialAnalytics
     range === initial.initialRange &&
     initial.initialDaily !== null
 
-  //server and client see the same thing
+  //services and client see the same thing
   const [data, setData] = useState<{
     daily: DailyPoint[] | null
     sections: SectionPoint[] | null

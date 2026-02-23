@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { HEADER_CONTACTS } from '@/entities/contact/model/contact-links'
+import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
 
 type Props = {
@@ -44,7 +44,7 @@ export function FloatingActions({ showAfterY = 400 }: Props) {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
-      {HEADER_CONTACTS.map((link) => (
+      {SOCIAL_LINKS.map((link) => (
         <div key={link.href} className="relative group md:hidden">
           <span className={toolTipClass}>
             {link.icon}

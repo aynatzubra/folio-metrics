@@ -5,10 +5,11 @@ import Link from 'next/link'
 
 import { useNavActiveByClick } from '@/widgets/site/model/useNavActiveByClick'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
-import { LocaleSwitcher } from '@/features/locale-switcher'
 import { NAV_LINKS } from '@/widgets/site/layout'
-import { HEADER_CONTACTS } from '@/entities/contact/model/contact-links'
+import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
+
+import { LocaleSwitcher } from '../../../../features/site/locale-switcher'
 
 import { SiteMobileMenu } from './SiteMobileMenu'
 import { SiteHeaderMobile } from './SiteHeaderMobile'
@@ -91,7 +92,7 @@ export function SiteHeader() {
                 {t('contacts')}:
               </span>
               <div className="flex items-center gap-1.5">
-                {HEADER_CONTACTS.map((link) => (
+                {SOCIAL_LINKS.map((link) => (
                   <a
                     key={link.href} href={link.href}
                     target="_blank" rel="noreferrer noopener"

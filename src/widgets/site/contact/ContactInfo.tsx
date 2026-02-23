@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 
-import { CONTACT_LINKS } from '@/entities/contact'
+import { PRIMARY_CONTACTS } from '@/entities/contact'
 
 type Variant = 'hero' | 'footer'
 
@@ -69,7 +69,7 @@ export function ContactInfo({
             {t('buttons.cv')}
 
           </Link>
-          {CONTACT_LINKS.map((link) => (
+          {PRIMARY_CONTACTS.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -94,7 +94,7 @@ export function ContactInfo({
             {t('buttons.cv')}
           </Link>
           {
-            CONTACT_LINKS.map((link) => (
+            PRIMARY_CONTACTS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}

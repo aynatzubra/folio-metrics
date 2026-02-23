@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 
-import { trackVisit } from '@/features/analytics/track-visit'
+import { trackVisitService } from '@/features/admin/analytics/track-visit'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -66,13 +66,13 @@ export async function POST(req: NextRequest) {
       return new Response('`sectionId` is required', { status: 400 })
     }
 
-    // receive server data
+    // receive services data
     const { country, city } = getGeo(req)
     const ip = getClientIp(req) || '0.0.0.0'
     const userAgent = req.headers.get('user-agent') || 'Unknown'
 
     // call tracking function with the full data set
-    await trackVisit({
+    await trackVisitService({
       sectionId,
       duration: Number.isFinite(duration as number) ? (duration as number) : 0,
       ipAddress: ip,

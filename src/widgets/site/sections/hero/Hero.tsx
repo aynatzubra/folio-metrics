@@ -51,6 +51,7 @@ export function Hero() {
                   alt="Avatar"
                   className="w-full h-full object-cover"
                   placeholder="blur"
+                  priority
                 />
               </div>
               <Link
