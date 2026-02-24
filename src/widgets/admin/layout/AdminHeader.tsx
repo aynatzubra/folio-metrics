@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
-import { Badge } from '@/shared/ui/Badge'
 import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout/index'
+import { Badge } from '@/shared/ui'
 
 import myAdminAva from '../../../../public/assets/images/avatar.png'
 
@@ -46,7 +46,8 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
               <SocialLinks className="flex items-center gap-3 sm:gap-4" />
 
               {/* Avatar Dropdown */}
-              <UserMenu avatar={myAdminAva} onLogout={() => signOut({ callbackUrl: '/' })} />            </div>
+              <UserMenu avatar={myAdminAva} onLogout={() => signOut({ callbackUrl: '/' })} />
+            </div>
           </div>
 
           {/*MOBILE VERSION*/}

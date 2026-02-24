@@ -1,6 +1,6 @@
 'use client'
 
-import { MobileMenuShell } from '@/shared/ui/MobileMenuShell'
+import { MobileMenuShell } from '@/shared/ui'
 
 import { SaitMenuContent } from './SaitMenuContent'
 

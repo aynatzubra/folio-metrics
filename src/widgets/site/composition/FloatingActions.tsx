@@ -3,11 +3,28 @@
 import { useEffect, useState } from 'react'
 
 import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
-import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
+import { CONTACT_ICONS } from '@/shared/ui'
 
 type Props = {
   showAfterY?: number
 }
+
+const iconButton =
+  'inline-flex h-11 w-11 items-center justify-center rounded-[4px] ' +
+  'border border-accent text-accent shadow-lg ' +
+  'transition-colors duration-150 ease-out ' +
+  'hover:bg-accent hover:text-white/80 ' +
+  'focus-visible:outline-none focus-visible:ring-2 ' +
+  'focus-visible:ring-accent/40 focus-visible:ring-offset-2 ' +
+  'focus-visible:ring-offset-background'
+
+const toolTipClass = 'pointer-events-none absolute right-[calc(100%+12px)] top-1/2 -translate-y-1/2 ' +
+  'flex h-11 items-center rounded-md bg-white px-3 text-sm uppercase font-semibold ' +
+  'text-accent shadow-lg whitespace-nowrap ' +
+  'opacity-0 invisible translate-x-2 transition-all duration-200 ease-out ' +
+  'group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 ' +
+  'group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-x-0 ' +
+  'z-50'
 
 export function FloatingActions({ showAfterY = 400 }: Props) {
 
@@ -23,24 +40,6 @@ export function FloatingActions({ showAfterY = 400 }: Props) {
   const onClick = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   if (!isVisible) return null
-
-
-  const iconButton =
-    'inline-flex h-11 w-11 items-center justify-center rounded-[4px] ' +
-    'border border-accent text-accent shadow-lg ' +
-    'transition-colors duration-150 ease-out ' +
-    'hover:bg-accent hover:text-white/80 ' +
-    'focus-visible:outline-none focus-visible:ring-2 ' +
-    'focus-visible:ring-accent/40 focus-visible:ring-offset-2 ' +
-    'focus-visible:ring-offset-background'
-
-  const toolTipClass = 'pointer-events-none absolute right-[calc(100%+12px)] top-1/2 -translate-y-1/2 ' +
-    'flex h-11 items-center rounded-md bg-white px-3 text-sm uppercase font-semibold ' +
-    'text-accent shadow-lg whitespace-nowrap ' +
-    'opacity-0 invisible translate-x-2 transition-all duration-200 ease-out ' +
-    'group-hover:opacity-100 group-hover:visible group-hover:translate-x-0 ' +
-    'group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-x-0 ' +
-    'z-50'
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">

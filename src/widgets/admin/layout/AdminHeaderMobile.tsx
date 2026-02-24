@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 
-import { BurgerButton } from '@/shared/ui/BurgerButton'
-import { Badge } from '@/shared/ui/Badge'
+import { Badge, BurgerButton } from '@/shared/ui'
 
 type Props = {
   isMenuOpen: boolean

@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image'
 
 import { AdminMenuContent } from '@/widgets/admin/layout/index'
-import { MobileMenuShell } from '@/shared/ui/MobileMenuShell'
+import { MobileMenuShell } from '@/shared/ui'
 
 type AdminMobileMenuProps = {
   isOpen: boolean

@@ -1,6 +1,5 @@
 import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
-import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
-
+import { CONTACT_ICONS } from '@/shared/ui'
 
 interface SocialLinksProps {
   variant?: 'icons' | 'buttons'

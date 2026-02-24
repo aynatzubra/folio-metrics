@@ -7,13 +7,22 @@ import { useNavActiveByClick } from '@/widgets/site/model/useNavActiveByClick'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { NAV_LINKS } from '@/widgets/site/layout'
 import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
-import { CONTACT_ICONS } from '@/shared/ui/ContactIcons'
-
-import { LocaleSwitcher } from '../../../../features/site/locale-switcher'
+import { CONTACT_ICONS } from '@/shared/ui'
+import { LocaleSwitcher } from '@/features/site/locale-switcher'
 
 import { SiteMobileMenu } from './SiteMobileMenu'
 import { SiteHeaderMobile } from './SiteHeaderMobile'
 
+const container = 'mx-auto max-w-[1470px] px-6 lg:px-10'
+
+const iconButton =
+  'inline-flex h-9 w-9 items-center justify-center rounded-[4px] ' +
+  'border border-accent text-accent ' +
+  'transition-colors duration-150 ease-out ' +
+  'hover:bg-accent/40 hover:text-white/60 ' +
+  'focus-visible:outline-none focus-visible:ring-2 ' +
+  'focus-visible:ring-accent/40 focus-visible:ring-offset-2 ' +
+  'focus-visible:ring-offset-background'
 
 export function SiteHeader() {
   const t = useTranslations('Header')
@@ -24,17 +33,6 @@ export function SiteHeader() {
     scrolledY: 70,
     topResetY: 2,
   })
-
-  const container = 'mx-auto max-w-[1470px] px-6 lg:px-10'
-
-  const iconButton =
-    'inline-flex h-9 w-9 items-center justify-center rounded-[4px] ' +
-    'border border-accent text-accent ' +
-    'transition-colors duration-150 ease-out ' +
-    'hover:bg-accent/40 hover:text-white/60 ' +
-    'focus-visible:outline-none focus-visible:ring-2 ' +
-    'focus-visible:ring-accent/40 focus-visible:ring-offset-2 ' +
-    'focus-visible:ring-offset-background'
 
   return (
     <>

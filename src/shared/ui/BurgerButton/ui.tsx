@@ -1,4 +1,4 @@
-import { BurgerIcon } from '@/shared/ui/BurgerIcon'
+import { BurgerIcon } from '@/shared/ui'
 
 interface BurgerButtonProps {
   onClick: () => void;
