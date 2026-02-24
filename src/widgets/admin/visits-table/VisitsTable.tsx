@@ -3,7 +3,7 @@
 import { Visit } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 
-import { formatDateTime, formatDuration } from '@/shared/lib/format/date'
+import { formatDateTime, formatDuration } from '@/shared/lib/format'
 import { TablePagination } from '@/widgets/admin/visits-table/TablePagination'
 
 type VisitsTableProps = {
