@@ -3,7 +3,6 @@ import clsx from 'clsx'
 
 import type { ExperienceItemType } from './../model/types'
 
-
 type ExperienceItemProps = {
   job: ExperienceItemType
   className?: string

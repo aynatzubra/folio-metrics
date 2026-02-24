@@ -4,8 +4,7 @@ import { useTranslations } from 'next-intl'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-import { SplitSection } from '../../ui/SplitSection'
-import SectionHeader from '../../ui/SectionHeader'
+import { SplitSection, SectionHeader } from '@/widgets/site/ui'
 
 import type { ReactNode } from 'react'
 

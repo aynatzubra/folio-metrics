@@ -4,33 +4,32 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
+const heroBlockClass =
+  'relative w-full ' +
+  'min-h-full xl:min-h-[calc(100svh-70px)] ' +
+  'flex items-start xl:items-center ' +
+  'pt-10 pb-12 md:pt-20 md:pb-25 lg:pt-35 lg:pb-35 xl:py-0 xl:pt-0 xl:pb-0 ' +
+  '[@media(min-width:840px)_and_(max-width:1023px)]:pt-35 [@media(min-width:840px)_and_(max-width:1023px)]:pb-45 ' +
+  '[@media(min-width:641px)_and_(max-width:767px)]:pt-30 [@media(min-width:641px)_and_(max-width:767px)]:pb-40 ' +
+  '[@media(min-width:557px)_and_(max-width:640px)]:pt-25'
 
-import { ContactInfo } from '../../contact'
-import myAva from '../../../../../public/assets/images/0my_ava.png'
+const titleClass =
+  'uppercase font-bold tracking-[0.05em] leading-[100%] text-[#0b363d] text-[3.5rem] ' +
+  'md:text-[5rem] lg:text-[7rem] [@media(min-width:557px)_and_(max-width:767px)]:text-[4.5rem] '
+
+const introLinkClass =
+  'relative inline-block group ' +
+  'text-lg font-medium text-accent ' +
+  'border-b border-accent/60 pb-2 ' +
+  'transition-colors duration-150 ease-out hover:text-accent/85 ' +
+  'focus-visible:ring-2 focus-visible:ring-accent/40 ' +
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+
+import { ContactInfo } from '../../../contact'
+import myAva from '../../../../../../public/assets/images/0my_ava.png'
 
 export function Hero() {
   const t = useTranslations('Hero')
-
-  const heroBlockClass =
-    'relative w-full ' +
-    'min-h-full xl:min-h-[calc(100svh-70px)] ' +
-    'flex items-start xl:items-center ' +
-    'pt-10 pb-12 md:pt-20 md:pb-25 lg:pt-35 lg:pb-35 xl:py-0 xl:pt-0 xl:pb-0 ' +
-    '[@media(min-width:840px)_and_(max-width:1023px)]:pt-35 [@media(min-width:840px)_and_(max-width:1023px)]:pb-45 ' +
-    '[@media(min-width:641px)_and_(max-width:767px)]:pt-30 [@media(min-width:641px)_and_(max-width:767px)]:pb-40 ' +
-    '[@media(min-width:557px)_and_(max-width:640px)]:pt-25'
-
-  const titleClass =
-    'uppercase font-bold tracking-[0.05em] leading-[100%] text-[#0b363d] text-[3.5rem] ' +
-    'md:text-[5rem] lg:text-[7rem] [@media(min-width:557px)_and_(max-width:767px)]:text-[4.5rem] '
-
-  const introLinkClass =
-    'relative inline-block group ' +
-    'text-lg font-medium text-accent ' +
-    'border-b border-accent/60 pb-2 ' +
-    'transition-colors duration-150 ease-out hover:text-accent/85 ' +
-    'focus-visible:ring-2 focus-visible:ring-accent/40 ' +
-    'focus-visible:ring-offset-2 focus-visible:ring-offset-background'
 
   return (
     <div className={heroBlockClass}>

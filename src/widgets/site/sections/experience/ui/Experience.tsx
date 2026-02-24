@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
+import { SplitSection, SectionHeader } from '@/widgets/site/ui'
+
 import { experienceData } from '../model/experience-data'
-import { SplitSection } from '../../../ui/SplitSection'
-import SectionHeader from '../../../ui/SectionHeader'
 
 import { ExperienceItem } from './ExperienceItem'
 

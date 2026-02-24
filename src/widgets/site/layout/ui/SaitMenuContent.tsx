@@ -11,22 +11,22 @@ type SiteMobileMenuProps = {
   onCloseAction: () => void
 }
 
+const panelClass =
+  'fixed inset-y-0 right-0 flex h-full w-full max-w-xs flex-col ' +
+  'bg-mob-menu px-6 py-5 text-white shadow-xl'
+
+const navLinkClass =
+  'block rounded-md px-2 py-2 text-xl font-medium tracking-widest' +
+  'text-white hover:bg-brand/5 hover:text-accent'
+
+const closeButton =
+  'rounded-sm p-2 text-white/70 transition hover:text-white/30' +
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30' +
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b3a41]'
+
 export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
-
-  const panelClass =
-    'fixed inset-y-0 right-0 flex h-full w-full max-w-xs flex-col ' +
-    'bg-mob-menu px-6 py-5 text-white shadow-xl'
-
-  const navLinkClass =
-    'block rounded-md px-2 py-2 text-xl font-medium tracking-widest' +
-    'text-white hover:bg-brand/5 hover:text-accent'
-
-  const closeButton =
-    'rounded-sm p-2 text-white/70 transition hover:text-white/30' +
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30' +
-    'focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b3a41]'
 
   return (
     <div
