@@ -1,3 +1,4 @@
+import '@/shared/lib/fontawesome'
 import '@/shared/styles/globals.css'
 import { inter, robotoMono, robotoSlab } from '@/shared/config'
 

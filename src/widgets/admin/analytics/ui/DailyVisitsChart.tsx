@@ -3,8 +3,8 @@
 import { useMemo } from 'react'
 import ReactEChartsCore from 'echarts-for-react/lib/core'
 
-import echarts from '@/shared/lib/echarts/echarts-setup'
 import { DailyPoint } from '@/entities/analytics'
+import { echarts } from '@/shared/lib/echarts'
 
 import type { EChartsOption } from 'echarts'
 
