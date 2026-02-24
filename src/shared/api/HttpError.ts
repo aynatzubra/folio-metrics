@@ -1,4 +1,4 @@
-export class AnalyticsError extends Error {
+export class HttpError extends Error {
   constructor(
     message: string,
     public status?: number,

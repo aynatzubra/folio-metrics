@@ -1,4 +1,4 @@
-import { AnalyticsError } from '@/shared/api/HttpError'
+import { HttpError } from '@/shared/api'
 
 /**
  * Do not log AbortError
@@ -14,7 +14,7 @@ function isAbortError(error: unknown) {
  * Every unknown error to string
  */
 export function toErrorMessage(error: unknown): string {
-  if (error instanceof AnalyticsError) return error.message
+  if (error instanceof HttpError) return error.message
   if (error instanceof Error) return error.message
   return typeof error === 'string' ? error : 'An unexpected error occurred'
 }

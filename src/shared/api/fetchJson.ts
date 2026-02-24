@@ -1,4 +1,4 @@
-import { AnalyticsError } from '@/shared/api/HttpError'
+import { HttpError } from './HttpError'
 
 export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init)
@@ -14,7 +14,7 @@ export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> 
     } catch (parseError) {
       console.warn('Could not parse error response', parseError)
     }
-    throw new AnalyticsError(errorMessage, response.status, detail)
+    throw new HttpError(errorMessage, response.status, detail)
   }
 
   if (response.status === 204) return {} as T

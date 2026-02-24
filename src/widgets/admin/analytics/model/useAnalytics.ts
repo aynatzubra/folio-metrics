@@ -4,7 +4,7 @@ import { fetchJson } from '@/shared/api/fetchJson'
 import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
 import { logError, toErrorMessage } from '@/shared/lib/error'
-import { AnalyticsError } from '@/shared/api/HttpError'
+import { HttpError } from '@/shared/api'
 
 function isAbortError(error: unknown) {
   return (
@@ -63,7 +63,7 @@ export function useAnalytics(range: RangeOptionValue, initial?: InitialAnalytics
         if (isAbortError(e)) return
         logError(e, 'AnalyticsHook')
 
-        if (e instanceof AnalyticsError && e.status === 401) {
+        if (e instanceof HttpError && e.status === 401) {
           setFatalError(e)
         } else {
           setUiError(toErrorMessage(e))
