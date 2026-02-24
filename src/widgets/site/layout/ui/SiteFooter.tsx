@@ -1,11 +1,9 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 import { ContactInfo } from '../../contact'
 
-export function SiteFooter() {
-  const t = useTranslations('Footer')
+export async function SiteFooter() {
+  const t = await getTranslations('Footer')
 
   return (
     <footer id="contact" className="w-full bg-gradient-to-br from-[#0b363d] via-[#0a2e33] to-[#071f23] py-12 px-6">

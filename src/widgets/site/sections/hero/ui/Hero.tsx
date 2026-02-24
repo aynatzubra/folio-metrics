@@ -1,8 +1,9 @@
-'use client'
-
-import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
+
+import { ContactInfo } from '../../../contact'
+import myAva from '../../../../../../public/assets/images/0my_ava.png'
 
 const heroBlockClass =
   'relative w-full ' +
@@ -25,11 +26,8 @@ const introLinkClass =
   'focus-visible:ring-2 focus-visible:ring-accent/40 ' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background'
 
-import { ContactInfo } from '../../../contact'
-import myAva from '../../../../../../public/assets/images/0my_ava.png'
-
-export function Hero() {
-  const t = useTranslations('Hero')
+export async function Hero() {
+  const t = await getTranslations('Hero')
 
   return (
     <div className={heroBlockClass}>

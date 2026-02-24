@@ -4,8 +4,9 @@ import { Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { NAV_LINKS } from '@/widgets/site/layout/model/navigation'
-import { ContactInfo } from '@/widgets/site/contact'
+import { NAV_LINKS } from '@/widgets/site/model'
+import { PRIMARY_CONTACTS } from '@/entities/contact'
+import { SocialLinksList } from '@/shared/ui/SocialLinks'
 
 type SiteMobileMenuProps = {
   onCloseAction: () => void
@@ -27,6 +28,11 @@ const closeButton =
 export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
+
+  const socialData = PRIMARY_CONTACTS.map(contact => ({
+    ...contact,
+    label: tCommon(contact.labelKey),
+  }))
 
   return (
     <div
@@ -83,10 +89,11 @@ export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
 
         {/* contact */}
         <div className="mt-6 border-t border-white/30 pt-4">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/30">
-            {tCommon('contacts')}
-          </p>
-          <ContactInfo variant="footer" className="mt-8 flex items-start justify-start" />
+          <SocialLinksList
+            links={socialData}
+            className="flex gap-4 mt-4"
+            itemClass="text-white hover:text-accent transition-colors"
+          />
         </div>
       </nav>
 

@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 import { useNavActiveByClick } from '@/widgets/site/model/useNavActiveByClick'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
-import { NAV_LINKS } from '@/widgets/site/layout'
 import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui'
 import { LocaleSwitcher } from '@/features/site/locale-switcher'
+import { NAV_LINKS } from '@/widgets/site/model'
 
 import { SiteMobileMenu } from './SiteMobileMenu'
 import { SiteHeaderMobile } from './SiteHeaderMobile'
