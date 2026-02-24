@@ -1,12 +1,10 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import clsx from 'clsx'
 
-import { locales } from '@/shared/lib/i18n'
-
-import { switchLocaleService } from '../services/switch-locale.service'
+import { locales } from '@/shared/lib/i18n/config'
+import { usePathname, useRouter } from '@/shared/lib/i18n/navigation'
 
 interface LocaleSwitcherProps {
   isScrolled?: boolean
@@ -34,16 +32,18 @@ export function LocaleSwitcher({ isScrolled }: LocaleSwitcherProps) {
   const nextLocale =
     locales.find((locale) => locale !== currentLocale) || currentLocale
 
-  const handleSwitch = (newLocale: string) => {
-    if (newLocale === currentLocale) return
-    const newPath = switchLocaleService(pathname, nextLocale)
-    router.push(newPath)
+  const handleSwitch = () => {
+    const hash = window.location.hash
+    router.replace(`${pathname}${hash}`, {
+      locale: nextLocale,
+      scroll: false,
+    })
   }
 
   return (
     <button
       type="button"
-      onClick={() => handleSwitch(nextLocale)}
+      onClick={handleSwitch}
       className={clsx(BASE_SWITCH_CLASSES, isScrolled ? SCROLLED_CLASSES : TRANSPARENT_CLASSES)}
     >
       {nextLocale.toUpperCase()}

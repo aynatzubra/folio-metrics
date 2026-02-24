@@ -37,9 +37,5 @@ export default auth((req) => {
 })
 
 export const config = {
-  matcher: [
-    '/',
-    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|assets).+)',
-    // '/admin/:path*',
-  ],
+  matcher: ['/', '/(ru|en)/:path*', '/((?!_next|_vercel|.*\\..*).*)'],
 }
