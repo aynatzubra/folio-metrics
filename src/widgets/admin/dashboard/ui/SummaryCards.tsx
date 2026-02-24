@@ -1,4 +1,4 @@
-import { StatCard } from '@/widgets/admin/dashboard/StatCard'
+import { StatCard } from '@/widgets/admin/dashboard/ui/StatCard'
 import { getAnalyticsSummary } from '@/features/admin/analytics-summary'
 
 export async function SummaryCards() {

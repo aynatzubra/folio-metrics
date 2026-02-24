@@ -1,6 +1,6 @@
 import { StaticImageData } from 'next/image'
 
-import { AdminMenuContent } from '@/widgets/admin/layout/index'
+import { AdminMenuContent } from '@/widgets/admin/layout'
 import { MobileMenuShell } from '@/shared/ui'
 
 type AdminMobileMenuProps = {

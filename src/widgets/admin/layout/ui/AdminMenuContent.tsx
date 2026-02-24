@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from 'next/image'
 
-import { SocialLinks } from '@/widgets/admin/layout/SocialLinks'
+import { SocialLinks } from '@/widgets/admin/layout/ui/SocialLinks'
 
 type AdminMenuContentProps = {
   onCloseAction: () => void

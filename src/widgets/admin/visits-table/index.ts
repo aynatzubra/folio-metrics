@@ -1,4 +1,4 @@
-export { TablePagination } from './TablePagination'
-export { VisitsTableWrapper } from './VisitsTableWrapper'
-export { VisitsTable } from './VisitsTable'
+export { TablePagination } from './ui/TablePagination'
+export { VisitsTableWrapper } from './ui/VisitsTableWrapper'
+export { VisitsTable } from './ui/VisitsTable'
 

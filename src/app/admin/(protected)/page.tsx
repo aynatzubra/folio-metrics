@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-import { ChartSkeleton, TableSkeleton } from '@/widgets/admin/dashboard/DashboardSkeletons'
+import { ChartSkeleton, TableSkeleton } from '@/widgets/admin/dashboard/ui/DashboardSkeletons'
 import { AnalyticsChartsWrapper } from '@/widgets/admin/analytics'
 import { SummaryCards } from '@/widgets/admin/dashboard'
 import { VisitsTableWrapper } from '@/widgets/admin/visits-table'

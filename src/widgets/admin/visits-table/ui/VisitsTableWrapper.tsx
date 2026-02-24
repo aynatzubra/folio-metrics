@@ -1,4 +1,4 @@
-import { VisitsTable } from '@/widgets/admin/visits-table/VisitsTable'
+import { VisitsTable } from '@/widgets/admin/visits-table/ui/VisitsTable'
 import { prisma } from '@/shared/db/prisma'
 
 export async function VisitsTableWrapper() {

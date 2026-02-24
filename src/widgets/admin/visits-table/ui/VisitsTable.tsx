@@ -4,7 +4,7 @@ import { Visit } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
-import { TablePagination } from '@/widgets/admin/visits-table/TablePagination'
+import { TablePagination } from '@/widgets/admin/visits-table/ui/TablePagination'
 
 type VisitsTableProps = {
   visits: Visit[]
