@@ -1,5 +1,5 @@
 import '@/shared/styles/globals.css'
-import { robotoMono, robotoSlab, inter } from '@/shared/config/fonts'
+import { inter, robotoMono, robotoSlab } from '@/shared/config'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
