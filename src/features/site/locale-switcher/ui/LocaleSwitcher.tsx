@@ -4,7 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
 import clsx from 'clsx'
 
-import { locales } from '@/shared/lib/i18n/config'
+import { locales } from '@/shared/lib/i18n'
 
 import { switchLocaleService } from '../services/switch-locale.service'
 
