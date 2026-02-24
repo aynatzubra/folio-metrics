@@ -3,8 +3,8 @@ import { useState, useEffect, useTransition } from 'react'
 import { fetchJson } from '@/shared/api/fetchJson'
 import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
-import { logError, toErrorMessage } from '@/shared/lib/error'
 import { HttpError } from '@/shared/api'
+import { logError, toErrorMessage } from '@/shared/lib/error'
 
 function isAbortError(error: unknown) {
   return (
