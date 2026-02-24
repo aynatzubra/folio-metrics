@@ -32,18 +32,20 @@ export function useNavActiveByClick(options: Options = {}) {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => {
         const y = window.scrollY
-
         setIsScrolled(y > scrolledY)
 
         if (y <= topResetY) {
           setActiveHref(null)
+
+          if (window.location.hash) {
+            window.history.replaceState(null, '', window.location.pathname)
+          }
         }
       })
     }
 
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)

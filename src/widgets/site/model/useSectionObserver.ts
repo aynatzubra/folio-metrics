@@ -2,8 +2,13 @@
 
 import { useEffect, useRef } from 'react'
 
+import { usePathname, useRouter } from '@/shared/lib/i18n/navigation'
+
 export function useSectionObserver() {
-  const activeSectionRef = useRef<string>('hero') // start from 'hero'
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const activeSectionRef = useRef<string>('hero')
   const startTimeRef = useRef<number>(Date.now())
 
   useEffect(() => {
@@ -28,6 +33,9 @@ export function useSectionObserver() {
               const duration = now - startTimeRef.current
 
               sendSectionDuration(activeSectionRef.current, duration)
+
+              const newHash = newSection === 'hero' ? '' : `#${newSection}`
+              window.history.replaceState(null, '', `${window.location.pathname}${newHash}`)
 
               activeSectionRef.current = newSection
               startTimeRef.current = now
@@ -55,5 +63,5 @@ export function useSectionObserver() {
       window.removeEventListener('beforeunload', sendAnalyticsData)
       observer.disconnect()
     }
-  }, [])
+  }, [pathname, router])
 }
