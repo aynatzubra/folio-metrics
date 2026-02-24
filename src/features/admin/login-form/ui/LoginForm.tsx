@@ -2,7 +2,20 @@
 
 import { FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+
+import { loginService } from '../services/login.service'
+
+const inputClass =
+  'block w-full px-4 py-4 rounded-md border border-gray-300 ' +
+  'text-gray-900 placeholder-gray-400 ' +
+  'focus:border-[#F67769] focus:ring-2 focus:ring-[#F67769] focus:outline-none'
+
+const buttonClass =
+  'mx-auto block px-15 py-3 rounded-[4px] ' +
+  'text-white font-semibold w-[230px]  ' +
+  'bg-accent hover:bg-opacity-90 ' +
+  'focus:outline-none focus:ring-2 focus:ring-[#F67769] focus:ring-offset-2 ' +
+  'disabled:cursor-not-allowed disabled:bg-gray-400'
 
 type LoginFormProps = {
   initialEmail?: string
@@ -12,11 +25,11 @@ type LoginFormProps = {
 }
 
 export function LoginForm({
-                                    initialEmail = '',
-                                    initialPassword = '',
-                                    message,
-                                    demoEnabled = false,
-                                  }: LoginFormProps) {
+                            initialEmail = '',
+                            initialPassword = '',
+                            message,
+                            demoEnabled = false,
+                          }: LoginFormProps) {
   const router = useRouter()
   const [email, setEmail] = useState(initialEmail)
   const [password, setPassword] = useState(initialPassword)
@@ -29,37 +42,18 @@ export function LoginForm({
     setError(null)
 
     try {
-      const result = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
-      })
-
-      if (result?.error) {
-        setError('Incorrect email address or password.')
-        setIsLoading(false)
-        return
-      }
-
+      await loginService(email, password)
       router.push('/admin')
-    } catch {
-      setError('An unexpected error occurred')
+    } catch (err) {
+      const errorMessage = err instanceof Error
+        ? err.message
+        : 'An unexpected error occurred'
+
+      setError(errorMessage)
+    } finally {
       setIsLoading(false)
     }
   }
-
-  const inputClass =
-    'block w-full px-4 py-4 rounded-md border border-gray-300 ' +
-    'text-gray-900 placeholder-gray-400 ' +
-    'focus:border-[#F67769] focus:ring-2 focus:ring-[#F67769] focus:outline-none'
-
-  const buttonClass =
-    'mx-auto block px-15 py-3 rounded-[4px] ' +
-    'text-white font-semibold w-[230px]  ' +
-    'bg-accent hover:bg-opacity-90 ' +
-    'focus:outline-none focus:ring-2 focus:ring-[#F67769] focus:ring-offset-2 ' +
-    'disabled:cursor-not-allowed disabled:bg-gray-400'
-
 
   return (
     <main className="h-screen w-screen bg-brand flex items-center justify-center p-4">
