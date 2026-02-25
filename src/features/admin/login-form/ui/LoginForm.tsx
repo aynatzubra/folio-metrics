@@ -1,11 +1,13 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useActionState, useEffect, useState } from 'react'
+import clsx from 'clsx'
 
-import { loginService } from '../services/login.service'
+import { loginAction } from '@/features/admin/login-form'
 
-const inputClass =
+import { LoginActionState, LoginFormProps } from './../model/login.types'
+
+const baseInputClass =
   'block w-full px-4 py-4 rounded-md border border-gray-300 ' +
   'text-gray-900 placeholder-gray-400 ' +
   'focus:border-[#F67769] focus:ring-2 focus:ring-[#F67769] focus:outline-none'
@@ -17,41 +19,26 @@ const buttonClass =
   'focus:outline-none focus:ring-2 focus:ring-[#F67769] focus:ring-offset-2 ' +
   'disabled:cursor-not-allowed disabled:bg-gray-400'
 
-type LoginFormProps = {
-  initialEmail?: string
-  initialPassword?: string
-  message?: string
-  demoEnabled?: boolean
-}
-
 export function LoginForm({
-                            initialEmail = '',
-                            initialPassword = '',
+                            initialEmail,
+                            initialPassword,
                             message,
-                            demoEnabled = false,
                           }: LoginFormProps) {
-  const router = useRouter()
-  const [email, setEmail] = useState(initialEmail)
-  const [password, setPassword] = useState(initialPassword)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
+  const [state, formAction, isPending] = useActionState(loginAction, {
+    success: false,
+    error: null,
+  } as LoginActionState)
 
-    try {
-      await loginService(email, password)
-      router.push('/admin')
-    } catch (err) {
-      const errorMessage = err instanceof Error
-        ? err.message
-        : 'An unexpected error occurred'
+  const [localErrors, setLocalErrors] = useState(state.errors)
 
-      setError(errorMessage)
-    } finally {
-      setIsLoading(false)
+  useEffect(() => {
+    setLocalErrors(state.errors)
+  }, [state.errors])
+
+  const handleInput = (fieldName: keyof NonNullable<LoginActionState['errors']>) => {
+    if (localErrors?.[fieldName]) {
+      setLocalErrors(prev => ({ ...prev, [fieldName]: undefined }))
     }
   }
 
@@ -61,27 +48,26 @@ export function LoginForm({
         <h1 className="text-2xl font-[Inter] font-bold text-center mb-10 text-brand">
           Admin Panel Login
         </h1>
-        {
-          message && (
-            <p className="mb-4 rounded-md bg-orange-50 px-3 py-2 text-sm text-orange-800">
-              {message}
-            </p>
-          )
-        }
-        <form onSubmit={handleSubmit} className="space-y-5">
+
+        <form action={formAction} className="space-y-5">
+
+          {(state.error || message) && (
+            <div className="p-3 text-sm text-center text-red-600 bg-red-50 border border-red-100 rounded">
+              {state.error || message}
+            </div>
+          )}
+
           <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
               Email
             </label>
             <input
-              id="email"
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className={inputClass}
-              placeholder="demo@example.com"
-              autoComplete="username"
+              defaultValue={initialEmail} // Только начальное значение
+              onInput={() => handleInput('email')}
+              className={clsx(baseInputClass, localErrors?.email && 'border-red-500')}
+              placeholder="Email address"
             />
           </div>
 
@@ -90,25 +76,21 @@ export function LoginForm({
               Password
             </label>
             <input
-              id="password"
+              name="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className={inputClass}
-              placeholder="••••••••"
-              autoComplete="current-password"
+              defaultValue={initialPassword}
+              onInput={() => handleInput('password')}
+              className={clsx(baseInputClass, localErrors?.password && 'border-red-500')}
+              placeholder="Password"
             />
           </div>
 
-          {error && <p className="text-sm text-red-600 text-center">{error}</p>}
-
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             className={buttonClass}
           >
-            {isLoading ? 'Signing in...' : 'Sign In'}
+            {isPending ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
       </div>

@@ -1,4 +1,4 @@
-import { LoginForm } from '../../../../features/admin/login-form'
+import { LoginForm } from '@/features/admin/login-form'
 
 type PageProps = {
   searchParams?: Record<string, string | string[] | undefined>
@@ -12,7 +12,7 @@ function getQueryString(
 
 export default async function LoginPage({ searchParams }: PageProps) {
   const searchPar = await searchParams
-  const reason = getQueryString(searchParams?.reason)
+  const reason = getQueryString(searchPar?.reason)
 
   const message =
     reason === 'auth' ? 'Please sign in to access the admin panel.' : undefined
@@ -28,7 +28,6 @@ export default async function LoginPage({ searchParams }: PageProps) {
       initialEmail={demo && demoEnabled ? demoEmail : ''}
       initialPassword={demo && demoEnabled ? demoPassword : ''}
       message={message}
-      demoEnabled={demoEnabled}
     />
   )
 }
