@@ -25,7 +25,7 @@ export function useSectionObserver() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+          if (entry.isIntersecting) {
             const newSection = entry.target.id
 
             if (newSection !== activeSectionRef.current) {
@@ -44,7 +44,8 @@ export function useSectionObserver() {
         })
       },
       {
-        threshold: 0.6,
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0,
       },
     )
 

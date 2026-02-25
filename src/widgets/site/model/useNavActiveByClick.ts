@@ -30,22 +30,31 @@ export function useNavActiveByClick(options: Options = {}) {
 
     const onScroll = () => {
       cancelAnimationFrame(raf)
+      const currentHash = window.location.hash
+
       raf = requestAnimationFrame(() => {
         const y = window.scrollY
+
         setIsScrolled(y > scrolledY)
 
         if (y <= topResetY) {
           setActiveHref(null)
 
-          if (window.location.hash) {
+          if (currentHash) {
             window.history.replaceState(null, '', window.location.pathname)
           }
+          return
+        }
+
+        if (currentHash) {
+          setActiveHref(currentHash)
         }
       })
     }
 
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', onScroll)
@@ -59,6 +68,7 @@ export function useNavActiveByClick(options: Options = {}) {
 
     const onWheel = () => clear()
     const onTouchMove = () => clear()
+
     const onKeyDown = (e: KeyboardEvent) => {
       if (SCROLL_KEYS.has(e.key)) clear()
     }
