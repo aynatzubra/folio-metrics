@@ -2,11 +2,13 @@
 
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
+import { useTransition } from 'react'
 
 import { SocialLinks } from '@/widgets/admin/layout/ui/SocialLinks'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout'
 import { Badge } from '@/shared/ui'
+import { logoutAction } from '@/features/admin/logout'
 
 import myAdminAva from '../../../../../public/assets/images/avatar.png'
 
@@ -16,6 +18,13 @@ type AdminHeaderProps = {
 
 export function AdminHeader({ isDemo }: AdminHeaderProps) {
   const { isOpen, close, open } = useMobileMenu()
+  const [isPending, startTransition] = useTransition()
+
+  const handleLogout = () => {
+    startTransition(async () => {
+      await logoutAction()
+    })
+  }
 
   return (
     <>
@@ -46,7 +55,10 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
               <SocialLinks className="flex items-center gap-3 sm:gap-4" />
 
               {/* Avatar Dropdown */}
-              <UserMenu avatar={myAdminAva} onLogout={() => signOut({ callbackUrl: '/' })} />
+              <UserMenu
+                avatar={myAdminAva}
+                onLogout={handleLogout}
+              />
             </div>
           </div>
 
@@ -63,7 +75,7 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
       <AdminMobileMenu
         isOpen={isOpen}
         onClose={close}
-        onLogout={() => signOut({ callbackUrl: '/' })}
+        onLogout={handleLogout}
         user={{ name: 'Admin', avatar: myAdminAva }}
       />
     </>
