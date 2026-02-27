@@ -8,6 +8,7 @@ const utc = (iso: string) => new Date(iso)
 export const mockVisits: Omit<Visit, 'id'>[] = [
   {
     sectionId: 'experience',
+    visitorId: 'visitor_6',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.168.0.1',
@@ -17,6 +18,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_1',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '10.0.0.1',
@@ -26,6 +28,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_6',
     country: 'France',
     city: 'Paris',
     ipAddress: '172.16.0.1',
@@ -35,6 +38,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'experience',
+    visitorId: 'visitor_8',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.168.1.1',
@@ -44,6 +48,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_2',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '105.0.0.1',
@@ -53,6 +58,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_2',
     country: 'France',
     city: 'Paris',
     ipAddress: '172.164.0.1',
@@ -62,6 +68,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'experience',
+    visitorId: 'visitor_5',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.15.1.1',
@@ -71,6 +78,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_5',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '10.0.1.1',
@@ -80,6 +88,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_2',
     country: 'France',
     city: 'Paris',
     ipAddress: '178.16.0.1',
@@ -89,6 +98,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'experience',
+    visitorId: 'visitor_1',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.158.1.1',
@@ -98,6 +108,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_3',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '10.1.0.1',
@@ -107,6 +118,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_2',
     country: 'France',
     city: 'Paris',
     ipAddress: '172.164.1.1',
@@ -116,6 +128,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'experience',
+    visitorId: 'visitor_4',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.168.0.1',
@@ -125,6 +138,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_7',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '110.1.0.1',
@@ -134,6 +148,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_4',
     country: 'France',
     city: 'Paris',
     ipAddress: '175.16.0.1',
@@ -143,6 +158,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'experience',
+    visitorId: 'visitor_7',
     country: 'USA',
     city: 'San Francisco',
     ipAddress: '192.168.4.1',
@@ -152,6 +168,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'adds',
+    visitorId: 'visitor_2',
     country: 'Germany',
     city: 'Berlin',
     ipAddress: '108.2.0.1',
@@ -161,6 +178,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
   },
   {
     sectionId: 'skills',
+    visitorId: 'visitor_3',
     country: 'France',
     city: 'Paris',
     ipAddress: '179.16.1.1',

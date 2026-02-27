@@ -1,0 +1,122 @@
+[
+  {
+    "sectionId": "experience",
+    "country": "USA",
+    "city": "San Francisco",
+    "userAgent": "Desktop, Chrome",
+    "duration": 125000,
+    "timestamp": 1727604000000
+  },
+  {
+    "sectionId": "adds",
+    "country": "Germany",
+    "city": "Berlin",
+    "userAgent": "Mobile, Safari",
+    "duration": 80000,
+    "timestamp": 1727699400000
+  },
+  {
+    "sectionId": "skills",
+    "country": "France",
+    "city": "Paris",
+    "userAgent": "Desktop, Firefox",
+    "duration": 210000,
+    "timestamp": 1727707500000
+  },
+  {
+    "sectionId": "experience",
+    "country": "USA",
+    "city": "San Francisco",
+    "userAgent": "Desktop, Chrome",
+    "duration": 125000,
+    "timestamp": 1727604000000
+  },
+  {
+    "sectionId": "adds",
+    "country": "Germany",
+    "city": "Berlin",
+    "userAgent": "Mobile, Safari",
+    "duration": 80000,
+    "timestamp": 1727699400000
+  },
+  {
+    "sectionId": "skills",
+    "country": "France",
+    "city": "Paris",
+    "userAgent": "Desktop, Firefox",
+    "duration": 210000,
+    "timestamp": 1727707500000
+  },
+  {
+    "sectionId": "experience",
+    "country": "USA",
+    "city": "San Francisco",
+    "userAgent": "Desktop, Chrome",
+    "duration": 125000,
+    "timestamp": 1727604000000
+  },
+  {
+    "sectionId": "adds",
+    "country": "Germany",
+    "city": "Berlin",
+    "userAgent": "Mobile, Safari",
+    "duration": 80000,
+    "timestamp": 1727699400000
+  },
+  {
+    "sectionId": "skills",
+    "country": "France",
+    "city": "Paris",
+    "userAgent": "Desktop, Firefox",
+    "duration": 210000,
+    "timestamp": 1727707500000
+  },
+  {
+    "sectionId": "experience",
+    "country": "USA",
+    "city": "San Francisco",
+    "userAgent": "Desktop, Chrome",
+    "duration": 125000,
+    "timestamp": 1727604000000
+  },
+  {
+    "sectionId": "adds",
+    "country": "Germany",
+    "city": "Berlin",
+    "userAgent": "Mobile, Safari",
+    "duration": 80000,
+    "timestamp": 1727699400000
+  },
+  {
+    "sectionId": "skills",
+    "country": "France",
+    "city": "Paris",
+    "userAgent": "Desktop, Firefox",
+    "duration": 210000,
+    "timestamp": 1727707500000
+  },
+  {
+    "sectionId": "experience",
+    "country": "USA",
+    "city": "San Francisco",
+    "userAgent": "Desktop, Chrome",
+    "duration": 125000,
+    "timestamp": 1727604000000
+  },
+  {
+    "sectionId": "adds",
+    "country": "Germany",
+    "city": "Berlin",
+    "userAgent": "Mobile, Safari",
+    "duration": 80000,
+    "timestamp": 1727699400000
+  },
+  {
+    "sectionId": "skills",
+    "country": "France",
+    "city": "Paris",
+    "userAgent": "Desktop, Firefox",
+    "duration": 210000,
+    "timestamp": 1727707500000
+  }
+]
