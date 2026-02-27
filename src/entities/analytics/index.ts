@@ -4,4 +4,5 @@ export type {
   SummaryStats,
   DailyPoint,
   SectionPoint,
+  AnalyticsDashboard,
 } from './model/types'
