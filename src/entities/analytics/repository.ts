@@ -8,6 +8,12 @@ type CacheEntry<T> = {
   expiresAt: number
 }
 
+const EMPTY_SUMMARY: SummaryStats = {
+  totalVisits: 0,
+  uniqueVisitors: 0,
+  avgDuration: 0,
+}
+
 type AnalyticsCacheValue = SummaryStats | DailyPoint[] | SectionPoint[]
 
 const cache = new Map<string, CacheEntry<AnalyticsCacheValue>>()
@@ -32,6 +38,8 @@ async function withCache<T extends AnalyticsCacheValue>(
 }
 
 async function trackVisitInternal(data: VisitData) {
+  if (!prisma) return
+
   const fingerprint = createFingerprint(
     data.ipAddress ?? 'unknown',
     data.userAgent ?? 'unknown',
@@ -57,6 +65,8 @@ async function trackVisitInternal(data: VisitData) {
 }
 
 async function getSummaryInternal(): Promise<SummaryStats> {
+  if (!prisma) return EMPTY_SUMMARY
+
   const [totalVisits, uniqueVisitorsByIp, avgDurationResult] = await Promise.all([
     prisma.visit.count(),
     prisma.visit.groupBy({ by: ['ipAddress'] }),
@@ -71,6 +81,8 @@ async function getSummaryInternal(): Promise<SummaryStats> {
 }
 
 async function getLastVisitsInternal(limit = 50) {
+  if (!prisma) return []
+
   return prisma.visit.findMany({
     orderBy: { createdAt: 'desc' },
     take: limit,
@@ -78,6 +90,8 @@ async function getLastVisitsInternal(limit = 50) {
 }
 
 async function getDailyVisitsInternal(days = 7): Promise<DailyPoint[]> {
+  if (!prisma) return []
+
   const since = new Date(Date.now() - days * DAY_MS)
 
   const stats = await prisma.$queryRaw<Array<{ day: Date; count: bigint }>>`
@@ -97,6 +111,8 @@ async function getDailyVisitsInternal(days = 7): Promise<DailyPoint[]> {
 }
 
 async function getTopSectionsInternal(days = 7): Promise<SectionPoint[]> {
+  if (!prisma) return []
+
   const since = new Date(Date.now() - days * DAY_MS)
 
   const grouped = await prisma.visit.groupBy({
