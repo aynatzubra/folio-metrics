@@ -1,0 +1,1 @@
+export { VisitorManager } from './visitor-id'
