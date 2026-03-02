@@ -2,25 +2,19 @@
 
 import { useEffect, useRef } from 'react'
 
-import { usePathname, useRouter } from '@/shared/lib/i18n/navigation'
+import { usePathname } from '@/shared/lib/i18n/navigation'
+import { useAnalytics } from '@/shared/api'
 
 export function useSectionObserver() {
-  const router = useRouter()
   const pathname = usePathname()
+  const { trackSectionVisit } = useAnalytics()
 
   const activeSectionRef = useRef<string>('hero')
   const startTimeRef = useRef<number>(Date.now())
 
   useEffect(() => {
     const sendSectionDuration = (sectionId: string, duration: number) => {
-      if (duration < 500) return
-      navigator.sendBeacon(
-        '/api/track-visit',
-        JSON.stringify({
-          sectionId,
-          duration,
-        }),
-      )
+      trackSectionVisit({ sectionId, duration })
     }
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,5 +58,5 @@ export function useSectionObserver() {
       window.removeEventListener('beforeunload', sendAnalyticsData)
       observer.disconnect()
     }
-  }, [pathname, router])
+  }, [pathname, trackSectionVisit])
 }

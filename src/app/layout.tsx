@@ -1,6 +1,7 @@
 import '@/shared/lib/fontawesome'
 import '@/shared/styles/globals.css'
 import { inter, robotoMono, robotoSlab } from '@/shared/config'
+import { AnalyticsProvider } from '@/shared/api'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +11,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
     <body className={`${robotoSlab.variable} ${robotoMono.variable} ${inter.variable} antialiased`}>
-    {children}
+    <AnalyticsProvider>
+      {children}
+    </AnalyticsProvider>
     </body>
     </html>
   )
