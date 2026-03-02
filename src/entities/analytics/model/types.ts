@@ -3,10 +3,10 @@ export interface VisitData {
   duration: number
   timestamp: number
   visitorId: string
-  ipAddress: string
-  userAgent: string
-  country: string
-  city: string
+  ipAddress?: string
+  userAgent?: string
+  country?: string
+  city?: string
 }
 
 export interface SummaryStats {
