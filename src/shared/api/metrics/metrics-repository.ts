@@ -1,20 +1,22 @@
-'use client'
 import type { VisitData } from '@/entities/analytics'
 
 export interface IMetricsRepository {
-  save(data: Omit<VisitData, 'visitorId'>): Promise<void>
+  save(data: VisitData): Promise<void>
   getAll(): Promise<VisitData[]>
 }
 
 export class LocalStorageRepository implements IMetricsRepository {
-  private readonly STORAGE_KEY = 'folio_metrics_v1'
+  private readonly STORAGE_KEY = 'folio_metrics_demo'
 
-  private isClient = () => typeof window !== 'undefined'
+  private isClient(): boolean {
+    return typeof window !== 'undefined'
+  }
 
   async save(data: VisitData): Promise<void> {
     if (!this.isClient()) return
 
     const history = await this.getAll()
+
     history.push(data)
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(history.slice(-1000)))
   }
