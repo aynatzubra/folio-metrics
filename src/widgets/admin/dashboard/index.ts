@@ -1,6 +1,6 @@
 export { SummaryCards } from './ui/SummaryCards'
 export { StatCard } from './ui/StatCard'
-export { ChartSkeleton, TableSkeleton } from './ui/DashboardSkeletons'
+export { ChartSkeleton, TableSkeleton, SummaryCardSkeleton } from './ui'
 export { DataPlaceholder } from './ui/DataPlaceholder'
 
 

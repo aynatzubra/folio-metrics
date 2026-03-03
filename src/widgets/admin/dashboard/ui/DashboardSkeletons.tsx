@@ -43,3 +43,19 @@ export function TableSkeleton() {
     </div>
   )
 }
+
+export function SummaryCardSkeleton() {
+  return (
+    <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {[1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="h-[124px] animate-pulse rounded-lg bg-gray-100 p-6 shadow-[0_1px_2px_rgba(56,65,74,.15)]"
+        >
+          <div className="h-4 w-24 rounded bg-gray-200" />
+          <div className="mt-4 h-8 w-16 rounded bg-gray-200" />
+        </div>
+      ))}
+    </section>
+  )
+}
