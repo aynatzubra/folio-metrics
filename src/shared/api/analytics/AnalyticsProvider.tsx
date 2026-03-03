@@ -9,28 +9,35 @@ import {
   type PropsWithChildren,
 } from 'react'
 
-import { LocalStorageRepository } from '@/shared/api/metrics/metrics-repository'
 import { MetricsService } from '@/shared/api/metrics/metrics-service'
 import { VisitorManager } from '@/shared/lib/visitor'
+import { LocalStorageRepository } from '@/shared/api'
+import { IMetricsRepository, NoopMetricsRepository } from '@/shared/api/metrics'
 
 import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 
 type AnalyticsContextValue = {
   trackSectionVisit(input: { sectionId: string; duration: number }): Promise<void>
-  getDashboard(days:number): Promise<AnalyticsDashboard>
+  getDashboard(days: number): Promise<AnalyticsDashboard>
 }
 
 const AnalyticsContext = createContext<AnalyticsContextValue | null>(null)
 
 export function AnalyticsProvider({ children }: PropsWithChildren) {
-  const repoRef = useRef<LocalStorageRepository | null>(null)
+  const repoRef = useRef<IMetricsRepository | null>(null)
+
   if (repoRef.current === null) {
-    repoRef.current = new LocalStorageRepository()
+    const isClient = typeof window !== 'undefined'
+
+    repoRef.current = isClient
+      ? new LocalStorageRepository()
+      : new NoopMetricsRepository()
   }
 
   const serviceRef = useRef<MetricsService | null>(null)
+
   if (serviceRef.current === null) {
-    serviceRef.current = new MetricsService(repoRef.current)
+    serviceRef.current = new MetricsService(repoRef.current!)
   }
 
   const lastSentEventRef = useRef<{ id: string; time: number } | null>(null)
@@ -48,7 +55,7 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
 
       lastSentEventRef.current = { id: sectionId, time: now }
       const visitorId = VisitorManager.getOrCreateId()
-      const timestamp = Date.now()
+      const timestamp = now
 
       const userAgent = window.navigator.userAgent ?? 'Unknown'
       const country = 'Demo mode'
@@ -82,8 +89,7 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
     [],
   )
 
-
-  const getDashboard = useCallback(async (days:number): Promise<AnalyticsDashboard> => {
+  const getDashboard = useCallback(async (days: 7): Promise<AnalyticsDashboard> => {
     try {
       return await serviceRef.current!.getDashboardData(days)
     } catch (error) {
