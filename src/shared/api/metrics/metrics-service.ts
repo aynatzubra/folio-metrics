@@ -1,6 +1,7 @@
 import { AnalyticsProcessor } from '@/entities/analytics/model'
-import { IMetricsRepository } from '@/shared/api/metrics/metrics-repository'
 import mockHistory from '@/shared/assets/data/mock-history.json'
+
+import { IMetricsRepository } from './repository.interface'
 
 import type { AnalyticsDashboard, VisitData } from '@/entities/analytics'
 

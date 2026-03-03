@@ -1,4 +1,3 @@
-export { AnalyticsRepository } from './repository'
 export type {
   VisitData,
   SummaryStats,

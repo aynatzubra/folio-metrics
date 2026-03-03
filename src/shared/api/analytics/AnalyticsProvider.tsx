@@ -111,7 +111,7 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
 export function useAnalytics() {
   const ctx = useContext(AnalyticsContext)
   if (!ctx) {
-    throw new Error('useAnalyticsDashboard must be used within AnalyticsProvider')
+    throw new Error('useAnalytics must be used within AnalyticsProvider')
   }
   return ctx
 }

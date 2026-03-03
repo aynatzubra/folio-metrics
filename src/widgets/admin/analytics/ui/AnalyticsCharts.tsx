@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import clsx from 'clsx'
 
-import { DailyPoint, SectionPoint } from '@/entities/analytics'
 import {
   ANALYTICS_RANGE_OPTIONS,
   DailyVisitsChart,
@@ -11,12 +10,6 @@ import {
   SectionsChart,
   useAnalyticsDashboard,
 } from '@/widgets/admin/analytics'
-
-type Props = {
-  initialRange: RangeOptionValue
-  initialDaily: DailyPoint[] | null
-  initialSections: SectionPoint[] | null
-}
 
 export function AnalyticsCharts() {
   const [range, setRange] = useState<RangeOptionValue>(30)

@@ -1,18 +1,11 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import bcrypt from 'bcryptjs'
-import { PrismaAdapter } from '@auth/prisma-adapter'
-
-import { prisma } from '@/shared/db/prisma'
 
 const DEMO_EMAIL = process.env.SECRET_DEMO_USER ?? 'demo@example.com'
 const DEMO_PASSWORD = process.env.SECRET_DEMO_PASSWORD ?? 'demo123'
 const DEMO_USER_ID = process.env.DEMO_USER_ID ?? 'demo'
 
-const demoEnabled = Boolean(DEMO_EMAIL && DEMO_PASSWORD)
-
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
   pages: { signIn: '/admin/login' },
 
@@ -24,32 +17,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const { email, password } = (credentials ?? {}) as {
-          email?: string
-          password?: string
-        }
-
-        if (!email || !password) return null
+        const { email, password } = (credentials ?? {}) as Record<string, string>
 
         if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
           return { id: DEMO_USER_ID, email: DEMO_EMAIL, name: 'Demo' }
         }
-
-        const user = await prisma.user.findUnique({
-          where: { email },
-          select: { id: true, email: true, password: true, name: true },
-        })
-
-        if (!user?.password) return null
-
-        const isPasswordValid = await bcrypt.compare(password, user.password)
-        if (!isPasswordValid) return null
-
-        if (demoEnabled && email === DEMO_EMAIL && password === DEMO_PASSWORD) {
-          return { id: DEMO_USER_ID, email: DEMO_EMAIL, name: 'Demo' }
-        }
-
-        return { id: user.id, email: user.email, name: user.name ?? undefined }
+        return null
       },
     }),
   ],
@@ -57,9 +30,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     //callback for token extension
     jwt({ token, user }) {
-      if (user) {
-        token.id = user.id
-      }
+      if (user) token.id = user.id
       return token
     },
     session({ session, token }) {

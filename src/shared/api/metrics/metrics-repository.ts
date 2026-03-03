@@ -1,9 +1,6 @@
-import type { VisitData } from '@/entities/analytics'
+import { IMetricsRepository } from './repository.interface'
 
-export interface IMetricsRepository {
-  save(data: VisitData): Promise<void>
-  getAll(): Promise<VisitData[]>
-}
+import type { VisitData } from '@/entities/analytics'
 
 export class LocalStorageRepository implements IMetricsRepository {
   private readonly STORAGE_KEY = 'folio_metrics_demo'
