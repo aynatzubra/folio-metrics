@@ -18,7 +18,7 @@ import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 
 type AnalyticsContextValue = {
   trackSectionVisit(input: { sectionId: string; duration: number }): Promise<void>
-  getDashboard(): Promise<AnalyticsDashboard>
+  getDashboard(days:number): Promise<AnalyticsDashboard>
 }
 
 const AnalyticsContext = createContext<AnalyticsContextValue | null>(null)
@@ -78,9 +78,9 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
   )
 
 
-  const getDashboard = useCallback(async (): Promise<AnalyticsDashboard> => {
+  const getDashboard = useCallback(async (days:number): Promise<AnalyticsDashboard> => {
     try {
-      return await serviceRef.current!.getDashboardData()
+      return await serviceRef.current!.getDashboardData(days)
     } catch (error) {
       console.error('[AnalyticsProvider] Failed to build dashboard', error)
       return {

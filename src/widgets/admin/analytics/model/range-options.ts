@@ -1,4 +1,4 @@
-export type RangeOptionValue = 7 | 14 | 30
+export type RangeOptionValue = 0 | 7 | 14 | 30
 
 export interface RangeOption {
   label: string
@@ -6,6 +6,7 @@ export interface RangeOption {
 }
 
 export const ANALYTICS_RANGE_OPTIONS: RangeOption[] = [
+  { label: 'All time', value: 0 },
   { label: '7 days', value: 7 },
   { label: '14 days', value: 14 },
   { label: '30 days', value: 30 },

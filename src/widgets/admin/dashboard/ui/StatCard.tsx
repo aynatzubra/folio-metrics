@@ -1,6 +1,6 @@
 type StatCardProps = {
   title: string
-  value: string | number
+  value?: string | number
 }
 
 const cardClass =

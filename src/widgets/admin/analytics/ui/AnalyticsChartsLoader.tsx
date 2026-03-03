@@ -7,14 +7,13 @@ import { ChartSkeleton, DataPlaceholder } from '@/widgets/admin/dashboard'
 import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
 
-
 type Props = {
   initialRange: RangeOptionValue
   initialDaily: DailyPoint[] | null
   initialSections: SectionPoint[] | null
 }
 
-const AnalyticsCharts = dynamic(
+const AnalyticsCharts = dynamic<Props>(
   () => import('./AnalyticsCharts').then((m) => m.AnalyticsCharts),
   {
     ssr: false,

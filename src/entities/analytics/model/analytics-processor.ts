@@ -1,6 +1,15 @@
 import type { DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 
 export class AnalyticsProcessor {
+  static filterByRange(data: VisitData[], days: number): VisitData[] {
+    if (days === 0) return data
+
+    const msInDay = 24 * 60 * 60 * 1000
+    const threshold = Date.now() - days * msInDay
+
+    return data.filter(visit => visit.timestamp >= threshold)
+  }
+
   static calculateSummary(data: VisitData[]): SummaryStats {
     const totalVisits = data.length
     const uniqueVisitors = new Set(data.map(m => m.visitorId)).size

@@ -3,9 +3,14 @@
 import { useState } from 'react'
 import clsx from 'clsx'
 
-import { useAnalyticsDashboard } from '@/widgets/admin/analytics/model/useAnalyticsDashboard'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
-import { ANALYTICS_RANGE_OPTIONS, DailyVisitsChart, RangeOptionValue, SectionsChart } from '@/widgets/admin/analytics'
+import {
+  ANALYTICS_RANGE_OPTIONS,
+  DailyVisitsChart,
+  RangeOptionValue,
+  SectionsChart,
+  useAnalyticsDashboard,
+} from '@/widgets/admin/analytics'
 
 type Props = {
   initialRange: RangeOptionValue
@@ -13,13 +18,9 @@ type Props = {
   initialSections: SectionPoint[] | null
 }
 
-export function AnalyticsCharts({ initialRange, initialDaily, initialSections }: Props) {
+export function AnalyticsCharts() {
   const [range, setRange] = useState<RangeOptionValue>(30)
-  const { daily, sections, isLoading, error } = useAnalyticsDashboard(range, {
-    initialRange,
-    initialDaily,
-    initialSections,
-  })
+  const { daily, sections, isLoading, error } = useAnalyticsDashboard(range)
 
   return (
     <section className="mt-8">

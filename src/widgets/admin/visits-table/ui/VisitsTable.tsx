@@ -1,13 +1,14 @@
 'use client'
 
-import { Visit } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
 import { TablePagination } from '@/widgets/admin/visits-table/ui/TablePagination'
 
+import type { VisitData } from '@/entities/analytics'
+
 type VisitsTableProps = {
-  visits: Visit[]
+  visits: VisitData[]
   pageSize?: number
 }
 
@@ -61,7 +62,7 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
 
             <tbody className="divide-y divide-gray-100 bg-white">
             {pageItems.map((visit) => (
-              <tr key={visit.id} className="transition-colors hover:bg-slate-50">
+              <tr key={visit.visitorId+visit.timestamp} className="transition-colors hover:bg-slate-50">
                 <td className="whitespace-nowrap px-6 py-3 text-sm font-medium text-gray-900">
                   {visit.sectionId}
                 </td>
@@ -72,7 +73,7 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
                   {formatDuration(visit.duration)}
                 </td>
                 <td className="whitespace-nowrap px-6 py-3 text-sm text-gray-600">
-                  {formatDateTime(visit.createdAt)}
+                  {formatDateTime(new Date(visit.timestamp))}
                 </td>
               </tr>
             ))}

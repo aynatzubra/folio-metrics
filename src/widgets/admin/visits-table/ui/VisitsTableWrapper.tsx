@@ -1,13 +1,10 @@
+'use client'
+
 import { VisitsTable } from '@/widgets/admin/visits-table/ui/VisitsTable'
-import { prisma } from '@/shared/db/prisma'
+import { useAnalyticsDashboard } from '@/widgets/admin/analytics'
 
-export async function VisitsTableWrapper() {
-  if (!prisma) return
+export function VisitsTableWrapper() {
+  const { recent } = useAnalyticsDashboard(0)
 
-  const visits = await prisma.visit.findMany({
-    orderBy: { createdAt: 'desc' },
-    take: 50,
-  })
-
-  return <VisitsTable visits={visits} />
+  return <VisitsTable visits={recent || []} />
 }

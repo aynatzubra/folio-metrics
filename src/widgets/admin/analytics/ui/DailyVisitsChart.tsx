@@ -12,7 +12,7 @@ type DailyVisitsChartProps = {
   data: DailyPoint[]
   isLoading: boolean
   error: string | null
-  range: 7 | 14 | 30
+  range: 0 | 7 | 14 | 30
 }
 
 const getOption = (categories: string[], values: number[]): EChartsOption => ({

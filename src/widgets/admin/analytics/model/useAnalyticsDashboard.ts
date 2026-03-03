@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 
 import { RangeOptionValue } from '@/widgets/admin/analytics'
@@ -19,7 +21,7 @@ export function useAnalyticsDashboard(range: RangeOptionValue) {
       setUiError(null)
 
       try {
-        const stats = await getDashboard()
+        const stats = await getDashboard(Number(range))
 
         setData(stats)
       } catch (e) {
