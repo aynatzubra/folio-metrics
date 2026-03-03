@@ -15,10 +15,18 @@ export class LocalStorageRepository implements IMetricsRepository {
   async save(data: VisitData): Promise<void> {
     if (!this.isClient()) return
 
-    const history = await this.getAll()
+    await navigator.locks.request('folio_metrics_lock', async () => {
+      const history = await this.getAll()
 
-    history.push(data)
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(history.slice(-1000)))
+      const isDuplicate = history.some(v =>
+        v.timestamp === data.timestamp && v.sectionId === data.sectionId,
+      )
+
+      if (isDuplicate) return
+
+      history.push(data)
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(history.slice(-1000)))
+    })
   }
 
   async getAll(): Promise<VisitData[]> {

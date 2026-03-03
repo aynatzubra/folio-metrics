@@ -15,7 +15,6 @@ import { VisitorManager } from '@/shared/lib/visitor'
 
 import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 
-
 type AnalyticsContextValue = {
   trackSectionVisit(input: { sectionId: string; duration: number }): Promise<void>
   getDashboard(days:number): Promise<AnalyticsDashboard>
@@ -34,14 +33,20 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
     serviceRef.current = new MetricsService(repoRef.current)
   }
 
+  const lastSentEventRef = useRef<{ id: string; time: number } | null>(null)
+
   const trackSectionVisit = useCallback(
     async ({ sectionId, duration }: { sectionId: string; duration: number }) => {
+      const now = Date.now()
+
       if (duration < 500) return
 
-      if (typeof window === 'undefined') {
-        return
-      }
+      if (typeof window === 'undefined') return
 
+      if (lastSentEventRef.current?.id === sectionId &&
+        now - lastSentEventRef.current?.time < 1000) return
+
+      lastSentEventRef.current = { id: sectionId, time: now }
       const visitorId = VisitorManager.getOrCreateId()
       const timestamp = Date.now()
 
