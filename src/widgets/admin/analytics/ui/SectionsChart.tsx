@@ -54,7 +54,7 @@ export function SectionsChart({ data, isLoading, error, range }: SectionsChartPr
     const values = hasData ? data.map((item) => item.count) : []
 
     return getOption(categories, values)
-  }, [data])
+  }, [data, hasData])
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">

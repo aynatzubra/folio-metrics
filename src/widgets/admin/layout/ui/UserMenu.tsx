@@ -8,6 +8,7 @@ import Image, { StaticImageData } from 'next/image'
 interface UserMenuProps {
   avatar: StaticImageData | string
   onLogout: () => void
+  isLoading: boolean
 }
 
 const menuButton =

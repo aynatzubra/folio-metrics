@@ -8,10 +8,7 @@ import type { VisitData } from '@/entities/analytics'
  */
 
 export class NoopMetricsRepository implements IMetricsRepository {
-  async save(_data: VisitData): Promise<void> {
-    // dont save anything on the server
-    return Promise.resolve()
-  }
+  async save(_data: VisitData): Promise<void> { }
 
   async getAll(): Promise<VisitData[]> {
     // server-empty arr

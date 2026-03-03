@@ -57,6 +57,7 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
               <UserMenu
                 avatar={myAdminAva}
                 onLogout={handleLogout}
+                isLoading={isPending}
               />
             </div>
           </div>
@@ -65,6 +66,7 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
           <AdminHeaderMobile
             isDemo={isDemo}
             isMenuOpen={isOpen}
+            isLoading={isPending}
             onOpenMenuAction={open}
             openMenuLabel={'Open menu'}
           />

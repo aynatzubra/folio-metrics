@@ -1,7 +1,7 @@
 import { LoginForm } from '@/features/admin/login-form'
 
 type PageProps = {
-  searchParams?: Record<string, string | string[] | undefined>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 function getQueryString(

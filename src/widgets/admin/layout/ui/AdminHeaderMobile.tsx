@@ -9,6 +9,7 @@ type Props = {
   isDemo?: boolean
   onOpenMenuAction: () => void
   openMenuLabel: string
+  isLoading: boolean
 }
 
 export function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenuAction, openMenuLabel }: Props) {

@@ -49,6 +49,7 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
     },
   ],
 })
+
 export function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
   const hasData = data && data.length > 0
 
@@ -56,7 +57,7 @@ export function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsC
     const categories = hasData ? data.map((point) => point.day) : []
     const values = hasData ? data.map((point) => point.count) : []
     return getOption(categories, values)
-  }, [data])
+  }, [data, hasData])
 
   return (
     <div className="rounded-lg bg-white p-4 shadow">
