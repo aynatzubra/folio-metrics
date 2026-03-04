@@ -3,6 +3,7 @@ import createMiddleware from 'next-intl/middleware'
 
 import { auth } from '@/auth'
 import { defaultLocale, locales } from '@/shared/lib/i18n/config'
+import { updateSupabaseSession } from '@/shared/lib/utils'
 
 export const runtime = 'nodejs'
 
@@ -12,9 +13,8 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'always',
 })
 
-export default auth((req) => {
+export default auth(async (req) => {
   const isAdminRoute = req.nextUrl.pathname.startsWith('/admin')
-  // const isAdminPage = url.pathname.startsWith('/admin') && url.pathname !== '/admin/login'
   const session = req.auth
   const isLoggedIn = !!session?.user
   const isAuthPage = req.nextUrl.pathname === '/admin/login'
@@ -33,7 +33,7 @@ export default auth((req) => {
     return NextResponse.next()
   }
 
-  return intlResponse
+  return await updateSupabaseSession(req, intlResponse)
 })
 
 export const config = {

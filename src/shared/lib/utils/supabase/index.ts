@@ -1,0 +1,1 @@
+export { updateSupabaseSession } from './middleware'
