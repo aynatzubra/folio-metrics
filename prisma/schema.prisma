@@ -23,7 +23,7 @@ model Visit {
   country   String?  @db.VarChar(100)
   city      String?  @db.VarChar(100)
   ipAddress String?  @db.VarChar(45)
-  userAgent String?  @db.VarChar(512)
+  userAgent String?  @db.Text
   duration  Int?
   createdAt DateTime @default(now()) @db.Timestamptz(6)
 

@@ -191,7 +191,21 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
 async function main() {
   console.log('Seeding start...')
   await prisma.visit.deleteMany({})
+  await prisma.analyticsVisitor.deleteMany({})
   await prisma.user.deleteMany({ where: { email: process.env.SECRET_DEMO_USER } })
+
+  const uniqueVisitorIds = Array.from(
+    new Set(mockVisits.map((v) => v.visitorId).filter(Boolean)),
+  ) as string[]
+
+  console.log(`Creating ${uniqueVisitorIds.length} unique visitors...`)
+
+  await prisma.analyticsVisitor.createMany({
+    data: uniqueVisitorIds.map(id => ({
+      id,
+      fingerprint: `fp-${id}`,
+    })),
+  })
 
   await prisma.visit.createMany({
     data: mockVisits,
