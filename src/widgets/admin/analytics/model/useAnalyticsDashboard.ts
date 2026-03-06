@@ -9,38 +9,44 @@ import { logError } from '@/shared/lib/error'
 
 export function useAnalyticsDashboard(range: RangeOptionValue) {
   const { getDashboard } = useAnalytics()
-
   const [data, setData] = useState<AnalyticsDashboard | null>(null)
-
   const [isLoading, setIsLoading] = useState(true)
-  const [uiError, setUiError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    async function loadDemoStats() {
+    const controller = new AbortController()
+
+    async function fetchData() {
       setIsLoading(true)
-      setUiError(null)
+      setError(null)
 
       try {
         const stats = await getDashboard(Number(range))
-
-        setData(stats)
+        if (!controller.signal.aborted) {
+          setData(stats)
+        }
       } catch (e) {
-        logError(e, 'AnalyticsHook')
-        setUiError('Failed to load statistics')
+        if (!controller.signal.aborted) {
+          logError(e, 'AnalyticsHook')
+          setError('Failed to load statistics')
+        }
       } finally {
-        setIsLoading(false)
+        if (!controller.signal.aborted) {
+          setIsLoading(false)
+        }
       }
     }
 
-    loadDemoStats()
+    fetchData()
+    return () => controller.abort()
   }, [range, getDashboard])
 
   return {
-    summary: data?.summary || null,
-    daily: data?.dailyActivity || null,
-    sections: data?.sectionStats || null,
+    summary: data?.summary ?? { totalVisits: 0, uniqueVisitors: 0, avgDuration: 0 },
+    daily: data?.dailyActivity || [],
+    sections: data?.sectionStats || [],
     recent: data?.recentVisits || [],
     isLoading,
-    error: uiError,
+    error,
   }
 }

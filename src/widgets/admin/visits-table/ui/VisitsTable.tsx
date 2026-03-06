@@ -4,15 +4,17 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
 import { TablePagination } from '@/widgets/admin/visits-table/ui/TablePagination'
+import { TableSkeleton } from '@/widgets/admin/dashboard'
 
 import type { VisitData } from '@/entities/analytics'
 
 type VisitsTableProps = {
   visits: VisitData[]
   pageSize?: number
+  isLoading: boolean
 }
 
-export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
+export function VisitsTable({ visits, isLoading, pageSize = 15 }: VisitsTableProps) {
   const [page, setPage] = useState(1)
 
   const total = visits.length
@@ -27,13 +29,8 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
     return visits.slice(startIndex, startIndex + pageSize)
   }, [page, pageSize, visits])
 
-  if (total === 0) {
-    return (
-      <div className="flex h-52 items-center justify-center text-sm text-gray-500 bg-white rounded-lg shadow mt-8">
-        No visits recorded yet.
-      </div>
-    )
-  }
+  if (isLoading) return <TableSkeleton />
+
   return (
     <section className="flex flex-col mt-8">
       <h2 className="text-xl font-semibold text-gray-900">Recent Visits</h2>
