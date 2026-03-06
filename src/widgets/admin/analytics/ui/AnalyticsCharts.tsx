@@ -11,8 +11,8 @@ import {
   useAnalyticsDashboard,
 } from '@/widgets/admin/analytics'
 
-export function AnalyticsCharts() {
-  const [range, setRange] = useState<RangeOptionValue>(30)
+export function AnalyticsCharts({ initialRange = 30 }: { initialRange?: RangeOptionValue }) {
+  const [range, setRange] = useState<RangeOptionValue>(initialRange)
   const { daily, sections, isLoading, error } = useAnalyticsDashboard(range)
 
   return (

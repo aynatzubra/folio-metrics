@@ -1,5 +1,4 @@
 export { AnalyticsCharts } from './ui/AnalyticsCharts'
-export { AnalyticsChartsLoader } from './ui/AnalyticsChartsLoader'
 export { AnalyticsChartsWrapper } from './ui/AnalyticsChartsWrapper'
 export { DailyVisitsChart } from './ui/DailyVisitsChart'
 export { SectionsChart } from './ui/SectionsChart'

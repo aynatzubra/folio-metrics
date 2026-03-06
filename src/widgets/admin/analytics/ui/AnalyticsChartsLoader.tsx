@@ -8,9 +8,9 @@ import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { DailyPoint, SectionPoint } from '@/entities/analytics'
 
 type Props = {
-  initialRange: RangeOptionValue
-  initialDaily: DailyPoint[] | null
-  initialSections: SectionPoint[] | null
+  initialRange?: RangeOptionValue
+  initialDaily?: DailyPoint[] | null
+  initialSections?: SectionPoint[] | null
 }
 
 const AnalyticsCharts = dynamic<Props>(

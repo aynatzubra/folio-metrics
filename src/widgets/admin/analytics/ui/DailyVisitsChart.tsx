@@ -5,14 +5,16 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import { DailyPoint } from '@/entities/analytics'
 import { echarts } from '@/shared/lib/echarts'
+import { DashboardLoader } from '@/shared/ui/DashboardLoader'
+import { DataPlaceholder } from '@/widgets/admin/dashboard'
 
 import type { EChartsOption } from 'echarts'
 
-type DailyVisitsChartProps = {
+type Props = {
   data: DailyPoint[]
   isLoading: boolean
   error: string | null
-  range: 0 | 7 | 14 | 30
+  range: number
 }
 
 const getOption = (categories: string[], values: number[]): EChartsOption => ({
@@ -50,42 +52,41 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
   ],
 })
 
-export function DailyVisitsChart({ data, isLoading, error, range }: DailyVisitsChartProps) {
+export function DailyVisitsChart({ data, isLoading, error, range }: Props) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {
-    const categories = hasData ? data.map((point) => point.day) : []
-    const values = hasData ? data.map((point) => point.count) : []
+    if (!hasData) return null
+    const categories = data.map((point) => point.day)
+    const values = data.map((point) => point.count)
     return getOption(categories, values)
   }, [data, hasData])
 
   return (
-    <div className="rounded-lg bg-white p-4 shadow">
-      <h3 className="mb-2 text-base font-semibold text-gray-400">Daily visits (last {range} days)</h3>
+    <div className="flex flex-col rounded-lg bg-white p-5 shadow-sm border border-slate-100 h-[380px]">
+      <h3 className="mb-6 text-sm font-semibold tracking-wider text-slate-400">
+        Daily visits (last {range} days)
+      </h3>
 
-      {isLoading && (
-        <div className="flex h-72 items-center justify-center text-sm text-gray-500">
-          Loading chart...
-        </div>
-      )}
+      <div className="relative flex-1 flex items-center justify-center">
+        {isLoading && <DashboardLoader title="Loading stats..." />}
 
-      {!isLoading && error && (
-        <div className="flex h-72 items-center justify-center text-sm text-red-600">
-          Failed to load daily stats.
-        </div>
-      )}
+        {!isLoading && error && (
+          <DataPlaceholder type="error" message="Failed to load daily stats." />
+        )}
 
-      {!isLoading && !error && !hasData && (
-        <div className="flex h-72 items-center justify-center text-sm text-gray-500">
-          Not enough data yet.
-        </div>
-      )}
+        {!isLoading && !error && !hasData && (
+          <DataPlaceholder type="empty" message="Not enough data yet." />
+        )}
 
-      {!isLoading && !error && hasData && (
-        <ReactEChartsCore
-          echarts={echarts} option={option}
-          style={{ height: 280 }} />
-      )}
+        {!isLoading && !error && hasData && option && (
+          <ReactEChartsCore
+            echarts={echarts}
+            option={option}
+            style={{ height: '100%', width: '100%' }}
+          />
+        )}
+      </div>
     </div>
   )
 }

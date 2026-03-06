@@ -1,13 +1,6 @@
-import { AnalyticsChartsLoader, RangeOptionValue } from '@/widgets/admin/analytics'
+import { AnalyticsChartsLoader } from './AnalyticsChartsLoader'
 
 export async function AnalyticsChartsWrapper() {
-  const initialRange: RangeOptionValue = 30
 
-  return (
-    <AnalyticsChartsLoader
-      initialRange={initialRange}
-      initialDaily={null}
-      initialSections={null}
-    />
-  )
+  return <AnalyticsChartsLoader initialRange={30}/>
 }
