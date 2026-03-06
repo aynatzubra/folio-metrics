@@ -2,7 +2,7 @@ import { IMetricsRepository } from './repository.interface'
 
 import type { VisitData } from '@/entities/analytics'
 
-export class LocalStorageRepository implements IMetricsRepository {
+export class LocalStorageMetricsRepository implements IMetricsRepository {
   private readonly STORAGE_KEY = 'folio_metrics_demo'
 
   private isClient(): boolean {

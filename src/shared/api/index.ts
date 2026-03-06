@@ -1,5 +1,5 @@
 export { fetchJson } from './fetchJson'
 export { HttpError } from './HttpError'
-export { LocalStorageRepository } from './metrics'
+export { LocalStorageMetricsRepository } from './metrics'
 export { useAnalytics } from './analytics'
 export { AnalyticsProvider } from './analytics'

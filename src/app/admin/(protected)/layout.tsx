@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 
-import { prisma } from '@/shared/db/prisma'
 import { auth } from '@/auth'
 import { AdminHeader } from '@/widgets/admin/layout'
 
@@ -19,11 +18,6 @@ type ProtectedLayoutProps = {
 export default async function ProtectedLayout({ children }: ProtectedLayoutProps) {
   const session = await auth()
   if (!session?.user) redirect('/admin/login?reason=auth')
-
-  if (prisma) {
-    const count = await prisma.visit.count()
-    console.log('Visits:', count)
-  }
 
   return (
     <div className="min-h-screen bg-background">

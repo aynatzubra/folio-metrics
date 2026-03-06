@@ -4,6 +4,7 @@ import { HAS_DATABASE_URL, IS_DEMO_MODE } from '@/shared/lib/utils'
 
 export const SHOULD_USE_PRISMA = !IS_DEMO_MODE && HAS_DATABASE_URL
 
+//todo: global.d.ts
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient | null }
 
 export const prisma: PrismaClient | null = (() => {
@@ -26,4 +27,3 @@ export const prisma: PrismaClient | null = (() => {
 
   return client
 })()
-

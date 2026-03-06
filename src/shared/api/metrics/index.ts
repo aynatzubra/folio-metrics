@@ -1,5 +1,4 @@
 export { MetricsService } from './metrics-service'
-export * from './repository.interface'
-export * from './local-storage.repository'
-export * from './noop.repository'
-export * from './http.repository'
+export { LocalStorageMetricsRepository } from './local-storage.repository'
+export { NoopMetricsRepository } from './noop.repository'
+export { HttpMetricsRepository } from './http.repository'

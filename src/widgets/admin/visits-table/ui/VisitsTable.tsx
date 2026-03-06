@@ -55,14 +55,17 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
                 Duration
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                Source
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 Date
               </th>
             </tr>
             </thead>
 
             <tbody className="divide-y divide-gray-100 bg-white">
-            {pageItems.map((visit) => (
-              <tr key={visit.visitorId+visit.timestamp} className="transition-colors hover:bg-slate-50">
+            {pageItems.map((visit, index) => (
+              <tr key={`${visit.visitorId}-${visit.timestamp}`} className="transition-colors hover:bg-slate-50">
                 <td className="whitespace-nowrap px-6 py-3 text-sm font-medium text-gray-900">
                   {visit.sectionId}
                 </td>
@@ -71,6 +74,16 @@ export function VisitsTable({ visits, pageSize = 15 }: VisitsTableProps) {
                 </td>
                 <td className="whitespace-nowrap px-6 py-3 text-sm text-gray-600">
                   {formatDuration(visit.duration)}
+                </td>
+                <td className="whitespace-nowrap px-6 py-3 text-sm">
+                  {/* Предполагаем, что VisitData теперь включает isMock, как мы делали в сервисе */}
+                  {'isMock' in visit && visit.isMock ? (
+                    <span
+                      className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">Mock</span>
+                  ) : (
+                    <span
+                      className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800">Live</span>
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-6 py-3 text-sm text-gray-600">
                   {formatDateTime(new Date(visit.timestamp))}

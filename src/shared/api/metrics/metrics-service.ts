@@ -1,9 +1,12 @@
 import { AnalyticsProcessor } from '@/entities/analytics/model'
 import mockHistory from '@/shared/assets/data/mock-history.json'
+import { IS_DEMO_MODE } from '@/shared/lib/utils'
 
 import { IMetricsRepository } from './repository.interface'
 
 import type { AnalyticsDashboard, VisitData } from '@/entities/analytics'
+
+type VisitWithSource = VisitData & { isMock: boolean }
 
 export class MetricsService {
   constructor(private repo: IMetricsRepository) {}
@@ -21,20 +24,33 @@ export class MetricsService {
     }
   }
 
-  private async getFullData(): Promise<VisitData[]> {
+  private async getFullData(): Promise<VisitWithSource[]> {
     const liveData = await this.repo.getAll()
 
-    if (!mockHistory || mockHistory.length === 0) return liveData
-
-    const newestMockTick = Math.max(...mockHistory.map(m => m.timestamp))
-
-    const offset = Date.now() - newestMockTick
-
-    const dynamicMocks = (mockHistory as VisitData[]).map(visit => ({
+    const processedData: VisitWithSource[] = liveData.map(visit => ({
       ...visit,
-      timestamp: visit.timestamp + offset,
+      isMock: false,
     }))
 
-    return [...dynamicMocks, ...liveData]
+    const shouldShowMocks = IS_DEMO_MODE || processedData.length === 0
+
+    if (!shouldShowMocks || !mockHistory || mockHistory.length === 0) {
+      return processedData
+    }
+
+    const newestMockTick = Math.max(...mockHistory.map(m => m.timestamp))
+    const offset = Date.now() - newestMockTick
+
+    const shiftedMocks: VisitWithSource[] = (mockHistory as VisitData[]).map(visit => ({
+      ...visit,
+      timestamp: visit.timestamp + offset,
+      isMock: true,
+    }))
+
+    if (!IS_DEMO_MODE && processedData.length === 0) {
+      console.log('[MetricsService] DB is empty, showing shifted mocks for demo purposes')
+    }
+
+    return [...shiftedMocks, ...processedData]
   }
 }

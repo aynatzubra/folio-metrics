@@ -14,10 +14,11 @@ const intlMiddleware = createMiddleware({
 })
 
 export default auth(async (req) => {
-  const isAdminRoute = req.nextUrl.pathname.startsWith('/admin')
   const session = req.auth
   const isLoggedIn = !!session?.user
-  const isAuthPage = req.nextUrl.pathname === '/admin/login'
+  const { pathname } = req.nextUrl
+  const isAdminRoute = pathname.startsWith('/admin')
+  const isAuthPage = pathname.includes('/admin/login')
 
   const intlResponse = intlMiddleware(req)
 
@@ -37,5 +38,5 @@ export default auth(async (req) => {
 })
 
 export const config = {
-  matcher: ['/', '/(ru|en)/:path*', '/((?!_next|_vercel|.*\\..*).*)'],
+  matcher: ['/', '/(ru|en)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
 }
