@@ -64,7 +64,7 @@ export function LoginForm({
             <input
               name="email"
               type="email"
-              defaultValue={initialEmail} // Только начальное значение
+              defaultValue={initialEmail}
               onInput={() => handleInput('email')}
               className={clsx(baseInputClass, localErrors?.email && 'border-red-500')}
               placeholder="Email address"

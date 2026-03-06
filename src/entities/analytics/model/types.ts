@@ -7,6 +7,7 @@ export interface VisitData {
   userAgent?: string
   country?: string
   city?: string
+  isMock?: boolean
 }
 
 export interface SummaryStats {
