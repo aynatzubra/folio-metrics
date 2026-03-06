@@ -12,7 +12,9 @@ export function StatCard({ title, value }: StatCardProps) {
   return (
     <div className={cardClass}>
       <h3 className="text-sm font-medium text-gray-500">{title}</h3>
-      <p className="text-3xl font-bold text-gray-900">{value}</p>
+      <p className="mt-1 text-3xl font-bold text-gray-900">
+        {value ?? '0'}
+      </p>
     </div>
   )
 }
