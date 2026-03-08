@@ -1,19 +1,64 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { RangeOptionValue } from '@/widgets/admin/analytics'
-import { AnalyticsDashboard } from '@/entities/analytics'
+import { AnalyticsDashboard, DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 import { useAnalytics } from '@/shared/api'
 import { logError } from '@/shared/lib/error'
 
-export function useAnalyticsDashboard(range: RangeOptionValue) {
+type AnalyticsDashboardSnapshot = {
+  range: RangeOptionValue
+  data: Pick<AnalyticsDashboard, 'dailyActivity' | 'sectionStats'>
+}
+
+const EMPTY_SUMMARY: SummaryStats = {
+  totalVisits: 0,
+  uniqueVisitors: 0,
+  avgDuration: 0,
+}
+
+type UseAnalyticsDashboardResult = {
+  summary: SummaryStats
+  daily: DailyPoint[]
+  sections: SectionPoint[]
+  recent: VisitData[]
+  isLoading: boolean
+  error: string | null
+}
+
+export function useAnalyticsDashboard(
+  range: RangeOptionValue,
+  initialState?: AnalyticsDashboardSnapshot,
+): UseAnalyticsDashboardResult {
   const { getDashboard } = useAnalytics()
-  const [data, setData] = useState<AnalyticsDashboard | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+
+  const initialSnapshotRef = useRef(initialState)
+  const skipInitialFetchRef = useRef(
+    initialSnapshotRef.current?.range === range,
+  )
+
+  const [data, setData] = useState<AnalyticsDashboard | null>(() => {
+    const snapshot = initialSnapshotRef.current
+
+    if (!snapshot || snapshot.range !== range) return null
+
+    return {
+      summary: EMPTY_SUMMARY,
+      dailyActivity: snapshot.data.dailyActivity,
+      sectionStats: snapshot.data.sectionStats,
+      recentVisits: [],
+    }
+  })
+  const [isLoading, setIsLoading] = useState(!skipInitialFetchRef.current)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    if (skipInitialFetchRef.current) {
+      skipInitialFetchRef.current = false
+      return
+    }
+
     const controller = new AbortController()
 
     async function fetchData() {
@@ -42,7 +87,7 @@ export function useAnalyticsDashboard(range: RangeOptionValue) {
   }, [range, getDashboard])
 
   return {
-    summary: data?.summary ?? { totalVisits: 0, uniqueVisitors: 0, avgDuration: 0 },
+    summary: data?.summary ?? EMPTY_SUMMARY,
     daily: data?.dailyActivity || [],
     sections: data?.sectionStats || [],
     recent: data?.recentVisits || [],

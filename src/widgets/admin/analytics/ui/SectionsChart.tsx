@@ -6,14 +6,11 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { SectionPoint } from '@/entities/analytics'
 import { echarts } from '@/shared/lib/echarts'
-import { DashboardLoader } from '@/shared/ui/DashboardLoader'
 
 import type { EChartsOption } from 'echarts'
 
 type Props = {
   data: SectionPoint[]
-  isLoading: boolean
-  error: string | null
   range: number
 }
 
@@ -47,11 +44,12 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
   ],
 })
 
-export function SectionsChart({ data, isLoading, error, range }: Props) {
+export function SectionsChart({ data, range }: Props) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {
     if (!hasData) return null
+
     const categories = data.map((item) => item.sectionId || 'unknown')
     const values = data.map((item) => item.count)
 
@@ -64,18 +62,12 @@ export function SectionsChart({ data, isLoading, error, range }: Props) {
         Top sections (last {range} days)
       </h3>
 
-      <div className="relative flex-1 flex items-center justify-center">
-        {isLoading && <DashboardLoader title="Fetching top sections..." />}
-
-        {!isLoading && error && (
-          <DataPlaceholder type="error" message="Failed to load sections stats." />
-        )}
-
-        {!isLoading && !error && !hasData && (
+      <div className="relative flex flex-1 items-center justify-center">
+        {!hasData && (
           <DataPlaceholder type="empty" message="No section activity recorded." />
         )}
 
-        {!isLoading && !error && hasData && option && (
+        {hasData && option && (
           <ReactEChartsCore
             echarts={echarts}
             option={option}

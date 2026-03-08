@@ -1,10 +1,10 @@
-'use client'
-
 import { VisitsTable } from '@/widgets/admin/visits-table/ui/VisitsTable'
-import { useAnalyticsDashboard } from '@/widgets/admin/analytics'
+import { VisitData } from '@/entities/analytics'
 
-export function VisitsTableWrapper() {
-  const { recent, isLoading } = useAnalyticsDashboard(0)
+type Props = {
+  visits: VisitData[]
+}
 
-  return <VisitsTable visits={recent || []} isLoading={isLoading} />
+export function VisitsTableWrapper({ visits }: Props) {
+  return <VisitsTable visits={visits} />
 }

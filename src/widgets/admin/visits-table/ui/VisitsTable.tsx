@@ -11,10 +11,9 @@ import type { VisitData } from '@/entities/analytics'
 type Props = {
   visits: VisitData[]
   pageSize?: number
-  isLoading: boolean
 }
 
-export function VisitsTable({ visits, isLoading, pageSize = 15 }: Props) {
+export function VisitsTable({ visits, pageSize = 15 }: Props) {
   const [page, setPage] = useState(1)
 
   //stable sorted array
@@ -22,7 +21,8 @@ export function VisitsTable({ visits, isLoading, pageSize = 15 }: Props) {
     return [...visits].sort((a, b) => b.timestamp - a.timestamp)
   }, [visits])
 
-  const total = visits.length
+  const total = sortedVisits.length
+
   const totalPages = useMemo(() => Math.max(1, Math.ceil(total / pageSize)), [total, pageSize])
 
   useEffect(() => {
@@ -34,14 +34,15 @@ export function VisitsTable({ visits, isLoading, pageSize = 15 }: Props) {
     return sortedVisits.slice(startIndex, startIndex + pageSize)
   }, [page, pageSize, sortedVisits])
 
-  if (isLoading) return <TableSkeleton />
-
   return (
     <section className="flex flex-col mt-8">
       <h2 className="text-xl font-semibold text-gray-900">Recent Visits</h2>
 
       <div className="bg-white p-6 rounded-lg shadow mt-8">
-        <h3 className="text-lg font-semibold mb-4 text-gray-600">Actively visited sections</h3>
+        <h3 className="text-lg font-semibold mb-4 text-gray-600">
+          Actively visited sections
+        </h3>
+
         {total === 0 ? (
           <div className="flex-1 flex items-center justify-center">
             <DataPlaceholder type="empty" message="No visits recorded in this period." />
@@ -64,12 +65,12 @@ export function VisitsTable({ visits, isLoading, pageSize = 15 }: Props) {
                 </thead>
                 <tbody className="divide-y divide-slate-100 bg-white">
                 {pageItems.map((visit, index) => (
-                  <tr key={`${visit.visitorId + index}`} className="transition-colors hover:bg-slate-50/50">
+                  <tr key={`${visit.visitorId}-${visit.timestamp}-${index}`} className="transition-colors hover:bg-slate-50/50">
                     <td className="whitespace-nowrap px-6 py-3 text-sm font-semibold text-slate-700">
                       {visit.sectionId}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500">
-                      {visit.city}, {visit.country}
+                      {visit.city ?? '_'}, {visit.country ?? '_'}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500 font-mono">
                       {formatDuration(visit.duration)}

@@ -5,15 +5,12 @@ import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import { DailyPoint } from '@/entities/analytics'
 import { echarts } from '@/shared/lib/echarts'
-import { DashboardLoader } from '@/shared/ui/DashboardLoader'
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
 
 import type { EChartsOption } from 'echarts'
 
 type Props = {
   data: DailyPoint[]
-  isLoading: boolean
-  error: string | null
   range: number
 }
 
@@ -52,13 +49,15 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
   ],
 })
 
-export function DailyVisitsChart({ data, isLoading, error, range }: Props) {
+export function DailyVisitsChart({ data, range }: Props) {
   const hasData = data && data.length > 0
 
   const option = useMemo(() => {
     if (!hasData) return null
+
     const categories = data.map((point) => point.day)
     const values = data.map((point) => point.count)
+
     return getOption(categories, values)
   }, [data, hasData])
 
@@ -68,18 +67,12 @@ export function DailyVisitsChart({ data, isLoading, error, range }: Props) {
         Daily visits (last {range} days)
       </h3>
 
-      <div className="relative flex-1 flex items-center justify-center">
-        {isLoading && <DashboardLoader title="Loading stats..." />}
-
-        {!isLoading && error && (
-          <DataPlaceholder type="error" message="Failed to load daily stats." />
+      <div className="relative flex flex-1 items-center justify-center">
+        {!hasData && (
+          <DataPlaceholder type="empty" message="No daily activity recorded." />
         )}
 
-        {!isLoading && !error && !hasData && (
-          <DataPlaceholder type="empty" message="Not enough data yet." />
-        )}
-
-        {!isLoading && !error && hasData && option && (
+        {hasData && option && (
           <ReactEChartsCore
             echarts={echarts}
             option={option}

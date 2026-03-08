@@ -1,19 +1,12 @@
-'use client'
-
 import { StatCard } from '@/widgets/admin/dashboard/ui/StatCard'
-import { useAnalyticsDashboard } from '@/widgets/admin/analytics'
-import { SummaryCardSkeleton } from '@/widgets/admin/dashboard'
+import { SummaryStats } from '@/entities/analytics'
 
-export function SummaryCards() {
-  const { summary, isLoading } = useAnalyticsDashboard(0)
+type SummaryCardsProps = {
+  summary: SummaryStats
+}
 
-  if (isLoading) return <SummaryCardSkeleton />
-
-  const {
-    totalVisits = 0,
-    uniqueVisitors = 0,
-    avgDuration = 0,
-  } = summary || {}
+export function SummaryCards({ summary }: SummaryCardsProps) {
+  const { totalVisits, uniqueVisitors, avgDuration } = summary
 
   return (
     <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
