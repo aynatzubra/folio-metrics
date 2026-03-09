@@ -1,11 +1,10 @@
 'use client'
 
 import { useMemo } from 'react'
-import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import { DailyPoint } from '@/entities/analytics'
-import { echarts } from '@/shared/lib/echarts'
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
+import { EChartBase } from '@/shared/lib/echarts'
 
 import type { EChartsOption } from 'echarts'
 
@@ -50,10 +49,10 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
 })
 
 export function DailyVisitsChart({ data, range }: Props) {
-  const hasData = data && data.length > 0
+  const hasData = data.length > 0
 
   const option = useMemo(() => {
-    if (!hasData) return null
+    if (data.length === 0) return null
 
     const categories = data.map((point) => point.day)
     const values = data.map((point) => point.count)
@@ -73,10 +72,9 @@ export function DailyVisitsChart({ data, range }: Props) {
         )}
 
         {hasData && option && (
-          <ReactEChartsCore
-            echarts={echarts}
+          <EChartBase
             option={option}
-            style={{ height: '100%', width: '100%' }}
+            className="w-full h-full"
           />
         )}
       </div>

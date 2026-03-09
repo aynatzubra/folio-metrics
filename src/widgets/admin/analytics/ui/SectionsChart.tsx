@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useMemo } from 'react'
-import ReactEChartsCore from 'echarts-for-react/lib/core'
 
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { SectionPoint } from '@/entities/analytics'
-import { echarts } from '@/shared/lib/echarts'
+import { EChartBase } from '@/shared/lib/echarts'
 
 import type { EChartsOption } from 'echarts'
 
@@ -45,10 +44,10 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
 })
 
 export function SectionsChart({ data, range }: Props) {
-  const hasData = data && data.length > 0
+  const hasData = data.length > 0
 
   const option = useMemo(() => {
-    if (!hasData) return null
+    if (data.length === 0) return null
 
     const categories = data.map((item) => item.sectionId || 'unknown')
     const values = data.map((item) => item.count)
@@ -68,10 +67,9 @@ export function SectionsChart({ data, range }: Props) {
         )}
 
         {hasData && option && (
-          <ReactEChartsCore
-            echarts={echarts}
+          <EChartBase
             option={option}
-            style={{ height: '100%', width: '100%' }}
+            className="w-full h-full"
           />
         )}
       </div>
