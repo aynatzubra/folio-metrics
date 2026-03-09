@@ -11,8 +11,6 @@ import {
 
 import { MetricsService } from '@/shared/api/metrics/metrics-service'
 import { VisitorManager } from '@/shared/lib/visitor'
-import { LocalStorageMetricsRepository } from '@/shared/api'
-import { HttpMetricsRepository, NoopMetricsRepository } from '@/shared/api/metrics'
 import { IMetricsRepository } from '@/shared/api/metrics/repository.interface'
 import { createClientMetricsRepository } from '@/shared/api/metrics/factory'
 

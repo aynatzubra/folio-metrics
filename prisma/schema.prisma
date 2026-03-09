@@ -36,6 +36,9 @@ model AnalyticsVisitor {
   id          String @id @default(cuid())
   fingerprint String @unique
 
+  ipAddress String? @db.VarChar(45)
+  userAgent String? @db.Text
+
   firstSeenAt DateTime @default(now())
   lastSeenAt  DateTime @updatedAt
   Visit       Visit[]

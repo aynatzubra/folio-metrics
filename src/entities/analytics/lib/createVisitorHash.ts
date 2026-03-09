@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-export function createFingerprint(ip: string, userAgent: string) {
+export function createVisitorHash(ip: string, userAgent: string) {
   return crypto
     .createHash('sha256')
     .update(`${ip}:${userAgent}`)

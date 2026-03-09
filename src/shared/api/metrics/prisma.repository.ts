@@ -1,4 +1,5 @@
 import { prisma } from '@/shared/db/prisma'
+import { resolveVisitorKey } from '@/entities/analytics/lib'
 
 import { IMetricsRepository } from './repository.interface'
 
@@ -11,11 +12,12 @@ export class PrismaMetricsRepository implements IMetricsRepository {
       console.error('[Prisma Repo] Cannot save: Prisma is disabled or null')
       return
     }
+    const visitorKey = resolveVisitorKey(data)
 
     const visitor = await prisma.analyticsVisitor.upsert({
-      where: { fingerprint: data.ipAddress ?? 'unknown' }, //todo: technical debt
+      where: { fingerprint: visitorKey },
       update: { lastSeenAt: new Date() },
-      create: { fingerprint: data.ipAddress ?? 'unknown' },
+      create: { fingerprint: visitorKey },
     })
 
     await prisma.visit.create({
@@ -32,10 +34,7 @@ export class PrismaMetricsRepository implements IMetricsRepository {
   }
 
   async getAll(): Promise<VisitData[]> {
-    if (!prisma) {
-      // console.error('[Prisma Repo] Cannot getAll: Prisma is disabled or null')
-      return []
-    }
+    if (!prisma) return []
 
     try {
       const visits = await prisma.visit.findMany({
