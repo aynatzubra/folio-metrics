@@ -67,7 +67,11 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
       }
 
       try {
-        await repoRef.current.save(visit)
+        if (!serviceRef.current) {
+          console.error('[Analytics] MetricsService is not initialized')
+          return
+        }
+        await serviceRef.current.trackSectionVisit(visit)
       } catch (error) {
         console.error('[Analytics] Save failed:', error)
       }

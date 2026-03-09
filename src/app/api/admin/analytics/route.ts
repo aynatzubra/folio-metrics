@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
 import { createServerMetricsRepository } from '@/shared/api/metrics/factory'
+import { MetricsService } from '@/shared/api/metrics'
 
 const repo = createServerMetricsRepository()
+const service = new MetricsService(repo)
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,17 +17,21 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const ip =
-      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
-
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
     const userAgent = req.headers.get('user-agent') || 'unknown'
 
-    await repo.save({
-      ...body,
+    const visit = {
+      sectionId: String(body.sectionId),
       duration: Number(body.duration) || 0,
+      timestamp: Number(body.timestamp) || Date.now(),
+      visitorId: String(body.visitorId || 'unknown'),
       ipAddress: ip,
       userAgent,
-    })
+      country: body.country ? String(body.country) : undefined,
+      city: body.city ? String(body.city) : undefined,
+    }
+
+    await service.trackSectionVisit(visit)
 
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (error) {
