@@ -13,7 +13,7 @@ export class PrismaMetricsRepository implements IMetricsRepository {
     }
 
     const visitor = await prisma.analyticsVisitor.upsert({
-      where: { fingerprint: data.ipAddress ?? 'unknown' },
+      where: { fingerprint: data.ipAddress ?? 'unknown' }, //todo: technical debt
       update: { lastSeenAt: new Date() },
       create: { fingerprint: data.ipAddress ?? 'unknown' },
     })
@@ -33,7 +33,7 @@ export class PrismaMetricsRepository implements IMetricsRepository {
 
   async getAll(): Promise<VisitData[]> {
     if (!prisma) {
-      console.error('[Prisma Repo] Cannot getAll: Prisma is disabled or null')
+      // console.error('[Prisma Repo] Cannot getAll: Prisma is disabled or null')
       return []
     }
 

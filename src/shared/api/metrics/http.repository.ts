@@ -10,7 +10,6 @@ export class HttpMetricsRepository implements IMetricsRepository {
 
     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
     const success = navigator.sendBeacon(this.endpoint, blob)
-    // navigator.sendBeacon(this.endpoint, blob)
 
     if (!success) {
       fetch(this.endpoint, {

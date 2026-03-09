@@ -1,37 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
-import { PrismaMetricsRepository } from '@/shared/api/metrics/prisma.repository'
+import { createServerMetricsRepository } from '@/shared/api/metrics/factory'
 
-const repo = new PrismaMetricsRepository()
+const repo = createServerMetricsRepository()
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-
-    if (!body.sectionId) {
-      return new NextResponse('Missing sectionId', { status: 400 })
+    if (!body?.sectionId) {
+      return NextResponse.json(
+        { error: 'Missing sectionId' },
+        { status: 400 },
+      )
     }
 
-    //a reliable way to get real data about a visitor
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || '127.0.0.1'
-    const ua = req.headers.get('user-agent') || 'unknown'
+    const ip =
+      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
+
+    const userAgent = req.headers.get('user-agent') || 'unknown'
 
     await repo.save({
       ...body,
       duration: Number(body.duration) || 0,
       ipAddress: ip,
-      userAgent: ua,
+      userAgent,
     })
 
-    return new NextResponse('OK', { status: 200 })
-
+    return NextResponse.json({ success: true }, { status: 201 })
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error)
-    console.error('[API Analytics POST] Database Error:', errorMessage)
-    return new NextResponse(
-      JSON.stringify({ error: errorMessage }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } },
+    const message = error instanceof Error ? error.message : String(error)
+
+    console.error('[API Analytics POST] Error:', message)
+
+    return NextResponse.json(
+      { error: message },
+      { status: 500 },
     )
   }
 }

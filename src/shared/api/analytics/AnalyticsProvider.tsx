@@ -14,6 +14,7 @@ import { VisitorManager } from '@/shared/lib/visitor'
 import { LocalStorageMetricsRepository } from '@/shared/api'
 import { HttpMetricsRepository, NoopMetricsRepository } from '@/shared/api/metrics'
 import { IMetricsRepository } from '@/shared/api/metrics/repository.interface'
+import { createClientMetricsRepository } from '@/shared/api/metrics/factory'
 
 import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 
@@ -33,19 +34,16 @@ const AnalyticsContext = createContext<AnalyticsContextValue | null>(null)
 
 export function AnalyticsProvider({ children }: PropsWithChildren) {
   const mode = process.env.NEXT_PUBLIC_ANALYTICS_MODE || 'demo'
+
   const repoRef = useRef<IMetricsRepository | null>(null)
   const serviceRef = useRef<MetricsService | null>(null)
 
-  if (!serviceRef.current) {
-    const isClient = typeof window !== 'undefined' //check execution environment
-    const repository = !isClient
-      ? new NoopMetricsRepository()
-      : mode === 'prod'
-        ? new HttpMetricsRepository()
-        : new LocalStorageMetricsRepository()
+  if (!repoRef.current) {
+    repoRef.current = createClientMetricsRepository()
+  }
 
-    repoRef.current = repository
-    serviceRef.current = new MetricsService(repository) //dependency injection
+  if (!serviceRef.current) {
+    serviceRef.current = new MetricsService(repoRef.current)
   }
 
   const lastSentEventRef = useRef<{ id: string; time: number } | null>(null)

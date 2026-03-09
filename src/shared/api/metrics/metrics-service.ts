@@ -13,7 +13,6 @@ export class MetricsService {
 
   async getDashboardData(days: number): Promise<AnalyticsDashboard> {
     const rawData = await this.getFullData()
-
     const filteredData = AnalyticsProcessor.filterByRange(rawData, days)
 
     return {
@@ -32,9 +31,11 @@ export class MetricsService {
       isMock: false,
     }))
 
-    const shouldShowMocks = IS_DEMO_MODE || processedData.length === 0
+    if (processedData.length > 0) {
+      return processedData
+    }
 
-    if (!shouldShowMocks || !mockHistory || mockHistory.length === 0) {
+    if (!mockHistory || mockHistory.length === 0) {
       return processedData
     }
 
