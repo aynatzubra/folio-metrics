@@ -1,1 +1,1 @@
-export { ChartSkeleton, TableSkeleton, SummaryCardSkeleton } from './DashboardSkeletons'
+export { ChartSkeleton, TableSkeleton, SummaryCardSkeleton, AnalyticsChartsSkeleton } from './DashboardSkeletons'

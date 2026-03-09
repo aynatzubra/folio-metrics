@@ -5,12 +5,14 @@ import { useMemo } from 'react'
 import { DailyPoint } from '@/entities/analytics'
 import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { EChartBase } from '@/shared/lib/echarts'
+import { ChartContainerWrapper } from '@/widgets/admin/analytics'
 
 import type { EChartsOption } from 'echarts'
 
 type Props = {
   data: DailyPoint[]
   range: number
+  isLoading?: boolean
 }
 
 const getOption = (categories: string[], values: number[]): EChartsOption => ({
@@ -48,7 +50,7 @@ const getOption = (categories: string[], values: number[]): EChartsOption => ({
   ],
 })
 
-export function DailyVisitsChart({ data, range }: Props) {
+export function DailyVisitsChart({ data, range, isLoading }: Props) {
   const hasData = data.length > 0
 
   const option = useMemo(() => {
@@ -61,23 +63,14 @@ export function DailyVisitsChart({ data, range }: Props) {
   }, [data, hasData])
 
   return (
-    <div className="flex flex-col rounded-lg bg-white p-5 shadow-sm border border-slate-100 h-[380px]">
-      <h3 className="mb-6 text-sm font-semibold tracking-wider text-slate-400">
-        Daily visits (last {range} days)
-      </h3>
-
-      <div className="relative flex flex-1 items-center justify-center">
-        {!hasData && (
-          <DataPlaceholder type="empty" message="No daily activity recorded." />
-        )}
-
-        {hasData && option && (
-          <EChartBase
-            option={option}
-            className="w-full h-full"
-          />
-        )}
-      </div>
-    </div>
+    <ChartContainerWrapper
+      title="Top sections" range={range}
+      isLoading={isLoading}>
+      {!hasData ? (
+        <DataPlaceholder type="empty" message="No daily activity recorded." />
+      ) : (
+        <EChartBase option={option!} className="w-full h-full" />
+      )}
+    </ChartContainerWrapper>
   )
 }

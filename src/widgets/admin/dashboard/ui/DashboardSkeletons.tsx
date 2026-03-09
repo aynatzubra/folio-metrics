@@ -4,18 +4,30 @@ import { DashboardLoader } from '@/shared/ui/DashboardLoader'
 
 const skeletonBlockClass = 'rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center'
 
+export function AnalyticsChartsSkeleton() {
+  return (
+    <div className="w-full h-full animate-pulse rounded bg-slate-50 flex items-end gap-2 px-2 pb-2">
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i} className="flex-1 bg-slate-100 rounded-t"
+          style={{ height: `${20 + Math.random() * 60}%` }} />
+      ))}
+    </div>
+  )
+}
+
 export function ChartSkeleton() {
   return (
     <section className="mt-8">
       <div className="mb-4 h-5 w-40 animate-pulse rounded bg-slate-200" />
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className={clsx(skeletonBlockClass, 'h-72')}>
+        <div className={clsx(skeletonBlockClass, 'h-[380px]')}>
           <DashboardLoader
             title="Loading daily visits chart …"
             description="Fetching data and preparing visualization"
           />
         </div>
-        <div className={clsx(skeletonBlockClass, 'h-72')}>
+        <div className={clsx(skeletonBlockClass, 'h-[380px]')}>
           <DashboardLoader
             title="Loading top sections chart …"
             description="Aggregating sections and visit counts"

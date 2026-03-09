@@ -1,3 +1,4 @@
+export { ChartContainerWrapper } from './ui/ChartContainerWrapper'
 export { AnalyticsCharts } from './ui/AnalyticsCharts'
 export { AnalyticsChartsWrapper } from './ui/AnalyticsChartsWrapper'
 export { DailyVisitsChart } from './ui/DailyVisitsChart'
