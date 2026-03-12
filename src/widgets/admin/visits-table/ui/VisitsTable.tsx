@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
 import { TablePagination } from '@/widgets/admin/visits-table/ui/TablePagination'
-import { DataPlaceholder, TableSkeleton } from '@/widgets/admin/dashboard'
+import { DataPlaceholder } from '@/widgets/admin/dashboard'
 
 import type { VisitData } from '@/entities/analytics'
 

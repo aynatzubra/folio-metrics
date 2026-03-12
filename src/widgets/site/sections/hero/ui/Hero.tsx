@@ -48,7 +48,9 @@ export function Hero() {
                 <Image
                   src={myAva}
                   alt={t('avatarAlt')}
-                  fill={true}
+                  width={58}
+                  height={58}
+                  className="object-cover"
                   priority
                 />
               </div>

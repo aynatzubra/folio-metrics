@@ -8,8 +8,7 @@ import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout'
 import { Badge } from '@/shared/ui'
 import { logoutAction } from '@/features/admin/logout'
-
-import myAdminAva from '../../../../../public/assets/images/avatar.png'
+import { myAdminAva } from '@/shared/assets/images'
 
 type AdminHeaderProps = {
   isDemo?: boolean

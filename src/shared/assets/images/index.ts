@@ -1,1 +1,2 @@
-export { default as myAva } from '@/../public/assets/images/0my_ava.png'
+export { default as myAva } from '@/../public/assets/images/l_avatar.webp'
+export { default as myAdminAva } from '@/../public/assets/images/a_avatar.webp'

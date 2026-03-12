@@ -39,7 +39,7 @@ export function EChartBase({ option, className }: Props) {
 
       chartRef.current = null
     }
-  }, [])
+  }, [option])
 
   useEffect(() => {
     chartRef.current?.setOption(option, true)

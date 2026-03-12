@@ -55,7 +55,7 @@ export function SectionsChart({ data, range, isLoading }: Props) {
     const values = data.map((item) => item.count)
 
     return getOption(categories, values)
-  }, [data, hasData])
+  }, [data])
 
   return (
     <ChartContainerWrapper

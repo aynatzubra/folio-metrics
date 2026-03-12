@@ -60,7 +60,7 @@ export function DailyVisitsChart({ data, range, isLoading }: Props) {
     const values = data.map((point) => point.count)
 
     return getOption(categories, values)
-  }, [data, hasData])
+  }, [data])
 
   return (
     <ChartContainerWrapper

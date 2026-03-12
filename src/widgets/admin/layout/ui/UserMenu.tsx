@@ -26,9 +26,13 @@ export const UserMenu = ({ avatar, onLogout }: UserMenuProps) => {
           className={menuButton}
         >
           <Image
-            src={avatar} alt="User"
-            width={35} height={35}
-            className="rounded-full" />
+            src={avatar}
+            alt="User"
+            width={35}
+            height={35}
+            className="rounded-full"
+            priority
+          />
         </MenuButton>
 
         <Tooltip

@@ -1,4 +1,7 @@
 {
+  "Metadata": {
+    "description": "Frontend-oriented full-stack. Разрабатываю веб-приложения на React и Next.js с фокусом на архитектуру, поток данных и масштабируемые интерфейсы."
+  },
   "Header": {
     "headerText": "Чистый код. Чёткое решение. Твёрдая рука.",
     "title": "Arbuz",

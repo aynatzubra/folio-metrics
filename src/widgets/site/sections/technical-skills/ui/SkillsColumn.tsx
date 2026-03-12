@@ -11,7 +11,7 @@ export function SkillsColumn({
 }) {
   return (
     <div className="space-y-12">
-      {categories.map((category, index) => (
+      {categories.map((category) => (
         <section key={category.key} className="group">
           <h3 className="mb-2 text-lg font-[Inter] font-medium tracking-wide text-accent">
             {t(`categories.${category.key}`)}
