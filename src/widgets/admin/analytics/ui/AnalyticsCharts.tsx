@@ -33,7 +33,7 @@ export function AnalyticsCharts({
     <section className="mt-8">
       <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-xl font-semibold text-gray-900">Traffic Overview</h2>
-        <AnalyticsRangeFilter value={range} onChange={setRange} />
+        <AnalyticsRangeFilter value={range} onChangeAction={setRange} />
       </div>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <DailyVisitsChart data={resolvedDaily} range={range} />
