@@ -28,13 +28,15 @@ export function ContactInfo({
 
   const renderLinks = (btnSize: string) => (
     <>
-      <Link
+      <a
         href={cvPath}
         download={`CV_${locale}.pdf`}
         className={`${styles.baseButton} ${styles.colorScheme.primary} ${btnSize} text-center`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {t('buttons.cv')}
-      </Link>
+      </a>
       {PRIMARY_CONTACTS.map((link) => (
         <a
           key={link.href}
