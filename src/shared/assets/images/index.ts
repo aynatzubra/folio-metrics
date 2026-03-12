@@ -1,0 +1,1 @@
+export { default as myAva } from '@/../public/assets/images/0my_ava.png'

@@ -10,7 +10,14 @@ import { useEffect } from 'react'
 
 import { SplitSection, SectionHeader } from '@/widgets/site/ui'
 
-const featureKeys = ['item1', 'item2', 'item3', 'item4', 'item5'] as const
+const featureKeys = ['item1', 'item2', 'item3', 'item4'] as const
+
+const baseButtonStyles =
+  'inline-flex items-center justify-center rounded-md ' +
+  'px-5 py-2.5 text-base text-white ' +
+  'transition-colors duration-200 ' +
+  'focus-visible:outline-none focus-visible:ring-2 ' +
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8F8]'
 
 export function Additional() {
   const t = useTranslations('Additional')
@@ -47,18 +54,17 @@ export function Additional() {
           "
         >
           <div className="max-w-3xl">
-            {/* Intro */}
-            <p className="mb-6 text-sm leading-relaxed text-gray-700">
-              {t('intro')}
-            </p>
-
-            {/* Project title */}
-            <h3 className="mb-5 text-lg font-semibold uppercase tracking-widest text-accent">
+            <h3 className="mb-5 text-xl font-[Inter] font-medium tracking-wide text-accent">
               {t('projectTitle')}
             </h3>
 
+            {/* Intro */}
+            <p className="mb-6 text-base leading-relaxed text-gray-700">
+              {t('intro')}
+            </p>
+
             {/* Features */}
-            <ul className="mb-8 space-y-3 text-sm leading-relaxed text-gray-700">
+            <ul className="mb-8 space-y-3 text-base leading-relaxed text-gray-700">
               {featureKeys.map((key) => (
                 <li key={key} className="flex gap-3">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -75,16 +81,7 @@ export function Additional() {
                 href="/admin/login?demo=1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-flex items-center justify-center
-                  rounded-md px-5 py-2.5
-                  text-sm font-semibold
-                  bg-accent text-white
-                  transition-colors duration-200
-                  hover:bg-accent/90
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40
-                  focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8F8]
-                "
+                className={`${baseButtonStyles} bg-accent hover:bg-accent/90 focus-visible:ring-accent/40`}
               >
                 <FontAwesomeIcon icon={faEye} className="mr-2 h-4 w-4" />
                 {t('buttonDemoText')}
@@ -94,16 +91,7 @@ export function Additional() {
                 href="https://github.com/aynatzubra/folio-metrics"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-flex items-center justify-center
-                  rounded-md px-5 py-2.5
-                  text-sm font-semibold
-                  bg-gray-900 text-white
-                  transition-colors duration-200
-                  hover:bg-gray-800
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30
-                  focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F8F8]
-                "
+                className={`${baseButtonStyles} bg-gray-900 hover:bg-gray-800 focus-visible:ring-gray-900/30`}
               >
                 <FontAwesomeIcon icon={faGithub} className="mr-2 h-4 w-4" />
                 {t('buttonText')}

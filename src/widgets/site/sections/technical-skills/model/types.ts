@@ -1,15 +1,10 @@
 export type TechnicalSkillsCategoryKey =
-  | 'coreTitle'
-  | 'tgTitle'
-  | 'toolTitle'
-  | 'otherTitle'
-
-export type SkillGroup = {
-  groupName: string
-  skills: string[]
-}
+  | 'interface'
+  | 'flow'
+  | 'rendering'
+  | 'quality'
 
 export type SkillCategory = {
-  category: TechnicalSkillsCategoryKey
-  groups: SkillGroup[]
+  key: TechnicalSkillsCategoryKey
+  stack: string[]
 }

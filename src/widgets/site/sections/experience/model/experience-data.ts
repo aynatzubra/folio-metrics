@@ -2,10 +2,21 @@ import type { ExperienceItemType } from './../model/types'
 
 export const experienceData: ExperienceItemType[] = [
   {
+    company: 'Ongoing Product Development',
+    period: '2025–н.в.',
+    role: 'Product Engineer',
+    stack: [
+      'Next.js (App Router)',
+      'TypeScript',
+      'Tailwind CSS',
+    ],
+    description: 'ongoing.description',
+    result: 'ongoing.resultDescription',
+  },
+  {
     company: 'DMZ Home Construct',
     period: '2025 · contract',
     role: 'Frontend / Full-Stack Engineer',
-    about: 'contract.about',
     stack: [
       'Next.js (App Router, ISR)',
       'TypeScript',
@@ -19,7 +30,6 @@ export const experienceData: ExperienceItemType[] = [
     company: 'CPABOX',
     period: '2022–2025',
     role: 'Frontend / Full-Stack Engineer',
-    about: 'cpabox.about',
     stack: [
       'React',
       'Next.js',
@@ -38,7 +48,6 @@ export const experienceData: ExperienceItemType[] = [
     company: 'Remotza.tech',
     period: '2021–2022',
     role: 'Backend / Full-Stack Developer',
-    about: 'remotza.about',
     stack: [
       'Laravel',
       'Vue.js',
@@ -53,7 +62,6 @@ export const experienceData: ExperienceItemType[] = [
     company: 'AOPSRM',
     period: '2020–2021',
     role: 'Full-Stack Developer',
-    about: 'aopsrm.about',
     stack: [
       'React',
       'Laravel',

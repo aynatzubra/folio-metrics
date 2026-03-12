@@ -29,18 +29,13 @@ export function Education() {
             lg:pt-5
           "
         >
-          <article className="max-w-3xl">
-            {/* Accent label */}
-            <h3 className="text-base font-semibold uppercase tracking-widest text-accent">
-              {t('educ')}
-            </h3>
-
-            {/* Title */}
-            <h4 className="mt-3 text-sm leading-relaxed text-gray-800">
-              {t('pathTitle')}
-            </h4>
-
-          </article>
+          <h3 className="mb-2 text-lg font-[Inter] font-medium tracking-wide text-accent">
+            {t('university')} < br />
+            {t('line')}
+          </h3>
+          <h4 className="mt-2 text-base leading-relaxed text-gray-800">
+            {t('pathTitle')}
+          </h4>
         </div>
       }
     />

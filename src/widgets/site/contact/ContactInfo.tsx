@@ -1,9 +1,12 @@
+'use client'
+
 import Link from 'next/link'
-import { getLocale, getTranslations } from 'next-intl/server'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { PRIMARY_CONTACTS } from '@/entities/contact'
 
 import { getContactStyles } from './ContactInfo.styles'
+
 type Variant = 'hero' | 'footer'
 
 type ContactActionsProps = {
@@ -11,13 +14,13 @@ type ContactActionsProps = {
   className?: string
 }
 
-export async function ContactInfo({
-                                      variant = 'hero',
-                                      className = '',
-                                    }: ContactActionsProps) {
-  const t = await getTranslations('Hero')
-  const tCommon = await getTranslations('Common')
-  const locale = await getLocale()
+export function ContactInfo({
+                              variant = 'hero',
+                              className = '',
+                            }: ContactActionsProps) {
+  const t = useTranslations('Hero')
+  const tCommon = useTranslations('Common')
+  const locale = useLocale()
 
   const cvPath = `/assets/cv/${locale}.pdf`
   const styles = getContactStyles(variant)

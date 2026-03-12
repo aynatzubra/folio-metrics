@@ -1,9 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 
-import { ContactInfo } from '../../../contact'
-import myAva from '../../../../../../public/assets/images/0my_ava.png'
+import { ContactInfo } from '@/widgets/site/contact'
+import { myAva } from '@/shared/assets/images'
 
 const heroBlockClass =
   'relative w-full ' +
@@ -26,8 +28,8 @@ const introLinkClass =
   'focus-visible:ring-2 focus-visible:ring-accent/40 ' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-background'
 
-export async function Hero() {
-  const t = await getTranslations('Hero')
+export function Hero() {
+  const t = useTranslations('Hero')
 
   return (
     <div className={heroBlockClass}>
@@ -42,12 +44,11 @@ export async function Hero() {
             </p>
 
             <div className="mt-12 flex items-center gap-4">
-              <div className="w-16 h-16 overflow-hidden rounded-full border-3 border-accent">
+              <div className="w-16 h-16 overflow-hidden rounded-full border-3 border-accent relative">
                 <Image
                   src={myAva}
-                  alt="Avatar"
-                  className="w-full h-full object-cover"
-                  placeholder="blur"
+                  alt={t('avatarAlt')}
+                  fill={true}
                   priority
                 />
               </div>

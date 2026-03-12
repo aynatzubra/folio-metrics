@@ -6,42 +6,11 @@ import { SplitSection, SectionHeader } from '@/widgets/site/ui'
 
 import { skillsData } from '../model/skills-data'
 
-import type { SkillCategory } from './../model/types'
+import { SkillsColumn } from './SkillsColumn'
 
 function splitInHalf<T>(arr: T[]) {
   const mid = Math.ceil(arr.length / 2)
   return [arr.slice(0, mid), arr.slice(mid)] as const
-}
-
-function SkillsColumn({
-                        categories,
-                        t,
-                      }: {
-  categories: SkillCategory[]
-  t: ReturnType<typeof useTranslations>
-}) {
-  return (
-    <div className="space-y-10">
-      {categories.map((category) => (
-        <section key={category.category}>
-          <h3 className="mb-4 text-md font-[Inter] font-semibold uppercase tracking-widest text-accent">
-            {t(category.category)}
-          </h3>
-
-          <div className="divide-y divide-black/5">
-            {category.groups.map((group) => (
-              <div key={group.groupName} className="py-4 first:pt-0 last:pb-0">
-                <div className="text-sm font-semibold text-brand">{group.groupName}</div>
-                <div className="mt-1 text-sm leading-relaxed text-gray-600">
-                  {group.skills.join(', ')}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  )
 }
 
 export function TechnicalSkills() {

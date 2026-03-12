@@ -18,11 +18,11 @@ export function Intro() {
   ]
 
   const highlight = (chunks: ReactNode) => (
-    <span className="font-semibold text-accent">{chunks}</span>
+    <span className="font-bold text-accent">{chunks}</span>
   )
 
   const secondary = (chunks: ReactNode) => (
-    <span className="font-semibold text-gray-800">{chunks}</span>
+    <span className="font-medium text-gray-600">{chunks}</span>
   )
 
   return (
@@ -45,24 +45,27 @@ export function Intro() {
         <div
           className="
             flex flex-1 flex-col
-            px-7 pt-7
-            md:px-14
-            lg:pt-3
+            px-7 pt-7 md:px-14 lg:pt-3
+            text-base
           "
         >
           <p className="mb-6 leading-relaxed">
             {t.rich('description1', { highlight, secondary })}
           </p>
 
+          <p className="mb-6 leading-relaxed">
+            {t.rich('description2', { highlight, secondary })}
+          </p>
+
           <div className="mb-6">
-            <h3 className="mb-3 font-semibold text-gray-800">
+            <h3 className="mb-3 font-semibold text-brand">
               {t('description2_title')}
             </h3>
 
             <ul className="space-y-2">
               {priorities.map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <FontAwesomeIcon icon={faCheck} className="h-3.5 w-3.5 text-accent" />
+                  <FontAwesomeIcon icon={faCheck} className="h-3.5 w-4 text-accent" />
                   {item}
                 </li>
               ))}
@@ -70,7 +73,7 @@ export function Intro() {
           </div>
 
           <p className="leading-relaxed">
-            {t.rich('description2', { highlight, secondary })}
+            {t.rich('description3', { highlight, secondary })}
           </p>
         </div>
       }

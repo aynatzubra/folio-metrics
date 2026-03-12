@@ -14,11 +14,9 @@
     }
   },
   "Hero": {
-    "avatarAlt": "Portrait of Tanya Arbuz",
-    "role": "Frontend-focused Full-Stack Engineer",
-    "name": "Tatiana Arbuz",
+    "avatarAlt": "It's me",
     "aboutLink": "More about me",
-    "shortText": "Frontend Engineer focused on architecture, data flow and scalable interfaces.",
+    "shortText": "Building web applications focused on architecture, clear data flow, and scalable interfaces.",
     "buttons": {
       "cv": "Download CV"
     }
@@ -26,63 +24,66 @@
   "AboutMe": {
     "leftTitle": "About me",
     "leftSubtitle": "Less talk — more shipped features.",
-    "description1": "I’m a <highlight>frontend-focused full-stack engineer</highlight>. I build web applications with <highlight>React</highlight> and <highlight>Next.js (App Router, TypeScript)</highlight> with a strong focus on <highlight>architecture (Feature-Sliced Design)</highlight>, UX and performance <highlight>(SSR/ISR)</highlight>. Experience <secondary>with backend (NestJS, Laravel)</secondary> and <secondary>DevOps (Docker, GitLab CI/CD)</secondary> gives me a <highlight>holistic view of the product</highlight> and helps me design reliable end-to-end integrations and scalable solutions.",
-    "description2_title": "My core priorities:",
+    "description1": "I design interfaces with <highlight>React</highlight> and <highlight>Next.js</highlight> (<highlight>App Router</highlight>), using <highlight>Feature-Sliced Design</highlight> as a mental model for <secondary>building scalable systems</secondary>. <secondary>To me, high-quality code</secondary> means <secondary>solutions that remain clear</secondary> for the team and <secondary>reliable for the business</secondary> even years later.",
+    "description2": "In practice, I work as a <highlight>frontend-oriented full-stack engineer</highlight>. <secondary>My background in backend development</secondary> (NestJS, Laravel) and <secondary>DevOps processes</secondary> (Docker, GitLab CI/CD) helps me see the product beyond the frontend. It makes <secondary>working with APIs</secondary> and <secondary>integrations</secondary> easier and allows me to <secondary>make more informed architectural decisions</secondary>.",
+    "description2_title": "My key priorities:",
     "description2_item1": "Robust architecture",
-    "description2_item2": "User-friendly experience",
+    "description2_item2": "Clear and predictable interfaces",
     "description2_item3": "Process automation",
-    "description2": "In my work I focus on <highlight>system reliability</highlight>, clear interfaces and <highlight>automation of routine tasks</highlight>. I keep learning, value direct, concrete communication and aim for results that create <highlight>tangible value for both the business and the team</highlight>."
+    "description3": "<secondary>For me, development</secondary> is not just about completing tasks, but about <secondary>taking responsibility</secondary> for the product and its <secondary>long-term sustainability</secondary>. <secondary>I feel most comfortable in strong engineering teams</secondary> where I can <secondary>contribute architecturally</secondary> and continue growing technically."
   },
   "TechnicalSkills": {
-    "leftTitle": "Technical skills",
+    "leftTitle": "Stack",
     "leftSubtitle": "Tools change. Principles don’t.",
-    "coreTitle": "Frontend & architecture",
-    "tgTitle": "UI & visualisation",
-    "toolTitle": "Backend & integrations",
-    "otherTitle": "Testing, DevOps & process"
+    "categories": {
+      "interface":  "Frontend & Structure",
+      "flow": "Data & Backend",
+      "rendering": "Optimization & Rendering",
+      "quality": "Quality & DevOps"
+    }
   },
   "Experience": {
     "leftTitle": "Experience",
     "leftSubtitle": "Experience is tough problems I’ve already solved.",
     "Stack": "Stack",
+    "ongoing": {
+      "description": "Developing an e-commerce platform on <secondary>Next.js (App Router)</secondary> with a <secondary>server-first</secondary> data model. I apply <secondary>Feature-Sliced Design</secondary> to structure business logic and ensure feature isolation. Designed administrative interfaces for catalog and order management. Implementing an age verification module (18+) based on an AI model. <secondary>Ownership:</secondary> Managing the project independently - from architectural decisions to implementation and infrastructure setup.",
+      "resultDescription": "Successfully launched the MVP with a scalable architecture"
+    },
     "contract": {
-      "about": "Construction company, SAMPO residential complex",
-      "description": "Designed and implemented a headless architecture based on Next.js App Router and Payload CMS v3 for content-heavy pages of the residential complex website. Set up Payload CMS from scratch: data structures, collections and access control. Replaced multiple client-side request chains with a unified server-side resolver layer and caching. Configured ISR and tag-based cache invalidation (revalidateTag) and built a modular page-loading system with declarative content management.",
-      "resultDescription": "Improved page load speed and stability for the residential complex website and simplified content operations thanks to predictable architecture and automated data refresh."
+      "description": "Led the full design and integration cycle of <secondary>Payload CMS v3</secondary> into the <secondary>Next.js</secondary> architecture. Designed the CMS structure from scratch: data schemas, collections, access roles, and publishing workflows. Built a centralized <secondary>server-first</secondary> data layer with unified resolvers and <secondary>granular ISR cache invalidation</secondary>.",
+      "resultDescription": "Created a manageable headless system with a predictable content update model. Content is fully decoupled from the application, reducing manual operations and improving page load stability."
     },
     "cpabox": {
-      "about": "SaaS platform for affiliate traffic automation",
-      "description": "Designed the frontend architecture ensuring consistent API contracts and predictable UI behaviour. Introduced Zustand for shared state management across modules and screens. Built and optimised an analytics dashboard (ApexCharts) integrated with Keitaro API. Developed a Telegram Web App and a NestJS service for WHOIS checks and domain synchronisation. Increased UI consistency and maintainability by refactoring MUI components and theming.",
-      "resultDescription": "Delivered a stable and fast analytics dashboard and automated routine domain checks through a new communication channel — Telegram."
+      "description": "Developed and evolved the frontend architecture of a SaaS platform for traffic analytics and automation, integrating <secondary>Facebook Marketing API, Keitaro, Dolphin</secondary>, and <secondary>Flex Card</secondary>. Ensured <secondary>API contract consistency</secondary> and predictable UI behavior across modules. Architected the state management system using <secondary>Zustand</secondary>, streamlining data flow between analytics and operational modules.Developed core interfaces including <secondary>the analytics dashboard</secondary> (ApexCharts), campaign management tools, and automation features. Built a <secondary>Telegram Web App</secondary> and a <secondary>NestJS backend</secondary> for domain monitoring, webhook processing, and real-time data synchronization.",
+      "resultDescription": "Improved UI stability, streamlined monitoring, and management automation and third-party integrations."
     },
     "remotza": {
-      "about": "Custom software development",
-      "description": "Developed REST APIs and integrations in Laravel for multiple client projects. Worked closely with UI teams on Vue.js components and their integration with the backend. Optimised data structures and caching strategies in PostgreSQL and Redis to reduce database load.",
-      "resultDescription": "Improved API efficiency and reduced data-loading time in client interfaces through optimised queries and caching."
+      "description": "Designed backend architecture in <secondary>Laravel</secondary> for client projects with <secondary>Vue.js</secondary> integration. Implemented both standalone SPA modules and hybrid Vue components rendered within Blade templates. Optimized <secondary>PostgreSQL</secondary> queries and introduced <secondary>Redis</secondary> caching.",
+      "resultDescription": "Improved API performance and reduced database load through query optimization and caching."
     },
     "aopsrm": {
-      "about": "NGO supporting ostomy patients in Moldova",
-      "description": "Built a multilingual website in React and designed a custom CMS in Laravel for content management. Set up CI/CD in GitLab using Docker, enabling predictable deployments and fast content updates.",
-      "resultDescription": "Delivered a turnkey website with CMS - from business logic to deployment - allowing the organisation to publish content and communicate with the audience independently, without external developers."
+      "description": "Developed a multilingual platform with a <secondary>React</secondary> frontend and a custom <secondary>Laravel CMS</secondary> with an administrative panel for content management and publishing. Configured <secondary>Docker</secondary> and <secondary>GitLab CI/CD</secondary> pipelines for stable deployments and isolated environments. <secondary>Ownership:</secondary> Owned the full project lifecycle — from initial development to production deployment and maintenance.",
+      "resultDescription": "Delivered a CMS that enabled the team to manage and publish content independently."
     }
   },
   "Education": {
     "leftTitle": "Education",
     "leftSubtitle": "Experience in finance doesn’t compete with code - it makes decisions more precise.",
-    "educ": "Russian University of Cooperation | Accounting and Finance",
-    "pathTitle": "Background in finance helps me design business logic, metrics and reporting flows more accurately in complex web systems."
+    "university": "Russian University of Cooperation",
+    "line": "Accounting and Finance",
+    "pathTitle": "My background in finance helps me better design business logic, metrics, and reporting in complex web systems."
   },
   "Additional": {
     "leftTitle": "Projects",
     "leftSubtitle": "Projects are measured not in lines of code, but in value.",
-    "intro": "This website is not just a resume - it’s an open-source product called Folio Metrics that reflects my approach to architecture, analytics and product thinking.",
+    "intro": "Open-source project demonstrating my architectural approach to analytics and product systems.",
     "projectTitle": "Folio Metrics Project",
     "projectFeatures": {
-      "item1": "<highlight>Interactive resume</highlight> with a custom analytics system for visits and events.",
-      "item2": "<highlight>Modern architecture:</highlight> Next.js (App Router), TypeScript, Prisma + PostgreSQL, server-first data flow.",
-      "item3": "<highlight>Professional practices: </highlight>strict TypeScript, feature-based structure and middleware layer.",
-      "item4": "<highlight>Secure admin panel</highlight> (NextAuth.js) with a metrics dashboard and audience segmentation.",
-      "item5": "Performance optimization: Lighthouse score ≥ 95 on all Core Web Vitals."
+      "item1": "<highlight>Interactive resume and administrative panel</highlight>.",
+      "item2": "<highlight>Flexible data management:</highlight> JSON-based demo mode or full version with <highlight>PostgreSQL, Prisma,</highlight> and event analytics.",
+      "item3": "<highlight>Architecture: </highlight>Server-first approach and <highlight>Feature-Sliced Design</highlight>.",
+      "item4": "<highlight>Performance</highlight> Lighthouse ≥ 95 across all Core Web Vitals."
     },
     "buttonText": "Explore code",
     "buttonDemoText": "View demo"

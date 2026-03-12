@@ -62,7 +62,7 @@ export function SectionsChart({ data, range, isLoading }: Props) {
       title="Top sections" range={range}
       isLoading={isLoading}>
       {!hasData ? (
-        <DataPlaceholder type="empty" message="No daily activity recorded." />
+        <DataPlaceholder type="empty" message="No section activity recorded." />
       ) : (
         <EChartBase option={option!} className="w-full h-full" />
       )}
