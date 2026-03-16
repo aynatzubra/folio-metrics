@@ -2,10 +2,11 @@
 
 import React, { useMemo } from 'react'
 
-import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { SectionPoint } from '@/entities/analytics'
 import { EChartBase } from '@/shared/lib/echarts'
-import { ChartContainerWrapper } from '@/widgets/admin/analytics'
+import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+
+import { ChartContainer } from './index'
 
 import type { EChartsOption } from 'echarts'
 
@@ -58,7 +59,7 @@ export function SectionsChart({ data, range, isLoading }: Props) {
   }, [data])
 
   return (
-    <ChartContainerWrapper
+    <ChartContainer
       title="Top sections" range={range}
       isLoading={isLoading}>
       {!hasData ? (
@@ -66,6 +67,6 @@ export function SectionsChart({ data, range, isLoading }: Props) {
       ) : (
         <EChartBase option={option!} className="w-full h-full" />
       )}
-    </ChartContainerWrapper>
+    </ChartContainer>
   )
 }

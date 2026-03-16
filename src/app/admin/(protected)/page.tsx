@@ -1,9 +1,10 @@
-import { DashboardClient } from '@/widgets/admin/dashboard/ui/DashboardClient'
 import { MetricsService } from '@/shared/api/metrics'
 import { createServerMetricsRepository } from '@/shared/api/metrics/factory'
+import { DashboardClient } from '@/widgets/admin/dashboard'
+import { RangeOptionValue } from '@/widgets/admin/analytics'
 
 export default async function AdminDashboardPage() {
-  const range = 30
+  const range: RangeOptionValue = 30
   const repo = createServerMetricsRepository()
   const metricsService = new MetricsService(repo)
   const dashboard = await metricsService.getDashboardData(range)

@@ -6,10 +6,10 @@ import { ANALYTICS_RANGE_OPTIONS, RangeOptionValue } from '@/widgets/admin/analy
 
 type Props = {
   value: RangeOptionValue
-  onChangeAction: (value: RangeOptionValue) => void
+  onChange: (value: RangeOptionValue) => void
 }
 
-export function AnalyticsRangeFilter({ value, onChangeAction }: Props) {
+export function AnalyticsRangeFilter({ value, onChange }: Props) {
   return (
     <div className="mt-3 sm:mt-0 flex items-center gap-2 text-sm text-gray-600">
       <div className="inline-flex items-center gap-2 overflow-hidden">
@@ -17,7 +17,7 @@ export function AnalyticsRangeFilter({ value, onChangeAction }: Props) {
           <button
             key={option.value}
             type="button"
-            onClick={() => onChangeAction(option.value)}
+            onClick={() => onChange(option.value)}
             className={clsx(
               'cursor-pointer rounded-[0.2rem] px-3 py-2 text-xs font-medium transition',
               option.value === value

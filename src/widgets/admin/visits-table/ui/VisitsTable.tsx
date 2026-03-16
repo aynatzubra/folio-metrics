@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
-import { TablePagination } from '@/widgets/admin/visits-table/ui/TablePagination'
-import { DataPlaceholder } from '@/widgets/admin/dashboard'
+import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+
+import { TablePagination } from './index'
 
 import type { VisitData } from '@/entities/analytics'
 

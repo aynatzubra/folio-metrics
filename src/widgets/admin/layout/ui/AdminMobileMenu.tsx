@@ -1,7 +1,8 @@
 import { StaticImageData } from 'next/image'
 
-import { AdminMenuContent } from '@/widgets/admin/layout'
 import { MobileMenuShell } from '@/shared/ui'
+
+import { AdminMenuContent } from './AdminMenuContent'
 
 type AdminMobileMenuProps = {
   isOpen: boolean
@@ -18,7 +19,7 @@ export function AdminMobileMenu({ isOpen, onClose, onLogout, user }: AdminMobile
       panelClass="bg-[#0B1120] p-4"
     >
       <AdminMenuContent
-        onCloseAction={onClose}
+        onClose={onClose}
         onLogoutAction={onLogout}
         user={user}
       />

@@ -2,22 +2,22 @@
 
 import { MobileMenuShell } from '@/shared/ui'
 
-import { SaitMenuContent } from './SaitMenuContent'
+import { SiteMenuContent } from './index'
 
 type SiteMobileMenuProps = {
   isOpen: boolean
-  onCloseAction: () => void
+  onClose: () => void
 }
 
-export function SiteMobileMenu({ isOpen, onCloseAction }: SiteMobileMenuProps) {
+export function SiteMobileMenu({ isOpen, onClose }: SiteMobileMenuProps) {
   return (
     <MobileMenuShell
       isOpen={isOpen}
-      onClose={onCloseAction}
+      onClose={onClose}
       panelClass="bg-[#0B1120] p-4"
     >
-      <SaitMenuContent
-        onCloseAction={onCloseAction}
+      <SiteMenuContent
+        onClose={onClose}
       />
     </MobileMenuShell>
   )

@@ -3,8 +3,10 @@
 import dynamic from 'next/dynamic'
 import { ErrorBoundary } from 'react-error-boundary'
 
-import { ChartSkeleton, DataPlaceholder } from '@/widgets/admin/dashboard'
-import { AnalyticsChartsProps } from '@/widgets/admin/analytics/model'
+import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+import { ChartSkeleton } from '@/shared/ui'
+
+import { AnalyticsChartsProps } from '../model'
 
 const AnalyticsCharts = dynamic<AnalyticsChartsProps>(
   () => import('./AnalyticsCharts').then((m) => m.AnalyticsCharts),
@@ -14,7 +16,7 @@ const AnalyticsCharts = dynamic<AnalyticsChartsProps>(
   },
 )
 
-export function AnalyticsChartsLoader(props: AnalyticsChartsProps) {
+export function AnalyticsChartsAsync({ initialRange = 30, initialDaily, initialSections }: AnalyticsChartsProps) {
   return (
     <ErrorBoundary
       fallback={
@@ -24,7 +26,11 @@ export function AnalyticsChartsLoader(props: AnalyticsChartsProps) {
         />
       }
     >
-      <AnalyticsCharts {...props} />
+      <AnalyticsCharts
+        initialRange={initialRange}
+        initialDaily={initialDaily}
+        initialSections={initialSections}
+      />
     </ErrorBoundary>
   )
 }

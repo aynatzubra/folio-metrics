@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-import { SplitSection, SectionHeader } from '@/widgets/site/ui'
+import { SplitSection, SectionHeader } from '../../../section-ui'
 
 const featureKeys = ['item1', 'item2', 'item3', 'item4'] as const
 

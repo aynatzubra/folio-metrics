@@ -1,2 +1,3 @@
-export { PRIMARY_CONTACTS } from './model/constants'
-export type { ContactLink } from './model/types'
+export { PRIMARY_CONTACTS, SOCIAL_LINKS } from './model/constants'
+export type { ContactLink, ContactIcon } from './model/types'
+export { ContactInfo } from './ui'

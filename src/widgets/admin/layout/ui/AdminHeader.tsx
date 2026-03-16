@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import { useTransition } from 'react'
 
-import { SocialLinks } from '@/widgets/admin/layout/ui/SocialLinks'
 import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
-import { AdminHeaderMobile, AdminMobileMenu, UserMenu } from '@/widgets/admin/layout'
 import { Badge } from '@/shared/ui'
 import { logoutAction } from '@/features/admin/logout'
 import { myAdminAva } from '@/shared/assets/images'
+
+import { AdminHeaderMobile, UserMenu, AdminMobileMenu, SocialLinks } from './index'
 
 type AdminHeaderProps = {
   isDemo?: boolean
@@ -66,7 +66,7 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
             isDemo={isDemo}
             isMenuOpen={isOpen}
             isLoading={isPending}
-            onOpenMenuAction={open}
+            onOpenMenu={open}
             openMenuLabel={'Open menu'}
           />
         </div>

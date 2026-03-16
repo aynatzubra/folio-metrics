@@ -7,12 +7,12 @@ import { Badge, BurgerButton } from '@/shared/ui'
 type Props = {
   isMenuOpen: boolean
   isDemo?: boolean
-  onOpenMenuAction: () => void
+  onOpenMenu: () => void
   openMenuLabel: string
   isLoading: boolean
 }
 
-export function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenuAction, openMenuLabel }: Props) {
+export function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenu, openMenuLabel }: Props) {
   return (
     <div className="flex w-full items-center justify-between md:hidden">
       <Link href="/" className="transition-opacity hover:opacity-70">
@@ -28,7 +28,7 @@ export function AdminHeaderMobile({ isMenuOpen, isDemo, onOpenMenuAction, openMe
 
         <BurgerButton
           isOpen={isMenuOpen}
-          onClick={onOpenMenuAction}
+          onClick={onOpenMenu}
           ariaLabel={openMenuLabel}
           ariaControls="admin-mobile-menu"
         />

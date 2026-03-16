@@ -1,4 +1,4 @@
-import { ContactLink } from '@/entities/contact'
+import { ContactLink } from './types'
 
 export const SOCIAL_LINKS: readonly ContactLink[] = [
   {

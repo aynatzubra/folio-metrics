@@ -1,5 +1,6 @@
-import { StatCard } from '@/widgets/admin/dashboard/ui/StatCard'
 import { SummaryStats } from '@/entities/analytics'
+
+import { StatCard } from './index'
 
 type SummaryCardsProps = {
   summary: SummaryStats

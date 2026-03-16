@@ -1,5 +1,1 @@
-export { SummaryCards } from './ui/SummaryCards'
-export { StatCard } from './ui/StatCard'
-export { ChartSkeleton, TableSkeleton, SummaryCardSkeleton, AnalyticsChartsSkeleton } from './ui'
-export { DataPlaceholder } from './ui/DataPlaceholder'
-export type { DashboardInitialState } from './types'
+export { DashboardClient } from './ui'

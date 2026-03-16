@@ -2,8 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { SplitSection, SectionHeader } from '@/widgets/site/ui'
-
+import { SplitSection, SectionHeader } from '../../../section-ui'
 import { skillsData } from '../model/skills-data'
 
 import { SkillsColumn } from './SkillsColumn'

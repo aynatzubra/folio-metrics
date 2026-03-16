@@ -4,12 +4,12 @@ import { Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { NAV_LINKS } from '@/widgets/site/model'
 import { PRIMARY_CONTACTS } from '@/entities/contact'
-import { SocialLinksList } from '@/shared/ui/SocialLinks'
+import { SocialLinksList } from '@/shared/ui/social-links'
+import { NAV_LINKS } from '@/widgets/site/layout/model'
 
 type SiteMobileMenuProps = {
-  onCloseAction: () => void
+  onClose: () => void
 }
 
 const panelClass =
@@ -25,7 +25,7 @@ const closeButton =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30' +
   'focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b3a41]'
 
-export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
+export function SiteMenuContent({ onClose }: SiteMobileMenuProps) {
   const t = useTranslations('Header')
   const tCommon = useTranslations('Common')
 
@@ -46,7 +46,7 @@ export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
         </Dialog.Title>
 
         <button
-          onClick={onCloseAction}
+          onClick={onClose}
           className={closeButton}
           aria-label={tCommon('closeMenu')}
         >
@@ -78,7 +78,7 @@ export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={onCloseAction}
+                onClick={onClose}
                 className={navLinkClass}
               >
                 {t(link.labelKey)}
@@ -87,7 +87,7 @@ export function SaitMenuContent({ onCloseAction }: SiteMobileMenuProps) {
           </div>
         </div>
 
-        {/* contact */}
+        {/* ui */}
         <div className="mt-6 border-t border-white/30 pt-4">
           <SocialLinksList
             links={socialData}

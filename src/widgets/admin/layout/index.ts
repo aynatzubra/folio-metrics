@@ -1,5 +1,1 @@
-export { AdminHeader } from './ui/AdminHeader'
-export { AdminMobileMenu } from './ui/AdminMobileMenu'
-export { AdminHeaderMobile } from './ui/AdminHeaderMobile'
-export { AdminMenuContent } from './ui/AdminMenuContent'
-export { UserMenu } from './ui/UserMenu'
+export { AdminHeader } from './ui'

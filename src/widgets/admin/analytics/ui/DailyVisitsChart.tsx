@@ -3,9 +3,10 @@
 import { useMemo } from 'react'
 
 import { DailyPoint } from '@/entities/analytics'
-import { DataPlaceholder } from '@/widgets/admin/dashboard'
 import { EChartBase } from '@/shared/lib/echarts'
-import { ChartContainerWrapper } from '@/widgets/admin/analytics'
+import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+
+import { ChartContainer } from './index'
 
 import type { EChartsOption } from 'echarts'
 
@@ -63,7 +64,7 @@ export function DailyVisitsChart({ data, range, isLoading }: Props) {
   }, [data])
 
   return (
-    <ChartContainerWrapper
+    <ChartContainer
       title="Top sections" range={range}
       isLoading={isLoading}>
       {!hasData ? (
@@ -71,6 +72,6 @@ export function DailyVisitsChart({ data, range, isLoading }: Props) {
       ) : (
         <EChartBase option={option!} className="w-full h-full" />
       )}
-    </ChartContainerWrapper>
+    </ChartContainer>
   )
 }

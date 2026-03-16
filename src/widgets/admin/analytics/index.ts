@@ -1,9 +1,6 @@
-export { ChartContainerWrapper } from './ui/ChartContainerWrapper'
-export { AnalyticsCharts } from './ui/AnalyticsCharts'
-export { AnalyticsChartsWrapper } from './ui/AnalyticsChartsWrapper'
-export { DailyVisitsChart } from './ui/DailyVisitsChart'
-export { SectionsChart } from './ui/SectionsChart'
+export { AnalyticsChartsAsync } from './ui'
 
-export { ANALYTICS_RANGE_OPTIONS } from './model/range-options'
-export type { RangeOption, RangeOptionValue } from './model/range-options'
+export type { RangeOption, RangeOptionValue } from './model'
+export { ANALYTICS_RANGE_OPTIONS } from './model'
 export { useAnalyticsDashboard } from './model'
+

@@ -1,6 +1,6 @@
 'use client'
 
-import { useSectionObserver } from '@/widgets/site/model'
+import { useSectionObserver } from './model/useSectionObserver'
 
 export function PageObserver() {
   useSectionObserver()

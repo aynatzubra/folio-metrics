@@ -1,4 +1,4 @@
-import { AnalyticsChartsSkeleton } from '@/widgets/admin/dashboard'
+import { AnalyticsChartsSkeleton } from './index'
 
 type ChartContainerProps = {
   title: string
@@ -7,7 +7,7 @@ type ChartContainerProps = {
   children: React.ReactNode
 }
 
-export function ChartContainerWrapper({ title, range, isLoading, children }: ChartContainerProps) {
+export function ChartContainer({ title, range, isLoading, children }: ChartContainerProps) {
   return (
     <div className="flex flex-col rounded-lg bg-white p-5 shadow-sm border border-slate-100 h-[380px]">
       <h3 className="mb-6 text-sm font-semibold tracking-wider text-slate-400">

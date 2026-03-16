@@ -4,8 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
-import { ContactInfo } from '@/widgets/site/contact'
 import { myAva } from '@/shared/assets/images'
+import { ContactInfo } from '@/entities/contact'
+
 
 const heroBlockClass =
   'relative w-full ' +

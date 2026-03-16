@@ -2,10 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-import { RangeOptionValue } from '@/widgets/admin/analytics'
 import { AnalyticsDashboard, DailyPoint, SectionPoint, SummaryStats, VisitData } from '@/entities/analytics'
 import { useAnalytics } from '@/shared/api'
 import { logError } from '@/shared/lib/error'
+
+import type { RangeOptionValue } from './range-options'
 
 type AnalyticsDashboardSnapshot = {
   range: RangeOptionValue

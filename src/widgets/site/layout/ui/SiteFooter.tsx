@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-import { ContactInfo } from '../../contact'
+import { ContactInfo } from '@/entities/contact'
 
 export async function SiteFooter() {
   const t = await getTranslations('Footer')

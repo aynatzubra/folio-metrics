@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic'
 
-import { PageObserver } from '@/widgets/site/composition/PageObserver'
 import { SiteHeader } from '@/widgets/site/layout'
-import { LANDING_SECTIONS } from '@/widgets/site/model'
-import { FloatingActions } from '@/widgets/site/composition/FloatingActions'
-import { HashScrollHandler } from '@/widgets/site/composition/HashScrollHandler'
+
+import { PageObserver } from './PageObserver'
+import { FloatingActions } from './FloatingActions'
+import { HashScrollHandler } from './HashScrollHandler'
+import { LANDING_SECTIONS } from './model/sections-config'
 
 const SiteFooter = dynamic(() => import('@/widgets/site/layout').then(m => m.SiteFooter))
 

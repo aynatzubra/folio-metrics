@@ -1,1 +1,0 @@
-export { SocialLinksList } from './SocialLinksList'
