@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { useTransition } from 'react'
 
-import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
 import { Badge } from '@/shared/ui'
 import { logoutAction } from '@/features/admin/logout'
 import { myAdminAva } from '@/shared/assets/images'
+import { useMobileMenu } from '@/shared/lib/hooks'
 
 import { AdminHeaderMobile, UserMenu, AdminMobileMenu, SocialLinks } from './index'
 

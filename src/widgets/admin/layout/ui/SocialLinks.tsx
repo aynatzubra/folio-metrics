@@ -1,5 +1,5 @@
-import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui'
+import { SOCIAL_LINKS } from '@/entities/contact'
 
 interface SocialLinksProps {
   variant?: 'icons' | 'buttons'
@@ -38,8 +38,10 @@ export const SocialLinks = ({ variant = 'icons', className }: SocialLinksProps) 
     <div className={`flex items-center gap-4 ${className}`}>
       {SOCIAL_LINKS.map((link) => (
         <a
-          key={link.href} href={link.href}
-          target="_blank" rel="noreferrer"
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer noopener"
           className="text-accent hover:text-[#F67769] transition-colors">
           {CONTACT_ICONS[link.icon]}
         </a>

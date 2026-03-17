@@ -7,7 +7,7 @@ export const skillsData: SkillCategory[] = [
   },
   {
     key: 'flow',
-    stack: ['Zustand', 'Context API', 'NestJS', 'Laravel', 'REST APIs', 'Webhooks'],
+    stack: ['Zustand', 'Context API', 'NestJS', 'Laravel', 'REST APIs', 'Webhooks', 'Payload CMS', 'Telegram Web Apps'],
   },
   {
     key: 'rendering',

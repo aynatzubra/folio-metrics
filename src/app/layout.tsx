@@ -1,7 +1,7 @@
 import '@/shared/lib/fontawesome'
 import '@/shared/styles/globals.css'
 import { inter, robotoMono, robotoSlab } from '@/shared/config'
-import { AnalyticsProvider } from '@/shared/api'
+import { AnalyticsProvider } from '@/shared/api/analytics'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

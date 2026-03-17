@@ -1,5 +1,6 @@
+import { RangeOptionValue } from '@/features/admin/analytics-filters'
+
 import type { DailyPoint, SectionPoint } from '@/entities/analytics'
-import type { RangeOptionValue } from './range-options'
 
 export type AnalyticsChartsProps = {
   initialRange?: RangeOptionValue

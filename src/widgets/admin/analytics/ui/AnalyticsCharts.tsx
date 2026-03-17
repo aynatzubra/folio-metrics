@@ -2,14 +2,13 @@
 
 import { useState } from 'react'
 
-import { AnalyticsRangeFilter } from '@/features/admin/analytics-filters'
+import { AnalyticsRangeFilter, RangeOptionValue } from '@/features/admin/analytics-filters'
 
 import { useAnalyticsDashboard } from '../model'
 import { AnalyticsChartsProps } from '../model'
 
 import { DailyVisitsChart, SectionsChart } from './index'
 
-import type { RangeOptionValue } from '../model'
 
 export function AnalyticsCharts({
                                   initialRange = 30,

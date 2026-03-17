@@ -1,7 +1,6 @@
-import { MetricsService } from '@/shared/api/metrics'
-import { createServerMetricsRepository } from '@/shared/api/metrics/factory'
 import { DashboardClient } from '@/widgets/admin/dashboard'
-import { RangeOptionValue } from '@/widgets/admin/analytics'
+import { RangeOptionValue } from '@/features/admin/analytics-filters'
+import { createServerMetricsRepository, MetricsService } from '@/shared/api/metrics'
 
 export default async function AdminDashboardPage() {
   const range: RangeOptionValue = 30

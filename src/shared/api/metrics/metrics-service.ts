@@ -1,11 +1,8 @@
-import { AnalyticsProcessor } from '@/entities/analytics/model'
 import mockHistory from '@/shared/assets/data/mock-history.json'
 import { IS_DEMO_MODE } from '@/shared/lib/utils'
 import { invalidateCache, withCache } from '@/shared/lib/cache'
-
-import { IMetricsRepository } from './repository.interface'
-
-import type { AnalyticsDashboard, VisitData } from '@/entities/analytics'
+import { AnalyticsDashboard, AnalyticsProcessor, VisitData } from '@/entities/analytics'
+import { IMetricsRepository } from '@/shared/api/metrics'
 
 type VisitWithSource = VisitData & { isMock: boolean }
 

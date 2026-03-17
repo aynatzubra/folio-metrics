@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 
 import { SectionPoint } from '@/entities/analytics'
 import { EChartBase } from '@/shared/lib/echarts'
-import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+import { DataPlaceholder } from '@/shared/ui'
 
 import { ChartContainer } from './index'
 

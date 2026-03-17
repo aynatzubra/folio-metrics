@@ -1,5 +1,5 @@
 import { AnalyticsDashboard } from '@/entities/analytics'
-import { RangeOptionValue } from '@/widgets/admin/analytics'
+import { RangeOptionValue } from '@/features/admin/analytics-filters'
 
 export interface DashboardInitialState {
   range: RangeOptionValue

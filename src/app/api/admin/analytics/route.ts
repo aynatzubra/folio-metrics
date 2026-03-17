@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
-import { createServerMetricsRepository } from '@/shared/api/metrics/factory'
-import { MetricsService } from '@/shared/api/metrics'
+import { logError } from '@/shared/lib/error'
+import { trackVisitSchema } from '@/entities/analytics'
+import { createServerMetricsRepository, MetricsService } from '@/shared/api/metrics'
 
 const repo = createServerMetricsRepository()
 const service = new MetricsService(repo)
@@ -10,9 +11,12 @@ const service = new MetricsService(repo)
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    if (!body?.sectionId) {
+
+    const result = trackVisitSchema.safeParse(body)
+
+    if (!result.success) {
       return NextResponse.json(
-        { error: 'Missing sectionId' },
+        { error: 'Invalid request payload' },
         { status: 400 },
       )
     }
@@ -21,28 +25,22 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get('user-agent') || 'unknown'
 
     const visit = {
-      sectionId: String(body.sectionId),
-      duration: Number(body.duration) || 0,
-      timestamp: Number(body.timestamp) || Date.now(),
-      visitorId: String(body.visitorId || 'unknown'),
+      ...result.data,
+      sectionId: result.data.sectionId,
+      duration: result.data.duration,
+      timestamp: result.data.timestamp || Date.now(),
       ipAddress: ip,
       userAgent,
-      country: body.country ? String(body.country) : undefined,
-      city: body.city ? String(body.city) : undefined,
     }
 
     await service.trackSectionVisit(visit)
 
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error)
 
-    console.error('[API Analytics POST] Error:', message)
+    logError(error, '[API Analytics POST]')
 
-    return NextResponse.json(
-      { error: message },
-      { status: 500 },
-    )
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
 
@@ -57,7 +55,8 @@ export async function GET() {
     const data = await repo.getAll()
     return NextResponse.json(data)
   } catch (error) {
-    console.error('[API Analytics GET] Error:', error)
-    return new NextResponse('Error', { status: 500 })
+    logError(error,'[API Analytics GET]')
+
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }

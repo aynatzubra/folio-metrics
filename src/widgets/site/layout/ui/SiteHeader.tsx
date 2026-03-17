@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 
-import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu'
-import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui'
 import { LocaleSwitcher } from '@/features/site/locale-switcher'
+import { SOCIAL_LINKS } from '@/entities/contact'
+import { useMobileMenu } from '@/shared/lib/hooks'
 import { NAV_LINKS, useNavActiveByClick } from '@/widgets/site/layout/model'
 
 import { SiteMobileMenu, SiteHeaderMobile } from './index'
@@ -90,8 +90,10 @@ export function SiteHeader() {
               <div className="flex items-center gap-1.5">
                 {SOCIAL_LINKS.map((link) => (
                   <a
-                    key={link.href} href={link.href}
-                    target="_blank" rel="noreferrer noopener"
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className={iconButton}>
                     {CONTACT_ICONS[link.icon]}
                   </a>

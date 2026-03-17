@@ -19,13 +19,13 @@
   "Hero": {
     "avatarAlt": "Это мое фото",
     "aboutLink": "Подробнее обо мне",
-    "shortText": "Разрабатываю веб-приложения с фокусом на архитектуру, понятный поток данных и масштабируемые интерфейсы.",
+    "shortText": "Разрабатываю веб-интерфейсы с фокусом на архитектуру, понятный поток данных и масштабируемые решения.",
     "buttons": {
       "cv": "Скачать CV"
     }
   },
   "AboutMe": {
-    "leftTitle": "About",
+    "leftTitle": "Обо мне",
     "leftSubtitle": "Меньше слов — больше shipped-фич.",
     "description1": "Я проектирую интерфейсы на <highlight>React</highlight> и <highlight>Next.js</highlight> (<highlight>App Router</highlight>), используя <highlight>Feature-Sliced Design</highlight> как <secondary>ментальную модель</secondary> для построения <secondary>масштабируемых систем</secondary>. <secondary>Для меня качественный код - это решения,</secondary> которые остаются <secondary>понятными для команды</secondary> и <secondary>надежными для бизнеса</secondary> даже спустя годы.",
     "description2": "В работе я позиционирую себя как <highlight>Frontend-ориентированный Full-Stack Engineer</highlight>. <secondary>Мой бэкграунд в бэкенде</secondary> (NestJS, Laravel) и <secondary>DevOps-процессах</secondary> (Docker, GitLab CI/CD) помогает видеть продукт за пределами фронтенда. Это упрощает работу с <secondary>API</secondary> и <secondary>интеграциями</secondary> и позволяет принимать более <secondary>взвешенные архитектурные решения</secondary>.",
@@ -33,10 +33,10 @@
     "description2_item1": "Надёжная архитектура",
     "description2_item2": "Понятный и предсказуемый интерфейс",
     "description2_item3": "Автоматизация процессов",
-    "description3": "Мне <secondary>важно</secondary> не просто “закрывать задачи”, а <secondary>брать ответственность за продукт и его долговечность</secondary>. <secondary>Идеальная среда для меня - сильная команда</secondary>, где я <secondary>могу приносить архитектурную пользу</secondary> и продолжать расти технически."
+    "description3": "<secondary>Я ценю решения</secondary>, которые не только закрывают текущую задачу, но и <secondary>помогают продукту оставаться управляемым по мере роста</secondary>. Идеальная среда для меня - сильная команда, где <secondary>я могу приносить архитектурную пользу</secondary> и продолжать расти технически."
   },
   "TechnicalSkills": {
-    "leftTitle": "Skills",
+    "leftTitle": "Навыки",
     "leftSubtitle": "Инструменты меняются. Принципы — нет.",
     "categories": {
       "interface": "Фронтенд и структура",
@@ -46,7 +46,7 @@
     }
   },
   "Experience": {
-    "leftTitle": "Experience",
+    "leftTitle": "Опыт",
     "leftSubtitle": "Опыт — это сложные задачи, которые я уже решила.",
     "Stack": "Стек",
     "ongoing": {
@@ -71,14 +71,14 @@
     }
   },
   "Education": {
-    "leftTitle": "Education",
+    "leftTitle": "Обучение",
     "leftSubtitle": "Опыт в финансах не отменяет код - он делает решения точнее.",
     "university": "Российский университет кооперации",
     "line": "Бухгалтерский учёт и финансы ",
     "pathTitle": "Опыт в финансах помогает точнее проектировать бизнес-логику, метрики и отчётность в сложных веб-системах."
   },
   "Additional": {
-    "leftTitle": "Project",
+    "leftTitle": "Проекты",
     "leftSubtitle": "Проекты ценны не кодом, а пользой.",
     "intro": "Проект с открытым исходным кодом, демонстрирующий мой архитектурный подход к аналитическим и продуктовым системам.",
     "projectTitle": "Folio Metrics",

@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 
-import { ANALYTICS_RANGE_OPTIONS, RangeOptionValue } from '@/widgets/admin/analytics'
+import { ANALYTICS_RANGE_OPTIONS, RangeOptionValue } from '@/features/admin/analytics-filters'
 
 type Props = {
   value: RangeOptionValue

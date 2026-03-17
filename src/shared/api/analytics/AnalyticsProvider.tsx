@@ -9,10 +9,8 @@ import {
   type PropsWithChildren,
 } from 'react'
 
-import { MetricsService } from '@/shared/api/metrics/metrics-service'
 import { VisitorManager } from '@/shared/lib/visitor'
-import { IMetricsRepository } from '@/shared/api/metrics/repository.interface'
-import { createClientMetricsRepository } from '@/shared/api/metrics/factory'
+import { createClientMetricsRepository, IMetricsRepository, MetricsService } from '@/shared/api/metrics'
 
 import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 

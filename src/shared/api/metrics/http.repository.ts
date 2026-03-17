@@ -14,6 +14,9 @@ export class HttpMetricsRepository implements IMetricsRepository {
     if (!success) {
       fetch(this.endpoint, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(data),
         keepalive: true,
       }).catch(console.error)

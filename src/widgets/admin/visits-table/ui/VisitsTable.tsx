@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
-import { DataPlaceholder } from '@/shared/ui/data-placeholder'
+import { DataPlaceholder } from '@/shared/ui'
 
 import { TablePagination } from './index'
 

@@ -19,7 +19,7 @@
   "Hero": {
     "avatarAlt": "It's me",
     "aboutLink": "More about me",
-    "shortText": "Building web applications focused on architecture, clear data flow, and scalable interfaces.",
+    "shortText": "Building web interfaces, focusing on robust architecture, predictable data flow, and scalability.",
     "buttons": {
       "cv": "Download CV"
     }
@@ -33,7 +33,7 @@
     "description2_item1": "Robust architecture",
     "description2_item2": "Clear and predictable interfaces",
     "description2_item3": "Process automation",
-    "description3": "<secondary>For me, development</secondary> is not just about completing tasks, but about <secondary>taking responsibility</secondary> for the product and its <secondary>long-term sustainability</secondary>. <secondary>I feel most comfortable in strong engineering teams</secondary> where I can <secondary>contribute architecturally</secondary> and continue growing technically."
+    "description3": "<secondary>For me, development</secondary> is about more than just closing tickets, it’s about <secondary>taking ownership</secondary> of the product's long-term <secondary>maintainability and scalability</secondary>.<secondary>I feel most comfortable in strong engineering teams</secondary> where I can <secondary>contribute architecturally</secondary> and continue growing technically."
   },
   "TechnicalSkills": {
     "leftTitle": "Stack",

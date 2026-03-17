@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import { SOCIAL_LINKS } from '@/entities/contact/model/constants'
 import { CONTACT_ICONS } from '@/shared/ui'
+import { SOCIAL_LINKS } from '@/entities/contact'
 
 type Props = {
   showAfterY?: number
