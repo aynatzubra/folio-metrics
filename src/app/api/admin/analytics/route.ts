@@ -37,6 +37,8 @@ export async function POST(req: NextRequest) {
     }
 
     const userAgent = req.headers.get('user-agent') || 'unknown'
+    const country = req.headers.get('x-vercel-ip-country') || undefined
+    const city = req.headers.get('x-vercel-ip-city') || undefined
 
     const visit = {
       ...result.data,
@@ -45,6 +47,8 @@ export async function POST(req: NextRequest) {
       timestamp: result.data.timestamp || Date.now(),
       ipAddress: ip,
       userAgent,
+      country,
+      city,
     }
 
     await service.trackSectionVisit(visit)
