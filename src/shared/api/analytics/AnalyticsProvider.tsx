@@ -8,6 +8,7 @@ import {
   useRef,
   type PropsWithChildren,
 } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { VisitorManager } from '@/shared/lib/visitor'
 import { createClientMetricsRepository, IMetricsRepository, MetricsService } from '@/shared/api/metrics'
@@ -30,6 +31,7 @@ const AnalyticsContext = createContext<AnalyticsContextValue | null>(null)
 
 export function AnalyticsProvider({ children }: PropsWithChildren) {
   const mode = process.env.NEXT_PUBLIC_ANALYTICS_MODE || 'demo'
+  const router = useRouter()
 
   const repoRef = useRef<IMetricsRepository | null>(null)
   const serviceRef = useRef<MetricsService | null>(null)
@@ -70,11 +72,12 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
           return
         }
         await serviceRef.current.trackSectionVisit(visit)
+        router.refresh()
       } catch (error) {
         console.error('[Analytics] Save failed:', error)
       }
     },
-    [mode],
+    [mode, router],
   )
 
   const getDashboard = useCallback(async (days: number): Promise<AnalyticsDashboard> => {

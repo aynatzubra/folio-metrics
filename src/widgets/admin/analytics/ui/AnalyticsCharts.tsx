@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { AnalyticsRangeFilter, RangeOptionValue } from '@/features/admin/analytics-filters'
 
@@ -16,6 +16,11 @@ export function AnalyticsCharts({
                                   initialSections = [],
                                 }: AnalyticsChartsProps) {
   const [range, setRange] = useState<RangeOptionValue>(initialRange)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const { daily, sections } = useAnalyticsDashboard(range, {
     range: initialRange,
@@ -25,8 +30,13 @@ export function AnalyticsCharts({
     },
   })
 
-  const resolvedDaily = daily ?? []
-  const resolvedSections = sections ?? []
+  if (!mounted) {
+    return (
+      <section className="mt-8">
+        <div className="h-[400px] animate-pulse rounded-lg bg-slate-50" />
+      </section>
+    )
+  }
 
   return (
     <section className="mt-8">
@@ -35,8 +45,8 @@ export function AnalyticsCharts({
         <AnalyticsRangeFilter value={range} onChange={setRange} />
       </div>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <DailyVisitsChart data={resolvedDaily} range={range} />
-        <SectionsChart data={resolvedSections} range={range} />
+        <DailyVisitsChart data={daily} range={range} />
+        <SectionsChart data={sections} range={range} />
       </div>
     </section>
   )

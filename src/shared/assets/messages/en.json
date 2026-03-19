@@ -48,7 +48,7 @@
   "Experience": {
     "leftTitle": "Experience",
     "leftSubtitle": "Experience is tough problems I’ve already solved.",
-    "Stack": "Stack",
+    "Stack": "Stills",
     "ongoing": {
       "description": "Developing an e-commerce platform on <secondary>Next.js (App Router)</secondary> with a <secondary>server-first</secondary> data model. I apply <secondary>Feature-Sliced Design</secondary> to structure business logic and ensure feature isolation. Designed administrative interfaces for catalog and order management. Implementing an age verification module (18+) based on an AI model. <secondary>Ownership:</secondary> Managing the project independently - from architectural decisions to implementation and infrastructure setup.",
       "resultDescription": "Successfully launched the MVP with a scalable architecture"
