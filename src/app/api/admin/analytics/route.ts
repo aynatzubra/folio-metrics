@@ -55,7 +55,7 @@ export async function GET() {
     const data = await repo.getAll()
     return NextResponse.json(data)
   } catch (error) {
-    logError(error,'[API Analytics GET]')
+    logError(error, '[API Analytics GET]')
 
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }

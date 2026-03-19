@@ -15,7 +15,10 @@ export function toErrorMessage(error: unknown): string {
 
 export function logError(error: unknown, context?: string): void {
   if (process.env.NODE_ENV !== 'development') {
+    console.error(`[ERROR][${context || 'General'}]`, toErrorMessage(error), error)
     //TODO: integrate sentry or other log service for prod
+
+    return
   }
 
   if (isAbortError(error)) return
@@ -27,4 +30,10 @@ export function logError(error: unknown, context?: string): void {
   console.error('Original Error:', error)
   console.trace('Stack Trace')
   console.groupEnd()
+}
+
+export function logDebug(message: string, data?: unknown): void {
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[DEBUG] ${message}`, data !== undefined ? data : '')
+  }
 }

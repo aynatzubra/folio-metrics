@@ -1,6 +1,8 @@
 import { PrismaClient, type Visit } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
+import { logDebug, logError } from '@/shared/lib/error'
+
 const prisma = new PrismaClient()
 
 const utc = (iso: string) => new Date(iso)
@@ -189,7 +191,7 @@ export const mockVisits: Omit<Visit, 'id'>[] = [
 ]
 
 async function main() {
-  console.log('Seeding start...')
+  logDebug('Seeding start...')
   await prisma.visit.deleteMany({})
   await prisma.analyticsVisitor.deleteMany({})
   await prisma.user.deleteMany({ where: { email: process.env.SECRET_DEMO_USER } })
@@ -198,7 +200,7 @@ async function main() {
     new Set(mockVisits.map((v) => v.visitorId).filter(Boolean)),
   ) as string[]
 
-  console.log(`Creating ${uniqueVisitorIds.length} unique visitors...`)
+  logDebug(`Creating ${uniqueVisitorIds.length} unique visitors...`)
 
   await prisma.analyticsVisitor.createMany({
     data: uniqueVisitorIds.map(id => ({
@@ -211,9 +213,8 @@ async function main() {
     data: mockVisits,
     skipDuplicates: true,
   })
-  console.log('Successfully created visits!')
+  logDebug('Successfully created visits!')
 
-  console.log('Create demo user...')
   const hashedPassword = await bcrypt.hash(process.env.SECRET_DEMO_PASSWORD!, 10)
   await prisma.user.upsert({
     where: { email: process.env.SECRET_DEMO_USER! },
@@ -223,12 +224,12 @@ async function main() {
       password: hashedPassword,
     },
   })
-  console.log('Demo user created')
+  logDebug('Demo user created')
 }
 
 main()
   .catch((e) => {
-    console.error('Seeding mistakes:', e)
+    logError(e, 'Seeding mistakes')
     process.exit(1)
   })
   .finally(async () => {

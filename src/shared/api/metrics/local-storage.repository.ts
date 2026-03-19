@@ -1,3 +1,5 @@
+import { logError } from '@/shared/lib/error'
+
 import { IMetricsRepository } from './repository.interface'
 
 import type { VisitData } from '@/entities/analytics'
@@ -35,7 +37,7 @@ export class LocalStorageMetricsRepository implements IMetricsRepository {
       const parsed = JSON.parse(raw)
       return Array.isArray(parsed) ? (parsed as VisitData[]) : []
     } catch (e) {
-      console.error('[Metrics Repo] Resetting corrupted storage', e)
+      logError(e, '[Metrics Repo] Resetting corrupted storage')
       localStorage.removeItem(this.STORAGE_KEY)
       return []
     }

@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 
 import { VisitorManager } from '@/shared/lib/visitor'
 import { createClientMetricsRepository, IMetricsRepository, MetricsService } from '@/shared/api/metrics'
+import { logError } from '@/shared/lib/error'
 
 import type { VisitData, AnalyticsDashboard } from '@/entities/analytics'
 
@@ -68,13 +69,13 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
 
       try {
         if (!serviceRef.current) {
-          console.error('[Analytics] MetricsService is not initialized')
+          logError('[Analytics] MetricsService is not initialized')
           return
         }
         await serviceRef.current.trackSectionVisit(visit)
         router.refresh()
       } catch (error) {
-        console.error('[Analytics] Save failed:', error)
+        logError(error, '[Analytics] Save failed')
       }
     },
     [mode, router],
@@ -82,13 +83,15 @@ export function AnalyticsProvider({ children }: PropsWithChildren) {
 
   const getDashboard = useCallback(async (days: number): Promise<AnalyticsDashboard> => {
     if (!serviceRef.current) {
-      console.error('[Analytics] Dashboard requested before initialization')
+      logError('[Metrics Repo] Resetting corrupted storage')
+
       return INITIAL_DASHBOARD_DATA
     }
     try {
       return await serviceRef.current.getDashboardData(days)
     } catch (error) {
-      console.error('[AnalyticsProvider] Unexpected error during data fetch:', error)
+      logError(error, '[AnalyticsProvider] Unexpected error during data fetch')
+
       return INITIAL_DASHBOARD_DATA //default
     }
   }, [])

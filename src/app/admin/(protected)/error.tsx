@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react'
 
+import { logError } from '@/shared/lib/error'
+
 export default function Error({
                                 error,
                                 reset,
@@ -10,7 +12,7 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    console.error('Admin Dashboard Error:', error)
+    logError(error, '[Admin Dashboard Error]')
   }, [error])
 
   return (
