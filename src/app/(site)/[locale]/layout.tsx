@@ -24,7 +24,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
       type: 'website',
       images: [
         {
-          url: '/og-image.webp',
+          url: '/assets/images/og-image.webp',
           width: 1200,
           height: 630,
           alt: 'Tatiana Arbuz Folio Metrics',
