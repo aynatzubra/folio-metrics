@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { LRUCache } from 'lru-cache'
 
 import { auth } from '@/auth'
 import { logError } from '@/shared/lib/error'
@@ -8,8 +9,22 @@ import { createServerMetricsRepository, MetricsService } from '@/shared/api/metr
 const repo = createServerMetricsRepository()
 const service = new MetricsService(repo)
 
+// --- RATE LIMITER SETUP ---
+const rateLimit = new LRUCache<string, number>({
+  max: 500,
+  ttl: 10 * 1000,
+})
+
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
+
+    const currentUsage = rateLimit.get(ip) || 0
+    if (currentUsage >= 5) {
+      logError(`Spam detected from IP: ${ip}`, '[API Analytics POST RateLimit]')
+      return NextResponse.json({ error: 'Too Many Requests' }, { status: 429 })
+    }
+    rateLimit.set(ip, currentUsage + 1)
     const body = await req.json()
 
     const result = trackVisitSchema.safeParse(body)
@@ -21,7 +36,6 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
     const userAgent = req.headers.get('user-agent') || 'unknown'
 
     const visit = {
@@ -37,7 +51,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (error) {
-
     logError(error, '[API Analytics POST]')
 
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
