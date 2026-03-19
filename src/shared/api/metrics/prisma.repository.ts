@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/db/prisma'
 import { resolveVisitorKey } from '@/entities/analytics/lib'
+import { logDebug, logError } from '@/shared/lib/error'
 
 import { IMetricsRepository } from './repository.interface'
 
@@ -9,7 +10,8 @@ export class PrismaMetricsRepository implements IMetricsRepository {
 
   async save(data: VisitData): Promise<void> {
     if (!prisma) {
-      console.error('[Prisma Repo] Cannot save: Prisma is disabled or null')
+      logError('[Prisma Repo] Cannot save: Prisma is disabled or null')
+
       return
     }
     const visitorKey = resolveVisitorKey(data)
@@ -53,8 +55,35 @@ export class PrismaMetricsRepository implements IMetricsRepository {
         city: v.city ?? undefined,
       }))
     } catch (error) {
-      console.error('[Prisma Repo] GetAll error:', error)
+      logError(error, '[Prisma Repo] GetAll error')
+
       return []
+    }
+  }
+
+  async cleanupOldVisits(keepLimit: number = 100): Promise<void> {
+    if (!prisma) return
+
+    try {
+      const lastVisits = await prisma.visit.findMany({
+        orderBy: { createdAt: 'desc' },
+        skip: keepLimit - 1,
+        take: 1,
+        select: { createdAt: true },
+      })
+
+      if (lastVisits.length > 0) {
+        const thresholdDate = lastVisits[0].createdAt
+
+        const { count } = await prisma.visit.deleteMany({
+          where: {
+            createdAt: { lte: thresholdDate },
+          },
+        })
+        logDebug(`[Prisma] Cleaned up ${count} old visits. Keeping last ${keepLimit}.`)
+      }
+    } catch (e) {
+      logError(e, '[Prisma Repo] Cleanup error')
     }
   }
 }
