@@ -8,6 +8,7 @@ import type { VisitData } from '@/entities/analytics'
  */
 
 export class NoopMetricsRepository implements IMetricsRepository {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async save(_data: VisitData): Promise<void> { }
 
   async getAll(): Promise<VisitData[]> {

@@ -1,4 +1,4 @@
-import { invalidateCache, withCache } from '@/shared/lib/cache'
+import { invalidateCache } from '@/shared/lib/cache'
 import { VisitData } from '@/entities/analytics'
 
 import { MetricsService } from './metrics-service'
@@ -59,7 +59,7 @@ describe('MetricsService', () => {
 
     expect(dashboard.recentVisits).toHaveLength(1)
     expect(dashboard.recentVisits[0].sectionId).toBe('projects')
-    expect((dashboard.recentVisits[0] as any).isMock).toBe(false)
+    expect(dashboard.recentVisits[0]).toHaveProperty('isMock', false)
   })
 
   it('should fallback to shifted mocks when DB is empty', async () => {
@@ -72,6 +72,6 @@ describe('MetricsService', () => {
     expect(dashboard.recentVisits).toHaveLength(1)
     expect(dashboard.recentVisits[0].sectionId).toBe('mock-section')
 
-    expect((dashboard.recentVisits[0] as any).isMock).toBe(true)
+    expect(dashboard.recentVisits[0]).toHaveProperty('isMock', true)
   })
 })
