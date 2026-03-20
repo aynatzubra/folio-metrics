@@ -9,7 +9,7 @@ import { LoginActionState, LoginFormProps } from './../model/login.types'
 
 const baseInputClass =
   'block w-full px-4 py-4 rounded-md border border-gray-300 ' +
-  'text-gray-900 placeholder-gray-400 ' +
+  'text-gray-900 placeholder-gray-500 ' +
   'focus:border-[#F67769] focus:ring-2 focus:ring-[#F67769] focus:outline-none'
 
 const buttonClass =
@@ -17,7 +17,7 @@ const buttonClass =
   'text-white font-semibold w-[230px]  ' +
   'bg-accent hover:bg-opacity-90 ' +
   'focus:outline-none focus:ring-2 focus:ring-[#F67769] focus:ring-offset-2 ' +
-  'disabled:cursor-not-allowed disabled:bg-gray-400'
+  'disabled:cursor-not-allowed disabled:bg-gray-500'
 
 export function LoginForm({
                             initialEmail,

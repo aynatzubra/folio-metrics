@@ -18,7 +18,7 @@ export function TablePagination({ page, pageSize, total, onPageChangeAction }: T
 
   return (
     <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-6">
-      <div className="text-center sm:text-left text-xs text-slate-400">
+      <div className="text-center sm:text-left text-xs text-slate-500">
         Showing <span className="font-bold text-slate-600">{from}</span>–
         <span className="font-bold text-slate-600">{to}</span> of{' '}
         <span className="font-bold text-slate-600">{total}</span> visits
@@ -32,7 +32,7 @@ export function TablePagination({ page, pageSize, total, onPageChangeAction }: T
         >
           Prev
         </button>
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
           Page {page} / {totalPages}
         </span>
         <button

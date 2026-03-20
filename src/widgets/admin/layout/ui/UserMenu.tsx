@@ -24,6 +24,7 @@ export const UserMenu = ({ avatar, onLogout }: UserMenuProps) => {
         <MenuButton
           data-tooltip-id="avatar-tooltip"
           className={menuButton}
+          aria-label="User menu"
         >
           <Image
             src={avatar}
@@ -52,7 +53,7 @@ export const UserMenu = ({ avatar, onLogout }: UserMenuProps) => {
             className="absolute right-0 mt-2 w-44 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
             <div className="py-1">
               <MenuItem>
-                <span className="block px-4 py-2 text-sm text-gray-400 cursor-not-allowed">Profile</span>
+                <span className="block px-4 py-2 text-sm text-gray-500 cursor-not-allowed">Profile</span>
               </MenuItem>
               <div className="border-t border-gray-200 my-1" />
               <MenuItem>

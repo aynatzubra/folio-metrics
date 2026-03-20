@@ -12,7 +12,7 @@ type AdminMenuContentProps = {
 
 const logoutBtnClass =
   'group flex items-center justify-center w-full ' +
-  'px-5 py-4 text-sm font-bold text-red-400 ' +
+  'px-5 py-4 text-sm font-bold text-red-500 ' +
   'border border-red-500/20 rounded-xl hover:bg-red-500/10 ' +
   'transition-all active:scale-95'
 
@@ -51,7 +51,7 @@ export function AdminMenuContent({ onClose, onLogoutAction, user }: AdminMenuCon
               className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#111827] rounded-full"></span>
           </div>
           <div>
-            <p className="text-gray-400 text-xs font-medium uppercase tracking-widest">Welcome back,</p>
+            <p className="text-gray-500 text-xs font-medium uppercase tracking-widest">Welcome back,</p>
             <h3 className="text-lg font-bold text-white leading-tight">{user.name}</h3>
           </div>
         </div>
@@ -68,7 +68,7 @@ export function AdminMenuContent({ onClose, onLogoutAction, user }: AdminMenuCon
       {/* footer */}
       <div className="mt-auto pt-10 mb-28 px-2 pb-[env(safe-area-inset-bottom)]">
         <div className="mb-8 text-center">
-          <p className="text-lg leading-snug text-gray-400 font-medium italic">
+          <p className="text-lg leading-snug text-gray-500 font-medium italic">
             If you need results — <br />
             <span
               className="text-white not-italic font-extrabold uppercase text-sm tracking-tighter">let’s talk.</span>

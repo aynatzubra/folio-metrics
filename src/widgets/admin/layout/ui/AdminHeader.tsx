@@ -31,10 +31,12 @@ export function AdminHeader({ isDemo }: AdminHeaderProps) {
           {/*DESKTOP VERSION*/}
           <div className="hidden md:flex w-full items-center justify-between">
             {/*Left block*/}
-            <Link href="/" className="transition-opacity hover:opacity-70">
-        <span className="header-title">
-          arbuz
-        </span>
+            <Link
+              href="/" aria-label="Go to homepage"
+              className="transition-opacity hover:opacity-70">
+              <span className="header-title">
+                arbuz
+              </span>
             </Link>
 
             {/*Right Block*/}

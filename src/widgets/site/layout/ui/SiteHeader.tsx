@@ -43,7 +43,9 @@ export function SiteHeader() {
         {/* DESKTOP VERSION */}
         <div className={`${container} hidden md:flex h-[70px] items-center justify-between gap-6`}>
           <div className="shrink-0">
-            <Link href="/" className="transition-opacity hover:opacity-60">
+            <Link
+              href="/" aria-label="Go to homepage"
+              className="transition-opacity hover:opacity-60">
               <h2 className="header-title">{t('title')}</h2>
             </Link>
           </div>
@@ -94,7 +96,8 @@ export function SiteHeader() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className={iconButton}>
+                    className={iconButton}
+                    aria-label={`Go to my ${link.icon}`}>
                     {CONTACT_ICONS[link.icon]}
                   </a>
                 ))}

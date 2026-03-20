@@ -15,7 +15,7 @@ export function DataPlaceholder({ type, message, className, onRetry }: Props) {
     <div className={`flex flex-col items-center justify-center p-8 text-center ${className}`}>
       <FontAwesomeIcon
         icon={isError ? faCircleExclamation : faInbox}
-        className={`mb-3 h-10 w-10 ${isError ? 'text-red-400' : 'text-gray-300'}`}
+        className={`mb-3 h-10 w-10 ${isError ? 'text-red-500' : 'text-gray-300'}`}
       />
       <p className={`text-sm font-medium ${isError ? 'text-red-600' : 'text-gray-500'}`}>
         {message}

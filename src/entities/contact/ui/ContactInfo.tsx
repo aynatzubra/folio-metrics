@@ -42,6 +42,7 @@ export function ContactInfo({
           href={link.href}
           target={link.href.startsWith('http') ? '_blank' : undefined}
           rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+          aria-label={link.labelKey}
           className={`${styles.baseButton} ${styles.colorScheme.outline} ${btnSize} text-center`}
         >
           {tCommon(link.labelKey)}

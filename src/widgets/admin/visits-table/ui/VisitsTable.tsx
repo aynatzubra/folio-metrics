@@ -89,7 +89,7 @@ export function VisitsTable({ visits, pageSize = 15 }: Props) {
                         </span>
                       )}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-400">
+                    <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500">
                       {formatDateTime(new Date(visit.timestamp))}
                     </td>
                   </tr>

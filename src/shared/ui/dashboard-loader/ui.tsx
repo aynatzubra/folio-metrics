@@ -23,7 +23,7 @@ export function DashboardLoader({ title, description, size = 'md', className }: 
         )}
       />
       {title && <p className="mt-2 text-xs font-medium">{title}</p>}
-      {description && <p className="mt-1 text-[11px] text-slate-400">{description}</p>}
+      {description && <p className="mt-1 text-[11px] text-slate-500">{description}</p>}
     </div>
   )
 }

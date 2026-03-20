@@ -91,6 +91,7 @@ export function Additional() {
                 href="https://github.com/aynatzubra/folio-metrics"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub Profile"
                 className={`${baseButtonStyles} bg-gray-900 hover:bg-gray-800 focus-visible:ring-gray-900/30`}
               >
                 <FontAwesomeIcon icon={faGithub} className="mr-2 h-4 w-4" />

@@ -1,9 +1,16 @@
 import { redirect } from 'next/navigation'
+import { Metadata } from 'next'
 
 import { auth } from '@/auth'
 import { AdminHeader } from '@/widgets/admin/layout'
 
 import type { ReactNode } from 'react'
+
+export const metadata: Metadata = {
+  title: 'Dashboard | Folio-Metrics Admin',
+  description: 'Analytics dashboard and management panel.',
+  robots: { index: false, follow: false },
+}
 
 function isDemoUser(user: { email?: string | null; name?: string | null }) {
   const email = user.email ?? ''

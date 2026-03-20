@@ -14,7 +14,9 @@ type Props = {
 export function SiteHeaderMobile({ containerClass, title, openMenuLabel, isMenuOpen, onOpenMenu }: Props) {
   return (
     <div className={`${containerClass} flex h-[70px] items-center justify-between md:hidden`}>
-      <Link href="/" className="transition-opacity hover:opacity-70">
+      <Link
+        href="/" aria-label="Go to homepage"
+        className="transition-opacity hover:opacity-70">
         <span className="header-title">
           {title}
         </span>

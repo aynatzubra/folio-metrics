@@ -23,6 +23,7 @@ export const SocialLinks = ({ variant = 'icons', className }: SocialLinksProps) 
             target="_blank"
             rel="noreferrer noopener"
             className={SocialOutlineBtnClass}
+            aria-label={`Go to my ${link.icon}`}
           >
             <span className="flex items-center gap-2">
               {CONTACT_ICONS[link.icon]}
@@ -42,6 +43,7 @@ export const SocialLinks = ({ variant = 'icons', className }: SocialLinksProps) 
           href={link.href}
           target="_blank"
           rel="noreferrer noopener"
+          aria-label={`Go to my ${link.icon}`}
           className="text-accent hover:text-[#F67769] transition-colors">
           {CONTACT_ICONS[link.icon]}
         </a>
