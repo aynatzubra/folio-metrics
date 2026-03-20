@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { formatDateTime, formatDuration } from '@/shared/lib/format'
 import { DataPlaceholder } from '@/shared/ui'
+import { decodeLocation } from '@/shared/lib/utils'
 
 import { TablePagination } from './index'
 
@@ -16,6 +17,7 @@ type Props = {
 
 export function VisitsTable({ visits, pageSize = 15 }: Props) {
   const [page, setPage] = useState(1)
+  const [mounted, setMounted] = useState(false)
 
   //stable sorted array
   const sortedVisits = useMemo(() => {
@@ -29,6 +31,10 @@ export function VisitsTable({ visits, pageSize = 15 }: Props) {
   useEffect(() => {
     setPage((p) => Math.min(Math.max(1, p), totalPages))
   }, [totalPages])
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const pageItems = useMemo(() => {
     const startIndex = (page - 1) * pageSize
@@ -66,12 +72,14 @@ export function VisitsTable({ visits, pageSize = 15 }: Props) {
                 </thead>
                 <tbody className="divide-y divide-slate-100 bg-white">
                 {pageItems.map((visit, index) => (
-                  <tr key={`${visit.visitorId}-${visit.timestamp}-${index}`} className="transition-colors hover:bg-slate-50/50">
+                  <tr
+                    key={`${visit.visitorId}-${visit.timestamp}-${index}`}
+                    className="transition-colors hover:bg-slate-50/50">
                     <td className="whitespace-nowrap px-6 py-3 text-sm font-semibold text-slate-700">
                       {visit.sectionId}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500">
-                      {visit.city ?? '_'}, {visit.country ?? '_'}
+                      {decodeLocation(visit.city)}, {visit.country ?? '_'}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500 font-mono">
                       {formatDuration(visit.duration)}
@@ -90,7 +98,7 @@ export function VisitsTable({ visits, pageSize = 15 }: Props) {
                       )}
                     </td>
                     <td className="whitespace-nowrap px-6 py-3 text-sm text-slate-500">
-                      {formatDateTime(new Date(visit.timestamp))}
+                      {mounted ? formatDateTime(new Date(visit.timestamp)) : null}
                     </td>
                   </tr>
                 ))}
