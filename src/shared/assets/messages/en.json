@@ -86,7 +86,7 @@
       "item1": "<highlight>Interactive resume and administrative panel</highlight>.",
       "item2": "<highlight>Flexible data management:</highlight> JSON-based demo mode or full version with <highlight>PostgreSQL, Prisma,</highlight> and event analytics.",
       "item3": "<highlight>Architecture: </highlight>Server-first approach and <highlight>Feature-Sliced Design</highlight>.",
-      "item4": "<highlight>Performance</highlight> Lighthouse ≥ 95 across all Core Web Vitals."
+      "item4": "<highlight>Performance</highlight> Lighthouse ≥ 95 across all categories."
     },
     "buttonText": "Explore code",
     "buttonDemoText": "View demo"

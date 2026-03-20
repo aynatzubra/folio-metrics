@@ -86,7 +86,7 @@
       "item1": "<highlight>Интерактивное резюме и административная панель.</highlight>.",
       "item2": "<highlight>Гибкая работа с данными:</highlight> демо-режим на JSON-данных или полная версия с PostgreSQL, Prisma и аналитикой событий.",
       "item3": "<highlight>Архитектура:</highlight> Server-first подход и Feature-Sliced Design.",
-      "item4": "<highlight>Производительность:</highlight> Lighthouse ≥ 95 по всем показателям Core Web Vitals."
+      "item4": "<highlight>Производительность:</highlight> Lighthouse ≥ 95 по всем категориям."
     },
     "buttonText": "Исследовать код",
     "buttonDemoText": "Посмотреть демо"

@@ -12,7 +12,7 @@
 * **Concurrency Management:** Implements the **Web Locks API** to prevent data race conditions when multiple browser tabs are recording metrics simultaneously.
 * **Smart Data Orchestration:** Features a service layer with **"Time-shifting"** logic — historical mock data is automatically rejuvenated to the current date, ensuring vibrant and relevant charts in the demo dashboard.
 * **Privacy-First Tracking:** Custom-built `SectionObserver` for engagement metrics, avoiding intrusive third-party cookies.
-* **Performance-Driven:** Achieves a **100/100 Lighthouse score** in Best Practices. Utilizes **Dynamic Imports** and lazy loading for heavy visualization libraries (ECharts).
+* **Performance-Driven:** Achieves a **Lighthouse score of ≥ 95 across all categories** perfectly balancing aesthetics and accessibility. Utilizes **Dynamic Imports** and lazy loading for heavy visualization libraries (ECharts).
 
 ---
 

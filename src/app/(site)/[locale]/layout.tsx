@@ -12,7 +12,7 @@ export async function generateMetadata(props: { params: Promise<{ locale: string
       default: 'Frontend-oriented Full-Stack Engineer | React · Next.js · TS · NestJs',
       template: '%s | Tanya Arbuz',
     },
-    description: t('description'),
+    description: t('description') || 'Frontend-oriented full-stack engineer building scalable React and Next.js applications with a focus on architecture and reliable interfaces.',
     metadataBase: new URL('https://www.arbuz.buzz'),
 
     openGraph: {
