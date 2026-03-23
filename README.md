@@ -1,4 +1,4 @@
-# Folio-Metrics v0.2.0
+# Folio-Metrics v0.3.0
 
 **Folio-Metrics** is a professional-grade open-source portfolio built with **Next.js 15**. This project is designed as an architecture showcase, moving beyond a simple CV to demonstrate production-ready engineering patterns, data persistence, and high-performance metrics.
 
