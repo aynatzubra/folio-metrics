@@ -14,7 +14,7 @@ const baseInputClass =
 
 const buttonClass =
   'mx-auto block px-15 py-3 rounded-[4px] ' +
-  'text-white font-semibold w-[230px]  ' +
+  'text-white font-semibold w-[250px]  ' +
   'bg-accent hover:bg-opacity-90 ' +
   'focus:outline-none focus:ring-2 focus:ring-[#F67769] focus:ring-offset-2 ' +
   'disabled:cursor-not-allowed disabled:bg-gray-500'
